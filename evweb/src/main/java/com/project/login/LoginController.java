@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/login")
 public class LoginController {
 	Memberservice service;
-	
 	@RequestMapping("/login.do")
 	public String login(MemberDTO loginUserInfo, Model model) {
 		MemberDTO user = service.login(loginUserInfo);
@@ -16,11 +15,9 @@ public class LoginController {
 		if (user != null) {
 			model.addAttribute("user", user);
 			viewName = user.getMenupath();
-
 		} else {
 			viewName = "login";
 		}
 		return viewName;
 	}
-	
 }

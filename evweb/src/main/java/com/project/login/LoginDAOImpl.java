@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class LoginDAOImpl implements LoginDAO {
 	SqlSession session;
-	
+
 	@Autowired
 	public LoginDAOImpl(SqlSession session) {
 		super();
@@ -14,9 +14,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public CustomerDTO login(CustomerDTO loginUser) {
-		return session.selectOne("com.project.login.login",loginUser);
+		return session.selectOne("com.project.login.login", loginUser);
 	}
-	
-	
 
 }
