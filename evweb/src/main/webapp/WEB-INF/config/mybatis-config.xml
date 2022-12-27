@@ -4,9 +4,11 @@
 	<typeAliases>
 		<!-- 필요 부분 추가 -->
 		<!-- <typeAlias type="com.multi.erp.board.BoardDTO" alias="board"/> -->
+		<typeAlias type="com.project.manager.managerDTO" alias="manager"/>
 	</typeAliases>
 	<mappers>
 		<!-- 필요 부분 추가 -->
 		<!-- <mapper resource="mapper/board.xml"/> -->
+		<mapper resource="mapper/manager.xml"/>
 	</mappers>
 </configuration>
