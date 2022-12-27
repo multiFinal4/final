@@ -2,9 +2,9 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias type="com.multi.erp.board.BoardDTO" alias="board"/> -->
+		<typeAlias type="com.project.station.StationDTO" alias="station"/>
 	</typeAliases>
 	<mappers>
-		<!-- <mapper resource="mapper/board.xml"/> -->
+		<mapper resource="mapper/chargeStation.xml"/>
 	</mappers>
 </configuration>

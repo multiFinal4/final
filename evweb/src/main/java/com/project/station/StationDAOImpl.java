@@ -28,6 +28,10 @@ public class StationDAOImpl implements StationDAO {
 		return sqlSession.selectList("com.project.station.selectall");
 	}
 	@Override
+	public List<StationDTO> companyList() {
+		return sqlSession.selectList("com.project.station.selectCom");
+	}
+	@Override
 	public List<StationDTO> stationListCate(String category) {
 		return sqlSession.selectList("com.project.station.categorySelect", category);
 	}

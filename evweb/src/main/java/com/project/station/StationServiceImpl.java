@@ -27,11 +27,14 @@ public class StationServiceImpl implements StationService {
 	public List<StationDTO> stationList() {
 		return dao.stationList();
 	}
+	
+	@Override
+	public List<StationDTO> companyList(){
+		return dao.companyList();
+	}
 	@Override
 	public List<StationDTO> stationListCate(String category) {
-		
 		List<StationDTO> list = null;
-		
 		if (category != null) {
 			if (category.equals("all")) {
 				list = dao.stationList();

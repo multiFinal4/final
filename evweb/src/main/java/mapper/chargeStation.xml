@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.station">
+	<insert id="insert" parameterType="station">
+		insert into STATION_TB values('STN'||station_seq.NEXTVAL, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charge_no})
+	</insert>
+	<select id="selectCom" resultType="station">
+		select DISTINCT station_company from STATION_TB
+	</select>
+	<select id="selectall" resultType="station">
+		select ROWNUM, st.* from STATION_TB st order by station_id ASC
+	</select>
+	<select id="categorySelect" resultType="station" parameterType="String">
+		select ROWNUM, st.* from STATION_TB st where station_company=#{category} order by station_id ASC
+	</select>
+ </mapper>
