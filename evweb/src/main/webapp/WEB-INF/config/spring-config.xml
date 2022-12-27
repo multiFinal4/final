@@ -11,12 +11,12 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
-
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/images/**" location="/WEB-INF/static/images/" />
 	<resources mapping="/css/**" location="/WEB-INF/static/common/css/" />
 	<resources mapping="/js/**" location="/WEB-INF/static/common/js/" />
+	<resources mapping="/vendor/**" location="/WEB-INF/static/common/vendor/" />
 	<resources mapping="/upload/**" location="/WEB-INF/upload/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -66,15 +66,10 @@
 	</beans:bean>
 	
 	
-	<!-- 필요 부분 추가 -->
-	<!-- 인터셉터 -->
-<!-- 	<interceptors>
-		<interceptor>
-			<mapping path="/board/**"/>
-			<beans:bean class="main.LoginInterceptor"></beans:bean>
-		</interceptor>
-	</interceptors> -->
-	
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
+	<context:component-scan base-package="main" />
+	
+	
+	
 </beans:beans>

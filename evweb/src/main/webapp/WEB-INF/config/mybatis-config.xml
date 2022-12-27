@@ -2,11 +2,9 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- 필요 부분 추가 -->
 		<!-- <typeAlias type="com.multi.erp.board.BoardDTO" alias="board"/> -->
 	</typeAliases>
 	<mappers>
-		<!-- 필요 부분 추가 -->
 		<!-- <mapper resource="mapper/board.xml"/> -->
 	</mappers>
 </configuration>
