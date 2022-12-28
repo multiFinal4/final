@@ -57,7 +57,7 @@
 					<button type="submit" class="btn btn-primary">수정</button>
 					<button type="reset" class="btn btn-secondary">삭제</button>
 				</div>
-			</form>
+			</form> 
 		</div>
 	</body>
 </html>

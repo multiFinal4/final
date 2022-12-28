@@ -22,11 +22,11 @@ public class StationDAOImpl implements StationDAO {
 	public int insert(StationDTO station) {
 		return sqlSession.insert("com.project.station.insert", station);
 	}
-
+ 
 	@Override
 	public List<StationDTO> stationList() {
 		return sqlSession.selectList("com.project.station.selectall");
-	}
+	} 
 	@Override
 	public List<StationDTO> companyList() {
 		return sqlSession.selectList("com.project.station.selectCom");

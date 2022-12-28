@@ -61,7 +61,7 @@
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary">등록</button>
 					<button type="reset" class="btn btn-secondary">초기화</button>
-				</div>
+				</div> 
 			</form>
 		</div>
 	</body>
