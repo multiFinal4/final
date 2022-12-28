@@ -2,84 +2,91 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<link href="/evweb/css/login.css" rel="stylesheet">
-<style type="text/css">
-body{
-	position: relative;
-	width: 1440px;
-	height: 1024px;
-	background: #EAF5FC;
-	
-}
-#window{
-	position: absolute;
-	width: 409px;
-	height: 564px;
-	left: 55%;
-	top: 230px;
-	background: #FFFFFF;
-	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
-	border-radius: 20px;
-}
-#login{
-	font-family: 'Inter';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 40px;
-	line-height: 48px;
-	color: #454545;
-}
-#id{
-	width: 222px;
-	height: 52px;
-	left: 648px;
-	top: 372px;
-	background: #F5F5F5;
-}
-#pass{
-	width: 222px;
-	height: 52px;
-	left: 648px;
-	top: 442px;
-	background: #F5F5F5;
-}
 
-</style>
-<title>Insert title here</title>
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title> Login </title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/evweb/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/evweb/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/evweb/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/evweb/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/evweb/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/evweb/css/style.css" rel="stylesheet">
 </head>
+
 <body>
 
+  <main>
+    <div class="container">
 
-	<div id = "window">
-		<div id = "login">LOGIN</div>
-		<form name="login_frm" action="/evweb/login/login" method="post">
-			<div>
-				<div class="form-group col-sm-2">
-					<div class="col-sm-3">
-						<img src="/evweb/images/loginid.png">
-						<input type="text" name="id" id ="id" placeholder="ID"/>
-					</div>
-				</div>
-				<div>
-					<img src="/evweb/images/loginpass.png">
-					<input type="text" name="pass" id ="pass" placeholder="Passward"/>
-				</div>
-				<div>
-					<input type="submit" value="가입하기" class="btn btn-success"/>
-				</div>
-			</div>
-			
-			
-			
-		</form>
-	
-	
-	
-	</div>
-	
-	
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.do" class="logo d-flex align-items-center w-auto">
+                  <span class="d-none d-lg-block">충전해조</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h4 class="card-title text-center pb-0 fs-4">Login to Your Account</h4>
+                    <p class="text-center small">Enter your ID & password to login</p>
+                  </div>
+
+                  <form action="/evweb/login.do" method="post" class="row g-3 needs-validation" novalidate>
+
+                    <div class="col-12">
+                      <label for="yourUsername" class="form-label">아이디</label>
+                      <div class="input-group has-validation">
+                        <input type="text" name="id" class="form-control" id="yourUsername" required>
+                        <div class="invalid-feedback">아이디를 입력하세요.</div>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">비밀번호</label>
+                      <input type="password" name="pass" class="form-control" id="yourPassword" required>
+                      <div class="invalid-feedback">비밀번호를 입력하세요.</div>
+                    </div>
+					<div class="col-12">
+                      <div class="form-check">
+                      <br/>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">로그인</button>
+                    </div>
+                    <div class="col-12">
+                       <p class="small mb-0">계정이 없으신가요? <a href="#">계정 만들기</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
 </body>
+
+</html>
 </html>

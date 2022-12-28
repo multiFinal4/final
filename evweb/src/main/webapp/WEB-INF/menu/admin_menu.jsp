@@ -35,9 +35,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/manager/register.do">
                     <i class="bi bi-card-list"></i>
                     <span>관리자 등록</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/manager/list.do">
+                    <i class="bi bi-card-list"></i>
+                    <span>회원 관리</span>
                     </a>
                 </li>
             </ul>

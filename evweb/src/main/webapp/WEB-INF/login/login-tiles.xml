@@ -3,9 +3,9 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="indexTemplate" template="/WEB-INF/login/login.jsp">
+	<definition name="loginTemplate" template="/WEB-INF/login/login.jsp">
 	</definition>
-	<definition name="login/login" extends="indexTemplate">
+	<definition name="login" extends="loginTemplate">
 	</definition>
 </tiles-definitions>
 
