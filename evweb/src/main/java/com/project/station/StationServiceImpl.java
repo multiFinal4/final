@@ -47,20 +47,17 @@ public class StationServiceImpl implements StationService {
 
 	@Override
 	public StationDTO read(String stationId) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.read(stationId);
 	}
 
 	@Override
 	public int update(StationDTO station) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(station);
 	}
 
 	@Override
 	public int delete(String stationId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(stationId);
 	}
 
 

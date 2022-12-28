@@ -38,20 +38,17 @@ public class StationDAOImpl implements StationDAO {
 
 	@Override
 	public StationDTO read(String stationId) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("com.project.station.read", stationId);
 	}
 
 	@Override
 	public int update(StationDTO station) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update("com.project.station.update", station);
 	}
 
 	@Override
 	public int delete(String stationId) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("com.project.station.del", stationId);
 	}
 
 
