@@ -3,8 +3,10 @@
 <configuration>
 	<typeAliases>
 		<!-- <typeAlias type="com.multi.erp.board.BoardDTO" alias="board"/> -->
+		<typeAlias type="com.project.manager.managerDTO" alias="manager"/>
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="mapper/board.xml"/> -->
+		<mapper resource="mapper/manager.xml"/>
 	</mappers>
 </configuration>
