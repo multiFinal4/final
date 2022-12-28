@@ -19,7 +19,7 @@ public class CustomerDTO {
 		
 	}
 
-	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String addr, String email,
+	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr, String email,
 			Date birth, Date insertdate, String state, String ps_question, String ps_answer) {
 		super();
 		this.customer_id = customer_id;

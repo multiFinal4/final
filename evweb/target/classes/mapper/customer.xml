@@ -8,5 +8,5 @@
 <select id="idcheak" resultType="int" parameterType="String"> select count(customer_id) from customer_tb where customer_id = #{customer_id} </select>
 <select id="list" resultType="customer"> select * from customer_tb </select>
 <update id="delete" parameterType="String"> update manager_tb set state = '탈퇴' where customer_id = #{customer_id} </update>
-
+<!-- 추가 할거 있으면 추가하기!-->
 </mapper>

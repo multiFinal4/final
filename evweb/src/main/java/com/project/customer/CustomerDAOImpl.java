@@ -53,7 +53,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	}
 
-
+    // 마이페이지
 	@Override
 	public CustomerDTO getCustomerInfo(String customer_id) {
 		

@@ -2,7 +2,7 @@ package com.project.customer;
 
 import java.util.List;
 
-public interface CustomerDAO {
+public interface customerService {
 	// 회원가입
 	int register(CustomerDTO dto);
 	//회원목록보기
@@ -15,6 +15,5 @@ public interface CustomerDAO {
 	boolean idCheck(String customer_id);
 	//mypage에서 회원정보 조회
 	public CustomerDTO getCustomerInfo(String customer_id);
-	
-}
 
+}
