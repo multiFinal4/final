@@ -24,7 +24,7 @@ public class StationController {
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
 	public String insertPage() {
 		return "station/insert";
-	}  
+	}
 	
 	@RequestMapping(value = "/admin/station/insert.do", method = RequestMethod.POST)
 	public String insert(StationDTO station) {
@@ -55,12 +55,11 @@ public class StationController {
 		}
 		model.addAttribute("read", read);
 		System.out.println(read);
-		System.out.println(read.getCharge_no());
 		return path;
 	}
 
 	@RequestMapping("/admin/station/delete.do")
-	public String delete(String stationId, HttpSession session) {
+	public String delete(String stationId) {
 //		StationDTO station = (StationDTO) session.getAttribute("user");
 //		String view = "";
 //		if (station == null) {
@@ -70,11 +69,12 @@ public class StationController {
 //			int result = service.delete(stationId);
 //			view = "redirect:/admin/station/list?category=all";
 //		}
+		System.out.println(stationId);
 		service.delete(stationId);
 		return "redirect:/admin/station/list?category=all";
 	}
 
-	@RequestMapping("/board/update.do")
+	@RequestMapping("/admin/station/update.do")
 	public String update(StationDTO station) {
 		service.update(station);
 		return "redirect:/admin/station/list?category=all";

@@ -10,7 +10,7 @@ public class StationDTO {
 	private String station_company;
 	private String manager_id;
 	private String service_date;
-	private int	charge_no;
+	private int	charger_no;
 	
 	public StationDTO() {}
 
@@ -20,7 +20,7 @@ public class StationDTO {
 	}
 
 	public StationDTO(int rownum, String station_id, String station_name, String addr_do, String addr_sigun,
-			String addr_detail, String station_company, String manager_id, String service_date, int charge_no) {
+			String addr_detail, String station_company, String manager_id, String service_date, int charger_no) {
 		super();
 		this.rownum = rownum;
 		this.station_id = station_id;
@@ -31,11 +31,25 @@ public class StationDTO {
 		this.station_company = station_company;
 		this.manager_id = manager_id;
 		this.service_date = service_date;
-		this.charge_no = charge_no;
+		this.charger_no = charger_no;
+	}
+
+	public StationDTO(String station_id, String station_name, String addr_do, String addr_sigun, String addr_detail,
+			String station_company, String manager_id, String service_date, int charger_no) {
+		super();
+		this.station_id = station_id;
+		this.station_name = station_name;
+		this.addr_do = addr_do;
+		this.addr_sigun = addr_sigun;
+		this.addr_detail = addr_detail;
+		this.station_company = station_company;
+		this.manager_id = manager_id;
+		this.service_date = service_date;
+		this.charger_no = charger_no;
 	}
 
 	public StationDTO(String station_name, String addr_do, String addr_sigun, String addr_detail,
-			String station_company, String manager_id, String service_date, int charge_no) {
+			String station_company, String manager_id, String service_date, int charger_no) {
 		super();
 		this.station_name = station_name;
 		this.addr_do = addr_do;
@@ -44,15 +58,14 @@ public class StationDTO {
 		this.station_company = station_company;
 		this.manager_id = manager_id;
 		this.service_date = service_date;
-		this.charge_no = charge_no;
+		this.charger_no = charger_no;
 	}
 
 	@Override
 	public String toString() {
-		return "StationDTO [rownum=" + rownum + ", station_id=" + station_id + ", station_name=" + station_name
-				+ ", addr_do=" + addr_do + ", addr_sigun=" + addr_sigun + ", addr_detail=" + addr_detail
-				+ ", station_company=" + station_company + ", manager_id=" + manager_id + ", service_date="
-				+ service_date + ", charge_no=" + charge_no + "]";
+		return "StationDTO [station_id=" + station_id + ", station_name=" + station_name + ", addr_do=" + addr_do
+				+ ", addr_sigun=" + addr_sigun + ", addr_detail=" + addr_detail + ", station_company=" + station_company
+				+ ", manager_id=" + manager_id + ", service_date=" + service_date + ", charger_no=" + charger_no + "]";
 	}
 
 	public int getRownum() {
@@ -93,7 +106,7 @@ public class StationDTO {
 
 	public void setAddr_sigun(String addr_sigun) {
 		this.addr_sigun = addr_sigun;
-	} 
+	}
 
 	public String getAddr_detail() {
 		return addr_detail;
@@ -127,12 +140,12 @@ public class StationDTO {
 		this.service_date = service_date;
 	}
 
-	public int getCharge_no() {
-		return charge_no;
+	public int getcharger_no() {
+		return charger_no;
 	}
 
-	public void setCharge_no(int charge_no) {
-		this.charge_no = charge_no;
+	public void setcharger_no(int charger_no) {
+		this.charger_no = charger_no;
 	}
 	
 	
