@@ -2,7 +2,6 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-<<<<<<< HEAD
 <tiles-definitions>
 	<!-- 충전소 관리-->
 	<definition name="station/list" extends="subTemplate">
@@ -22,8 +21,6 @@
 		<put-attribute name="content" value="/WEB-INF/admin/stationUpdate.jsp"></put-attribute>	
 	</definition>
 	<!-- 충전소 관리 끝 -->
-=======
-<tiles-definitions>	
 	<definition name="adminRegister" extends="admin">
 		<put-attribute name="content" value="/WEB-INF/admin/admin_register.jsp"></put-attribute>
 	</definition>
@@ -36,5 +33,4 @@
 	<definition name="adminUpdate" extends="admin">
 		<put-attribute name="content" value="/WEB-INF/admin/admin_update.jsp"></put-attribute>
 	</definition>
->>>>>>> origin/jang
 </tiles-definitions>
