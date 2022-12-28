@@ -18,9 +18,7 @@
 	  	$(document).ready(function () {
 	  		// 탑메뉴 페이지 포커싱 처리
 		  	$(".navLeft ul").children("li").eq(page).children("a").addClass("active");
-		    $(document).scroll(function () {
-		        alert("어쭈구리");
-		    });
+		    
 		});
 	  </script>
 	</head>

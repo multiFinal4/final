@@ -2,15 +2,15 @@ package com.project.service;
 
 import java.sql.Date;
 
-public class SERVICE_REPLY_TBDTO {
+public class ServiceReply_TBDTO {
 	private String reply_no;
 	private String board_no;
 	private String manager_id;
 	private String reply_contant;
 	private Date reply_date;
 	
-	public SERVICE_REPLY_TBDTO() {}
-	public SERVICE_REPLY_TBDTO(String reply_no, String board_no, String manager_id, String reply_contant,
+	public ServiceReply_TBDTO() {}
+	public ServiceReply_TBDTO(String reply_no, String board_no, String manager_id, String reply_contant,
 			Date reply_date) {
 		super();
 		this.reply_no = reply_no;
@@ -21,7 +21,7 @@ public class SERVICE_REPLY_TBDTO {
 	}
 	@Override
 	public String toString() {
-		return "SERVICE_REPLY_TBDTO [reply_no=" + reply_no + ", board_no=" + board_no + ", manager_id=" + manager_id
+		return "ServiceReply_TBDTO [reply_no=" + reply_no + ", board_no=" + board_no + ", manager_id=" + manager_id
 				+ ", reply_contant=" + reply_contant + ", reply_date=" + reply_date + "]";
 	}
 	public String getReply_no() {

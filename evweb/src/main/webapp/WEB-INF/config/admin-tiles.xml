@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 템플릿 등록 -->
+	
+	
+	<!-- 서브페이지  -->
+	<!-- 관리자페이지 추가 --> 
+	
+	<!-- 문의사항 리스트확인 -->
+	<definition name="admin_service" extends="subTemplate">  
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service.jsp"></put-attribute>
+	</definition>
+	<!-- 문의사항 제목눌러서 상세보기 -->
+	<definition name="admin_service_read" extends="subTemplate">   
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service_read.jsp"></put-attribute>
+	</definition>
+	<!-- 답변하기 -->
+	<definition name="admin_service_reply" extends="subTemplate">   
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service_reply.jsp"></put-attribute>
+	</definition>
+	
+</tiles-definitions>

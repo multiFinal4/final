@@ -44,13 +44,13 @@ public class Service_TBServiceImpl implements Service_TBService {
 	}
 
 	@Override
-	public List<Service_TBDTO> findByCategory(String category) {
+	public List<Service_TBDTO> findByCategory(String board_category) {
 		List<Service_TBDTO> list = null;
-		if(category!=null) {
-			if(category.equals("all")) {
+		if(board_category!=null) {
+			if(board_category.equals("all")) {
 				list = dao.boardList();
 			}else {
-				list = dao.findByCategory(category);
+				list = dao.findByCategory(board_category);
 			}
 		}
 		return list;

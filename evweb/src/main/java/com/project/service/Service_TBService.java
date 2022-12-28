@@ -15,5 +15,6 @@ public interface Service_TBService {
 	int delete(String board_no);
 	//제목,작성자, 본문, 작성일별로 검색
 	List<Service_TBDTO> search(String tag,String data);
-	List<Service_TBDTO> findByCategory(String category);
+	//카테고리별로 게시글목록보기
+	List<Service_TBDTO> findByCategory(String board_category);
 }

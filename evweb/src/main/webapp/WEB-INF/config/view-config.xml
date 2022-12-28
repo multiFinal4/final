@@ -8,5 +8,9 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	
 	<!-- <view-controller path="/json/view" view-name="etcview/json"/> -->
-
+	
+	<!-- 공지사항 -->
+	<view-controller path="/service/notice" view-name="service"/>
+	<!-- faq -->
+	<view-controller path="/service/faq" view-name="service_faq"/>
 </beans:beans>

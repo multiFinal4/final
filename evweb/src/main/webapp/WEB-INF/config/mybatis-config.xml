@@ -3,8 +3,14 @@
 <configuration>
 	<typeAliases>
 		<!-- <typeAlias type="com.multi.erp.board.BoardDTO" alias="board"/> -->
+		<typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/>     <!-- SERVICE_TB -->
+		<typeAlias type="com.project.service.ServiceReply_TBDTO" alias="replytb"/>    <!-- SERVICE_REPLY_TB -->
+		
 	</typeAliases>
 	<mappers>
 		<!-- <mapper resource="mapper/board.xml"/> -->
+		<mapper resource="mapper/Service_TB.xml"/>
+		<mapper resource="mapper/ServiceReply_TB.xml"/>
+		
 	</mappers>
 </configuration>
