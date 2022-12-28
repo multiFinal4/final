@@ -70,6 +70,8 @@
 	<context:component-scan base-package="com.project.main" />
 	<context:component-scan base-package="com.project" />
 	<context:component-scan base-package="com" />
+	<context:component-scan base-package="com.project.manager" />
+	<context:component-scan base-package="com.project.login" />
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="mapper" />
 	

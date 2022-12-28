@@ -41,5 +41,29 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public int delete(String manager_id) {
 		return sqlsession.update("com.project.manager.delete",manager_id);
 	}
+	@Override
+	public boolean idCheck(String manager_id) {
+		int cheak;
+		cheak = sqlsession.selectOne("com.project.manager.idcheak",manager_id);
+		if(cheak==0) {
+			return true;
+		}else {
+			return false; 
+		}
+	}
 
+	@Override
+	public List<ManagerDTO> selectList() {
+		return sqlsession.selectList("com.project.manager.list");
+	}
+
+	@Override
+	public ManagerDTO getManagerInfo(String manager_id) {
+		return sqlsession.selectOne("com.project.manager.read", manager_id);
+	}
+
+	@Override
+	public int update(ManagerDTO manager) {
+		return sqlsession.update("com.project.manager.update", manager);
+	}
 }

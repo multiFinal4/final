@@ -3,11 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.login">
-	<select id="login" resultType="member" parameterType="member">
-		select m.*,d.deptname,j.menupath,j.job_category
-		from member m, dept d, job j
-		where m.deptno = d.deptno
-			and d.job_category = j.job_id
-			and id=#{id} and pass=#{pass}
+	<select id="managerlogin" resultType="manager" parameterType="manager">
+		select * from manager_tb where manager_id = #{manager_id} and manager_pass = #{manager_pass} 
 	</select>	
+	<select id="read" resultType="manager" parameterType="String">
+		select * from manager_tb where manager_id = #{manager_id}
+	</select>	
+	<!-- <select id="customerloginlogin" resultType="customer" parameterType="customer">
+		select * from customer_tb where customer_id = #{customer_id} and pass = #{pass} 
+	</select>	 -->
 </mapper>

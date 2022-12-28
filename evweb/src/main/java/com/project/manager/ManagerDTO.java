@@ -11,11 +11,12 @@ public class ManagerDTO {
 	private String company;	
 	private String position;	
 	private String hire_date;
+	private String state;
 	
 	public ManagerDTO() {
 	}
 	public ManagerDTO(String manager_id, String manager_pass, String manager_name, String phone_no, String addr,
-			String email, String type, String company, String position, String hire_date) {
+			String email, String type, String company, String position, String hire_date, String state) {
 		super();
 		this.manager_id = manager_id;
 		this.manager_pass = manager_pass;
@@ -27,13 +28,16 @@ public class ManagerDTO {
 		this.company = company;
 		this.position = position;
 		this.hire_date = hire_date;
+		this.state = state;
 	}
+	
 	
 	@Override
 	public String toString() {
 		return "ManagerDTO [manager_id=" + manager_id + ", manager_pass=" + manager_pass + ", manager_name="
 				+ manager_name + ", phone_no=" + phone_no + ", addr=" + addr + ", email=" + email + ", type=" + type
-				+ ", company=" + company + ", position=" + position + ", hire_date=" + hire_date + "]";
+				+ ", company=" + company + ", position=" + position + ", hire_date=" + hire_date + ", state=" + state
+				+ "]";
 	}
 	public String getManager_id() {
 		return manager_id;
@@ -94,6 +98,12 @@ public class ManagerDTO {
 	}
 	public void setHire_date(String hire_date) {
 		this.hire_date = hire_date;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	

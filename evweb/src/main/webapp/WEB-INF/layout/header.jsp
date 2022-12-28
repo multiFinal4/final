@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
 	<head>
 	  <meta charset="utf-8">
 	  <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -18,10 +19,6 @@
 	  	$(document).ready(function () {
 	  		// 탑메뉴 페이지 포커싱 처리
 		  	$(".navLeft ul").children("li").eq(page).children("a").addClass("active");
-<<<<<<< HEAD
-=======
-		    
->>>>>>> 64f3849baa11eb8e6c3bd5f860b6de3e6942e20c
 		});
 	  </script>
 	</head>
@@ -41,7 +38,7 @@
 				</div>
 				<div class="navRight">
 			        <ul>
-			          <li><a class="getstarted" href="#">LOGIN</a></li>  
+			          <li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>  
 			          <li style="display: none;"><a class="getstarted" href="#">LOGOUT</a></li>  
 			        </ul>
 	        	</div>
