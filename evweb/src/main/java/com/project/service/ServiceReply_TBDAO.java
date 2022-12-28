@@ -9,4 +9,7 @@ public interface ServiceReply_TBDAO {
 	int insert(ServiceReply_TBDTO reply);
 	//1:1문의 답변목록보기
 	List<ServiceReply_TBDTO> replyList(String board_no);
+	
+	//답변상세조회
+	Service_TBDTO getBoardInfo(String board_no);
 }

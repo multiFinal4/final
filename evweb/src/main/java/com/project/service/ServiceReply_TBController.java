@@ -11,23 +11,27 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ServiceReply_TBController {
 	ServiceReply_TBService service;
+	Service_TBService servicetb;
 	@Autowired
-	public ServiceReply_TBController(ServiceReply_TBService service) {
+	public ServiceReply_TBController(ServiceReply_TBService service, Service_TBService servicetb) {
 		super();
 		this.service = service;
+		this.servicetb = servicetb;
+	}
+	
+	@RequestMapping(value = "/reply/write.do", method = RequestMethod.GET)
+	public ModelAndView writePage(String board_no) {
+		ModelAndView mav = new ModelAndView("admin_service_reply");
+		Service_TBDTO list = servicetb.getBoardInfo(board_no);
+		mav.addObject("list", list);
+		return mav;
 	}
 	
 	//1:1문의 답변등록하기
-	@RequestMapping(value = "/reply/write.do", method = RequestMethod.GET)
-	public String writePage() {
-		return "admin_service_reply";
-	}
 	@RequestMapping(value = "/reply/write.do", method = RequestMethod.POST)
-	public ModelAndView write(ServiceReply_TBDTO user) {
-		ModelAndView mav = new ModelAndView("admin_service");
+	public String write(ServiceReply_TBDTO user) {
 		service.insert(user);
-		mav.addObject("list", user);
-		return mav;
+		return "redirect:/service/list.do?board_category=all";
 	}
 	
 	//1:1문의 답변목록보기
