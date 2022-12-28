@@ -6,6 +6,9 @@
 	<select id="managerlogin" resultType="manager" parameterType="manager">
 		select * from manager_tb where manager_id = #{manager_id} and manager_pass = #{manager_pass} 
 	</select>	
+	<select id="read" resultType="manager" parameterType="String">
+		select * from manager_tb where manager_id = #{manager_id}
+	</select>	
 	<!-- <select id="customerloginlogin" resultType="customer" parameterType="customer">
 		select * from customer_tb where customer_id = #{customer_id} and pass = #{pass} 
 	</select>	 -->

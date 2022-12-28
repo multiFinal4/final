@@ -9,4 +9,10 @@
 	<definition name="adminList" extends="admin">
 		<put-attribute name="content" value="/WEB-INF/admin/list.jsp"></put-attribute>
 	</definition>
+	<definition name="adminRead" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/admin/admin_read.jsp"></put-attribute>
+	</definition>
+	<definition name="adminUpdate" extends="admin">
+		<put-attribute name="content" value="/WEB-INF/admin/admin_update.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

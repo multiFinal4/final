@@ -10,4 +10,6 @@ public interface ManagerDAO {
 	List<ManagerDTO> findByName(String manager_name); 
 	boolean idCheck(String manager_id);
 	List<ManagerDTO> selectList();
+	ManagerDTO getManagerInfo(String manager_id);
+	int update(ManagerDTO manager);
 }

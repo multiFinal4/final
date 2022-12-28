@@ -28,6 +28,23 @@ public class ManagerController {
 		return mav;
 	}
 	
+	@RequestMapping("/read.do")
+	public String read(String manager_id,String read,Model model) {
+		ManagerDTO managerinfo = service.getManagerInfo(manager_id);
+		String view = "";
+		if(read.equals("READ")) {
+			view  = "adminRead";
+		}else if(read.equals("UPDATE")) {
+			view  = "adminUpdate";
+		}
+		model.addAttribute("managerinfo", managerinfo);
+		return view;
+	}
+	@RequestMapping("/update.do")
+	public String update(ManagerDTO manager) {
+		service.update(manager);
+		return "redirect:/manager/list.do";
+	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public String registerpage() {
@@ -38,7 +55,11 @@ public class ManagerController {
 		service.register(manager);
 		return "redirect:/admin";
 	}
-	
+	@RequestMapping("/delete.do")
+	public String delete(String manager_id) {
+		service.delete(manager_id);
+		return "redirect:/manager/list.do"; 	
+	}
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public boolean idcheak(String manager_id) {

@@ -56,4 +56,14 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public List<ManagerDTO> selectList() {
 		return sqlsession.selectList("com.project.manager.list");
 	}
+
+	@Override
+	public ManagerDTO getManagerInfo(String manager_id) {
+		return sqlsession.selectOne("com.project.manager.read", manager_id);
+	}
+
+	@Override
+	public int update(ManagerDTO manager) {
+		return sqlsession.update("com.project.manager.update", manager);
+	}
 }

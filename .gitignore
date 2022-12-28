@@ -1,3 +1,5 @@
 /.metadata/
 /Servers/
 /evweb/target/
+evweb/.settings/org.eclipse.ltk.core.refactoring.prefs
+evweb/.tern-project

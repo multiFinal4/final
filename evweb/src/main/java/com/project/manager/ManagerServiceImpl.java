@@ -47,4 +47,16 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<ManagerDTO> selectList() {
 		return dao.selectList();
 	}
+
+	@Override
+	public ManagerDTO getManagerInfo(String manager_id) {
+		ManagerDTO manager = dao.getManagerInfo(manager_id);
+		manager.setHire_date(manager.getHire_date().substring(0, 10));
+		return manager;
+	}
+
+	@Override
+	public int update(ManagerDTO manager) {
+		return dao.update(manager);
+	}
 }
