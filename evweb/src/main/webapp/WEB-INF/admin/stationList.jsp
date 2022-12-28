@@ -8,7 +8,6 @@
 		<title>Insert title here</title>
 		<script type="text/javascript">
 			var cate = "${category}";
-			
 			$(document).ready(function() {
 				$("#category").change(function() {
 					location.href="/evweb/admin/station/list?category="+encodeURI($(this).val());
@@ -16,20 +15,26 @@
 
 				$("#category").val(cate).attr("selected","selected");
 			});
-		</script> 
-	</head>   
+		</script>
+	</head>
 	<body>
 		<div class="row">
-			<h5 class="card-title">충전소 리스트</h5>
-	        <div class="col-lg-12">
-				<form action="" class="form-inline">
-					<select name="category"  id="category" class="form-control">
-						<option value="all">전체게시물</option>
-		                <c:forEach var="company" items="${companyList}">
-							<option value="${company.station_company}">${company.station_company}</option>
-						</c:forEach>
-					</select>
-				</form>
+			<h1 class="pagetitle">충전소 리스트</h1>
+	        <div class="col-lg-12 stationWrap">
+	            <div class="search-bar d-flex">
+					<form action="" class="form-inline cateSelect">
+						<select name="category"  id="category" class="form-control">
+							<option value="all">회사명</option>
+			                <c:forEach var="company" items="${companyList}">
+								<option value="${company.station_company}">${company.station_company}</option>
+							</c:forEach>
+						</select>
+					</form>
+					<form class="search-form d-flex align-items-center" method="POST" action="#">
+						<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+					</form>
+			    </div>
 	              <table class="table table-hover">
 	                <thead>
 	                  <tr>
@@ -55,10 +60,9 @@
 	                </tbody>
 	              </table>
 	            </div>
+				<div class="text-right col-sm-12" style="padding-right: 0;">
+					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
+				</div>
 	      </div>
-	     <a class="nav-link collapsed" href="/evweb/admin/station/insert">
-	      <i class="bi bi-grid"></i>
-	      <span>충전소 등록할겨</span>
-	     </a>
 	</body>
 </html>
