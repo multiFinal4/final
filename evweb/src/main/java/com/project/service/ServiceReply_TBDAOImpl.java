@@ -30,5 +30,4 @@ public class ServiceReply_TBDAOImpl implements ServiceReply_TBDAO {
 	public Service_TBDTO getBoardInfo(String board_no) {
 		return sqlSession.selectOne("com.project.service.read", board_no);
 	}
-
 }

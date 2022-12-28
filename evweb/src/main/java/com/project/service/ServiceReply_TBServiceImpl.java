@@ -31,5 +31,4 @@ public class ServiceReply_TBServiceImpl implements ServiceReply_TBService {
 	public Service_TBDTO getBoardInfo(String board_no) {
 		return servicedao.getBoardInfo(board_no);
 	}
-
 }

@@ -25,6 +25,7 @@ public class Service_TBServiceImpl implements Service_TBService {
 
 	@Override
 	public Service_TBDTO getBoardInfo(String board_no) {
+		System.out.println("서비스임플 보드넘버~~~> "+board_no);
 		return dao.getBoardInfo(board_no);
 	}
 
