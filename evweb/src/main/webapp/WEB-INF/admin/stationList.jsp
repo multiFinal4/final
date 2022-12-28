@@ -46,7 +46,7 @@
 							<tr>
 							  <th scope="row">${list.rownum}</th>
 							  <td>${list.station_id}</td>
-							  <td>${list.station_name}</td>
+							  <td><a href="/evweb/admin/station/read?stationNo=${list.station_name}&state=READ">${list.station_name}</a></td>
 							  <td>${list.station_company}</td>
 							  <td>${list.addr_do} ${list.addr_sigun}</td>
 							  <td>${list.manager_id}</td>

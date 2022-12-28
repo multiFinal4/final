@@ -12,5 +12,13 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/admin/stationInsert.jsp"></put-attribute>	
 	</definition>
+	<definition name="station/read" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/stationInsert.jsp"></put-attribute>	
+	</definition>
+	<definition name="station/update" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/stationInsert.jsp"></put-attribute>	
+	</definition>
 	<!-- 충전소 관리 끝 -->
 </tiles-definitions>
