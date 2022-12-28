@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.manager">
+	<insert id="register" parameterType="manager">
+		insert into manager_tb values(
+			#{manager_id},#{manager_pass},#{manager_name},#{phone_no},
+			#{addr},#{email},#{type},#{company},#{position},#{hire_date,jdbcType=DATE}
+		)	
+	</insert>
+	<update id="delete" parameterType="String">
+		update manager_tb
+		set type = "퇴사"
+		where manager_id = #{manager_id}
+	</update>
+	<select id="findbytype" parameterType="String" resultType="manager">
+		select * from manager_tb
+		where type = #{type}
+	</select>
+	<select id="findbyname" parameterType="String" resultType="manager">
+		select * from manager_tb
+		where manager_name = #{manager_name}
+	</select>
+	<select id="managefind" resultType="manager" parameterType="Map">
+		select * from manager_tb
+		where manager_name = #{manager_name}
+		
+		<where>
+			<if test="type=='title' and data != ''">
+				title like '%' || #{data} || '%' order by board_no desc
+			</if>
+			<if test="tag=='id' and data != ''">
+				id like '%' || #{data} || '%'  order by board_no desc
+			</if>
+			<if test="tag=='content' and data != ''">
+				content like '%' || #{data} || '%' order by board_no desc
+			</if>
+			<if test="tag=='write_date' and data != ''">
+				<![CDATA[
+				write_date <= #{data} order by board_no desc
+				]]>		
+			</if>
+		</where>
+	</select>	
+	
+</mapper>

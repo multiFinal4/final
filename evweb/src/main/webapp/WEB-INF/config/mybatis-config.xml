@@ -3,8 +3,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.project.station.StationDTO" alias="station"/>
+		<typeAlias type="com.project.manager.managerDTO" alias="manager"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/chargeStation.xml"/>
+		<mapper resource="mapper/manager.xml"/>
 	</mappers>
 </configuration>
