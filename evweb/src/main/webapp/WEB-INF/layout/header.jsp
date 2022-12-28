@@ -14,7 +14,7 @@
 	  <link href="/evweb/css/common.css" rel="stylesheet">
 	  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	  <script src="/evweb/js/common.js" type="text/javascript"></script>
-	  
+	  <script src="/evweb/js/main.js" type="text/javascript"></script>
 	  <script type="text/javascript">
 	  	$(document).ready(function () {
 	  		// 탑메뉴 페이지 포커싱 처리
@@ -32,7 +32,7 @@
 						<li><a class="nav-link" href="/evweb/map">Map</a></li>
 						<li><a class="nav-link" href="/evweb/monitoring">충전소현황</a></li>
 						<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
-						<li><a class="nav-link" href="/evweb/admin">관리자</a></li>
+						<li><a class="nav-link" href="/evweb/admin/station/list?category=all">관리자</a></li>
 			          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
 					</ul>
 				</div>

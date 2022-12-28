@@ -28,7 +28,7 @@
 					<div class="col-sm-10">
 					  <input type="text" class="form-control" name="station_company" id="station_company" value="${read.station_company}">
 					</div>
-				</div>
+				</div> 
 				<div class="row mb-3">
 					<label for="charge_no" class="col-sm-2 col-form-label">충전기 대수</label>
 					<div class="col-sm-10">

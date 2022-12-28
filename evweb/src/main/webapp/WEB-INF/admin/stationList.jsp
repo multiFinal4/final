@@ -16,8 +16,8 @@
 
 				$("#category").val(cate).attr("selected","selected");
 			});
-		</script>
-	</head>
+		</script> 
+	</head>   
 	<body>
 		<div class="row">
 			<h5 class="card-title">충전소 리스트</h5>

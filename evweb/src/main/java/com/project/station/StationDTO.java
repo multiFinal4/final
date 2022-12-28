@@ -93,7 +93,7 @@ public class StationDTO {
 
 	public void setAddr_sigun(String addr_sigun) {
 		this.addr_sigun = addr_sigun;
-	}
+	} 
 
 	public String getAddr_detail() {
 		return addr_detail;

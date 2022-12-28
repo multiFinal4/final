@@ -24,7 +24,7 @@ public class StationController {
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
 	public String insertPage() {
 		return "station/insert";
-	}
+	}  
 	
 	@RequestMapping(value = "/admin/station/insert.do", method = RequestMethod.POST)
 	public String insert(StationDTO station) {
