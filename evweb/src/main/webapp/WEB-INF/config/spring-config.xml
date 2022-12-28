@@ -69,6 +69,7 @@
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
 	<context:component-scan base-package="com.project" />
+	<context:component-scan base-package="com" />
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="mapper" />
 	

@@ -18,6 +18,10 @@
 	  	$(document).ready(function () {
 	  		// 탑메뉴 페이지 포커싱 처리
 		  	$(".navLeft ul").children("li").eq(page).children("a").addClass("active");
+<<<<<<< HEAD
+=======
+		    
+>>>>>>> 64f3849baa11eb8e6c3bd5f860b6de3e6942e20c
 		});
 	  </script>
 	</head>
