@@ -1,6 +1,8 @@
 package com.project.login;
 
-public interface LoginServise {
-	MemberDTO login(MemberDTO loginUser);
+import com.project.manager.ManagerDTO;
 
+public interface LoginServise {
+	ManagerDTO managerlogin(ManagerDTO managerUser);
+	//CustomerDTO customerlogin(CustomerDTO customerUser);
 }

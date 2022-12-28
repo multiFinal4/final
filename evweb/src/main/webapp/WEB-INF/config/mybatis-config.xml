@@ -8,5 +8,6 @@
 	<mappers>
 		<!-- <mapper resource="mapper/board.xml"/> -->
 		<mapper resource="mapper/manager.xml"/>
+		<mapper resource="mapper/login.xml"/>
 	</mappers>
 </configuration>

@@ -5,7 +5,7 @@
 <tiles-definitions>
 	<definition name="loginTemplate" template="/WEB-INF/login/login.jsp">
 	</definition>
-	<definition name="login/login" extends="loginTemplate">
+	<definition name="login" extends="loginTemplate">
 	</definition>
 </tiles-definitions>
 

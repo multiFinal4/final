@@ -6,9 +6,15 @@
 	<insert id="register" parameterType="manager">
 		insert into manager_tb values(
 			#{manager_id},#{manager_pass},#{manager_name},#{phone_no},
-			#{addr},#{email},#{type},#{company},#{position},#{hire_date,jdbcType=DATE}
+			#{addr},#{email},#{type},#{company},#{position},#{hire_date,jdbcType=DATE},#{state}
 		)	
 	</insert>
+	<select id="idcheak" resultType="int" parameterType="String">
+		select count(manager_id) from manager_tb where manager_id = #{manager_id}
+	</select>
+	<select id="list" resultType="manager">
+		select * from manager_tb 
+	</select>
 	<update id="delete" parameterType="String">
 		update manager_tb
 		set type = "퇴사"

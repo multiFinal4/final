@@ -68,6 +68,8 @@
 	
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
+	<context:component-scan base-package="com.project.manager" />
+	<context:component-scan base-package="com.project.login" />
 	<context:component-scan base-package="main" />
 	
 	

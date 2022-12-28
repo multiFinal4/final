@@ -1,8 +1,9 @@
 package com.project.login;
 
-public interface LoginDAO {
-	CustomerDTO login(MemberDTO loginUser);
+import com.project.manager.ManagerDTO;
 
-	MemberDTO login(MemberDTO loginUser);
+public interface LoginDAO {
+	ManagerDTO managerlogin(ManagerDTO managerUser);
+	//CustomerDTO customerlogin(CustomerDTO customerUser);
 
 }

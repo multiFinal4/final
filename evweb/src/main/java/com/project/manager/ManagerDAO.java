@@ -8,4 +8,6 @@ public interface ManagerDAO {
 	int delete(String manager_id);
 	List<ManagerDTO> findByType(String type); 
 	List<ManagerDTO> findByName(String manager_name); 
+	boolean idCheck(String manager_id);
+	List<ManagerDTO> selectList();
 }

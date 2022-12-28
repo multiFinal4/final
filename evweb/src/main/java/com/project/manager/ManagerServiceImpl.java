@@ -39,5 +39,12 @@ public class ManagerServiceImpl implements ManagerService {
 	public List<ManagerDTO> findByName(String manager_name) {
 		return dao.findByName(manager_name);
 	}
+	public boolean idCheck(String manager_id) {
+		return dao.idCheck(manager_id);
+	}
 
+	@Override
+	public List<ManagerDTO> selectList() {
+		return dao.selectList();
+	}
 }
