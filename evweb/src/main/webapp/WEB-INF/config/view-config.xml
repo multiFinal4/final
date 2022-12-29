@@ -13,4 +13,5 @@
 	<view-controller path="/service/notice" view-name="service"/>
 	<!-- faq -->
 	<view-controller path="/service/faq" view-name="service_faq"/>
+	<!-- 회원가입 -->
 </beans:beans>
