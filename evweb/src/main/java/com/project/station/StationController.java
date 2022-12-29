@@ -99,13 +99,13 @@ public class StationController {
 //		}
 		System.out.println(stationId);
 		service.delete(stationId);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 
 	@RequestMapping("/admin/station/update.do")
 	public String update(StationDTO station) {
 		service.update(station);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 	
 }

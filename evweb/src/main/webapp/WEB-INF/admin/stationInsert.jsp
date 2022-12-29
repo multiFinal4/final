@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button type="button" class="btn btn-secondary" onclick="location.href='/evweb/admin/station/list?category=all'" ><i class="bi bi-list-ul"></i>목록</button>
+					<button type="button" class="btn btn-secondary" onclick="location.href='/evweb/admin/station/list?category=all&pageNo=1'" ><i class="bi bi-list-ul"></i>목록</button>
 					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>등록</button>
 					<button type="reset" class="btn btn-secondary"><i class="bi bi-arrow-repeat"></i>초기화</button>
 				</div>
