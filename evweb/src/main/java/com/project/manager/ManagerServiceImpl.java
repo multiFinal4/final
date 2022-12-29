@@ -32,12 +32,18 @@ public class ManagerServiceImpl implements ManagerService {
 
 	@Override
 	public List<ManagerDTO> findByType(String type) {
-		return dao.findByType(type) ;
+		List<ManagerDTO> list = null;
+		if(type.equals("all")) {
+				list = dao.selectList();
+		}else {
+			list = dao.findByType(type);
+		}
+		return list;
 	}
 
 	@Override
-	public List<ManagerDTO> findByName(String manager_name) {
-		return dao.findByName(manager_name);
+	public List<ManagerDTO> findByName(String type,String name) {
+		return dao.findByName(type,name);
 	}
 	public boolean idCheck(String manager_id) {
 		return dao.idCheck(manager_id);

@@ -34,8 +34,11 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return sqlsession.selectList("com.project.manager.findbytype", type);
 	}
 	@Override
-	public List<ManagerDTO> findByName(String manager_name) {
-		return sqlsession.selectList("com.project.manager.findbyname", manager_name);
+	public List<ManagerDTO> findByName(String type,String name) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("manager_name", name);	
+		return sqlsession.selectList("com.project.manager.findbyname",map);
 	}
 	@Override
 	public int delete(String manager_id) {

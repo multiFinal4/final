@@ -48,4 +48,12 @@ public class LoginController {
 		mav.setViewName(viewName);
 		return mav;
 	}
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		if(session!=null) {
+			session.invalidate();
+		}
+		return "redirect:/index";
+	}
+	
 }

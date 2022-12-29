@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,11 +38,32 @@
 					</ul>
 				</div>
 				<div class="navRight">
-			        <ul>
-			          <li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>  
-			          <li style="display: none;"><a class="getstarted" href="#">LOGOUT</a></li>  
-			        </ul>
-	        	</div>
+				<c:choose>
+					<c:when test="${user==null}">
+						<ul>
+							<li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${user.type=='사이트 관리자'}">
+								<ul>
+									<li><a class="nav-link" href="/evweb/admin">관리자</a></li>
+									<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+									<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
+								</ul>
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+									<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
+								</ul>
+							</c:otherwise>
+						</c:choose>
+						
+					</c:otherwise>
+				</c:choose>
+			</div>
 	        <i class="bi bi-list mobile-nav-toggle"></i>
 	      </nav>
 	    </div>
