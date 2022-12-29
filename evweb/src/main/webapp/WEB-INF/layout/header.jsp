@@ -32,7 +32,7 @@
 						<li><a class="nav-link" href="/evweb/map">Map</a></li>
 						<li><a class="nav-link" href="/evweb/monitoring">충전소현황</a></li>
 						<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
-						<li><a class="nav-link" href="/evweb/admin/station/list?category=all">관리자</a></li>
+						<li><a class="nav-link" href="/evweb/admin/station/list?category=all&pageNo=1">관리자</a></li>
 			          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
 					</ul>
 				</div>
