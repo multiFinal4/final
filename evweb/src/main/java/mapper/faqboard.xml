@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multi.erp.notice">
+
+<!-- 수정 必 12.30.2:31 -->
+	<select id="fileselect" parameterType="String" resultType="noticefile">
+		select * from notice_file where notice_no = #{notice_no}
+	</select>
+	<select id="getfileinfo" parameterType="noticefile" resultType="noticefile">
+		select * from notice_file where notice_no = #{notice_no} and noticefileno =#{noticeFileno}
+	</select>
+	
+	<insert id="fileinsert" parameterType="java.util.List">
+	insert all
+	<foreach collection="list" item="file" separator="">
+		into notice_file values(notice_tb_seq.currval, #{file.originalFilename}, #{file.storeFilename}, #{file.noticeFileno})
+	</foreach>
+	select * from dual
+	</insert>
+	<insert id="write" parameterType="notice">
+		insert into notice_tb 
+		values(notice_tb_seq.nextval,#{id},sysdate,#{title},#{content},#{category})
+	</insert>
+	<select id="selectall" resultType="notice">
+		select * from notice_tb
+	</select>
+	<select id="categorySelect" resultType="notice" parameterType="String">
+		select * from notice_tb where category = #{category}
+	</select>
+	<select id="read" resultType="notice" parameterType="String">
+		select * from notice_tb where notice_no = #{notice_no}
+	</select>
+	<delete id="delete" parameterType="String">
+		delete from notice_tb where notice_no = #{notice_no}
+	</delete>
+	<update id="update" parameterType="notice">
+		update notice_tb
+		set title=#{title},content=#{content}, category=#{category}
+		where notice_no=#{notice_no}
+	</update>
+	<select id="search" resultType="notice" parameterType="String" >
+		select * from notice_tb where title like  '%' || #{title} || '%'
+	</select>
+	<select id="dynamicSearch" resultType="notice" parameterType="Map">
+		select * from notice_tb
+		<where>
+			<if test="tag=='title' and data!=''">
+			title like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='id' and data!=''">
+			id like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='content' and data!=''">
+			content like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='write_date' and data!=''">
+				<![CDATA[
+					write_date <= #{data}
+				]]>
+				</if>
+		</where>
+	</select>
+</mapper>
