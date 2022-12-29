@@ -20,14 +20,23 @@ public class ManagerController {
 		super();
 		this.service = service;
 	}
+	//타입으로 분류
 	@RequestMapping("/list.do")
-	public ModelAndView list() {
+	public ModelAndView list(String type) {
 		ModelAndView mav = new ModelAndView("adminList");
-		List<ManagerDTO> managerlist = service.selectList();
+		List<ManagerDTO> managerlist = service.findByType(type);
 		mav.addObject("managerlist", managerlist);
+		mav.addObject("type",type);
 		return mav;
 	}
-	
+	@RequestMapping("/search.do")
+	public ModelAndView search(String type,String name) {
+		ModelAndView mav = new ModelAndView("adminList");
+		List<ManagerDTO> managerlist = service.findByName(type,name);
+		mav.addObject("managerlist", managerlist);
+		mav.addObject("type",type);
+		return mav;
+	}
 	@RequestMapping("/read.do")
 	public String read(String manager_id,String read,Model model) {
 		ManagerDTO managerinfo = service.getManagerInfo(manager_id);
@@ -43,7 +52,7 @@ public class ManagerController {
 	@RequestMapping("/update.do")
 	public String update(ManagerDTO manager) {
 		service.update(manager);
-		return "redirect:/manager/list.do";
+		return "redirect:/manager/list.do?type=all";
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
@@ -58,7 +67,7 @@ public class ManagerController {
 	@RequestMapping("/delete.do")
 	public String delete(String manager_id) {
 		service.delete(manager_id);
-		return "redirect:/manager/list.do"; 	
+		return "redirect:/manager/list.do?type=all"; 	
 	}
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
 	@ResponseBody

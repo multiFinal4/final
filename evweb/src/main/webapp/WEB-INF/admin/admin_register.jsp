@@ -63,8 +63,8 @@
 						<div class="col-sm-3">
 							<input name="phone_no" type="text" class="form-control" minlength="1" required>
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label">(-
-							제외하고 입력)</label>
+						<label for="inputText" class="col-sm-2 col-form-label">(예시 :010-
+							0000-0000)</label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>

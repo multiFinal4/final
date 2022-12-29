@@ -2,7 +2,6 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.project.manager.managerDTO" alias="manager"/>
 		<typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/>     <!-- SERVICE_TB -->
 		<typeAlias type="com.project.service.ServiceReply_TBDTO" alias="replytb"/>    <!-- SERVICE_REPLY_TB -->
 		<typeAlias type="com.project.station.StationDTO" alias="station"/>
