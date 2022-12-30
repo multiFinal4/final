@@ -32,7 +32,7 @@ public class StationController {
 	@RequestMapping(value = "/admin/station/insert.do", method = RequestMethod.POST)
 	public String insert(StationDTO station) {
 		service.insert(station);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 	
 	@RequestMapping("/admin/station/list")

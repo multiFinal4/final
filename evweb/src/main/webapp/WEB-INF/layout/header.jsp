@@ -27,42 +27,32 @@
 	    <div class="d-flex align-items-center mainNav">
 	      <h1 class="logo me-auto"><a href="/evweb/index">충전해조</a></h1>
 	      <nav id="navbar" class="navbar">
-				<div class="navLeft">
-					<ul>
-						<li><a class="nav-link" href="/evweb/index">HOME</a></li>
-						<li><a class="nav-link" href="/evweb/map">Map</a></li>
-						<li><a class="nav-link" href="/evweb/monitoring">충전소현황</a></li>
-						<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
-						<li><a class="nav-link" href="/evweb/admin/station/list?category=all&pageNo=1">관리자</a></li>
-			          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
-					</ul>
-				</div>
-				<div class="navRight">
-				<c:choose>
-					<c:when test="${user==null}">
-						<ul>
-							<li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>
-						</ul>
-					</c:when>
-					<c:otherwise>
-						<c:choose>
-							<c:when test="${user.type=='사이트 관리자'}">
-								<ul>
-									<li><a class="nav-link" href="/evweb/admin">관리자</a></li>
-									<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
-									<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
-								</ul>
-							</c:when>
-							<c:otherwise>
-								<ul>
-									<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
-									<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
-								</ul>
-							</c:otherwise>
-						</c:choose>
-						
-					</c:otherwise>
-				</c:choose>
+			<div class="navLeft">
+				<ul>
+					<li><a class="nav-link" href="/evweb/index">HOME</a></li>
+					<li><a class="nav-link" href="/evweb/map">Map</a></li>
+					<li><a class="nav-link" href="/evweb/monitoring">충전소현황</a></li>
+					<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
+					<c:choose>
+						<c:when test="${user==null}">
+								<li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${user.type=='사이트 관리자'}">
+										<li><a class="nav-link" href="/evweb/admin/station/list?category=all&pageNo=1">관리자</a></li>
+							          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
+								</c:when>
+								<c:otherwise>
+										<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
+								</c:otherwise>
+							</c:choose>
+							
+						</c:otherwise>
+					</c:choose>
+				</ul>
 			</div>
 	        <i class="bi bi-list mobile-nav-toggle"></i>
 	      </nav>

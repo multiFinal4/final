@@ -1,4 +1,3 @@
-.metadata/
-Servers/
-evweb/target/
-evweb/.settings/org.eclipse.ltk.core.refactoring.prefs
+/.metadata/
+/Servers/
+/evweb/target/
