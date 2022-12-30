@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 @Controller
 public class StationController {
@@ -29,17 +32,43 @@ public class StationController {
 	@RequestMapping(value = "/admin/station/insert.do", method = RequestMethod.POST)
 	public String insert(StationDTO station) {
 		service.insert(station);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 	
 	@RequestMapping("/admin/station/list")
-	public ModelAndView list(String category) {
+	public ModelAndView list(String category, String endNo, String pageNo) {
 		ModelAndView mv = new ModelAndView("station/list");
-		List<StationDTO> stationlist = service.stationListCate(category);
+		List<StationDTO> stationlist = service.stationList();
+
+		int showList = 7; // 리스트 보여줄 갯수
+		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
+		List<StationDTO> stationlistPage = service.stationListCate(category, endNo);
+		int endPage = 0; // 페이징 넘버 유동적으로 
+		if (category.equals("all")) {
+			if (stationlist.size() <= showList) {
+				endPage = 1;
+			}else {
+				endPage = (stationlist.size()/showList)+1;
+			}
+		}
+		else {
+			if (stationlistPage.size() <= showList) {
+				endPage = 1;
+			}else {
+
+				endPage = (stationlistPage.size()/showList)+1;
+			}
+		}
 		List<StationDTO> companyList = service.companyList();
+		
+		mv.addObject("stationlistPage", stationlistPage);
 		mv.addObject("stationlist", stationlist);
 		mv.addObject("companyList", companyList);
+		
 		mv.addObject("category", category);
+		mv.addObject("endPage", endPage);
+		mv.addObject("pageNo", pageNo);
+		
 		return mv;
 	}
 	
@@ -54,13 +83,11 @@ public class StationController {
 			path = "station/update";
 		}
 		model.addAttribute("read", read);
-		System.out.println(read);
-		System.out.println(read.getCharge_no());
 		return path;
 	}
 
 	@RequestMapping("/admin/station/delete.do")
-	public String delete(String stationId, HttpSession session) {
+	public String delete(String stationId) {
 //		StationDTO station = (StationDTO) session.getAttribute("user");
 //		String view = "";
 //		if (station == null) {
@@ -70,14 +97,15 @@ public class StationController {
 //			int result = service.delete(stationId);
 //			view = "redirect:/admin/station/list?category=all";
 //		}
+		System.out.println(stationId);
 		service.delete(stationId);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 
-	@RequestMapping("/board/update.do")
+	@RequestMapping("/admin/station/update.do")
 	public String update(StationDTO station) {
 		service.update(station);
-		return "redirect:/admin/station/list?category=all";
+		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}
 	
 }

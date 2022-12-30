@@ -20,7 +20,13 @@
 			
 			
 			<!-- General Form Elements -->
-			<form action="/evweb/reply/write.do">
+			<form action="#">
+				<div class="row mb-3">
+					<div class="col-sm-10">
+						<label class="col-sm-2 col-form-label">글번호</label>
+						${list.board_no}
+					</div>
+				</div>
 				<div class="row mb-3">
 					<div class="col-sm-10">
 					<label for="inputCategory" class="col-sm-2 col-form-label">카테고리</label>
@@ -51,7 +57,8 @@
 
 				<div class="row mb-3">
 					<div class="col-sm-10">
-						<button type="submit" class="btn btn-primary">답변하기</button>
+						<button type="submit" class="btn btn-primary" 
+						onclick="location.href='/evweb/reply/write.do?board_no=${list.board_no}'">답변하기</button> 
 						<button type="button" class="btn btn-primary" 
 						onclick="location.href='/evweb/service/list.do?board_category=all'">목록보기</button>
 					</div>

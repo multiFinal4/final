@@ -27,25 +27,29 @@ public class StationServiceImpl implements StationService {
 	public List<StationDTO> stationList() {
 		return dao.stationList();
 	}
+	@Override
+	public List<StationDTO> stationList(String endNo) {
+		return dao.stationList(endNo);
+	}
 	
 	@Override
 	public List<StationDTO> companyList(){
 		return dao.companyList();
 	}
 	@Override
-	public List<StationDTO> stationListCate(String category) {
+	public List<StationDTO> stationListCate(String category,String endNo) {
 		List<StationDTO> list = null;
 		if (category != null) {
 			if (category.equals("all")) {
-				list = dao.stationList();
+				list = dao.stationList(endNo);
 			} else {
-				list = dao.stationListCate(category);
+				list = dao.stationListCate(category, endNo);
 			}
 		}
 		return list;
 	}
 
-	@Override
+	@Override 
 	public StationDTO read(String stationId) {
 		return dao.read(stationId);
 	}
@@ -59,6 +63,7 @@ public class StationServiceImpl implements StationService {
 	public int delete(String stationId) {
 		return dao.delete(stationId);
 	}
+
 
 
 

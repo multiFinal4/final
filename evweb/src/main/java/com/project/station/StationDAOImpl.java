@@ -1,6 +1,8 @@
 package com.project.station;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +27,24 @@ public class StationDAOImpl implements StationDAO {
 
 	@Override
 	public List<StationDTO> stationList() {
-		return sqlSession.selectList("com.project.station.selectall");
+		return sqlSession.selectList("com.project.station.list");
 	}
+	@Override
+	public List<StationDTO> stationList(String endNo) {
+		return sqlSession.selectList("com.project.station.selectall", endNo);
+	} 
+	@Override
+	public List<StationDTO> stationListCate(String category, String endNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("endNo", endNo);
+		return sqlSession.selectList("com.project.station.categorySelect", map);
+	}
+
 	@Override
 	public List<StationDTO> companyList() {
 		return sqlSession.selectList("com.project.station.selectCom");
 	}
-	@Override
-	public List<StationDTO> stationListCate(String category) {
-		return sqlSession.selectList("com.project.station.categorySelect", category);
-	}
-
 	@Override
 	public StationDTO read(String stationId) {
 		return sqlSession.selectOne("com.project.station.read", stationId);
@@ -50,6 +59,7 @@ public class StationDAOImpl implements StationDAO {
 	public int delete(String stationId) {
 		return sqlSession.delete("com.project.station.del", stationId);
 	}
+
 
 
 

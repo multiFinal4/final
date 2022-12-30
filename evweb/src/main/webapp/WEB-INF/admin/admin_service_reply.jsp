@@ -30,19 +30,19 @@
 				<div class="row mb-3">
 					<div class="col-sm-10">
 						<label class="col-sm-2 col-form-label">글번호</label>
-
+						${list.board_no}
 					</div>
 				</div>
 				<div class="row mb-3">
 					<div class="col-sm-10">
 						<label for="inputId" class="col-sm-2 col-form-label">아이디</label>
-
+						${list.manager_id}
 					</div>
 				</div>
 				<div class="row mb-3">
 					<div class="col-sm-10">
 						<label class="col-sm-2 col-form-label">제목</label>
-
+						${list.board_title}
 					</div>
 				</div>
 
@@ -51,9 +51,12 @@
 						<!-- <textarea class="form-control" style="height: 200px" 
 						name="board_content">내용</textarea> -->
 						<label class="col-sm-2 col-form-label">내용</label>
+						${list.board_content}
 					</div>
 				</div>
 				<hr />
+				<br/>
+				<!-- 댓글 목록 -->
 				<h3>
 					<strong>답변하기 :</strong>
 				</h3>

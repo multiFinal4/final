@@ -4,16 +4,39 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.project.station">
 	<insert id="insert" parameterType="station">
-		insert into STATION_TB values('STN'||station_seq.NEXTVAL, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charge_no})
+		insert into STATION_TB values('STN'||station_seq.NEXTVAL, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charger_no})
 	</insert>
 	<select id="selectCom" resultType="station">
 		select DISTINCT station_company from STATION_TB
 	</select>
-	<select id="selectall" resultType="station">
-		select ROWNUM, st.* from STATION_TB st order by station_id ASC
+	<select id="list" resultType="station" >
+		select * from STATION_TB order by station_id ASC 
 	</select>
-	<select id="categorySelect" resultType="station" parameterType="String">
-		select ROWNUM, st.* from STATION_TB st where station_company=#{category} order by station_id ASC
+	<select id="selectall" resultType="station" parameterType="String">
+		select *
+				from(select ROWNUM rn, st.*
+				        FROM (select * from STATION_TB order by station_id) st)
+		<where>
+			<if test='_parameter == "7"'>
+				rn BETWEEN 1 AND #{endNo} 
+			</if>
+			<if test='_parameter != "7"'>
+				rn BETWEEN #{endNo}-6 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	<select id="categorySelect" resultType="station" parameterType="Map">
+		select *
+				from(select ROWNUM rn, st.*
+				        FROM (select * from STATION_TB where station_company=#{category} order by station_id) st)
+		<where>
+			<if test='endNo == "7"'>
+				rn BETWEEN 1 AND #{endNo} 
+			</if>
+			<if test='endNo != "7"'>
+				rn BETWEEN #{endNo}-6 AND #{endNo}
+			</if>
+		</where>
 	</select>
 	
 	<select id="read" resultType="station" parameterType="String">
@@ -23,6 +46,14 @@
 		delete from STATION_TB where station_id=#{station_id}
 	</delete>
 	<update id="update" parameterType="station">
-		update STATION_TB set title=#{title},content=#{content},category=#{category} where boardno=#{boardno}
+		update STATION_TB set 
+			station_name=#{station_name},
+			addr_do=#{addr_do},
+			addr_sigun=#{addr_sigun},
+			addr_detail=#{addr_detail},
+			station_company=#{station_company},
+			manager_id=#{manager_id},
+			service_date=#{service_date}, 
+			CHARGER_NO=#{charger_no} where station_id=#{station_id}
 	</update>
  </mapper>
