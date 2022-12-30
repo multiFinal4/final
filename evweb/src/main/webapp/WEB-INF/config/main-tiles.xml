@@ -39,7 +39,7 @@
 	</definition>
 	<definition name="mypage" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/customer/cs_register.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/cs_read.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>

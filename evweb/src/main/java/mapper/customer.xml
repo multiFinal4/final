@@ -5,9 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.customer">
 	<insert id="register" parameterType="customer"> 
-		insert into customer_tb values(#{customer_id},#{pass},
+		insert into customer_tb values(
+		#{customer_id},#{pass},
 		#{phone_no},#{name},#{customer_addr},#{email},
-		#{birth},#{ps_question},#{ps_answer},#{state} )
+		#{birth},#{ps_question},#{ps_answer},#{state} 
+		)
 	</insert>
 	
 	<update id="update" parameterType="customer">
@@ -30,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="delete" parameterType="String"> 
-		update customer_tb set state = '탈퇴' where customer_id = #{customer_id} 
+		update customer_tb set state = '회원탈퇴' where customer_id = #{customer_id} 
 	</update>
 
 </mapper>
