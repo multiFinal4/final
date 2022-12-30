@@ -7,8 +7,8 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<div class="card-body">
-			<h5 class="card-title">충전소 등록</h5>
+		<h1 class="pagetitle">충전소 등록</h1>
+		<div class="card-body stationWrap">
 			<form action="/evweb/admin/station/insert.do" method="post">
 				<div class="row mb-3">
 					<label for="station_name" class="col-sm-2 col-form-label">충전소 이름</label>
@@ -23,9 +23,9 @@
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="charge_no" class="col-sm-2 col-form-label">충전기 대수</label>
+					<label for="charger_no" class="col-sm-2 col-form-label">충전기 대수</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="charge_no" id="charge_no">
+					  <input type="text" class="form-control" name="charger_no" id="charger_no">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -59,8 +59,9 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary">등록</button>
-					<button type="reset" class="btn btn-secondary">초기화</button>
+					<button type="button" class="btn btn-secondary" onclick="location.href='/evweb/admin/station/list?category=all&pageNo=1'" ><i class="bi bi-list-ul"></i>목록</button>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>등록</button>
+					<button type="reset" class="btn btn-secondary"><i class="bi bi-arrow-repeat"></i>초기화</button>
 				</div>
 			</form>
 		</div>

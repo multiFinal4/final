@@ -89,6 +89,26 @@
 	<context:component-scan base-package="main" />
 	<context:component-scan base-package="mapper" />
 	
+	<!-- 인터셉터  -->
+	<!-- <interceptors>                                                   
+		<interceptor>                                                
+			<mapping path="/admin/**"/>                              
+			<mapping path="/service/**"/>                            
+			<mapping path="/monitoring/**"/>                            
+			<mapping path="/map/**"/>                            
+			<mapping path="/mypage/**"/>                            
+			<mapping path="/manager/**"/>                            
+			<exclude-mapping path="/login"/>                         
+			<exclude-mapping path="/login.do"/>                      
+			<exclude-mapping path="/images/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/css/**"/>
+			<exclude-mapping path="/js/**"/>
+			<exclude-mapping path="/vendor/**"/>
+			<exclude-mapping path="/upload/**"/>
+			<beans:bean class = "com.project.common.LoginCheckInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors> -->
 	
 	
 </beans:beans>

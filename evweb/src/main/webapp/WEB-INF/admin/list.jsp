@@ -7,7 +7,30 @@
 <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <style type="text/css">
-
+.form-label {
+    margin-bottom: 0.5rem;
+}
+.form-select {
+    display: block;
+    padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    margin-left: 13px;
+    background-color: #fff;
+    background-image: url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e);
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+  	border: 1px solid rgba(1, 41, 112, 0.2);
+    border-radius: 3px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 .search-bar {
     top: 50px;
     left: 0;
@@ -16,7 +39,7 @@
     background: white;
     z-index: 9999;
     transition: 0.3s;
-    width: 30%;
+    width: 40%;
   }
 .search-bar-show {
     top: 60px;
@@ -26,7 +49,7 @@
 }
 
 .search-form {
-  width: 30%;
+  width: 50%;
 }
 
 .search-form input {
@@ -58,21 +81,43 @@
 }
 </style>
 <title>Insert title here</title>
+<script type="text/javascript">
+var type = "${type}"
+	$(document).ready(function() {
+		$("#type").val(type).attr("selected","selected")
+		$("#type").change(function(){
+			location.href="/evweb/manager/list.do?type="+encodeURI($(this).val()) 
+		});
+	})
+</script>
+
 </head>
 <body>
 <div class="card-body">
               <h2 class="card-title">회원 관리</h2>
- 
-		<div class="search-bar " >
-			<form class="search-form d-flex align-items-center  " method="POST"
-				action="#">
-				<input type="text" name="query" placeholder="Search"
+ 	<div class= "row">
+		<div class="search-bar" >
+			<form class="search-form d-flex align-items-center" method="get"
+				action="/evweb/manager/search.do">
+				<input type="text" name="name" placeholder="Search"
 					title="Enter search keyword">
 				<button type="submit" title="Search">
 					<i class="bi bi-search"></i>
 				</button>
+				<select class="form-select col-md-4" name="type" id="type">
+					<option value="all" selected>전체</option>
+					<option value="사용자">일반 사용자</option>
+					<option value="사이트 관리자">사이트 관리자</option>
+					<option value="충전소 관리자">충전소 관리자</option>
+				</select>
 			</form>
 		</div>
+		<div class="col-md-3" style="padding-bottom: 10px">
+			<form action="">
+				
+			</form>
+		</div>
+	</div>
 		<!-- Default Table -->
               <table class="table">
                 <thead>

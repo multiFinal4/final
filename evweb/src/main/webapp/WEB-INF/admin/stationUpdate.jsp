@@ -8,13 +8,13 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<div class="card-body">
-			<h5 class="card-title">충전소 조회</h5>
-			<form action="/evweb/admin/station/update" method="post">
+		<h1 class="pagetitle">충전소 정보 수정</h1>
+		<div class="card-body stationWrap">
+			<form action="/evweb/admin/station/update.do" method="post">
 				<div class="row mb-3">
-					<label for="station_name" class="col-sm-2 col-form-label">충전소 ID</label>
+					<label for="station_id" class="col-sm-2 col-form-label">충전소 ID</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="station_name" id="station_name" value="${read.station_id}" readonly="readonly">
+					  <input type="text" class="form-control" name="station_id" id="station_id" value="${read.station_id}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -30,15 +30,17 @@
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="charge_no" class="col-sm-2 col-form-label">충전기 대수</label>
+					<label for="charger_no" class="col-sm-2 col-form-label">충전기 대수</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="charge_no" id="charge_no" value="${read.charge_no}">
+					  <input type="number" class="form-control" name="charger_no" id="charger_no" value="${read.charger_no}" >
 					</div>
 				</div>
 				<div class="row mb-3"> 
 					<label for="addr_do" class="col-sm-2 col-form-label">주소</label>
 					<div class="col-sm-10">
-					  <input type="text" class="form-control" name="addr_do" id="addr_do" value="${read.addr_do} ${read.addr_sigun} ${read.addr_detail}">
+					  <input type="text" class="form-control" name="addr_do" id="addr_do" value="${read.addr_do}">
+					  <input type="text" class="form-control" name="addr_sigun" id="addr_sigun" value="${read.addr_sigun}">
+					  <input type="text" class="form-control" name="addr_detail" id="addr_detail" value="${read.addr_detail}">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -54,8 +56,8 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary">등록</button>
-					<button type="reset" class="btn btn-secondary">삭제</button>
+					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
+					<button type="reset" class="btn btn-secondary">초기화</button>
 				</div>
 			</form>
 		</div>
