@@ -1,0 +1,301 @@
+@charset "UTF-8";
+#id{
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #B0B0B0;
+}
+#window{
+	
+position: absolute;
+width: 409px;
+height: 564px;
+left: 522px;
+top: 230px;
+
+background: #FFFFFF;
+box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.25);
+border-radius: 20px;
+
+}
+#login{
+position: absolute;
+width: 124px;
+height: 48px;
+left: 667px;
+top: 256px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+
+color: #454545;
+}
+body{
+	position: relative;
+	width: 1440px;
+	height: 1024px;
+	background: #EAF5FC;
+}
+#idwindow{
+	width: 222px;
+	height: 52px;
+	left: 648px;
+	top: 372px;
+	background: #F5F5F5;
+}
+#passwindow{
+	width: 222px;
+	height: 52px;
+	left: 648px;
+	top: 442px;
+	background: #F5F5F5;
+}
+/* Rectangle 506 */
+
+/* LOGIN */
+
+
+/* Rectangle 507 */
+#idimg{
+position: absolute;
+width: 55px;
+height: 52px;
+left: 593px;
+top: 372px;
+
+background: #D9D9D9;
+}
+
+/* Rectangle 509 */
+#passimg{
+position: absolute;
+width: 55px;
+height: 52px;
+left: 593px;
+top: 442px;
+
+background: #D9D9D9;
+}
+#pass{
+position: absolute;
+width: 63px;
+height: 26px;
+left: 666px;
+top: 455px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #B0B0B0;
+
+}
+
+/* Rectangle 511 */
+#loginbtn{
+position: absolute;
+width: 275px;
+height: 52px;
+left: 592px;
+top: 525px;
+
+background: #7AA7D0;
+border-radius: 5px;
+}
+
+/* Rectangle 512 */
+#kakaologin{
+position: absolute;
+width: 275px;
+height: 52px;
+left: 592px;
+top: 687px;
+
+background: #F9DA9D;
+border-radius: 5px;
+}
+
+/* LOGIN */
+#loginbtntext{
+position: absolute;
+width: 62px;
+height: 24px;
+left: 698px;
+top: 539px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+}
+
+
+/* 카카오 회원가입 */
+#kakaotext{
+position: absolute;
+width: 134px;
+height: 24px;
+left: 662px;
+top: 701px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+}
+
+/* 일반 회원 가입 */
+
+#nomaltext{
+position: absolute;
+width: 120px;
+height: 24px;
+left: 671px;
+top: 639px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+}
+
+
+/* 카카오 로그인 */
+#kakaologinttext{
+position: absolute;
+width: 87px;
+height: 20px;
+left: 780px;
+top: 595px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+
+color: #000000;
+}
+
+
+/* 아이디/비밀번호 찾기 */
+#idpasstext{
+position: absolute;
+width: 133px;
+height: 20px;
+left: 593px;
+top: 595px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 15px;
+line-height: 20px;
+text-align: center;
+
+color: #000000;
+
+}
+
+/* 03 Filled Button
+
+aka Primary
+*/
+
+/* Auto layout */
+#admin {
+	
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 16px;
+gap: 8px;
+
+position: absolute;
+width: 115px;
+height: 44px;
+left: 873px;
+top: 529px;
+
+background: #2678F3;
+border-radius: 8px;
+
+
+/* 04 Plus Icon
+
+aka +, Add, New, Create
+
+aka +, Add, New, Create
+*/
+
+display: none;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+
+
+/* Button */
+
+width: 83px;
+height: 44px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 700;
+font-size: 17px;
+line-height: 130%;
+/* or 22px */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+
+/* 10 Down Chevron Icon
+
+aka Arrow
+
+aka Arrow
+*/
+
+display: none;
+width: 24px;
+height: 24px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+}
