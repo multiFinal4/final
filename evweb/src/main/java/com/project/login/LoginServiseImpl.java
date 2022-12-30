@@ -23,4 +23,12 @@ public class LoginServiseImpl implements LoginServise {
 	 * @Override public CustomerDTO customerlogin(CustomerDTO customerUser) { return
 	 * dao.customerlogin(customerUser); }
 	 */
+
+	/*
+	 * @Override public CustomerDTO findId(CustomerDTO dto) { // TODO Auto-generated
+	 * method stub return dao.findId(dto); }
+	 * 
+	 * @Override public CustomerDTO findPassword(CustomerDTO dto) { return
+	 * dao.findPassword(dto); }
+	 */
 }

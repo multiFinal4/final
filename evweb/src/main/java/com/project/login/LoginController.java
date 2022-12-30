@@ -56,4 +56,14 @@ public class LoginController {
 		return "redirect:/index";
 	}
 	
+	/*
+	 * public String findId(String name, String phone_no) { return ""; }
+	 * 
+	 * public String findPassword(CustomerDTO dto) { return ""; }
+	 */
+	
+	
+	
+	
+	
 }

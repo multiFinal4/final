@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.station.StationDTO;
+
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
@@ -22,11 +24,34 @@ public class ManagerController {
 	}
 	//타입으로 분류
 	@RequestMapping("/list.do")
-	public ModelAndView list(String type) {
+	public ModelAndView list(String type, String endNo, String pageNo) {
 		ModelAndView mav = new ModelAndView("adminList");
 		List<ManagerDTO> managerlist = service.findByType(type);
+		int showList = 7; // 리스트 보여줄 갯수
+		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
+		List<ManagerDTO> managerlistPage = service.findListByType(type, endNo);
+		int endPage = 0; // 페이징 넘버 유동적으로 
+		if (type.equals("all")) {
+			if (managerlist.size() <= showList) {
+				endPage = 1;
+			}else {
+				endPage = (managerlist.size()/showList)+1;
+			}
+		}
+		else {
+			if (managerlistPage.size() <= showList) {
+				endPage = 1;
+			}else {
+
+				endPage = (managerlistPage.size()/showList)+1;
+			}
+		}
+		mav.addObject("managerlistPage", managerlistPage);
 		mav.addObject("managerlist", managerlist);
-		mav.addObject("type",type);
+		
+		mav.addObject("type", type);
+		mav.addObject("endPage", endPage);
+		mav.addObject("pageNo", pageNo);
 		return mav;
 	}
 	@RequestMapping("/search.do")
