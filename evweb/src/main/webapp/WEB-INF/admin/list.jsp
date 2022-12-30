@@ -46,7 +46,6 @@
     visibility: visible;
     opacity: 1;
   }
-}
 
 .search-form {
   width: 50%;

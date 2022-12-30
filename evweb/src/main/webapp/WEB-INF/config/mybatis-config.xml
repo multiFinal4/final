@@ -6,6 +6,7 @@
 		<typeAlias type="com.project.service.ServiceReply_TBDTO" alias="replytb"/>    <!-- SERVICE_REPLY_TB -->
 		<typeAlias type="com.project.station.StationDTO" alias="station"/>
 		<typeAlias type="com.project.manager.ManagerDTO" alias="manager"/>
+		<typeAlias type="com.project.file.BoardFileDTO" alias="file"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -13,5 +14,6 @@
 		<mapper resource="mapper/ServiceReply_TB.xml"/>
 		<mapper resource="mapper/chargeStation.xml"/>
 		<mapper resource="mapper/login.xml"/>
+		<mapper resource="mapper/file.xml"/>
 	</mappers>
 </configuration>
