@@ -2,6 +2,7 @@ package com.project.faq;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 	FaqRepository FaqRepository; //SimpleMongoRepository이용해서 작업
 	
 
+	@Autowired
 	public FaqMongodbDAOImpl(MongoTemplate mongoTemplate, FaqRepository faqRepository) {
 		super();
 		this.mongoTemplate = mongoTemplate;
