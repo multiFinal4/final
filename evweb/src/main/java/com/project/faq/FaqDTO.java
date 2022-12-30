@@ -1,9 +1,16 @@
 package com.project.faq;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "faq")
 public class FaqDTO {
+	@Id
 	private String _id;
 	private String faq_title;
 	private String faq_content;
+	
+	
 	
 	public FaqDTO(String _id, String faq_title, String faq_content) {
 		super();

@@ -2,17 +2,18 @@ package com.project.faq;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class FaqMongodbDAOImpl implements FaqMongoDAO {
+public abstract class FaqMongodbDAOImpl implements FaqMongoDAO {
 	//spring-data-mongodb에서 제공하는 라이브러리
 	MongoTemplate mongoTemplate;
 	//페이징처리와 소트를 쉽게 구현하기 위해서 (spring-data-commons라이브러리에서 제공) - CRUD(CLRUD)를 위한 메소드를 제공
 	FaqRepository FaqRepository; //SimpleMongoRepository이용해서 작업
 	
-
+	@Autowired
 	public FaqMongodbDAOImpl(MongoTemplate mongoTemplate, FaqRepository faqRepository) {
 		super();
 		this.mongoTemplate = mongoTemplate;

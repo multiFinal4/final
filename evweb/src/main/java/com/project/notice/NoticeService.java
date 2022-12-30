@@ -2,6 +2,9 @@ package com.project.notice;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface NoticeService {
 		//게시글등록 - tbNotice테이블과 Notice_file테이블에 저장
 	//	int insert(NoticeDTO Notice, List<NoticeFileDTO> Noticefiledtolist);
