@@ -12,5 +12,7 @@ public interface ManagerService {
 	List<ManagerDTO> selectList();
 	ManagerDTO getManagerInfo(String manager_id);
 	int update(ManagerDTO manager);
+	List<ManagerDTO> findListByType(String type,String endNo);
+	List<ManagerDTO> selectList(String endNo);
 
 }
