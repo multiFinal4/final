@@ -16,18 +16,11 @@ public class ServiceReply_TBDAOImpl implements ServiceReply_TBDAO {
 
 	@Override //1:1문의 답변등록하기
 	public int insert(ServiceReply_TBDTO reply) {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("com.project.service.reply_insert", reply);
 	}
 
 	@Override //1:1문의 답변목록보기
 	public List<ServiceReply_TBDTO> replyList(String board_no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Service_TBDTO getBoardInfo(String board_no) {
-		return sqlSession.selectOne("com.project.service.read", board_no);
+		return sqlSession.selectList("com.project.service.reply_select", board_no);
 	}
 }

@@ -2,26 +2,27 @@ package com.project.station;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.project.manager.ManagerDTO;
+import com.project.manager.ManagerService;
 
 @Controller
 public class StationController {
 	StationService service;
+	ManagerService managerService;
 
 	@Autowired
-	public StationController(StationService service) {
+	public StationController(StationService service, ManagerService managerService) {
 		super();
 		this.service = service;
+		this.managerService = managerService;
 	}
 
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
@@ -106,6 +107,15 @@ public class StationController {
 	public String update(StationDTO station) {
 		service.update(station);
 		return "redirect:/admin/station/list?category=all&pageNo=1";
+	}
+	
+	// ajax로 충전소 관리자 리스트 가져오기
+	@RequestMapping(value = "/ajax/managerList", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<ManagerDTO> mainlist(String category) {
+		category = "사이트 관리자";
+		List<ManagerDTO> mainlist = managerService.findByType(category);
+		return mainlist;
 	}
 	
 }

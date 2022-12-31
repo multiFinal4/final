@@ -33,4 +33,26 @@
 	<definition name="adminUpdate" extends="admin">
 		<put-attribute name="content" value="/WEB-INF/admin/admin_update.jsp"></put-attribute>
 	</definition>
+	<!-- 관리자페이지 추가 --> 
+	<!-- 문의사항 리스트확인 -->
+	<definition name="admin_service" extends="subTemplate">  
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service.jsp"></put-attribute>
+	</definition>
+	<!-- 문의사항 제목눌러서 상세보기 -->
+	<definition name="admin_service_read" extends="subTemplate">   
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service_read.jsp"></put-attribute>
+	</definition>
+	<!-- 답변하기 -->
+	<definition name="admin_service_reply" extends="subTemplate">   
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service_reply.jsp"></put-attribute>
+	</definition>
+	<!-- 답변내용보기 -->
+	<definition name="admin_service_reply_read" extends="subTemplate">   
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/admin/admin_service_reply_read.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>
+
