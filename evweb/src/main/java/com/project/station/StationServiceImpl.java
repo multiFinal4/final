@@ -37,6 +37,22 @@ public class StationServiceImpl implements StationService {
 		return dao.companyList();
 	}
 	@Override
+	public List<StationDTO> findbynameAll(String stationName) {
+		return null;
+	}
+	@Override
+	public List<StationDTO> findByName(String category, String stationName) {
+		List<StationDTO> list = null;
+		if (category != null) {
+			if (category.equals("all")) {
+				list = dao.findbynameAll(stationName);
+			} else {
+				list = dao.findByName(category, stationName);
+			}
+		}
+		return list;
+	}
+	@Override
 	public List<StationDTO> stationListCate(String category,String endNo) {
 		List<StationDTO> list = null;
 		if (category != null) {
@@ -63,6 +79,8 @@ public class StationServiceImpl implements StationService {
 	public int delete(String stationId) {
 		return dao.delete(stationId);
 	}
+
+
 
 
 

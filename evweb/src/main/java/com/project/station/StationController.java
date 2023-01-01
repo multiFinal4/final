@@ -72,6 +72,27 @@ public class StationController {
 		
 		return mv;
 	}
+
+	@RequestMapping("/admin/station/search.do")
+	public ModelAndView search(String category,String stationName, String pageNo) {
+		ModelAndView mv = new ModelAndView("station/list");
+		List<StationDTO> stationlistPage = service.findByName(category,stationName);
+		List<StationDTO> companyList = service.companyList();
+		int endPage = 0;
+		int showList = 7;
+		if (stationlistPage.size() <= showList) {
+			endPage = 1;
+		}else {
+			endPage = (stationlistPage.size()/showList)+1;
+		}
+		mv.addObject("stationlistPage", stationlistPage);
+		mv.addObject("companyList", companyList);
+		mv.addObject("category",category);
+		mv.addObject("stationName",stationName);
+		mv.addObject("endPage", endPage);
+		mv.addObject("pageNo", 1);
+		return mv;
+	}
 	
 	@RequestMapping("/admin/station/read")
 	public String read(String stationId, String state, Model model) {
@@ -113,9 +134,9 @@ public class StationController {
 	@RequestMapping(value = "/ajax/managerList", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public List<ManagerDTO> mainlist(String category) {
-		category = "사이트 관리자";
 		List<ManagerDTO> mainlist = managerService.findByType(category);
 		return mainlist;
 	}
+	
 	
 }

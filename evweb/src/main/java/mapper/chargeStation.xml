@@ -38,7 +38,17 @@
 			</if>
 		</where>
 	</select>
-	
+	<select id="findbynameAll" resultType="station" parameterType="String">
+		select *		
+				from(select ROWNUM rn, st.*
+				        FROM (select * from STATION_TB order by station_id) st)
+		where station_name like '%' || #{stationName} || '%' 
+	</select>
+	<select id="findbyname" resultType="station" parameterType="Map">
+		select ROWNUM rn, st.*
+				        FROM (select * from STATION_TB where station_company=#{category}) st
+		where station_company = #{category} and station_name like '%' || #{stationName} || '%' 
+	</select>
 	<select id="read" resultType="station" parameterType="String">
 		select * from STATION_TB where station_id=#{stationId}
 	</select>
