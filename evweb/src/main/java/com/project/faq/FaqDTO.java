@@ -10,6 +10,9 @@ public class FaqDTO {
 	private String faq_title;
 	private String faq_content;
 	
+	public FaqDTO() {
+	}
+	
 	public FaqDTO(String _id, String faq_title, String faq_content) {
 		super();
 		this._id = _id;

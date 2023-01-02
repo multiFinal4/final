@@ -22,10 +22,7 @@
 			<h5 class="card-title">
 			</h5>
 			<br />
-			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
-
-			<!-- 여기에 내용뿌리면 됩니다 -->
-			내용
+			<h3><a href="/evweb/service/faqinsert">mongodb document 삽입하기</a></h3>
 		</div>
 	</div>
 	</div>

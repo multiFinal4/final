@@ -14,10 +14,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 </head>
 <body>
-	<%
+<%-- 	<%
 		List<NoticeDTO> noticelist = (ArrayList<NoticeDTO>)request.getAttribute("noticelist");
 		int size = noticelist.size();
-	%>  
+	%>   --%>
 	<div class="col-lg-8">
 		<!-- 가로범위 -->
 		<div class="card-body">
