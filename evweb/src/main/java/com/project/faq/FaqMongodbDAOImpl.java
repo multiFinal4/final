@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public abstract class FaqMongodbDAOImpl implements FaqMongoDAO {
+public class FaqMongodbDAOImpl implements FaqMongoDAO {
 	//spring-data-mongodb에서 제공하는 라이브러리
 	MongoTemplate mongoTemplate;
 	//페이징처리와 소트를 쉽게 구현하기 위해서 (spring-data-commons라이브러리에서 제공) - CRUD(CLRUD)를 위한 메소드를 제공
@@ -86,6 +86,12 @@ public abstract class FaqMongodbDAOImpl implements FaqMongoDAO {
 	public List<FaqDTO> findAll(int pageNo) {
 		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 5));
 		return page.getContent();
+	}
+
+	@Override
+	public void insertAllDocument(List<FaqDTO> docs) {
+		// TODO Auto-generated method stub
+		
 	}
 		
 }

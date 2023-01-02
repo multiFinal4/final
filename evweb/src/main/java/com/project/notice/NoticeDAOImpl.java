@@ -25,7 +25,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public int insert(NoticeDTO noticeBoard) {
 		System.out.println("test test inserTest test test ");
-		return sqlSession.insert("com.project.notice.noticeinsert", noticeBoard);
+		return sqlSession.insert("com.project.notice.write", noticeBoard);
 	}
 	
 	@Override

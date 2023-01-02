@@ -68,15 +68,16 @@
 	</beans:bean>
 	
 	<!-- mongodb설정하기 -->
-	 <mongo:mongo id="mongods" host="127.0.0.1" port ="27017"/>
-	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	<mongo:mongo id="mongods" host="127.0.0.1" port="27017"/>
+	<beans:bean id="mongoTemplate"
+		class="org.springframework.data.mongodb.core.MongoTemplate">
 		<beans:constructor-arg ref="mongods"/>
-		<beans:constructor-arg name="databaseName" value="sample"/>	
+		<beans:constructor-arg name="databaseName" value="faq"/>
 	</beans:bean>
 	<!-- mongodb데이터가 저장될 Repository클래스가 있는 위치를 정의 -->
-	<mongo:repositories base-package="spring.data.mongodb.faq"/>
+	<mongo:repositories base-package="com.project.faq" mongo-template-ref="mongoTemplate"/>
 	
-	<context:component-scan base-package="spring.data.mongodb" />
+	<context:component-scan base-package="com.project.faq" />
 	<context:component-scan base-package="main" />
 		
 	<!-- 빈 생성 패키지 -->

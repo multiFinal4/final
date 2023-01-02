@@ -15,7 +15,7 @@
 				action="/evweb/service/faqinsert" method="POST">
 				<fieldset>
 					<div id="legend">
-						<legend>아래 양식을 작성해주세요.</legend>
+						<legend>faq 게시글 작성하기</legend>
 					</div>
 					<div class="form-group">
 						<!-- 부서코드 -->
