@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 템플릿 등록 -->
+	
+	
+	<!-- 서브페이지  -->
+	
+	<!-- 고객센터 추가 -->
+	<!-- 1:1 문의하기 -->
+	<definition name="service_insert" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_insert.jsp"></put-attribute>
+	</definition>
+	<!-- faq -->
+	<definition name="service_faq" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_faq.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
