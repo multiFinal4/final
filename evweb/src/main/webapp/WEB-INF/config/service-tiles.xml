@@ -3,6 +3,11 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
+
+	<definition name="service_notice" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_insert.jsp"></put-attribute>
+	</definition>
 	<!-- 템플릿 등록 -->
 	
 	

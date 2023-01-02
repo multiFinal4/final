@@ -17,9 +17,8 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public List<NoticeDTO> NoticeList() {
+	public List<NoticeDTO> noticeList() {
 		return dao.noticeList();
-
 	}
 
 	@Override
@@ -63,4 +62,5 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return dao.getFile(inputdata);
 	}
+
 }

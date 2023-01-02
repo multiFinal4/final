@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 public class NoticeDAOImpl implements NoticeDAO {
 	
 	SqlSession sqlSession;
+	
 	public NoticeDAOImpl() {
 	}
 	
@@ -22,29 +23,29 @@ public class NoticeDAOImpl implements NoticeDAO {
 	}
 
 	@Override
-	public int insert(NoticeDTO notice) {
+	public int insert(NoticeDTO noticeBoard) {
 		System.out.println("test test inserTest test test ");
-		return sqlSession.insert("com.project.notice.notice.write", notice);
+		return sqlSession.insert("com.project.notice.noticeinsert", noticeBoard);
 	}
 	
 	@Override
 	public NoticeDTO read(String notice_no) {
-		return sqlSession.selectOne("com.project.notice.notice.read",notice_no);
+		return sqlSession.selectOne("com.project.notice.read",notice_no);
 	}
 
 	@Override
-	public int update(NoticeDTO notice) {
-		return sqlSession.update("com.project.notice.notice.update",notice);
+	public int update(NoticeDTO noticeBoard) {
+		return sqlSession.update("com.project.notice.update",noticeBoard);
 	}
 	
 	@Override
 	public int delete(String notice_no) {
-		return sqlSession.delete("com.project.notice.notice.delete",notice_no);
+		return sqlSession.delete("com.project.notice.delete",notice_no);
 	}
-
+	
 	@Override
 	public List<NoticeDTO> search(String data) {
-		return sqlSession.selectList("com.project.notice.notice.search",data);
+		return sqlSession.selectList("com.project.notice.search",data);
 	}
 	
 	@Override
@@ -52,30 +53,28 @@ public class NoticeDAOImpl implements NoticeDAO {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("tag", tag);
 		map.put("data", data);
-		return sqlSession.selectList("com.project.notice.notice.dynamicSearch", map);
+		return sqlSession.selectList("com.project.notice.dynamicSearch", map);
 	}
 	
 	@Override
 	public List<NoticeDTO> noticeList() {
-		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.notice.selectal");
+		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.selectal");
 		return  list;
 	}
 
 	@Override
 	public int insertFile(List<NoticeFileDTO> boardfiledtolist) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("com.project.notice.fileinsert", boardfiledtolist);
 	}
 
 	@Override
-	public List<NoticeFileDTO> getFileList(String boardno) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NoticeFileDTO> getFileList(String notice_no) {
+		return sqlSession.selectList("com.project.notice.fileselect", notice_no);
 	}
 
 	@Override
 	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("com.project.notice.getfileinfo", inputdata);
 	}
 }
