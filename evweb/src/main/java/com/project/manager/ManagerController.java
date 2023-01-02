@@ -96,8 +96,9 @@ public class ManagerController {
 	}
 	@RequestMapping("/update.do")
 	public String update(ManagerDTO manager) {
+		System.out.println(manager);
 		service.update(manager);
-		return "redirect:/manager/list.do?type=all&pageNo=1";
+		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
@@ -107,12 +108,12 @@ public class ManagerController {
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String register(ManagerDTO manager) {
 		service.register(manager);
-		return "redirect:/admin";
+		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	@RequestMapping("/delete.do")
 	public String delete(String manager_id) {
 		service.delete(manager_id);
-		return "redirect:/manager/list.do?type=all&pageNo=1"; 	
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
 	@ResponseBody
