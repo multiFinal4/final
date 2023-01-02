@@ -614,7 +614,7 @@ a:hover{text-decoration:none;}
 .alertPop .modal-header #cancel{
 	padding:0;
 }
-.alertPop #cancel .bi{
+.alertPop.insert #cancel .bi{
     font-size: 25px;
 }
 .alertPop.insert .table td{
