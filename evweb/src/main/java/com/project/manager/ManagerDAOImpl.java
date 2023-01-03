@@ -69,17 +69,20 @@ public class ManagerDAOImpl implements ManagerDAO {
 	public int update(ManagerDTO manager) {
 		return sqlsession.update("com.project.manager.update", manager);
 	}
-
 	@Override
-	public List<ManagerDTO> findListByType(String type, String endNo) {
+	public List<ManagerDTO> findListByType(String type, String endNo, String name) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("type", type);
 		map.put("endNo", endNo);
-		return sqlsession.selectList("com.project.manager.typeSelect", map);
+		map.put("name", name);
+		return sqlsession.selectList("com.project.manager.typeSelectName", map);
 	}
 
 	@Override
-	public List<ManagerDTO> selectList(String endNo) {
-		return sqlsession.selectList("com.project.manager.selectall", endNo);
+	public List<ManagerDTO> selectList(String endNo, String name) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("endNo", endNo);
+		map.put("name", name);
+		return sqlsession.selectList("com.project.manager.selectallName", map);
 	}
 }
