@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.project.station">
 	<insert id="insert" parameterType="station">
-		insert into STATION_TB values('STN'||station_seq.NEXTVAL, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charger_no})
+		insert into STATION_TB values(#{station_id}, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charger_no})
 	</insert>
 	<select id="selectCom" resultType="station">
 		select DISTINCT station_company from STATION_TB

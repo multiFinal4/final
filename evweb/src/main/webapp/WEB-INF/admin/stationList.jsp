@@ -22,7 +22,7 @@
 		<div class="row">
 			<h1 class="pagetitle">충전소 리스트</h1>
 	        <div class="col-lg-12 stationWrap">
-	            <div class="search-bar d-flex">
+	            <div class="search-bar d-flex" style="justify-content: space-between">
 					<form id="searchForm" class="search-form d-flex align-items-center" method="get" action="/evweb/admin/station/search.do?category=${category}">
 						<select name="category"  id="category" class="form-control">
 							<option value="all">회사명</option>
@@ -33,6 +33,7 @@
 						<input type="text" name="stationName" placeholder="${stationName}" title="Enter search keyword">
 						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
 					</form>
+					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 			    </div>
 	              <table class="table table-hover">
 	                <thead>

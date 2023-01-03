@@ -22,9 +22,9 @@
 	</definition>
 	<definition name="sub" extends="subTemplate"></definition>
 	<!-- 샘플 끝 -->
-	
-	<definition name="map" extends="subTemplate">
+	<definition name="map" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/map_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/map/map.jsp"></put-attribute>
 	</definition>
 	<definition name="monitoring" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/monitoring_menu.jsp"></put-attribute>

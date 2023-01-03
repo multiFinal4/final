@@ -1,5 +1,7 @@
 package com.project.station;
 
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,17 +14,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.manager.ManagerDTO;
 import com.project.manager.ManagerService;
+import com.project.map.MapAPIPull;
 
 @Controller
 public class StationController {
 	StationService service;
 	ManagerService managerService;
+	MapAPIPull mapAPIPull;
 
 	@Autowired
-	public StationController(StationService service, ManagerService managerService) {
+	public StationController(StationService service, ManagerService managerService, MapAPIPull mapAPIPull) {
 		super();
 		this.service = service;
 		this.managerService = managerService;
+		this.mapAPIPull = mapAPIPull;
 	}
 
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
@@ -37,9 +42,14 @@ public class StationController {
 	}
 	
 	@RequestMapping("/admin/station/list")
-	public ModelAndView list(String category, String endNo, String pageNo) {
+	public ModelAndView list(String category, String endNo, String pageNo) throws IOException {
 		ModelAndView mv = new ModelAndView("station/list");
 		List<StationDTO> stationlist = service.stationList();
+		
+		// 충전소 API 데이터 인서트시킴
+		//for (StationDTO stationDTO : mapAPIPull.stationList()) {
+		//	service.insert(stationDTO);
+		//}
 
 		int showList = 7; // 리스트 보여줄 갯수
 		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));

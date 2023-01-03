@@ -1,5 +1,7 @@
 package com.project.station;
 
+import java.util.Objects;
+
 public class StationDTO {
 	private int rn;
 	private String station_id;
@@ -35,6 +37,7 @@ public class StationDTO {
 		this.charger_no = charger_no;
 	}
 
+	//read
 	public StationDTO(String station_id, String station_name, String addr_do, String addr_sigun, String addr_detail,
 			String station_company, String manager_id, String service_date, int charger_no) {
 		super();
@@ -49,6 +52,7 @@ public class StationDTO {
 		this.charger_no = charger_no;
 	}
 
+	// insert
 	public StationDTO(String station_name, String addr_do, String addr_sigun, String addr_detail,
 			String station_company, String manager_id, String service_date, int charger_no) {
 		super();
@@ -151,8 +155,20 @@ public class StationDTO {
 	}
 
 	
-	
-	
-	
-	
+//	@Override
+//    public int hashCode() {
+//        return String.valueOf(this.station_id).hashCode();
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (obj instanceof StationDTO) {
+//            StationDTO temp = (StationDTO) obj;
+//            return temp.station_id == this.station_id;
+//        }
+//        return false;
+//    }
+//
+//	
+//	
 }   
