@@ -8,4 +8,5 @@ public interface LoginDAO {
 	CustomerDTO customerlogin(CustomerDTO customerUser);
 	CustomerDTO findId(CustomerDTO dto);
 	CustomerDTO findPassword(CustomerDTO dto);
+	int setPassword(CustomerDTO dto);
 }

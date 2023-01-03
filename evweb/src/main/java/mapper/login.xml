@@ -19,5 +19,9 @@
 		select * from customer_tb where customer_id = #{customer_id} and 
 			phone_no = #{phone_no} and ps_question = #{ps_question} and ps_answer = #{ps_answer}
 	</select>	
-	
+	<update id="setpass" parameterType="customer">
+		update customer_tb 
+		set pass = #{pass}
+		where customer_id = #{customer_id} 
+	</update>	
 </mapper>

@@ -8,10 +8,9 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 	<!-- 필요에 따라 바꾸기 -->
 	<!-- <view-controller path="/json/view" view-name="etcview/json"/> -->
-	<view-controller path="/login/view" view-name="login/login"/>
+	<view-controller path="/idpassfind" view-name="login/idpassfind"/>
 	<!-- 공지사항 -->
 	<view-controller path="/service/notice" view-name="service"/>
 	<!-- faq -->
 	<view-controller path="/service/faq" view-name="service_faq"/>
-	
 </beans:beans>
