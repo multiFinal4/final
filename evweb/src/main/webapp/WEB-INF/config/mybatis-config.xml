@@ -8,6 +8,7 @@
 		<typeAlias type="com.project.manager.ManagerDTO" alias="manager"/>
 		<typeAlias type="com.project.map.MapStationDTO" alias="mapView"/>
 		<typeAlias type="com.project.file.BoardFileDTO" alias="file"/> 
+		<typeAlias type="com.project.customer.CustomerDTO" alias="customer"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -17,5 +18,6 @@
 		<mapper resource="mapper/login.xml"/>
 		<mapper resource="mapper/file.xml"/>
 		<mapper resource="mapper/map.xml"/>
+		<mapper resource="mapper/customer.xml"/>
 	</mappers>
 </configuration>

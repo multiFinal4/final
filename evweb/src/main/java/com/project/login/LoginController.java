@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.customer.CustomerDTO;
 import com.project.manager.ManagerDTO;
 
 @Controller
@@ -32,17 +33,23 @@ public class LoginController {
 		manager.setManager_pass(pass);
 		ManagerDTO managerUser = loginService.managerlogin(manager);
 		
-		/*
-		 * CustomerDTO customer; customer.setCustomer_id(id); customer.setPass(pass);
-		 * CustomerDTO customerUser = loginService.customerlogin(customer);
-		 */
+	
+		CustomerDTO customer = new CustomerDTO(); 
+		customer.setCustomer_id(id); 
+		customer.setPass(pass);
+		CustomerDTO customerUser = loginService.customerlogin(customer);
+		 
 		
 		String viewName = "";
-		if (managerUser != null) {
+		if (managerUser != null && !managerUser.getState().equals("퇴사")) {
 			HttpSession session = request.getSession();
 			session.setAttribute("user", managerUser);
 			viewName = "index";
-		} else {
+		} else if (customerUser != null && customerUser.getState().equals("정상")){
+			HttpSession session = request.getSession();
+			session.setAttribute("user", customerUser);
+			viewName = "index";
+		}else {
 			viewName = "login";
 		}
 		mav.setViewName(viewName);
@@ -56,12 +63,13 @@ public class LoginController {
 		return "redirect:/index";
 	}
 	
-	/*
-	 * public String findId(String name, String phone_no) { return ""; }
-	 * 
-	 * public String findPassword(CustomerDTO dto) { return ""; }
-	 */
-	
+	public String findId(String name, String phone_no) {
+		return "";
+	}
+
+	public String findPassword(CustomerDTO dto) {
+		return "";
+	}
 	
 	
 	
