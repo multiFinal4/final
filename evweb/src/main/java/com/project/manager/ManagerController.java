@@ -46,21 +46,21 @@ public class ManagerController {
 		String remainNo = Integer.toString(Integer.parseInt(endNo)-managerlist.size());
 		List<ManagerDTO> managerlistPage = service.findListByType(type, endNo, name);
 		List<CustomerDTO> customerlistPage = customerservice.findListByState(state, remainNo, name);
-		System.out.println(managerlist.size()+","+customerlist.size()+","+managerlistPage.size()+","+customerlistPage.size());
-		int endPage = 0; // 페이징 넘버 유동적으로 
+		int endPage = 0; // 페이징 넘버 유동적으로
+		int sizeList = managerlist.size() + customerlist.size();
 		if (type.equals("all")) {
-			if (managerlist.size() <= showList) {
+			if (sizeList <= showList) {
 				endPage = 1;
 			}else {
-				endPage = (managerlist.size()/showList)+1;
+				endPage = (sizeList/showList)+1;
 			}
 		}
 		else {
-			if (managerlistPage.size() <= showList) {
+			if (sizeList<= showList) {
 				endPage = 1;
 			}else {
 
-				endPage = (managerlistPage.size()/showList)+1;
+				endPage = (sizeList/showList)+1;
 			}
 		}
 		mav.addObject("managerlistPage", managerlistPage);

@@ -44,7 +44,7 @@
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
 						<c:otherwise>
-										<<li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>
+										<li><a class="getstarted" href="/evweb/login.do">LOGIN</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

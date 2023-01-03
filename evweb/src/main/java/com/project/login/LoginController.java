@@ -1,15 +1,18 @@
 package com.project.login;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.customer.CustomerDTO;
+import com.project.customer.customerService;
 import com.project.manager.ManagerDTO;
 
 @Controller
@@ -63,12 +66,30 @@ public class LoginController {
 		return "redirect:/index";
 	}
 	
-	public String findId(String name, String phone_no) {
-		return "";
+	@RequestMapping("/login/popup.do")
+	public String urlMethod(HttpServletRequest request, HttpServletResponse response, Model model) {
+		return "login/idpassfind";
 	}
-
-	public String findPassword(CustomerDTO dto) {
-		return "";
+	
+	@RequestMapping(value = "/login/findId.do", method = RequestMethod.POST)
+	public String findId(CustomerDTO dto, Model model) {
+		CustomerDTO user = loginService.findId(dto);
+		if(user==null) {
+			model.addAttribute("state", "id");
+			model.addAttribute("data","null");
+		}else {
+			model.addAttribute("state", "id");
+			model.addAttribute("name", user.getName());
+			model.addAttribute("id", user.getCustomer_id());
+		}
+		return "login/result";
+	}
+	@RequestMapping(value = "/login/findPass.do", method = RequestMethod.POST)
+	public String findPassword(CustomerDTO dto, Model model) {
+		String newPass = loginService.findPassword(dto);
+		model.addAttribute("state", "pass");
+		model.addAttribute("pass", newPass);
+		return "login/result";
 	}
 	
 	

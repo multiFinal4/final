@@ -39,5 +39,10 @@ public class LoginDAOImpl implements LoginDAO {
 		return session.selectOne("com.project.login.findpass", dto);
 		
 	}
+
+	@Override
+	public int setPassword(CustomerDTO dto) {
+		return session.update("com.project.login.setpass",dto);
+	}
 	 
 }
