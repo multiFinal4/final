@@ -28,43 +28,36 @@
 			<h5 class="card-title">
 				<strong>공지사항</strong>
 			</h5>
-			<br />
 			<hr>
 			<!-- 본문 시작 -->
-			<c:forEach var="notice" items="${noticelist }">
 				<div class="containar">
 					<div class="row">
-						<table calss="table table-striped"
-							style="text-align: center; border: 1px solid #dddddd">
-
-							<thead>
-								<tr>
-									<th style="background-color: #eeeeee; text-align: center;">제목</th>
-									<th style="background-color: #eeeeee; text-align: center;">날짜</th>
-								</tr>
-							</thead>
+						<table align="center" border="0" width="700">
+							<tr bgcolor="#FFFFFF">
+								<th><h3>제목</h3></th>
+								<th><h3>날짜</h3></th>
+								<th><h3>삭제</h3></th>
+							</tr>
 							<tbody>
+							<c:forEach var="notice" items="${noticelist }">
 								<tr>
 									<td><a
-							href="/evweb/notice/read.do?notice_no=${notice.notice_no }&state=READ">${notice.notice_title }</a></td>
+										href="/evweb/notice/read.do?notice_no=${notice.notice_no }&state=READ">${notice.notice_title }</a></td>
 									<td>${notice.notice_writedate }</td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
-						
 						<br>
-
 					</div>
 				</div>
-
-			</c:forEach>
+			
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="/evweb/service/noticeinsert"
 				style="text-align: right;">글쓰기</a></li>
 		</ul>
 	</div>
-
 
 </body>
 </html>

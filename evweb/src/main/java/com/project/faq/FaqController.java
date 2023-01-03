@@ -77,4 +77,9 @@ public class FaqController {
 		System.out.println(pageNo);
 		return new ModelAndView("service_faq", "faqlist", faqlist);
 	}
+	
+	@RequestMapping(value = "/service/delete", method = RequestMethod.GET)
+	public String delete() {
+		return "service_faqinsert"; //.jsp
+	}
 }

@@ -17,55 +17,49 @@
 			<h5 class="card-title">
 				<strong>FAQ</strong>
 			</h5>
-			<br />
 			<hr>
-			<div class="col-lg-8">
-				<!-- 가로범위 ~ 문의글작성 범위인데 통일성을 위해서 일단 넣어놨어요-->
-				<div class="card-body">
-					<h5 class="card-title"></h5>
-					<br />
-					<%
-					List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");
-					int size = faqlist.size();
-					%> 
+			<!-- -----------------------제목--------------------- -->
 
+			<!-- 가로범위 ~ 문의글작성 범위인데 통일성을 위해서 일단 넣어놨어요-->
+			<%
+			List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");
+			int size = faqlist.size();
+			%>
 
-	 				<table align="center" border="0" width="700">
-						<tr bgcolor="#FFFFFF">
-							<th>제목</th>
-							<th>내용</th>
-						</tr>
- 						<%
-						for (int i = 0; i < size; i++) {
-							FaqDTO faq = faqlist.get(i);
-						%>
-						<tr>
-							<td><a
-								href="/evweb/service/paginglist/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.get_id()%></a></td>
-							<td><%=faq.gettitle()%></td>
-							<td><%=faq.getcontent()%></td>
-							<td><a href="mybatisDel.do?id=<%=faq.get_id()%>">삭제</a></td>
-						</tr>
-
-						<%
-						}
-						%>
-						<tr>
-							<td colspan="6"><a href="/evweb/service/paginglist?pageNo=0">1</a>
-								<a href="/evweb/service/paginglist?pageNo=1">2</a> <a
-								href="/evweb/service/paginglist?pageNo=2">3</a> <a
-								href="/evweb/service/paginglist?pageNo=3">4</a></td>
-						</tr>
-					</table> 
-
-				</div>
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="/evweb/service/faqinsert"
-					style="text-align: right;">글쓰기</a></li>
-			</ul>
+			<table align="center" border="0" width="700">
+				<tr bgcolor="#FFFFFF">
+					<th>글번호</th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>삭제</th>
+				</tr>
+				<%
+				for (int i = 0; i < size; i++) {
+					FaqDTO faq = faqlist.get(i);
+				%>
+				<tr>
+					<td><%=faq.get_id()%></td>
+					<td><a
+						href="/evweb/service/paginglist/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
+					<td><%=faq.getcontent()%></td>
+					<td><a href="/evweb/sevice/delete.do?_id=<%=faq.get_id() %>">삭제</a></td>
+				</tr>
+				<%
+				}
+				%>
+				<tr></tr>
+				<tr align="center">
+					<td colspan="6"><a href="/evweb/service/paginglist?pageNo=0">1</a>
+						<a href="/evweb/service/paginglist?pageNo=1">2</a> <a
+						href="/evweb/service/paginglist?pageNo=2">3</a> <a
+						href="/evweb/service/paginglist?pageNo=3">4</a></td>
+				</tr>
+			</table>
 		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/evweb/service/faqinsert"
+				style="text-align: right;">글쓰기</a></li>
+		</ul>
 	</div>
-
 </body>
 </html>

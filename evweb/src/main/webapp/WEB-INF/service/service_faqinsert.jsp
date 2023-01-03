@@ -21,33 +21,38 @@
 					<legend>faq 게시글 작성하기</legend>
 				</div>
 				
-
-				<div class="form-group">
-					<!-- 글제목 -->
+	 			<div id="naeyong">
+				
+			<!-- 	<div class="row mb-3">
 					<label class="control-label col-sm-2" for="orgcode">제목</label>
 					<div class="col-sm-3">
 						<input type="text" id="title" name="title" placeholder="제목"
 							class="form-control" required>
 					</div>
+				</div> -->
+				<div class="row mb-3">
+					<label for="content" class="col-sm-2 col-form-label">제목</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" style="width: 60%" id="title"
+							name="title"></textarea>
+					</div>
 				</div>
+				
 
-				<div class="form-group">
-					<!-- 글내용-->
-					<label class="control-label col-sm-2" for="orgname">내용</label>
-					<div class="col-sm-3">
-						<input type="text" id="content" name="content" placeholder="내용"
-							class="form-control" required>
-
+				<div class="row mb-3">
+					<label for="content" class="col-sm-2 col-form-label">내용</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" style="width: 60%; height: 300px" id="content"
+							name="content"></textarea>
 					</div>
 				</div>
 
-
-				<div class="form-group">
-					<!-- Button -->
-					<div class="col-sm-3 col-sm-offset-2">
-						<input type="submit" value="발행" class="btn btn-success" />
-
+				<div class="row mb-3">
+					<label class="col-sm-2 col-form-label"></label>
+					<div class="col-sm-10">
+						<button type="submit" class="btn btn-success">등록하기</button>
 					</div>
+				</div>
 				</div>
 			</fieldset>
 		</form>
