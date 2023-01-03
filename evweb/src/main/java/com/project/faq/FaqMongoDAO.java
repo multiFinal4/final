@@ -8,5 +8,8 @@ public interface FaqMongoDAO {
 		public void insertDocument(FaqDTO doc);
 		public void insertAllDocument(List<FaqDTO> docs);
 		public void update(FaqDTO document);
+		//페이징 처리돼있는 목록 화면
+		public List<FaqDTO> findAll();
 		public List<FaqDTO> findAll(int pageNo);
+
 }
