@@ -18,13 +18,11 @@ import org.springframework.web.util.WebUtils;
 
 
 @Controller
-@RequestMapping("/notice")
 public class NoticeController {
 	FileUploadLogic fileuploadService;
 	NoticeService service;
 	
 	public NoticeController() {
-		
 	}
 	
 	@Autowired
@@ -34,12 +32,37 @@ public class NoticeController {
 		this.fileuploadService = fileuploadService;
 	}
 	
-	//글쓰러 가기
-	@RequestMapping(value = "/notice/write.do",method = RequestMethod.GET)
-	public String writePage() {
-		return "notice/writepage";
+	//insert 페이지로 이동
+	@RequestMapping(value = "/service/noticeinsert", method = RequestMethod.GET)
+	public String insert() {
+		return "service_noticeinsert";
 	}
-
+	
+	//notice에 insert하기
+	@RequestMapping(value = "/service/noticeinsert", method = RequestMethod.POST)
+	public String insert(NoticeDTO noticeboard, HttpSession session) throws IllegalStateException, IOException {
+		System.out.println("Notice=>"+noticeboard);
+		//1. MultipartFile 정보를 추출하기
+		List<MultipartFile> files = noticeboard.getFiles();
+		//2. 업로드될 서버의 경로 - 실제 서버의 경로를 추출하기 위해서 context의 정보를 담고 있는 ServletContext객체를 추출
+		//=>getServletContext는 우리가 생성한 프로젝트가 서버에 배포되는 실제 경로와  context에 대한 정보를 담고 있는 객체
+		String path = 
+				WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		System.out.println(path);
+		//3. 파일업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
+		List<NoticeFileDTO> noticefiledtolist = fileuploadService.uploadFiles(files, path);
+		int count = 1;
+		//업로드된 파일의 Noticefileno의 값을 셋팅 - 1부터 1,2,3,4,... 첨부파일 마지막 번호
+		for(NoticeFileDTO noticefiledto:noticefiledtolist) {
+			noticefiledto.setNoticeFileno(count+"");
+			count++;
+		}
+		System.out.println(noticefiledtolist);
+		//4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
+		service.insert(noticeboard,noticefiledtolist);
+		return "redirect:/notice/list.do?category=all";
+	}
+	
 	/*
 	 * @RequestMapping("/notice/download/{manager_id}/{notice_no}/{noticeFileno}")
 	 * public ResponseEntity<UrlResource> downloadFile(@PathVariable String
@@ -62,40 +85,17 @@ public class NoticeController {
 	 * .header(HttpHeaders.CONTENT_DISPOSITION,null, mycontenttype) .body(resource);
 	 * }
 	 */
-	@RequestMapping(value = "/notice/write.do",method = RequestMethod.POST)
-	public String write(NoticeDTO noticeboard, HttpSession session) throws IllegalStateException, IOException {
-		System.out.println("Notice=>"+noticeboard);
-		//1. MultipartFile 정보를 추출하기
-		List<MultipartFile> files = noticeboard.getFiles();
-		//2. 업로드될 서버의 경로 - 실제 서버의 경로를 추출하기 위해서 context의 정보를 담고 있는 ServletContext객체를 추출
-		//=>getServletContext는 우리가 생성한 프로젝트가 서버에 배포되는 실제 경로와  context에 대한 정보를 담고 있는 객체
-		String path = 
-				WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
-		System.out.println(path);
-		//3. 파일업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
-		List<NoticeFileDTO> noticefiledtolist = fileuploadService.uploadFiles(files, path);
-		int count = 1;
-		//업로드된 파일의 Noticefileno의 값을 셋팅 - 1부터 1,2,3,4,... 첨부파일 마지막 번호
-		for(NoticeFileDTO noticefiledto:noticefiledtolist) {
-			noticefiledto.setNoticeFileno(count+"");
-			count++;
-		}
-		System.out.println(noticefiledtolist);
-		//4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
-		service.insert(noticeboard,noticefiledtolist);
-		return "redirect:/notice/list.do?category=all";
-	}
-//	@RequestMapping("/Notice/list.do")
-//	public ModelAndView list(String category) {
-//		System.out.println("category=>"+category);
-//		ModelAndView mav = new ModelAndView("Notice/list");
-//		List<NoticeDTO> Noticelist = service.findByCategory(category);
-//		System.out.println(Noticelist);
-//		mav.addObject("category", category); //게시판 구분을 선택해도 다시 '전체보기'로 돌아가는데 그걸 막기 위해
-//		mav.addObject("Noticelist", Noticelist);
-//		return mav;
-//	}
 	
+
+	@RequestMapping("/Notice/list.do")
+	public ModelAndView list() {
+		ModelAndView mav = new ModelAndView("service_notice");
+		List<NoticeDTO> noticelist = service.noticeList();
+		mav.addObject("noticelist", noticelist);
+		return mav;
+	}
+	
+	//글 읽기
 	@RequestMapping("/notice/read.do")
 	public String read(String notice_no,String state, Model model) {
 //		ModelAndView mav = new ModelAndView();

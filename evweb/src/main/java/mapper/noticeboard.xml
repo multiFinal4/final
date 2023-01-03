@@ -4,20 +4,6 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.notice">
 
-	<select id="fileselect" parameterType="String" resultType="noticefile">
-		select * from notice_file where notice_no = #{notice_no}
-	</select>
-	<select id="getfileinfo" parameterType="noticefile" resultType="noticefile">
-		select * from notice_file where notice_no = #{notice_no} and noticefileno =#{noticeFileno}
-	</select>
-	
-	<insert id="fileinsert" parameterType="java.util.List">
-	insert all
-	<foreach collection="list" item="file" separator="">
-		into notice_file values(notice_tb_seq.currval, #{file.originalFilename}, #{file.storeFilename}, #{file.noticeFileno})
-	</foreach>
-	select * from dual
-	</insert>
 	<insert id="write" parameterType="notice">
 		insert into notice_tb 
 		values(notice_tb_seq.nextval,#{notice_title},#{notice_content},#{manager_id},sysdate)

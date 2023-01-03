@@ -1,6 +1,5 @@
 package com.project.notice;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;

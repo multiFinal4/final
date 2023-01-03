@@ -10,17 +10,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>service</title>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 </head>
 <body>
-<%-- 	<%
-		List<NoticeDTO> noticelist = (ArrayList<NoticeDTO>)request.getAttribute("noticelist");
-		int size = noticelist.size();
-	%>   --%>
+
 	<div class="col-lg-8">
 		<!-- 가로범위 -->
 		<div class="card-body">
@@ -30,41 +31,40 @@
 			<br />
 			<hr>
 			<!-- 본문 시작 -->
-			<div class="containar">
-				<div class="row">
-					<table calss="table table-striped" style="text-align: center; border: 1px solid #dddddd">
-					
-						<thead>
-							<tr>
-								<th style="background-color: #eeeeee; text-align: center;">제목</th>
-								<th style="background-color: #eeeeee; text-align: center;">날짜</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>test 이용 문의</td>
-								<td>2022-12-31</td>
-							</tr>
-						</tbody>
-					</table>
-					
-				
-		<%--  <c:forEach var="notice" items="${noticelist }">
-					<a
-						▶
-							href="/evweb/notice/read.do?notice_no=${notice_tb.notice_no }&state=READ">${notice_tb.notice_title }</a>
-					<br>
-				</c:forEach> --%>
-			</div>
-			</div>
+			<c:forEach var="notice" items="${noticelist }">
+				<div class="containar">
+					<div class="row">
+						<table calss="table table-striped"
+							style="text-align: center; border: 1px solid #dddddd">
 
+							<thead>
+								<tr>
+									<th style="background-color: #eeeeee; text-align: center;">제목</th>
+									<th style="background-color: #eeeeee; text-align: center;">날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a
+							href="/evweb/notice/read.do?notice_no=${notice.notice_no }&state=READ">${notice.notice_title }</a></td>
+									<td>${notice.notice_writedate }</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<br>
 
+					</div>
+				</div>
+
+			</c:forEach>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="/evweb/notice/write.do" style="text-align: right;">글쓰기</a></li>
+			<li><a href="/evweb/service/noticeinsert"
+				style="text-align: right;">글쓰기</a></li>
 		</ul>
 	</div>
-	
+
 
 </body>
 </html>

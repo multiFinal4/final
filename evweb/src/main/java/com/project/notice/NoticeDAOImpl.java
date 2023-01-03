@@ -58,7 +58,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	
 	@Override
 	public List<NoticeDTO> noticeList() {
-		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.selectal");
+		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.selectall");
 		return  list;
 	}
 

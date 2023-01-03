@@ -10,7 +10,5 @@
 	<!-- <view-controller path="/json/view" view-name="etcview/json"/> -->
 	<view-controller path="/login/view" view-name="login/login"/>
 	<!-- 공지사항 -->
-	<view-controller path="/service/notice" view-name="service"/>
 	<!-- faq -->
-	<view-controller path="/service/faq" view-name="service_faq"/>
 </beans:beans>

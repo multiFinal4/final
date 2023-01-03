@@ -17,10 +17,11 @@
 </head>
 <body>
 	<div class="col-lg-8">
+
 		<!-- 가로범위 -->
 		<div class="card-body">
 			<h5 class="card-title">
-				<strong>공지사항</strong>
+				<strong>공지사항 글쓰기</strong>
 			</h5>
 			<br />
 			<hr>
@@ -33,27 +34,32 @@
 			<div class="form-panel">
 
 				<form class="form-horizontal style-form"
-					action="/evweb/service/noticeinsert.do" method="post"
+					action="/evweb/service/noticeinsert" method="POST"
 					enctype="multipart/form-data">
 					<div class="form-group" style="border: 1px solid #eff2f7;">
-
+						<div>
 						<label class="col-sm-2 col-sm-2 control-label">작성자</label>
-						<div class="col-sm-10">
-							<input type="hidden" name="id" value="${manager_id }">
+						<%-- <input type="hidden" name="manager_id" value="${manager_id }"> --%>
+						<input type="text" name="manager_id" name="managet_id">
+						</div>
+						
+						<!-- <div class="col-sm-10">
+						<input type="text" class="form-control" name="title"> -->
+							
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">제목</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" name="title"> <span
-									class="help-block">게시글 유형에 맞는 내용으로 작성 부탁드립니다. </span>
+								<input type="text" class="form-control" name="notice_title"> <span
+									class="help-block"> </span>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 col-sm-2 control-label">내용</label>
 							<div class="col-sm-8">
-								<textarea id="content"
+								<textarea id="notice_content"
 									style="width: 100%; border: 1; overflow: visible; text-overflow: ellipsis;"
-									rows=15 name="content">글작성</textarea>
+									rows=15 name="notice_content">글작성</textarea>
 
 							</div>
 						</div>
@@ -99,6 +105,7 @@
 				</form>
 			</div>
 		</div>
+
 	</div>
 </body>
 </html>
