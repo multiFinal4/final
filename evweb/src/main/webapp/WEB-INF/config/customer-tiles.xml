@@ -19,7 +19,7 @@
 	<!-- 마이페이지 템플릿-->
 	<definition name="customer_read" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/customer/cs_read.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_read.jsp"></put-attribute>
 	</definition>
 	
 	

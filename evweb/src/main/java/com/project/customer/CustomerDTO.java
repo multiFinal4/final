@@ -9,6 +9,7 @@ public class CustomerDTO {
 	private String customer_name;
 	private String customer_addr;
 	private String email;
+	private Date insertdate;
 	private Date customer_birth;
 	private String ps_question;
 	private String ps_answer;
@@ -19,8 +20,8 @@ public class CustomerDTO {
 	}
 
 	public CustomerDTO(String customer_id, String customer_pass, String phone_no, String customer_name,
-			String customer_addr, String email, Date customer_birth, String ps_question, String ps_answer,
-			String state) {
+			String customer_addr, String email, Date insertdate, Date customer_birth, String ps_question,
+			String ps_answer, String state) {
 		super();
 		this.customer_id = customer_id;
 		this.customer_pass = customer_pass;
@@ -28,6 +29,7 @@ public class CustomerDTO {
 		this.customer_name = customer_name;
 		this.customer_addr = customer_addr;
 		this.email = email;
+		this.insertdate = insertdate;
 		this.customer_birth = customer_birth;
 		this.ps_question = ps_question;
 		this.ps_answer = ps_answer;
@@ -38,8 +40,8 @@ public class CustomerDTO {
 	public String toString() {
 		return "CustomerDTO [customer_id=" + customer_id + ", customer_pass=" + customer_pass + ", phone_no=" + phone_no
 				+ ", customer_name=" + customer_name + ", customer_addr=" + customer_addr + ", email=" + email
-				+ ", customer_birth=" + customer_birth + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer
-				+ ", state=" + state + "]";
+				+ ", insertdate=" + insertdate + ", customer_birth=" + customer_birth + ", ps_question=" + ps_question
+				+ ", ps_answer=" + ps_answer + ", state=" + state + "]";
 	}
 
 	public String getCustomer_id() {
@@ -90,6 +92,14 @@ public class CustomerDTO {
 		this.email = email;
 	}
 
+	public Date getInsertdate() {
+		return insertdate;
+	}
+
+	public void setInsertdate(Date insertdate) {
+		this.insertdate = insertdate;
+	}
+
 	public Date getCustomer_birth() {
 		return customer_birth;
 	}
@@ -121,5 +131,10 @@ public class CustomerDTO {
 	public void setState(String state) {
 		this.state = state;
 	}
+	
+	
+	
 
+	
+	
 }
