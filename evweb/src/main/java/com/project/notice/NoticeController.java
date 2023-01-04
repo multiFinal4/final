@@ -86,7 +86,6 @@ public class NoticeController {
 	 * }
 	 */
 	
-
 	@RequestMapping("/Notice/list.do")
 	public ModelAndView list() {
 		ModelAndView mav = new ModelAndView("service_notice");
@@ -99,21 +98,18 @@ public class NoticeController {
 	@RequestMapping("/notice/read.do")
 	public String read(String notice_no,String state, Model model) {
 //		ModelAndView mav = new ModelAndView();
-		NoticeDTO Notice = service.getNoticeInfo(notice_no);
-		List<NoticeFileDTO> noticefiledtolist = service.getFileList(notice_no);
-		System.out.println(noticefiledtolist);
+		NoticeDTO notice = service.getNoticeInfo(notice_no);
+//		List<NoticeFileDTO> noticefiledtolist = service.getFileList(notice_no);
 		String view = "";
 		if(state.equals("READ")) {
-			view = "notice/read";
+			view = "service_noticeread";
 		}else {
 			view = "notice/update";
 		}
 //		mav.setViewName(view);
 //		System.out.println("model로 수정하기 -----------------------------");
 //		System.out.println(Notice);
-		model.addAttribute("notice", Notice);
-		model.addAttribute("noticefiledtolist", noticefiledtolist);
-
+		model.addAttribute("notice", notice);
 		return view;
 	}
 //	//delete를 시도하면 로그인 유무를 체크해서 로그인을 하지 않은 사용자는 로그인을 할 수 있도록 로그인페이지로 리다이렉트

@@ -1,3 +1,4 @@
+<%@page import="com.project.notice.NoticeController"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.project.notice.NoticeDTO"%>
 <%@page import="java.util.List"%>
@@ -44,9 +45,10 @@
 									<td><a
 										href="/evweb/notice/read.do?notice_no=${notice.notice_no }&state=READ">${notice.notice_title }</a></td>
 									<td>${notice.notice_writedate }</td>
+									<%-- <td><a href="/evweb/notice/delete.do?notice_no=<%=notice.getNotice_no() %>">삭제</a></td> --%>
 								</tr>
 								</c:forEach>
-							</tbody>
+								
 						</table>
 						<br>
 					</div>

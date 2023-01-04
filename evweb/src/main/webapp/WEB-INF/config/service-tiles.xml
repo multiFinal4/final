@@ -19,10 +19,17 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_notice.jsp"></put-attribute>
 	</definition>
-	
-		<definition name="service_noticeinsert" extends="subTemplate"> 
+	<definition name="service_noticeinsert" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_noticeinsert.jsp"></put-attribute>
+	</definition>
+	<definition name="service_noticeread" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_noticeread.jsp"></put-attribute>
+	</definition>
+	<definition name="service_noticeupdate" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_noticeupdate.jsp"></put-attribute>
 	</definition>
 	
 	<!-- 1:1 문의하기 -->

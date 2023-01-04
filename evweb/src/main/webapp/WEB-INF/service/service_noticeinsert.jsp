@@ -94,15 +94,12 @@
 									<button type="reset" class="btn btn-default"
 										style="width: 100px; background-color: #9a9a9a">취소</button>
 								</div>
-
 							</div>
+						</form>
 					</div>
-					</form>
 				</div>
 			</div>
-
 		</div>
-	</div>
 	</div>
 </body>
 </html>
