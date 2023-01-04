@@ -1,55 +1,46 @@
 package com.project.customer;
 
-
+import java.sql.Date;
 
 public class CustomerDTO {
 	private String customer_id;
-	private String pass;
+	private String customer_pass;
 	private String phone_no;
-	private String name;
+	private String customer_name;
 	private String customer_addr;
 	private String email;
-	private String birth;
+	private Date customer_birth;
 	private String ps_question;
 	private String ps_answer;
 	private String state;
-	
-	
-	public CustomerDTO() {
-		
-	}
-	
-	
 
-	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr,
-			String email, String birth, String ps_question, String ps_answer, String state) {
+	public CustomerDTO() {
+
+	}
+
+	public CustomerDTO(String customer_id, String customer_pass, String phone_no, String customer_name,
+			String customer_addr, String email, Date customer_birth, String ps_question, String ps_answer,
+			String state) {
 		super();
 		this.customer_id = customer_id;
-		this.pass = pass;
+		this.customer_pass = customer_pass;
 		this.phone_no = phone_no;
-		this.name = name;
+		this.customer_name = customer_name;
 		this.customer_addr = customer_addr;
 		this.email = email;
-		this.birth = birth;
+		this.customer_birth = customer_birth;
 		this.ps_question = ps_question;
 		this.ps_answer = ps_answer;
 		this.state = state;
 	}
 
-
-
-
-
-	
-
 	@Override
 	public String toString() {
-		return "CustomerDTO [customer_id=" + customer_id + ", pass=" + pass + ", phone_no=" + phone_no + ", name="
-				+ name + ", customer_addr=" + customer_addr + ", email=" + email + ", birth=" + birth + ", ps_question="
-				+ ps_question + ", ps_answer=" + ps_answer + ", state=" + state + "]";
+		return "CustomerDTO [customer_id=" + customer_id + ", customer_pass=" + customer_pass + ", phone_no=" + phone_no
+				+ ", customer_name=" + customer_name + ", customer_addr=" + customer_addr + ", email=" + email
+				+ ", customer_birth=" + customer_birth + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer
+				+ ", state=" + state + "]";
 	}
-
-
 
 	public String getCustomer_id() {
 		return customer_id;
@@ -59,12 +50,12 @@ public class CustomerDTO {
 		this.customer_id = customer_id;
 	}
 
-	public String getPass() {
-		return pass;
+	public String getCustomer_pass() {
+		return customer_pass;
 	}
 
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setCustomer_pass(String customer_pass) {
+		this.customer_pass = customer_pass;
 	}
 
 	public String getPhone_no() {
@@ -75,12 +66,12 @@ public class CustomerDTO {
 		this.phone_no = phone_no;
 	}
 
-	public String getName() {
-		return name;
+	public String getCustomer_name() {
+		return customer_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
 	}
 
 	public String getCustomer_addr() {
@@ -99,21 +90,12 @@ public class CustomerDTO {
 		this.email = email;
 	}
 
-	public String getBirth() {
-		return birth;
+	public Date getCustomer_birth() {
+		return customer_birth;
 	}
 
-	public void setBirth(String birth) {
-		this.birth = birth;
-	}
-
-
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
+	public void setCustomer_birth(Date customer_birth) {
+		this.customer_birth = customer_birth;
 	}
 
 	public String getPs_question() {
@@ -131,10 +113,13 @@ public class CustomerDTO {
 	public void setPs_answer(String ps_answer) {
 		this.ps_answer = ps_answer;
 	}
-	
-	
-	
-	
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 }
-
-

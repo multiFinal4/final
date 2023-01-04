@@ -38,8 +38,8 @@
 			<div class="card-body">
 				<h2 class="card-title">회원 가입</h2>
 
-				<!-- 회원등록 후 전송할 페이지 다시 로그인 화면으로 돌아가기!-->
-				<form action="/evweb/login.do" method="post">
+				<!-- 회원등록 -->
+				<form action="/customer/register.do" method="post">
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
 						<div class="col-sm-3">

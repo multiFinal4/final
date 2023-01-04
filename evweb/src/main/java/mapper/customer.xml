@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.project.customer">
 	<insert id="register" parameterType="customer"> 
 		insert into customer_tb values(
-		#{customer_id},#{pass},
-		#{phone_no},#{name},#{customer_addr},#{email},
-		#{birth},#{ps_question},#{ps_answer},#{state} 
+		#{customer_id},#{customer_pass},
+		#{phone_no},#{customer_name},#{customer_addr},#{email},
+		#{customer_birth,jdbcType=DATE},#{ps_question},#{ps_answer},#{state} 
 		)
 	</insert>
 	
