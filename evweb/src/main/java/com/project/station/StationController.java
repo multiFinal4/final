@@ -1,7 +1,5 @@
 package com.project.station;
 
-import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,28 +10,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.charger.ChargerAPIPull;
+import com.project.charger.ChargerDTO;
+import com.project.charger.ChargerService;
 import com.project.manager.ManagerDTO;
 import com.project.manager.ManagerService;
-import com.project.map.MapAPIPull;
 
 @Controller
 public class StationController {
 	StationService service;
+	ChargerService chargerService;
 	ManagerService managerService;
-	MapAPIPull mapAPIPull;
+	StationAPIPull stationAPIPull;
+	ChargerAPIPull chargerAPIPull;
 
+	public StationController() {}
 	@Autowired
-	public StationController(StationService service, ManagerService managerService, MapAPIPull mapAPIPull) {
+	public StationController(StationService service, ChargerService chargerService, ManagerService managerService,
+			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull) {
 		super();
 		this.service = service;
+		this.chargerService = chargerService;
 		this.managerService = managerService;
-		this.mapAPIPull = mapAPIPull;
+		this.stationAPIPull = stationAPIPull;
+		this.chargerAPIPull = chargerAPIPull;
 	}
-
+	
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
 	public String insertPage() {
 		return "station/insert";
 	}
+
 	
 	@RequestMapping(value = "/admin/station/insert.do", method = RequestMethod.POST)
 	public String insert(StationDTO station) {
@@ -42,16 +49,11 @@ public class StationController {
 	}
 	
 	@RequestMapping("/admin/station/list")
-	public ModelAndView list(String category, String endNo, String pageNo) throws IOException {
+	public ModelAndView list(String category, String endNo, String pageNo){
 		ModelAndView mv = new ModelAndView("station/list");
 		List<StationDTO> stationlist = service.stationList();
 		
-		// 충전소 API 데이터 인서트시킴
-		//for (StationDTO stationDTO : mapAPIPull.stationList()) {
-		//	service.insert(stationDTO);
-		//}
-
-		int showList = 7; // 리스트 보여줄 갯수
+		int showList = 10; // 리스트 보여줄 갯수
 		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
 		List<StationDTO> stationlistPage = service.stationListCate(category, endNo);
 		int endPage = 0; // 페이징 넘버 유동적으로 
@@ -89,7 +91,7 @@ public class StationController {
 		List<StationDTO> stationlistPage = service.findByName(category,stationName);
 		List<StationDTO> companyList = service.companyList();
 		int endPage = 0;
-		int showList = 7;
+		int showList = 10;
 		if (stationlistPage.size() <= showList) {
 			endPage = 1;
 		}else {
@@ -146,6 +148,23 @@ public class StationController {
 	public List<ManagerDTO> mainlist(String category) {
 		List<ManagerDTO> mainlist = managerService.findByType(category);
 		return mainlist;
+	}
+	
+	// ajax로 충전소리스트 업데이트하기
+	@RequestMapping(value = "/ajax/updateList", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public void stationUpdate() throws Exception {
+		chargerService.deleteAll();
+		service.deleteAll();
+		// 충전소 업데이트
+		for (StationDTO stationDTO : stationAPIPull.stationList()) {
+			service.insert(stationDTO);
+		}
+		// 충전기 업데이트
+		for (ChargerDTO chargerDTO : chargerAPIPull.chargerList()) {
+			chargerService.insert(chargerDTO);
+		}
+
 	}
 	
 	

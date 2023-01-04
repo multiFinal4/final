@@ -80,6 +80,11 @@ public class StationServiceImpl implements StationService {
 		return dao.delete(stationId);
 	}
 
+	@Override
+	public int deleteAll() {
+		return dao.deleteAll();
+	}
+
 
 
 

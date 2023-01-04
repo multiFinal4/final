@@ -71,6 +71,11 @@ public class StationDAOImpl implements StationDAO {
 		return sqlSession.delete("com.project.station.del", stationId);
 	}
 
+	@Override
+	public int deleteAll() {
+		return sqlSession.delete("com.project.station.delAll");
+	}
+
 
 
 

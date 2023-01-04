@@ -4,7 +4,28 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="com.project.station">
 	<insert id="insert" parameterType="station">
-		insert into STATION_TB values(#{station_id}, #{station_name}, #{addr_do}, #{addr_sigun}, #{addr_detail}, #{station_company}, #{manager_id}, #{service_date}, #{charger_no})
+		insert into STATION_TB values(
+										#{station_id}, 
+										#{station_name}, 
+										#{addr_do}, 
+										#{addr_sigun}, 
+										#{addr_detail}, 
+										#{station_company}, 
+										#{busi_call}, 
+										#{manager_id}, 
+										#{service_date}, 
+										#{charger_no},
+										#{kind},
+										#{map_code},
+										#{map_latitude},
+										#{map_longtude},
+										#{use_time},
+										#{parking_free},
+										#{note},
+										#{limitYn},
+										#{limit_detail},
+										#{trafficYn}
+									)
 	</insert>
 	<select id="selectCom" resultType="station">
 		select DISTINCT station_company from STATION_TB
@@ -17,11 +38,11 @@
 				from(select ROWNUM rn, st.*
 				        FROM (select * from STATION_TB order by station_id) st)
 		<where>
-			<if test='_parameter == "7"'>
+			<if test='_parameter == "10"'>
 				rn BETWEEN 1 AND #{endNo} 
 			</if>
-			<if test='_parameter != "7"'>
-				rn BETWEEN #{endNo}-6 AND #{endNo}
+			<if test='_parameter != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
 			</if>
 		</where>
 	</select>
@@ -30,11 +51,11 @@
 				from(select ROWNUM rn, st.*
 				        FROM (select * from STATION_TB where station_company=#{category} order by station_id) st)
 		<where>
-			<if test='endNo == "7"'>
+			<if test='endNo == "10"'>
 				rn BETWEEN 1 AND #{endNo} 
 			</if>
-			<if test='endNo != "7"'>
-				rn BETWEEN #{endNo}-6 AND #{endNo}
+			<if test='endNo != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
 			</if>
 		</where>
 	</select>
@@ -54,6 +75,9 @@
 	</select>
 	<delete id="del" parameterType="String">
 		delete from STATION_TB where station_id=#{station_id}
+	</delete>
+	<delete id="delAll">
+		delete from STATION_TB
 	</delete>
 	<update id="update" parameterType="station">
 		update STATION_TB set 

@@ -13,5 +13,6 @@ public interface StationService {
 	StationDTO read(String stationId);
 	int update(StationDTO station);
 	int delete(String stationId);
+	int deleteAll();
 }
  

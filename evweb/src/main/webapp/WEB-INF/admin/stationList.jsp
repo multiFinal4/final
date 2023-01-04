@@ -15,6 +15,24 @@
 				});
 				$("#category").val(cate).attr("selected","selected");
 				$(".page-item").eq(pageNo).addClass("active");
+				
+				var pagingCount = $(".pagination li").length;
+				// 페이징처리 리팩토링할 것
+				
+				$("#updateList").click(function () {
+					$.ajax({
+						url: "/evweb/ajax/updateList",
+						type: "POST",
+						success: function(){
+						    alert("업데이트 완료");
+							location.reload();
+						},
+						error: function(){
+						  console.error("insertDiagram.do Error");
+						}
+					});
+				});
+				
 			});
 		</script>
 	</head>
@@ -33,7 +51,7 @@
 						<input type="text" name="stationName" placeholder="${stationName}" title="Enter search keyword">
 						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
 					</form>
-					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+					<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 			    </div>
 	              <table class="table table-hover">
 	                <thead>

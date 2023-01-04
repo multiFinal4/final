@@ -514,8 +514,14 @@ a:hover{text-decoration:none;}
   font-weight: 600;
   color: #012970;
 }
+/* station */
 .stationWrap{
 	padding:30px 0;
+}
+.stationWrap .table tbody td,
+.stationWrap .table tbody th
+{
+	padding:8px 10px;
 }
 /* index */
 .mg-right0{
