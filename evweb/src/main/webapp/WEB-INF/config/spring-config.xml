@@ -79,6 +79,7 @@
 	<context:component-scan base-package="spring.data.mongodb" />
 	<context:component-scan base-package="main" /> -->
 	
+
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
 	<context:component-scan base-package="com.project" />
@@ -111,3 +112,4 @@
 	
 	
 </beans:beans>
+
