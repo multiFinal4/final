@@ -37,7 +37,7 @@ public class BoardFileController {
 													@PathVariable String file_no, HttpSession session) throws MalformedURLException, FileNotFoundException, UnsupportedEncodingException {
 		//System.out.println(manager_id+", "+board_no+", "+file_no);
 		// 1. 파일을 다운로드하기 위해서 디비에 저장된 파일의 정보를 가져오기 - 다운로드를 요청한 경우 요청된 파일을 resposne
-		BoardFileDTO selectFileInfo =  service.getFile(new BoardFileDTO("", Integer.valueOf(board_no), file_no, "", ""));
+		BoardFileDTO selectFileInfo =  service.getFile(new BoardFileDTO("", Integer.valueOf(board_no), file_no, "", "",""));
 		//System.out.println("selectFileInfo =====> "+selectFileInfo);
 		
 		// 2. 파일명을 이용해서 다운로드할 파일을 객체로 생성하기

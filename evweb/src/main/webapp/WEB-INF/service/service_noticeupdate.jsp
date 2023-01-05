@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.project.notice.NoticeDTO"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -19,39 +20,41 @@
 </head>
 <body>
 	<h4>
-		<i class="fa fa-angle-right"></i> 게시글 수정하기
+		공지사항 게시글 수정하기
 	</h4>
 	<hr>
 	<form class="form-horizontal" action="/evweb/notice/update.do"
 		method="post">
 
-
 		<div class="form-group">
 			<div class="col-md-2 text-right">
-				<label for="notice_no" class="control-label">번호</label>
+				<label id="notice_no" class="control-label">번호</label>
 			</div>
 			<div class="col-md-8">${notice.notice_no}</div>
 		</div>
+		<input type="hidden" name="notice_no" value="${notice.notice_no }">
 		<%-- 	<div class="form-group">
 			<div class="col-md-2 text-right">
 				<label for="id" class="control-label">작성자</label>
 			</div>
 			<div class="col-md-8">${board.id}</div>
 		</div> --%>
-		<div class="form-group" style="border: 1px solid #eff2f7;">
+		<div class="form-group" style="solid #eff2f7">
 			<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 			<div class="col-sm-10">
 
 				<p class="form-control-static">${notice.manager_id }</p>
-			</div>
+				<input type="hidden" name="manager_id" value="${notice.manager_id }">
+		</div>
+		
 			
-			<div class="form-group">
+			<!-- <div class="form-group"> -->
 				<label class="col-sm-2 col-sm-2 control-label">제목</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" name="notice_title"
 						value="${notice.notice_title }"> <span class="help-block">게시글
 						유형에 맞는 내용으로 작성 부탁드립니다. </span>
-				</div>
+				<!-- </div> -->
 			</div>
 
 			<!-- <div class="form-group">
@@ -68,9 +71,10 @@
 
 		<div class="form-group">
 			<div class="col-md-2 text-right">
-				<label for="norice_writedate" class="control-label">작성날짜</label>
+				<label for="notice_writedate" class="control-label">최초 작성날짜</label>
 			</div>
 			<div class="col-md-8">${notice.notice_writedate }</div>
+			<input type="hidden" name="notice_writedate" value="${notice.notice_writedate }">
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">내용</label>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.file.BoardFileDTO;
+
 @Service
 public class NoticeServiceImpl implements NoticeService{
 	NoticeDAO dao;
@@ -49,20 +51,21 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
-	public List<NoticeFileDTO> getFileList(String noticeno) {
-		return dao.getFileList(noticeno);
-	}
-	@Override
-	public int insert(NoticeDTO notice, List<NoticeFileDTO> noticefiledtolist) {
-		dao.insert(notice);
-		dao.insertFile(noticefiledtolist);
+	public int insert(NoticeDTO Notice, List<BoardFileDTO> boardfiledtolist) {
+		dao.insert(Notice);
+		dao.insertFile(boardfiledtolist);
 		return 0;
 	}
 
-	@Override
-	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
-		// TODO Auto-generated method stub
-		return dao.getFile(inputdata);
-	}
+//	@Override
+//	public BoardFileDTO getFile(BoardFileDTO inputdata) {
+//		// TODO Auto-generated method stub
+//		return /*dao.getFile(inputdata);*/ null;
+//	}
+//
+//	@Override
+//	public List<BoardFileDTO> getFileList(String notice_no) {
+//		return dao.getFileList(notice_no);
+//	}
 
 }
