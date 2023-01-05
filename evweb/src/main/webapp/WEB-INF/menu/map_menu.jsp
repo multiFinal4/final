@@ -43,38 +43,6 @@
 		    <a class="dropdown-item" href="#">이용순</a>
 		  </div>
 		</div>
-         <ul class="sidebar-nav" id="sidebar-nav">
-             <li class="nav-item">
-                 <a class="nav-link collapsed" href="index.html">
-                 <i class="bi bi-grid"></i>
-                 <span>Dashboard</span>
-                 </a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link collapsed" href="index.html">
-                 <i class="bi bi-grid"></i>
-                 <span>Dashboard</span>
-                 </a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link collapsed" href="index.html">
-                 <i class="bi bi-grid"></i>
-                 <span>Dashboard</span>
-                 </a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link collapsed" href="index.html">
-                 <i class="bi bi-grid"></i>
-                 <span>Dashboard</span>
-                 </a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link collapsed" href="/evweb/map/charger.do">
-                 <i class="bi bi-grid"></i>
-                 <span>Dashboard</span>
-                 </a>
-             </li>
-		</ul>
 	</aside>
 </body>
 </html>

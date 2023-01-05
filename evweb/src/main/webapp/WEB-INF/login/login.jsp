@@ -76,7 +76,7 @@
                       <button class="btn btn-primary w-100" type="submit">로그인</button>
                     </div>
                     <div class="col-12">
-                       <p class="small mb-0">계정이 없으신가요? <a href="/evweb/customer/customer/register.do">계정 만들기</a></p>
+                       <p class="small mb-0">계정이 없으신가요? <a href="/evweb/customer/register.do">계정 만들기</a></p>
                     </div>
                   </form>
 					
