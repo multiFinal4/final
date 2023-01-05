@@ -25,6 +25,12 @@
 	<delete id="delete" parameterType="String">
 		delete from service_tb where board_no = #{board_no}
 	</delete>
+	<delete id="delete_file" parameterType="String">
+		delete from file_tb where board_no = #{board_no}
+	</delete>
+	<delete id="delete_reply" parameterType="String">
+		delete from service_reply_tb where board_no = #{board_no}
+	</delete>
 	
 	<select id="dynamicSearch" resultType="servicetb" parameterType="Map">
 		select * from SERVICE_TB
@@ -55,11 +61,12 @@
 	</update>
 	
 	<!-- =========== 1:1문의하기에서 파일첨부하기 ========== -->
+	<!-- 공지사항 파일첨부기능 => notice_no은 공지사항 게시글번호이므로 0번으로 넘겨버림 -->
 	<insert id="fileinsert" parameterType="java.util.List">
 		insert all
 		<foreach collection="list" item="file" separator=" ">
 			into file_tb values
-			(#{file.file_no}, service_tb_seq.currval,  #{file.storeFilename}, #{file.originalFilename}, '1:1문의')	
+			(#{file.file_no}, service_tb_seq.currval,  #{file.storeFilename}, #{file.originalFilename}, '1:1문의', 0)	
 		</foreach>
 		select * from dual
 	</insert>

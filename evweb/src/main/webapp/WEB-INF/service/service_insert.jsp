@@ -26,7 +26,6 @@
 					<div class="col-sm-10">
 						<select class="form-select" name="board_category"
 							aria-label="Default select example">
-							<option selected="">선택하세요.</option>
 							<option value="계정문의">계정문의</option>
 							<option value="사이트오류접수">사이트 오류접수</option>
 							<option value="기타">기타</option>

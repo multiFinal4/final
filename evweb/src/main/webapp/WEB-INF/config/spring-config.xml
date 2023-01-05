@@ -3,12 +3,15 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+  xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
-
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -110,5 +113,24 @@
 		</interceptor>
 	</interceptors>
 	
+	<!-- ========================스프링에서 트랜잭션을 관리하는 핵심클래스를 빈으로 등록============================= -->
+	<!-- 1. transactionManager객체등록 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="ds"/>
+	</beans:bean>
+	<!-- 2. Advice등록 -->
+	<!-- Exception이 발생하면 rollback처리를 하겠다는 의미 -->
+	<tx:advice  id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method  name="insert" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- aop처리 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.project.service..*Service*.*(..))" id="txpointcut"/>
+		<aop:advisor advice-ref="txadvice" pointcut-ref="txpointcut"/>
+	</aop:config>
+	<!-- aop작업을 수행하는 proxy가 자동으로 감지해서 aop등록된 것을 확인하고 실행될 수 있도록 처리 -->
+	<aop:aspectj-autoproxy/>
 	
 </beans:beans>

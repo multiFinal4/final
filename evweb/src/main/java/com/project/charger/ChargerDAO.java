@@ -10,4 +10,5 @@ public interface ChargerDAO {
 	List<ChargerDTO> chargerList(Map<String, Object> select);
 	ChargerDTO info(String stationId, String chargerId);
 	int deleteAll();
+
 }
