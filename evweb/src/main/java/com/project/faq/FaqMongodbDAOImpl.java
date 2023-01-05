@@ -3,7 +3,12 @@ package com.project.faq;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -13,7 +18,6 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 	//페이징처리와 소트를 쉽게 구현하기 위해서 (spring-data-commons라이브러리에서 제공) - CRUD(CLRUD)를 위한 메소드를 제공
 	FaqRepository FaqRepository; //SimpleMongoRepository이용해서 작업
 	
-
 	@Autowired
 	public FaqMongodbDAOImpl(MongoTemplate mongoTemplate, FaqRepository faqRepository) {
 		super();
@@ -26,28 +30,62 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		mongoTemplate.insert(doc);		
 	}
 
+	//search
 	@Override
 	public List<FaqDTO> findCriteria(String key, String value) {
-		// TODO Auto-generated method stub
-		return null;
+		String[] data =  key.split(",");
+		Criteria criteria = new Criteria(data[0]);
+		//^ =>해당 필드가 ^다음의 문자열로 시작하는 데이터 => like 연산자와 동일 where dept like '인사%' 
+		//criteria.regex("^"+value);
+		criteria.regex(".*"+value+".*");//dept like '%사%'
+		Query query = new Query(criteria);
+		List<FaqDTO> docs = mongoTemplate.find(query, FaqDTO.class,"faq");
+		System.out.println("dao=>"+docs);
+		return docs;
 	}
-
+	
+	
+	//
 	@Override
 	public FaqDTO findById(String key, String value) {
-		// TODO Auto-generated method stub
-		return null;
+		//Criteria객체는 spring data mongodb에서 조건을 모델링한 객체
+		//어떤 필드에 어떤 조건을 적용할 것인지 정의
+		//필드명과 필드의 조건을 정의하면 내부에서 json의 쿼리조건을 만들어 처리
+		//1. 조건을 객체로 정의
+		Criteria criteria = new Criteria(key);
+		//조건에 대한 설정
+		criteria.is(value);
+		
+		//2.Criteria객체를 이용해서 Query를 생성
+		Query query = new Query(criteria);
+		FaqDTO doc = mongoTemplate.findOne(query, FaqDTO.class,"faq");
+		return doc;
 	}
 
 	@Override
 	public void update(FaqDTO document) {
-		// TODO Auto-generated method stub
+		//조건(Criteria,Query) - 조건에 만족하는 document를 수정
+		Criteria criteria = new Criteria("_id");
+		criteria.is(document.get_id());
+		Query query = new Query(criteria);
 		
+		//업데이트기능을 수행하는 객체를 생성하고 적절한 값을 셋팅
+		Update update = new Update();
+		update.set("faq_title", document.getFaq_title());
+		update.set("faq_content", document.getFaq_content());
+		mongoTemplate.updateMulti(query, update,"faq");
 	}
-
+	
+	@Override
+	public List<FaqDTO> findAll() {
+		return mongoTemplate.findAll(FaqDTO.class,"faq");
+	}
+	
+	//리스트 페이징처리
 	@Override
 	public List<FaqDTO> findAll(int pageNo) {
-		// TODO Auto-generated method stub
-		return null;
+		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 5));
+		return page.getContent();
 	}
 
 	@Override
@@ -55,4 +93,5 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		// TODO Auto-generated method stub
 		
 	}
+		
 }

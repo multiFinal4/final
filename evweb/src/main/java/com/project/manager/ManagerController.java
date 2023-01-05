@@ -10,50 +10,70 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.customer.CustomerDTO;
+import com.project.customer.customerService;
 import com.project.station.StationDTO;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
 	ManagerService service;
+	customerService customerservice;
 	
 	@Autowired
-	public ManagerController(ManagerService service) {
+	public ManagerController(ManagerService service, customerService customerservice) {
 		super();
 		this.service = service;
+		this.customerservice = customerservice;
 	}
+	
+	
 	//타입으로 분류
 	@RequestMapping("/list.do")
-	public ModelAndView list(String type, String endNo, String pageNo) {
+	public ModelAndView list(String type, String endNo, String pageNo, String name) {
 		ModelAndView mav = new ModelAndView("adminList");
-		List<ManagerDTO> managerlist = service.findByType(type);
+		List<ManagerDTO> managerlist = service.findByName(type, name);
+		String state = "";
+		if(type.equals("all") || type.equals("일반 사용자")) {
+			state = "all";
+		}else {
+			state = "불러오지마";
+		}
+		
+		List<CustomerDTO> customerlist = customerservice.findByName(state, name);	
 		int showList = 7; // 리스트 보여줄 갯수
 		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
-		List<ManagerDTO> managerlistPage = service.findListByType(type, endNo);
-		int endPage = 0; // 페이징 넘버 유동적으로 
+		String remainNo = Integer.toString(Integer.parseInt(endNo)-managerlist.size());
+		List<ManagerDTO> managerlistPage = service.findListByType(type, endNo, name);
+		List<CustomerDTO> customerlistPage = customerservice.findListByState(state, remainNo, name);
+		int endPage = 0; // 페이징 넘버 유동적으로
+		int sizeList = managerlist.size() + customerlist.size();
 		if (type.equals("all")) {
-			if (managerlist.size() <= showList) {
+			if (sizeList <= showList) {
 				endPage = 1;
 			}else {
-				endPage = (managerlist.size()/showList)+1;
+				endPage = (sizeList/showList)+1;
 			}
 		}
 		else {
-			if (managerlistPage.size() <= showList) {
+			if (sizeList<= showList) {
 				endPage = 1;
 			}else {
 
-				endPage = (managerlistPage.size()/showList)+1;
+				endPage = (sizeList/showList)+1;
 			}
 		}
 		mav.addObject("managerlistPage", managerlistPage);
 		mav.addObject("managerlist", managerlist);
-		
+		mav.addObject("customerlistPage", customerlistPage);
+		mav.addObject("customerlist", customerlist);
+		mav.addObject("name", name);
 		mav.addObject("type", type);
 		mav.addObject("endPage", endPage);
 		mav.addObject("pageNo", pageNo);
 		return mav;
 	}
+	//list.do에 search기능 통합 -미사용메소드-
 	@RequestMapping("/search.do")
 	public ModelAndView search(String type,String name) {
 		ModelAndView mav = new ModelAndView("adminList");
@@ -76,8 +96,9 @@ public class ManagerController {
 	}
 	@RequestMapping("/update.do")
 	public String update(ManagerDTO manager) {
+		System.out.println(manager);
 		service.update(manager);
-		return "redirect:/manager/list.do?type=all";
+		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
@@ -87,12 +108,12 @@ public class ManagerController {
 	@RequestMapping(value = "/register.do", method = RequestMethod.POST)
 	public String register(ManagerDTO manager) {
 		service.register(manager);
-		return "redirect:/admin";
+		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	@RequestMapping("/delete.do")
 	public String delete(String manager_id) {
 		service.delete(manager_id);
-		return "redirect:/manager/list.do?type=all"; 	
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
 	@ResponseBody

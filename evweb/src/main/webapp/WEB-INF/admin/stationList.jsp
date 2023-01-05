@@ -13,9 +13,26 @@
 				$("#category").change(function() {
 					location.href="/evweb/admin/station/list?category="+encodeURI($(this).val())+"&pageNo=1";
 				});
-
 				$("#category").val(cate).attr("selected","selected");
 				$(".page-item").eq(pageNo).addClass("active");
+				
+				var pagingCount = $(".pagination li").length;
+				// 페이징처리 리팩토링할 것
+				
+				$("#updateList").click(function () {
+					$.ajax({
+						url: "/evweb/ajax/updateList",
+						type: "POST",
+						success: function(){
+						    alert("업데이트 완료");
+							location.reload();
+						},
+						error: function(){
+						  console.error("insertDiagram.do Error");
+						}
+					});
+				});
+				
 			});
 		</script>
 	</head>
@@ -23,29 +40,28 @@
 		<div class="row">
 			<h1 class="pagetitle">충전소 리스트</h1>
 	        <div class="col-lg-12 stationWrap">
-	            <div class="search-bar d-flex">
-					<form action="" class="form-inline cateSelect">
+	            <div class="search-bar d-flex" style="justify-content: space-between">
+					<form id="searchForm" class="search-form d-flex align-items-center" method="get" action="/evweb/admin/station/search.do?category=${category}">
 						<select name="category"  id="category" class="form-control">
 							<option value="all">회사명</option>
 			                <c:forEach var="company" items="${companyList}">
 								<option value="${company.station_company}">${company.station_company}</option>
 							</c:forEach>
 						</select>
-					</form>
-					<form class="search-form d-flex align-items-center" method="POST" action="#">
-						<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+						<input type="text" name="stationName" placeholder="${stationName}" title="Enter search keyword">
 						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
 					</form>
+					<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 			    </div>
 	              <table class="table table-hover">
 	                <thead>
 	                  <tr>
-	                    <th scope="col">번호</th>
-	                    <th scope="col">충전소 ID</th>
-	                    <th scope="col">충전소 이름</th>
-	                    <th scope="col">충전소 회사</th>
-	                    <th scope="col">주소</th>
-	                    <th scope="col">담당자</th>
+	                    <th scope="col" style="width:5%;">번호</th>
+	                    <th scope="col" style="width:15%;">충전소 ID</th>
+	                    <th scope="col" style="width:20%;">충전소 이름</th>
+	                    <th scope="col" style="width:20%;">충전소 회사</th>
+	                    <th scope="col" style="width:30%;">주소</th>
+	                    <th scope="col" style="width:10%;">담당자</th>
 	                  </tr>
 	                </thead>
 	                <tbody>
@@ -62,7 +78,7 @@
 	                </tbody>
 	              </table>
 	            </div>
-				<div class="text-right col-sm-12" style="padding-right: 0;">
+				<div class="boardBottom text-right col-sm-12" style="padding-right: 0;">
 					<ul class="pagination">
 							<li class="page-item">
 							  <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>

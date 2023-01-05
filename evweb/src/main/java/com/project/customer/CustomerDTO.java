@@ -10,9 +10,10 @@ public class CustomerDTO {
 	private String customer_addr;
 	private String email;
 	private String birth;
+	private String state;
 	private String ps_question;
 	private String ps_answer;
-	private String state;
+	
 	
 	
 	public CustomerDTO() {

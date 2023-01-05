@@ -40,11 +40,22 @@ public class StationDAOImpl implements StationDAO {
 		map.put("endNo", endNo);
 		return sqlSession.selectList("com.project.station.categorySelect", map);
 	}
-
 	@Override
 	public List<StationDTO> companyList() {
 		return sqlSession.selectList("com.project.station.selectCom");
 	}
+	@Override
+	public List<StationDTO> findbynameAll(String stationName) {
+		return sqlSession.selectList("com.project.station.findbynameAll", stationName);
+	}
+	@Override
+	public List<StationDTO> findByName(String category, String stationName) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("category", category);
+		map.put("stationName", stationName);	
+		return sqlSession.selectList("com.project.station.findbyname",map);
+	}
+
 	@Override
 	public StationDTO read(String stationId) {
 		return sqlSession.selectOne("com.project.station.read", stationId);
@@ -59,6 +70,12 @@ public class StationDAOImpl implements StationDAO {
 	public int delete(String stationId) {
 		return sqlSession.delete("com.project.station.del", stationId);
 	}
+
+	@Override
+	public int deleteAll() {
+		return sqlSession.delete("com.project.station.delAll");
+	}
+
 
 
 

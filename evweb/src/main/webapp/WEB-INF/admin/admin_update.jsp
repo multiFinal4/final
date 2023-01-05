@@ -118,7 +118,7 @@
 							<button type="submit" class="btn btn-primary">완료</button>
 						</div>
 						<div class="col-sm-3">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?'" class="btn btn-primary">취소</button>
+							<button type="button" onclick="location.href='/evweb/manager/list.do?type='all'&pageNo=1&name=" class="btn btn-primary">취소</button>
 						</div>
 					</div>
 				</form>

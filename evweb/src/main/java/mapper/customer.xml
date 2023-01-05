@@ -28,11 +28,59 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="list" resultType="customer"> 
-		select * from customer_tb 
+		select * from customer_tb where state != '관리자'
 	</select>
 	
 	<update id="delete" parameterType="String"> 
 		update customer_tb set state = '회원탈퇴' where customer_id = #{customer_id} 
 	</update>
+
+	<select id="findbystate" parameterType="String" resultType="customer">
+		select * from customer_tb
+		where state = #{state}
+	</select>
+	<select id="selectall" resultType="customer" parameterType="Map">
+		select *
+				from(select ROWNUM rn, ct.*
+				        FROM (select * from customer_tb ) ct)
+		<where>
+			<if test='remainNo lte "7"'>
+				rn BETWEEN 1 AND #{remainNo} 
+				and name like '%' || #{name} || '%' 
+			</if>
+			<if test='remainNo gt "7"'>
+				rn BETWEEN #{remainNo}-6 AND #{remainNo}
+				and name like '%' || #{name} || '%' 
+			</if>
+		</where>
+	</select>
+	<select id="stateSelect" resultType="customer" parameterType="Map">
+		select *
+				from(select ROWNUM rn, ct.*
+				        FROM (select * from customer_tb where state= #{state}) ct)
+		<where>
+			<if test='remainNo lte "7"'>
+				rn BETWEEN 1 AND #{remainNo} 
+				and name like '%' || #{name} || '%' 
+			</if>
+			<if test='remainNo gt "7"'>
+				rn BETWEEN #{remainNo}-6 AND #{remainNo}
+				and name like '%' || #{name} || '%' 
+			</if>
+		</where>
+	</select>
+	<select id="findbyname" parameterType="Map" resultType="customer">
+		select * from customer_tb 
+		<where>
+			<if test="state == 'all'">
+				name like '%' || #{name} || '%' 
+				and state != '관리자'
+			</if>
+			<if test="state == '정상'">
+				state = '정상' and name like '%' || #{name} || '%' 
+			</if>
+		</where>
+	</select>
+
 
 </mapper>

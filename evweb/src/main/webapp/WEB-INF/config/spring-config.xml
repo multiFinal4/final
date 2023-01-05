@@ -71,16 +71,14 @@
 	</beans:bean>
 	
 	<!-- mongodb설정하기 -->
-	<!-- <mongo:mongo id="mongods" host="127.0.0.1" port ="27017"/>
+	<mongo:mongo id="mongods" host="127.0.0.1" port ="27017"/>
 	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<beans:constructor-arg ref="mongods"/>
-		<beans:constructor-arg name="databaseName" value="sample"/>	
-	</beans:bean> -->
+		<beans:constructor-arg name="databaseName" value="multi"/>	
+	</beans:bean>
 	<!-- mongodb데이터가 저장될 Repository클래스가 있는 위치를 정의 -->
-	<!-- <mongo:repositories base-package="spring.data.mongodb.score"/>
-	
-	<context:component-scan base-package="spring.data.mongodb" />
-	<context:component-scan base-package="main" /> -->
+	<mongo:repositories base-package="com.project.faq"/>
+	<context:component-scan base-package="com.project.faq" />
 	
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
@@ -92,7 +90,7 @@
 	<context:component-scan base-package="mapper" />
 	
 	<!-- 인터셉터  -->
-	<!-- <interceptors>                                                   
+	<interceptors>                                                   
 		<interceptor>                                                
 			<mapping path="/admin/**"/>                              
 			<mapping path="/service/**"/>                            
@@ -110,7 +108,7 @@
 			<exclude-mapping path="/upload/**"/>
 			<beans:bean class = "com.project.common.LoginCheckInterceptor"></beans:bean>
 		</interceptor>
-	</interceptors> -->
+	</interceptors>
 	
 	<!-- ========================스프링에서 트랜잭션을 관리하는 핵심클래스를 빈으로 등록============================= -->
 	<!-- 1. transactionManager객체등록 -->
