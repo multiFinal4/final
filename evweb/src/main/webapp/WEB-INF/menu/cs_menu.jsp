@@ -17,19 +17,19 @@
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/service/notice">
                     <i class="bi bi-grid"></i>
                     <span>공지사항</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/service/write.do">
                     <i class="bi bi-journal-text"></i>
                     <span>1:1 문의하기</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/service/faq">
                     <i class="bi bi-grid"></i>
                     <span>FAQ</span>
                     </a>

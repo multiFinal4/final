@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -65,11 +67,47 @@
 		<beans:property name="maxUploadSize" value="40000000"></beans:property>
 	</beans:bean>
 	
+	<!-- mongodb설정하기 -->
+	<!-- <mongo:mongo id="mongods" host="127.0.0.1" port ="27017"/>
+	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<beans:constructor-arg ref="mongods"/>
+		<beans:constructor-arg name="databaseName" value="sample"/>	
+	</beans:bean> -->
+	<!-- mongodb데이터가 저장될 Repository클래스가 있는 위치를 정의 -->
+	<!-- <mongo:repositories base-package="spring.data.mongodb.score"/>
+	
+	<context:component-scan base-package="spring.data.mongodb" />
+	<context:component-scan base-package="main" /> -->
 	
 	<!-- 빈 생성 패키지 -->
 	<context:component-scan base-package="com.project.main" />
+	<context:component-scan base-package="com.project" />
+	<context:component-scan base-package="com" />
+	<context:component-scan base-package="com.project.manager" />
+	<context:component-scan base-package="com.project.login" />
 	<context:component-scan base-package="main" />
+	<context:component-scan base-package="mapper" />
 	
+	<!-- 인터셉터  -->
+	<!-- <interceptors>                                                   
+		<interceptor>                                                
+			<mapping path="/admin/**"/>                              
+			<mapping path="/service/**"/>                            
+			<mapping path="/monitoring/**"/>                            
+			<mapping path="/map/**"/>                            
+			<mapping path="/mypage/**"/>                            
+			<mapping path="/manager/**"/>                            
+			<exclude-mapping path="/login"/>                         
+			<exclude-mapping path="/login.do"/>                      
+			<exclude-mapping path="/images/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/css/**"/>
+			<exclude-mapping path="/js/**"/>
+			<exclude-mapping path="/vendor/**"/>
+			<exclude-mapping path="/upload/**"/>
+			<beans:bean class = "com.project.common.LoginCheckInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors> -->
 	
 	
 </beans:beans>

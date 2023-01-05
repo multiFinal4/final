@@ -49,6 +49,20 @@
 	<select id="categorySelect" resultType="servicetb" parameterType="String">
 		select * from service_tb where board_category=#{board_category} order by board_no desc
 	</select>
+	
+	<update id="updateState">
+		update service_tb set board_state = '완료' where board_no = #{board_no}
+	</update>
+	
+	<!-- =========== 1:1문의하기에서 파일첨부하기 ========== -->
+	<insert id="fileinsert" parameterType="java.util.List">
+		insert all
+		<foreach collection="list" item="file" separator=" ">
+			into file_tb values
+			(#{file.file_no}, service_tb_seq.currval,  #{file.storeFilename}, #{file.originalFilename}, '1:1문의')	
+		</foreach>
+		select * from dual
+	</insert>
 </mapper>
 
 

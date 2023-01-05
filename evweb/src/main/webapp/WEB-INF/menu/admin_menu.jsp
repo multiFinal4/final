@@ -17,9 +17,9 @@
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
-                    <i class="bi bi-grid"></i>
-                    <span>충전소 관리</span>
+                    <a class="nav-link collapsed" href="/evweb/admin/station/list?category=all&pageNo=1">
+	                    <i class="bi bi-grid"></i>
+	                    <span>충전소 관리</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -29,15 +29,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/service/list.do?board_category=all">
                     <i class="bi bi-journal-text"></i>
                     <span>고객센터 문의사항 확인</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/manager/register.do">
                     <i class="bi bi-card-list"></i>
                     <span>관리자 등록</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/manager/list.do?type=all&pageNo=1">
+                    <i class="bi bi-card-list"></i>
+                    <span>회원 관리</span>
                     </a>
                 </li>
             </ul>

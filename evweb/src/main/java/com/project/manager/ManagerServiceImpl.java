@@ -29,7 +29,20 @@ public class ManagerServiceImpl implements ManagerService {
 	public int delete(String manager_id) {
 		return dao.delete(manager_id);
 	}
-
+	@Override
+	public List<ManagerDTO> selectList(String endNo) {
+		return dao.selectList(endNo);
+	}
+	@Override
+	public List<ManagerDTO> findListByType(String type,String endNo) {
+		List<ManagerDTO> list = null;
+		if(type.equals("all")) {
+				list = dao.selectList(endNo);
+		}else {
+			list = dao.findListByType(type, endNo);
+		}
+		return list;
+	}
 	@Override
 	public List<ManagerDTO> findByType(String type) {
 		List<ManagerDTO> list = null;
