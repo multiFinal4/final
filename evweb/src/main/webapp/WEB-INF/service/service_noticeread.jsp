@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.project.notice.NoticeDTO"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -16,8 +17,13 @@
 <script type="text/javascript">
 
 </script>
+
 </head>
-<body>
+<body>	
+<h4>
+		<i class="fa fa-angle-right"></i> 게시글 열람하기
+	</h4>
+	<hr>
 
 	<form class="form-horizontal" 
 		action="/evweb/notice/read.do?state=UPDATE&notice_no=${notice.notice_no }" 
@@ -84,6 +90,7 @@
 					id="deletebtn">
 					<i class="fa fa-fw fa-close"></i> 삭제
 				</button>
+				<a href="/evweb/notice/delete.do?notice_no=${notice.notice_no }">삭제</a> 
 			</div>
 		</div>
 	</form>

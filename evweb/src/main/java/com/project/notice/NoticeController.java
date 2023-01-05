@@ -60,7 +60,8 @@ public class NoticeController {
 		System.out.println(noticefiledtolist);
 		//4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
 		service.insert(noticeboard,noticefiledtolist);
-		return "redirect:/notice/list.do?category=all";
+		
+		return "redirect:/Notice/list.do";
 	}
 	
 	/*
@@ -104,7 +105,7 @@ public class NoticeController {
 		if(state.equals("READ")) {
 			view = "service_noticeread";
 		}else {
-			view = "notice/update";
+			view = "service_noticeupdate";
 		}
 //		mav.setViewName(view);
 //		System.out.println("model로 수정하기 -----------------------------");
@@ -112,26 +113,30 @@ public class NoticeController {
 		model.addAttribute("notice", notice);
 		return view;
 	}
-//	//delete를 시도하면 로그인 유무를 체크해서 로그인을 하지 않은 사용자는 로그인을 할 수 있도록 로그인페이지로 리다이렉트
-//	@RequestMapping("/Notice/delete.do")
-//	public String delete(String Notice_no, HttpSession session) {
+	//delete를 시도하면 로그인 유무를 체크해서 로그인을 하지 않은 사용자는 로그인을 할 수 있도록 로그인페이지로 리다이렉트
+	@RequestMapping("/notice/delete.do")
+	public String delete(String notice_no, HttpSession session) {
 //		MemberDTO user = (MemberDTO) session.getAttribute("user");
-//		String view = "";
+		String view = "";
 //		if(user==null) { //로그인 하지 않은 상태
 //			 view = "redirect:/emp/login.do";
 //		}else { //로그인 성공 상태
 //			int result = service.delete(Notice_no);
 //			view = "redirect:/Notice/list.do?category=all";
 //		}
-//		return view;
-//	}
+			int result = service.delete(notice_no);
+			view = "redirect:/Notice/list.do";
+		return view;
+	}
+	
 	//실제 업데이트기능을 처리
 	@RequestMapping("/notice/update.do")
 	public String update(NoticeDTO noticeboard) {
 		System.out.println(noticeboard+"-----------업데이트---------------------");
 		int result = service.update(noticeboard);
-		return "redirect:/Notice/list.do?category=all";
+		return "redirect:/Notice/list.do";
 	}
+	
 	@RequestMapping("/notice/search.do")
 	public ModelAndView search(String tag, String data) {
 		ModelAndView mav = new ModelAndView("notice/list");

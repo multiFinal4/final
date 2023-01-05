@@ -16,6 +16,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- CREATE SEQUENCE notice_tb_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER; -->
+
 	<div class="col-lg-8">
 
 		<!-- 가로범위 -->
