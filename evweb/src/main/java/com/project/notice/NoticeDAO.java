@@ -19,9 +19,10 @@ public interface NoticeDAO {
 	//제목,작성자, 본문, 작성일별로 검색
 	List<NoticeDTO> search(String tag,String data);
 	
+	// *************** 첨파 ***************
 	//첨부파일을 저장하기 위한 메소드
 	int insertFile(List<NoticeFileDTO> boardfiledtolist);
 	//게시글을 상세보기한 경우 보여질 업로드한 파일의 목록
-	List<NoticeFileDTO> getFileList(String boardno);
+	List<NoticeFileDTO> getFileList(String notice_no);
 	NoticeFileDTO getFile(NoticeFileDTO inputdata);
 }

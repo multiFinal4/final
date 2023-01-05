@@ -71,8 +71,8 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		
 		//업데이트기능을 수행하는 객체를 생성하고 적절한 값을 셋팅
 		Update update = new Update();
-		update.set("faq_title", document.getFaq_title());
-		update.set("faq_content", document.getFaq_content());
+		update.set("faq_title", document.gettitle());
+		update.set("faq_content", document.getcontent());
 		mongoTemplate.updateMulti(query, update,"faq");
 	}
 	

@@ -7,22 +7,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class FaqDTO {
 	@Id
 	private String _id;
-	private String faq_title;
-	private String faq_content;
+	private String title;
+	private String content;
 	
 	public FaqDTO() {
 	}
 	
-	public FaqDTO(String _id, String faq_title, String faq_content) {
+	public FaqDTO(String _id, String title, String content) {
 		super();
 		this._id = _id;
-		this.faq_title = faq_title;
-		this.faq_content = faq_content;
+		this.title = title;
+		this.content = content;
 	}
 	
 	@Override
 	public String toString() {
-		return "faqDTO [_id=" + _id + ", faq_title=" + faq_title + ", faq_content=" + faq_content + "]";
+		return "faqDTO [_id=" + _id + ", title=" + title + ", content=" + content + "]";
 	}
 
 	public String get_id() {
@@ -33,20 +33,20 @@ public class FaqDTO {
 		this._id = _id;
 	}
 
-	public String getFaq_title() {
-		return faq_title;
+	public String gettitle() {
+		return title;
 	}
 
-	public void setFaq_title(String faq_title) {
-		this.faq_title = faq_title;
+	public void settitle(String title) {
+		this.title = title;
 	}
 
-	public String getFaq_content() {
-		return faq_content;
+	public String getcontent() {
+		return content;
 	}
 
-	public void setFaq_content(String faq_content) {
-		this.faq_content = faq_content;
+	public void setcontent(String content) {
+		this.content = content;
 	}
 	
 }
