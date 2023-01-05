@@ -28,6 +28,7 @@
 	</definition>
 	<definition name="monitoring" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/monitoring_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/monitoring/monitoring_main.jsp"></put-attribute>
 	</definition>
 	<definition name="service" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>

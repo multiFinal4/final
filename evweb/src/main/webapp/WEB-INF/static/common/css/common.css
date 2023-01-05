@@ -514,6 +514,63 @@ a:hover{text-decoration:none;}
   font-weight: 600;
   color: #012970;
 }
+/* monitoring */
+.monitoringMain .card{
+	margin-bottom:30px;
+}
+.dashboard .card-body{
+	padding:0;
+}
+.monitoringMain .chargerInfo .card-body{
+	padding:10px;
+}
+.dashboard .info-card h6 {
+  font-size: 20px;
+  text-align:center;
+  color: #012970;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard .card-icon {
+  font-size: 32px;
+  line-height: 0;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.dashboard .sales-card .card-icon {
+  color: #4154f1;
+  background: #f6f6fe;
+}
+
+.dashboard .revenue-card .card-icon {
+  color: #2eca6a;
+  background: #e0f8e9;
+}
+
+.dashboard .customers-card .card-icon {
+  color: #ff771d;
+  background: #ffecdf;
+}
+.monitoringMain .chargerInfo .card-body, 
+.monitoringMain .chargerInfo .chargerInfoMid{
+	display:flex;
+}
+.monitoringMain .chargerInfo .card-body .d-flex, 
+.monitoringMain .chargerInfo .chargerInfoMid{
+	flex-direction: column;
+	text-align:center;
+}
+.monitoringMain .card .card-title{
+	font-weight:600;
+	font-size:17px;	
+	margin-bottom:0;
+	color:#333;
+}
 /* station */
 .stationWrap{
 	padding:30px 0;
@@ -525,7 +582,10 @@ a:hover{text-decoration:none;}
 }
 /* index */
 .mg-right0{
-	padding-rigjt
+	margin-right:0;
+}
+.pd-left0{
+	padding-left:0;
 }
 /* table */
 .tb-center{
@@ -619,22 +679,36 @@ a:hover{text-decoration:none;}
 	display:block !important;
 	background-color:rgba(0,0,0,0.5);
 }
-@media (min-width: 576px){
-	.insert .modal-dialog {
-	    max-width: 750px;
-	}
+.alertPop .modal-dialog{
+	max-width:inherit;   
+	justify-content: center;
+}
+.alertPop .modal-content{
+	width:750px;
+	display:none;
+}.alertPop .modal-content.show{
+	display:block;
+}
+.alertPop .modal-content.delete{
+	width:500px;
+}
+.alertPop .table{
+	margin-bottom:0;
 }
 .alertPop .modal-header #cancel{
 	padding:0;
 }
-.alertPop.insert #cancel .bi{
+.alertPop .pagetitle .bi{
+	margin-right:10px;
+}
+.alertPop .insert #cancel .bi{
     font-size: 25px;
 }
-.alertPop.insert .table td{
+.alertPop .insert .table td{
 	padding:5px 10px;
 	vertical-align:middle;
 }
-.alertPop.insert .modal-body {
+.alertPop .insert .modal-body {
 	max-height: 500px;
 	overflow: auto;
 	padding:0;

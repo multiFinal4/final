@@ -32,7 +32,7 @@ public class ChargerServiceImpl implements ChargerService {
 
 	@Override
 	public List<ChargerDTO> chargerList(String stationId) {
-		return null;
+		return dao.chargerList(stationId);
 	}
 
 	@Override

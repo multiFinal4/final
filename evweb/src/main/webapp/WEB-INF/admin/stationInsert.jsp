@@ -75,40 +75,41 @@
 			</form>
 		</div>
 		
-		<div class="alertPop insert">
+		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
 					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
+						<div class="modal-content insert">
 							<div class="modal-header">
 								<h5 class="modal-title pagetitle"><i class="bi bi-journal-text"></i>충전소 담당자 리스트</h5>
 									<button type="button" id="cancel" class="btn"><i class="bi bi-x-lg" style="margin-right: 0;"></i></button>
-								</div>
-								<div class="modal-body">
-					              <table class="table table-hover">
-					                <thead class="fixedHeader">
-					                  <tr>
-					                    <th scope="col" class="tb-center">관리자 ID</th>
-					                    <th scope="col">이름</th>
-					                    <th scope="col">회사</th>
-					                    <th scope="col">직급</th>
-					                    <th scope="col" class="tb-center">선택</th>
-					                  </tr>
-					                </thead>
-					                <tbody id="mgrList">
-					                </tbody>
-					              </table>
-								</div>
+							</div>
+							<div class="modal-body">
+				              <table class="table table-hover">
+				                <thead class="fixedHeader">
+				                  <tr>
+				                    <th scope="col" class="tb-center">관리자 ID</th>
+				                    <th scope="col">이름</th>
+				                    <th scope="col">회사</th>
+				                    <th scope="col">직급</th>
+				                    <th scope="col" class="tb-center">선택</th>
+				                  </tr>
+				                </thead>
+				                <tbody id="mgrList">
+				                </tbody>
+				              </table>
 							</div>
 						</div>
 					</div>
 				</div>
-          </div>
+			</div>
+         </div>
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$("#mgrBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
+				$(".alertPop .modal-content").addClass("show");
 				
 				$.ajax({
 					url: "/evweb/ajax/managerList",

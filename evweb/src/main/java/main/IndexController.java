@@ -13,10 +13,6 @@ public class IndexController {
 	public String mapPage() {
 		return "map";
 	}
-	@RequestMapping("/monitoring")
-	public String monitoringPage() {
-		return "monitoring";
-	}
 	@RequestMapping("/admin")
 	public String adminPage() {
 		return "admin";

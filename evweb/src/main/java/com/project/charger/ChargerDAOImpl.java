@@ -32,7 +32,7 @@ public class ChargerDAOImpl implements ChargerDAO {
 
 	@Override
 	public List<ChargerDTO> chargerList(String stationId) {
-		return null;
+		return sqlSession.selectList("com.project.charger.findById", stationId);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.project.charger;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,11 @@ public class ChargerController {
 		return 0;
 	}	
 	
-	// ajax로 충전전기정보 업데이트하기
-	
+	// ajax 충전기정보
+	@RequestMapping(value = "/ajax/chargerInfo", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public List<ChargerDTO> chargerInfo(String stationId) {
+		List<ChargerDTO> chargerInfoList = service.chargerList(stationId);
+		return chargerInfoList;
+	}
 }
