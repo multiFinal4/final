@@ -33,14 +33,15 @@
 					<li><a class="nav-link" href="/evweb/map">Map</a></li>
 					<li><a class="nav-link" href="/evweb/monitoring/main?stationId=all">충전소현황</a></li>
 					<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
+					<li><a class="nav-link" href="/evweb/customer/read.do">MYPAGE</a></li>
 					<c:choose>
 						<c:when test="${user.state=='재직'&&user.type=='사이트 관리자'}">
 										<li><a class="nav-link" href="/evweb/admin/station/list?category=all&pageNo=1">관리자</a></li>
-							          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+							          	<li><a class="nav-link" href="/evweb/customer/read.do">MYPAGE</a></li>
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
 						<c:when test="${user.state=='재직'&&user.type=='충전소 관리자'||user.state=='정상'}">
-							          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+							          	<li><a class="nav-link" href="/evweb/customer/read.do">MYPAGE</a></li>
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
 						<c:otherwise>
