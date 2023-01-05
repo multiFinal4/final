@@ -10,7 +10,7 @@
  <link href="https://fonts.gstatic.com" rel="preconnect">
  <link href="/evweb/css/style.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 	 $(document).ready(function() {
 			$("#customer_id").on("keyup", function() {
 				var inputid = { "customer_id": $("#customer_id").val() }
@@ -32,25 +32,25 @@
 				}
 			})
 		}) 
-	</script>
+	</script> -->
 </head>
 <body>
 			<div class="card-body">
 				<h2 class="card-title">회원 가입</h2>
 
 				<!-- 회원등록 -->
-				<form action="/customer/register.do" method="post">
+				<form action="/evweb/customer/register.do" method="post">
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
 						<div class="col-sm-3">
 							<input  type="text" class="form-control" minlength="4" id ="customer_id" name="customer_id" required>
 						</div>
-						<span id="checkVal" style="color: red;"></span>
+						<!-- <span id="checkVal" style="color: red;"></span> -->
 					</div>
 					<div class="row mb-3">
 						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 						<div class="col-sm-3">
-							<input name="customer_pass" type="password" class="form-control" minlength="4" required>
+							<input name="pass" type="password" class="form-control" minlength="4" required>
 						</div>
 					</div>
 						<div class="row mb-3">
@@ -65,7 +65,7 @@
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-3">
-							<input name="customer_name" type="text" class="form-control" minlength="1" required>
+							<input name="name" type="text" class="form-control" minlength="1" required>
 						</div>
 					</div>
 				
@@ -82,12 +82,18 @@
 						</div>
 					</div>
 					
+					<!-- 
+					<input name="insertdate" class="form-control" type="hidden" value=sysdate>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label"></label>
+						<div class="col-sm-3"> -->
+					
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">생년월일</label>
 						<div class="col-sm-3">
-							<input name="customer_birth" type="text" class="form-control" minlength="1" required>
+							<input name="birth" type="text" class="form-control" minlength="1" required>
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label">(예시: 20221219)</label>
+						<label for="inputText" class="col-sm-2 col-form-label">(예시 : 2022-12-17)</label>
 					</div>
 					
 					<div class="row mb-3">

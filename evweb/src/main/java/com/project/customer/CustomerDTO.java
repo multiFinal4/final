@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class CustomerDTO {
 	private String customer_id;
-	private String customer_pass;
+	private String pass;
 	private String phone_no;
-	private String customer_name;
+	private String name;
 	private String customer_addr;
 	private String email;
 	private Date insertdate;
-	private Date customer_birth;
+	private Date birth;
 	private String ps_question;
 	private String ps_answer;
 	private String state;
@@ -19,18 +19,17 @@ public class CustomerDTO {
 
 	}
 
-	public CustomerDTO(String customer_id, String customer_pass, String phone_no, String customer_name,
-			String customer_addr, String email, Date insertdate, Date customer_birth, String ps_question,
-			String ps_answer, String state) {
+	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr,
+			String email, Date insertdate, Date birth, String ps_question, String ps_answer, String state) {
 		super();
 		this.customer_id = customer_id;
-		this.customer_pass = customer_pass;
+		this.pass = pass;
 		this.phone_no = phone_no;
-		this.customer_name = customer_name;
+		this.name = name;
 		this.customer_addr = customer_addr;
 		this.email = email;
 		this.insertdate = insertdate;
-		this.customer_birth = customer_birth;
+		this.birth = birth;
 		this.ps_question = ps_question;
 		this.ps_answer = ps_answer;
 		this.state = state;
@@ -38,10 +37,10 @@ public class CustomerDTO {
 
 	@Override
 	public String toString() {
-		return "CustomerDTO [customer_id=" + customer_id + ", customer_pass=" + customer_pass + ", phone_no=" + phone_no
-				+ ", customer_name=" + customer_name + ", customer_addr=" + customer_addr + ", email=" + email
-				+ ", insertdate=" + insertdate + ", customer_birth=" + customer_birth + ", ps_question=" + ps_question
-				+ ", ps_answer=" + ps_answer + ", state=" + state + "]";
+		return "CustomerDTO [customer_id=" + customer_id + ", pass=" + pass + ", phone_no=" + phone_no + ", name="
+				+ name + ", customer_addr=" + customer_addr + ", email=" + email + ", insertdate=" + insertdate
+				+ ", birth=" + birth + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer + ", state=" + state
+				+ "]";
 	}
 
 	public String getCustomer_id() {
@@ -52,12 +51,12 @@ public class CustomerDTO {
 		this.customer_id = customer_id;
 	}
 
-	public String getCustomer_pass() {
-		return customer_pass;
+	public String getPass() {
+		return pass;
 	}
 
-	public void setCustomer_pass(String customer_pass) {
-		this.customer_pass = customer_pass;
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 
 	public String getPhone_no() {
@@ -68,12 +67,12 @@ public class CustomerDTO {
 		this.phone_no = phone_no;
 	}
 
-	public String getCustomer_name() {
-		return customer_name;
+	public String getName() {
+		return name;
 	}
 
-	public void setCustomer_name(String customer_name) {
-		this.customer_name = customer_name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCustomer_addr() {
@@ -100,12 +99,12 @@ public class CustomerDTO {
 		this.insertdate = insertdate;
 	}
 
-	public Date getCustomer_birth() {
-		return customer_birth;
+	public Date getBirth() {
+		return birth;
 	}
 
-	public void setCustomer_birth(Date customer_birth) {
-		this.customer_birth = customer_birth;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 
 	public String getPs_question() {
@@ -132,6 +131,8 @@ public class CustomerDTO {
 		this.state = state;
 	}
 	
+	
+
 	
 	
 

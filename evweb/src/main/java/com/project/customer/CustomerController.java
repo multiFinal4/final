@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,7 +30,7 @@ public class CustomerController {
 	
 
 	
-	@RequestMapping("/customer/read.do")//¸¶ÀÌÆäÀÌÁö
+	@RequestMapping("/customer/read.do")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String read(String customer_id,String state,Model model) {
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
@@ -46,30 +45,30 @@ public class CustomerController {
 	
 	
 	
-	//È¸¿ø °¡ÀÔ ÆäÀÌÁö 
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	@RequestMapping(value ="/customer/register.do", method = RequestMethod.GET)
 	public String registerPage() {
-		return "customer/customer_register";
+		return "customer_register";
 	}
 	
 	
-	//È¸¿ø°¡ÀÔ Ã³¸®
-	@RequestMapping(value = "/custmer/register.do",  method =RequestMethod.POST)
+	//íšŒì›ê°€ì…
+	@RequestMapping(value ="/customer/register.do", method=RequestMethod.POST)
 	public String register(CustomerDTO customer) {
 		service.register(customer);
-		return "login/login";  // È¸¿ø°¡ÀÔ ¿Ï·áµÇ¸é ·Î±×ÀÎÆäÀÌÁö¸¦ È£Ãâ
+		return "login";  
 	}
 	
-	//È¸¿ø Á¤º¸ ¼öÁ¤ ÆäÀÌÁö
+	//íšŒì›ì •ë³´ ìˆ˜ì •
 	@RequestMapping(value = "/customer/update.do", method = RequestMethod.GET)
 	public String updatePage() {
-		return "customer/customer_update";
+		return "customer_update";
 	}
 	
 	
 	
 	
-	//Á¤º¸ ¼öÁ¤ ¿Ï·áÇÏ¸é ´Ù½Ã ¸¶ÀÌÆäÀÌÁö·Î! 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½Ï¸ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½! 
 	@RequestMapping("/customer/update.do")
 	public String update(CustomerDTO customer) {
 		service.update(customer);
@@ -77,7 +76,6 @@ public class CustomerController {
 	}
 	
 	
-	//È¸¿øÅ»Åğ!
 	@RequestMapping("/customer/delete.do")
 	public String delete(String customer_id) {
 		service.delete(customer_id);
