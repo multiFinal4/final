@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.weather">
+	<insert id="insert" parameterType="weather"> 
+		insert into weather_tb values(
+		#{location_no},#{location_name},
+		#{sky},#{tmp},#{tmn},#{tmx},#{pop},#{day},
+		#{time})
+	</insert>
+</mapper>

@@ -13,26 +13,26 @@ import org.springframework.web.servlet.ModelAndView;
 public class FaqController {
 	FaqMongoService service;
 	
+	public FaqController() {
+	}
+	
 	@Autowired
 	public FaqController(FaqMongoService service) {
 		super();
 		this.service = service;
 	}
 	
-	public FaqController() {
-	}
-	
-	//inset페이지보기
-	@RequestMapping(value = "/faq/insert", method = RequestMethod.GET)
+	//inset페이지로 이동
+	@RequestMapping(value = "/service/faqinsert", method = RequestMethod.GET)
 	public String insertPage() {
-		return "mongo_insert";
+		return "service_faqinsert"; //.jsp
 	}
-	//mongodb에 insert하기
-	@RequestMapping(value = "/faq/insert", method = RequestMethod.POST)
+	//faq에 insert하기
+	@RequestMapping(value = "/service/faqinsert", method = RequestMethod.POST)
 	public String insert(FaqDTO document) {
 		System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
-		return "redirect:/faq/list";
+		return "redirect:/faq/paginglist?pageNo=0";
 	}
 	//search
 	@RequestMapping(value="/faq/search",method=RequestMethod.GET)
@@ -43,14 +43,7 @@ public class FaqController {
 	@RequestMapping(value="/faq/search",method=RequestMethod.POST)
 	public ModelAndView search(String field, String criteria, String value) {
 		List<FaqDTO> docs = service.findCriteria(field+","+criteria, value);
-		return new ModelAndView("list","mongolist",docs);
-	}
-	
-	@RequestMapping("/faq/list")
-	public String mongolist(Model model) {
-		List<FaqDTO> mongolist = service.findAll();
-		model.addAttribute("mongolist", mongolist);
-		return "list";
+		return new ModelAndView("list","faqlist",docs);
 	}
 	
 	@RequestMapping("/faq/detail")
@@ -71,9 +64,22 @@ public class FaqController {
 		return "redirect:/faq/paginglist?pageNo=0";
 	}
 	
+	@RequestMapping("/faq/list")
+	public String mongolist(Model model) {
+		List<FaqDTO> faqlist = service.findAll();
+		model.addAttribute("faqlist", faqlist);
+		return "list";
+	}
+	
 	@RequestMapping("/faq/paginglist")
 	public ModelAndView pagemongolist(String pageNo) {
-		List<FaqDTO> mongolist = service.findAll(Integer.parseInt(pageNo));
-		return new ModelAndView("list", "mongolist", mongolist);
+		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		System.out.println(pageNo);
+		return new ModelAndView("service_faq", "faqlist", faqlist);
+	}
+	
+	@RequestMapping(value = "/service/delete", method = RequestMethod.GET)
+	public String delete() {
+		return "service_faqinsert"; //.jsp
 	}
 }

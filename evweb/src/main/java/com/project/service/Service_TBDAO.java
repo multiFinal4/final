@@ -15,6 +15,10 @@ public interface Service_TBDAO {
 	int update(Service_TBDTO board);
 	//게시글삭제
 	int delete(String board_no);
+	//첨부파일삭제
+	int delete_file(String board_no);
+	//댓글삭제
+	int delete_reply(String board_no);
 	//제목,작성자, 본문, 작성일별로 검색
 	List<Service_TBDTO> search(String tag,String data);
 	//카테고리별로 게시글목록보기

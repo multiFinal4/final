@@ -2,6 +2,8 @@ package com.project.notice;
 
 import java.util.List;
 
+import com.project.file.BoardFileDTO;
+
 
 public interface NoticeDAO {
 	//게시글등록 - db에 처리
@@ -19,9 +21,10 @@ public interface NoticeDAO {
 	//제목,작성자, 본문, 작성일별로 검색
 	List<NoticeDTO> search(String tag,String data);
 	
+	// *************** 첨파 ***************
 	//첨부파일을 저장하기 위한 메소드
-	int insertFile(List<NoticeFileDTO> boardfiledtolist);
-	//게시글을 상세보기한 경우 보여질 업로드한 파일의 목록
-	List<NoticeFileDTO> getFileList(String boardno);
-	NoticeFileDTO getFile(NoticeFileDTO inputdata);
+	int insertFile(List<BoardFileDTO> boardfiledtolist);
+//	List<BoardFileDTO> getFileList(String notice_no);
+//	BoardFileDTO getFile(String inputdata);
+
 }
