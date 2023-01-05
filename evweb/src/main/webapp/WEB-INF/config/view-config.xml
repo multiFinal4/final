@@ -9,9 +9,10 @@
 	<!-- 필요에 따라 바꾸기 -->
 	<!-- <view-controller path="/json/view" view-name="etcview/json"/> -->
 	<view-controller path="/login/view" view-name="login/login"/>
-	<!-- 공지사항 -->
-	<view-controller path="/service/notice" view-name="service"/>
 	<!-- faq -->
 	<view-controller path="/service/faq" view-name="service_faq"/>
-	
+	<!-- map -->
+	<view-controller path="/map.do" view-name="map"/>
+	<!-- 글등록성공 -->
+	<view-controller path="/insertok.do" view-name="insertok"/>
 </beans:beans>

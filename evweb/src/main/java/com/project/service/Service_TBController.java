@@ -31,19 +31,18 @@ public class Service_TBController {
 		this.boardservice = boardservice;
 	}
 	
-	
 	@RequestMapping(value = "/service/write.do", method = RequestMethod.GET)
-	public String writePage() {
+	public String insertPage() {
 		return "service_insert";
 	}
 	
-	
 	// 1:1문의글 작성하기(글+파일첨부 디비에 정보넘기기)
 	@RequestMapping(value = "/service/write.do", method = RequestMethod.POST)
-	public String write(Service_TBDTO board, HttpSession session) throws IllegalStateException, IOException {
+	public String insert(Service_TBDTO board, HttpSession session) throws IllegalStateException, IOException {
 		//System.out.println("board=>"+board);
 		// 1. MultipartFile정보를 추출하기(바이너리 형태의 파일 데이터 받아오기)
 		List<MultipartFile> files = board.getFiles();
+		//System.out.println("files?----> "+files);
 		
 		// 2. 업로드될 서버의 경로 - 실제 서버의 경로를 추출하기 위해서 context의 정보를 담고 있는 ServletContext객체를 추출
 		// => ServletContext는 우리가 생성한 프로젝트가 서버에 배포되는 실제 경로와 context에 대한 정보를 담고 있는 객체
@@ -52,19 +51,23 @@ public class Service_TBController {
 		
 		// 3. 파일업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(files, path);
-		// 업로드된 파일의 file_no의 값을 셋팅 - 1부터 1,2,3,4....첨부파일마지막번호
-		int count = 1;
-		for(BoardFileDTO boardfiledto:boardfiledtolist) {
-			boardfiledto.setFile_no(count+"");
-			count++;
+		// 첨부파일없이 글 등록하면 500에러 해결하기 위해 if문 사용
+		//System.out.println("---------------1:1문의 boardfiledtolist-------------"+boardfiledtolist);
+		if(boardfiledtolist.equals(null)) {
+			service.insert(board);
+		}else {
+			// 업로드된 파일의 file_no의 값을 셋팅 - 1부터 1,2,3,4....첨부파일마지막번호
+			int count = 1;
+			for(BoardFileDTO boardfiledto:boardfiledtolist) {
+				boardfiledto.setFile_no(count+"");
+				count++;
+				//System.out.println("1:1문의 boardfiledto????????  "+boardfiledto);
+			}
+			// 4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
+			service.insert(board, boardfiledtolist);
 		}
-		//System.out.println("boardfiledtolist????????  "+boardfiledtolist);
-		
-		// 4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
-		service.insert(board, boardfiledtolist);
-		return "redirect:/service/list.do?board_category=all";
+		return "redirect:/insertok.do";
 	}
-	
 	
 	
 	@RequestMapping("/service/list.do")
@@ -95,6 +98,8 @@ public class Service_TBController {
 	//삭제 시도 시 로그인 유무 체크해서 로그인을 하지 않은 사용자는 로그인을 할 수 있도록 로그인페이지로 리다이렉트 =>추가작업해야함
 	@RequestMapping("/service/delete.do")
 	public String delete(String board_no) {
+		service.delete_file(board_no);
+		service.delete_reply(board_no);
 		service.delete(board_no);
 		return "redirect:/service/list.do?board_category=all";
 	}
