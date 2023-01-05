@@ -34,8 +34,11 @@ public class ManagerDAOImpl implements ManagerDAO {
 		return sqlsession.selectList("com.project.manager.findbytype", type);
 	}
 	@Override
-	public List<ManagerDTO> findByName(String manager_name) {
-		return sqlsession.selectList("com.project.manager.findbyname", manager_name);
+	public List<ManagerDTO> findByName(String type,String name) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("manager_name", name);	
+		return sqlsession.selectList("com.project.manager.findbyname",map);
 	}
 	@Override
 	public int delete(String manager_id) {
@@ -65,5 +68,18 @@ public class ManagerDAOImpl implements ManagerDAO {
 	@Override
 	public int update(ManagerDTO manager) {
 		return sqlsession.update("com.project.manager.update", manager);
+	}
+
+	@Override
+	public List<ManagerDTO> findListByType(String type, String endNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("type", type);
+		map.put("endNo", endNo);
+		return sqlsession.selectList("com.project.manager.typeSelect", map);
+	}
+
+	@Override
+	public List<ManagerDTO> selectList(String endNo) {
+		return sqlsession.selectList("com.project.manager.selectall", endNo);
 	}
 }

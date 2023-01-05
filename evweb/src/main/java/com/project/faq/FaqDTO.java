@@ -1,11 +1,15 @@
 package com.project.faq;
 
-public class faqDTO {
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "faq")
+public class FaqDTO {
 	private String _id;
 	private String faq_title;
 	private String faq_content;
 	
-	public faqDTO(String _id, String faq_title, String faq_content) {
+	public FaqDTO() {}
+	public FaqDTO(String _id, String faq_title, String faq_content) {
 		super();
 		this._id = _id;
 		this.faq_title = faq_title;

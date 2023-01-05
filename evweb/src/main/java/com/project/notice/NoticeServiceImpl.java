@@ -2,6 +2,9 @@ package com.project.notice;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class NoticeServiceImpl implements NoticeService{
 	NoticeDAO dao;
 	
@@ -14,39 +17,50 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public List<NoticeDTO> boardList() {
-		
-		return null;
+	public List<NoticeDTO> NoticeList() {
+		return dao.noticeList();
+
 	}
 
 	@Override
-	public NoticeDTO getBoardInfo(String board_no) {
-		// TODO Auto-generated method stub
-		return null;
+	public NoticeDTO getNoticeInfo(String Notice_no) {
+		return dao.read(Notice_no);
 	}
 
 	@Override
-	public int update(NoticeDTO board) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(NoticeDTO Notice) {
+		return dao.update(Notice);
 	}
 
 	@Override
-	public int delete(String board_no) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(String Notice_no) {
+		return dao.delete(Notice_no);
 	}
 
 	@Override
 	public List<NoticeDTO> search(String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.search(data);
 	}
 
 	@Override
 	public List<NoticeDTO> search(String tag, String data) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.search(tag, data);
+	}
+	
+	@Override
+	public List<NoticeFileDTO> getFileList(String Noticeno) {
+		return dao.getFileList(Noticeno);
+	}
+	@Override
+	public int insert(NoticeDTO Notice, List<NoticeFileDTO> noticefiledtolist) {
+		dao.insert(Notice);
+		dao.insertFile(noticefiledtolist);
+		return 0;
 	}
 
+	@Override
+	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
+		// TODO Auto-generated method stub
+		return dao.getFile(inputdata);
+	}
 }

@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class NoticeDAOImpl implements NoticeDAO {
 	
 	SqlSession sqlSession;
@@ -57,5 +59,23 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<NoticeDTO> noticeList() {
 		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.notice.selectal");
 		return  list;
+	}
+
+	@Override
+	public int insertFile(List<NoticeFileDTO> boardfiledtolist) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<NoticeFileDTO> getFileList(String boardno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

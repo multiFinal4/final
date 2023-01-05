@@ -23,5 +23,4 @@ public class ServiceReply_TBDAOImpl implements ServiceReply_TBDAO {
 	public List<ServiceReply_TBDTO> replyList(String board_no) {
 		return sqlSession.selectList("com.project.service.reply_select", board_no);
 	}
-
 }

@@ -17,7 +17,7 @@
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/admin/station/list?category=all">
+                    <a class="nav-link collapsed" href="/evweb/admin/station/list?category=all&pageNo=1">
 	                    <i class="bi bi-grid"></i>
 	                    <span>충전소 관리</span>
                     </a>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/manager/list.do">
+                    <a class="nav-link collapsed" href="/evweb/manager/list.do?type=all&pageNo=1">
                     <i class="bi bi-card-list"></i>
                     <span>회원 관리</span>
                     </a>

@@ -8,28 +8,35 @@
 		<title>Insert title here</title>
 		<script type="text/javascript">
 			var cate = "${category}";
-			
+			var pageNo = "${pageNo}"; 
 			$(document).ready(function() {
 				$("#category").change(function() {
-					location.href="/evweb/admin/station/list?category="+encodeURI($(this).val());
+					location.href="/evweb/admin/station/list?category="+encodeURI($(this).val())+"&pageNo=1";
 				});
 
 				$("#category").val(cate).attr("selected","selected");
+				$(".page-item").eq(pageNo).addClass("active");
 			});
 		</script>
 	</head>
 	<body>
 		<div class="row">
-			<h5 class="card-title">충전소 리스트</h5>
-	        <div class="col-lg-12">
-				<form action="" class="form-inline">
-					<select name="category"  id="category" class="form-control">
-						<option value="all">전체게시물</option>
-		                <c:forEach var="company" items="${companyList}">
-							<option value="${company.station_company}">${company.station_company}</option>
-						</c:forEach>
-					</select>
-				</form>
+			<h1 class="pagetitle">충전소 리스트</h1>
+	        <div class="col-lg-12 stationWrap">
+	            <div class="search-bar d-flex">
+					<form action="" class="form-inline cateSelect">
+						<select name="category"  id="category" class="form-control">
+							<option value="all">회사명</option>
+			                <c:forEach var="company" items="${companyList}">
+								<option value="${company.station_company}">${company.station_company}</option>
+							</c:forEach>
+						</select>
+					</form>
+					<form class="search-form d-flex align-items-center" method="POST" action="#">
+						<input type="text" name="query" placeholder="Search" title="Enter search keyword">
+						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+					</form>
+			    </div>
 	              <table class="table table-hover">
 	                <thead>
 	                  <tr>
@@ -42,9 +49,9 @@
 	                  </tr>
 	                </thead>
 	                <tbody>
-		                <c:forEach var="list" items="${stationlist}">
+		                <c:forEach var="list" items="${stationlistPage}">
 							<tr>
-							  <th scope="row">${list.rownum}</th>
+							  <th scope="row">${list.rn}</th>
 							  <td>${list.station_id}</td>
 							  <td><a href="/evweb/admin/station/read?stationId=${list.station_id}&state=READ">${list.station_name}</a></td>
 							  <td>${list.station_company}</td>
@@ -55,10 +62,20 @@
 	                </tbody>
 	              </table>
 	            </div>
+				<div class="text-right col-sm-12" style="padding-right: 0;">
+					<ul class="pagination">
+							<li class="page-item">
+							  <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+							</li>
+		                	<c:forEach var="page" begin="1" end="${endPage}" step="1" varStatus="status">
+								<li class="page-item"><a class="page-link" href="/evweb/admin/station/list?category=${category}&pageNo=${status.index}">${status.index}</a></li>
+							</c:forEach>
+							<li class="page-item">
+							  <a class="page-link" href="#">></a>
+							</li>
+					</ul>
+					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
+				</div>
 	      </div>
-	     <a class="nav-link collapsed" href="/evweb/admin/station/insert">
-	      <i class="bi bi-grid"></i>
-	      <span>충전소 등록할겨</span>
-	     </a>
 	</body>
 </html>

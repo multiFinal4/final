@@ -48,4 +48,22 @@ public class LoginController {
 		mav.setViewName(viewName);
 		return mav;
 	}
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		if(session!=null) {
+			session.invalidate();
+		}
+		return "redirect:/index";
+	}
+	
+	/*
+	 * public String findId(String name, String phone_no) { return ""; }
+	 * 
+	 * public String findPassword(CustomerDTO dto) { return ""; }
+	 */
+	
+	
+	
+	
+	
 }
