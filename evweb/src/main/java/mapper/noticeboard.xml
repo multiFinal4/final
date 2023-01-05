@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.notice">
+
+	<insert id="write" parameterType="notice">
+		insert into notice_tb 
+		values(notice_tb_seq.nextval,#{notice_title},#{notice_content},#{manager_id},sysdate)
+	</insert>
+	<select id="selectall" resultType="notice">
+		select * from notice_tb
+	</select>
+	<select id="read" resultType="notice" parameterType="String">
+		select * from notice_tb where notice_no = #{notice_no}
+	</select>
+	<delete id="delete" parameterType="String">
+		delete from notice_tb where notice_no = #{notice_no}
+	</delete>
+	<update id="update" parameterType="notice">
+		update notice_tb
+		set title=#{title},content=#{content}
+		where notice_no=#{notice_no}
+	</update>
+	
+	<!-- 검색기능 -->
+	<select id="search" resultType="notice" parameterType="String" >
+		select * from notice_tb where title like  '%' || #{title} || '%'
+	</select>
+	<select id="dynamicSearch" resultType="notice" parameterType="Map">
+		select * from notice_tb
+		<where>
+			<if test="tag=='title' and data!=''">
+			title like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='id' and data!=''">
+			id like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='content' and data!=''">
+			content like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='notice_writedate' and data!=''">
+				<![CDATA[
+					notice_writedate <= #{data}
+				]]>
+				</if>
+		</where>
+	</select>
+</mapper>

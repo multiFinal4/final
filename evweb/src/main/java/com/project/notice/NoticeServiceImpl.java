@@ -2,6 +2,7 @@ package com.project.notice;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,30 +12,30 @@ public class NoticeServiceImpl implements NoticeService{
 	public NoticeServiceImpl() {
 	}
 	
+	@Autowired
 	public NoticeServiceImpl(NoticeDAO dao) {
 		super();
 		this.dao = dao;
 	}
 
 	@Override
-	public List<NoticeDTO> NoticeList() {
+	public List<NoticeDTO> noticeList() {
 		return dao.noticeList();
-
 	}
 
 	@Override
-	public NoticeDTO getNoticeInfo(String Notice_no) {
-		return dao.read(Notice_no);
+	public NoticeDTO getNoticeInfo(String notice_no) {
+		return dao.read(notice_no);
 	}
 
 	@Override
-	public int update(NoticeDTO Notice) {
-		return dao.update(Notice);
+	public int update(NoticeDTO notice) {
+		return dao.update(notice);
 	}
 
 	@Override
-	public int delete(String Notice_no) {
-		return dao.delete(Notice_no);
+	public int delete(String notice_no) {
+		return dao.delete(notice_no);
 	}
 
 	@Override
@@ -48,12 +49,12 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
-	public List<NoticeFileDTO> getFileList(String Noticeno) {
-		return dao.getFileList(Noticeno);
+	public List<NoticeFileDTO> getFileList(String noticeno) {
+		return dao.getFileList(noticeno);
 	}
 	@Override
-	public int insert(NoticeDTO Notice, List<NoticeFileDTO> noticefiledtolist) {
-		dao.insert(Notice);
+	public int insert(NoticeDTO notice, List<NoticeFileDTO> noticefiledtolist) {
+		dao.insert(notice);
 		dao.insertFile(noticefiledtolist);
 		return 0;
 	}
@@ -63,4 +64,5 @@ public class NoticeServiceImpl implements NoticeService{
 		// TODO Auto-generated method stub
 		return dao.getFile(inputdata);
 	}
+
 }
