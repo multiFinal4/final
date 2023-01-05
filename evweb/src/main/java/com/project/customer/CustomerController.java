@@ -29,7 +29,7 @@ public class CustomerController {
 		return mav;
 	}
 	
-	
+
 	
 	@RequestMapping("/customer/read.do")//마이페이지
 	public String read(String customer_id,String state,Model model) {
