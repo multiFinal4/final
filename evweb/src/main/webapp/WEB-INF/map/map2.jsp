@@ -29,6 +29,8 @@ function initMap() {
 	areaArr.push(
 			/* DB와 연동해서 컨트롤러에서 list 에 데이터담아오기 */
 			/*지역구 이름*/			/*위도*/					/*경도*/			
+		
+		
 		 {chargeid : '강남' , lat : '37.4959854' , lng : '127.0664091', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 강남구 중심좌표
 		 {chargeid : '강동' , lat : '37.5492077' , lng : '127.1464824', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 강동구 중심좌표
 		 {chargeid : '강북' , lat : '37.6469954' , lng : '127.0147158', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 강북구 중심좌표
@@ -36,7 +38,9 @@ function initMap() {
 		 {chargeid : '관악' , lat : '37.4603732' , lng : '126.9536086', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 관악구 중심좌표
 		 {chargeid : '광진' , lat : '37.5574120' , lng : '127.0796211', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 광진구 중심좌표
 		 {chargeid : '구로' , lat : '37.4954856' , lng : '126.858121' , chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 구로구 중심좌표
-		 {chargeid : '금천' , lat : '37.4600969' , lng : '126.9001546', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 마포구 중심좌표
+		 {chargeid : '금천' , lat : '37.4600969' , lng : '126.9001546', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 금천구 중심좌표
+		 {chargeid : '노원' , lat : '37.6377533' , lng : '127.0754623', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 노원구 중심좌표
+		 {chargeid : '도봉' , lat : '37.6658609' , lng : '127.0317674', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'},  // 마포구 중심좌표
 		 {chargeid : '제주' , lat : '33.394694' , lng : '126.372333', chargetype : 'DC콤보', chargeway : '동시', chargekW:'100', chargestate:'충전대기',update:'23.01.04', NY:'N'}  // 제주
 	);
 	
@@ -217,4 +221,5 @@ function initMap() {
 	
 	$("#interaction, #tile-transition, #controls").addClass("control-on");
 </script>
+
 </html>

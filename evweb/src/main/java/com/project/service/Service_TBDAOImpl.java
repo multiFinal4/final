@@ -20,7 +20,7 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 
 	@Override
 	public int insert(Service_TBDTO board) {
-		return sqlSession.insert("com.project.service.write", board);
+		return sqlSession.insert("com.project.service.insert", board);
 	}
 
 	@Override
@@ -41,6 +41,14 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	@Override
 	public int delete(String board_no) {
 		return sqlSession.delete("com.project.service.delete",board_no);
+	}
+	@Override
+	public int delete_file(String board_no) {
+		return sqlSession.delete("com.project.service.delete_file", board_no);
+	}
+	@Override
+	public int delete_reply(String board_no) {
+		return sqlSession.delete("com.project.service.delete_reply", board_no);
 	}
 
 	@Override
@@ -69,6 +77,7 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
 		return sqlSession.insert("com.project.service.fileinsert", boardfiledtolist);
 	}
+
 
 
 }
