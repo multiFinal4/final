@@ -1,3 +1,5 @@
+<%@page import="com.project.faq.FaqDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
@@ -9,19 +11,57 @@
 <title>service</title>
 </head>
 <body>
-	<h1>설명 : 고객센터 faq화면입니다</h1>
-	
-	<div class="col-lg-8">  <!-- 가로범위 ~ 문의글작성 범위인데 통일성을 위해서 일단 넣어놨어요-->
+	<div class="col-lg-8">
+		<!-- 가로범위 -->
 		<div class="card-body">
 			<h5 class="card-title">
-				<strong>1:1 문의글 작성하기</strong>
+				<strong>FAQ</strong>
 			</h5>
-			<br />
-			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
+			<hr>
+			<!-- -----------------------제목--------------------- -->
 
-			<!-- 여기에 내용뿌리면 됩니다 -->
-			내용
+			<!-- 가로범위 ~ 문의글작성 범위인데 통일성을 위해서 일단 넣어놨어요-->
+			<%
+			List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");
+			int size = faqlist.size();
+			%>
+
+			<table align="center" border="0" width="700">
+				<tr bgcolor="#FFFFFF">
+					<th></th>
+					<th>제목</th>
+					<th>내용</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+				<%
+				for (int i = 0; i < size; i++) {
+					FaqDTO faq = faqlist.get(i);
+				%>
+				<tr>
+					<td>▶</td>
+					<td><a
+						href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
+					<td><%=faq.getcontent()%></td>
+					<td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
+					<td><a href="mybatisDel.do?_id=<%=faq.get_id()%>">삭제</a></td>
+				</tr>
+				<%
+				}
+				%>
+				<tr></tr>
+				<tr align="center">
+					<td colspan="10"><a href="/evweb/faq/paginglist?pageNo=0">1</a>
+						<a href="/evweb/faq/paginglist?pageNo=1">2</a> <a
+						href="/evweb/faq/paginglist?pageNo=2">3</a> <a
+						href="/evweb/faq/paginglist?pageNo=3">4</a></td>
+				</tr>
+			</table>
 		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/evweb/service/faqinsert"
+				style="text-align: right;">글쓰기</a></li>
+		</ul>
 	</div>
 </body>
 </html>

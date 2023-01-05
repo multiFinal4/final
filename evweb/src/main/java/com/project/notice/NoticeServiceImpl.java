@@ -2,7 +2,10 @@ package com.project.notice;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.project.file.BoardFileDTO;
 
 @Service
 public class NoticeServiceImpl implements NoticeService{
@@ -11,30 +14,30 @@ public class NoticeServiceImpl implements NoticeService{
 	public NoticeServiceImpl() {
 	}
 	
+	@Autowired
 	public NoticeServiceImpl(NoticeDAO dao) {
 		super();
 		this.dao = dao;
 	}
 
 	@Override
-	public List<NoticeDTO> NoticeList() {
+	public List<NoticeDTO> noticeList() {
 		return dao.noticeList();
-
 	}
 
 	@Override
-	public NoticeDTO getNoticeInfo(String Notice_no) {
-		return dao.read(Notice_no);
+	public NoticeDTO getNoticeInfo(String notice_no) {
+		return dao.read(notice_no);
 	}
 
 	@Override
-	public int update(NoticeDTO Notice) {
-		return dao.update(Notice);
+	public int update(NoticeDTO notice) {
+		return dao.update(notice);
 	}
 
 	@Override
-	public int delete(String Notice_no) {
-		return dao.delete(Notice_no);
+	public int delete(String notice_no) {
+		return dao.delete(notice_no);
 	}
 
 	@Override
@@ -48,19 +51,21 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
-	public List<NoticeFileDTO> getFileList(String Noticeno) {
-		return dao.getFileList(Noticeno);
-	}
-	@Override
-	public int insert(NoticeDTO Notice, List<NoticeFileDTO> noticefiledtolist) {
+	public int insert(NoticeDTO Notice, List<BoardFileDTO> boardfiledtolist) {
 		dao.insert(Notice);
-		dao.insertFile(noticefiledtolist);
+		dao.insertFile(boardfiledtolist);
 		return 0;
 	}
 
-	@Override
-	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
-		// TODO Auto-generated method stub
-		return dao.getFile(inputdata);
-	}
+//	@Override
+//	public BoardFileDTO getFile(BoardFileDTO inputdata) {
+//		// TODO Auto-generated method stub
+//		return /*dao.getFile(inputdata);*/ null;
+//	}
+//
+//	@Override
+//	public List<BoardFileDTO> getFileList(String notice_no) {
+//		return dao.getFileList(notice_no);
+//	}
+
 }
