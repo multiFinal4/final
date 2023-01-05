@@ -18,9 +18,7 @@
 	  	$(document).ready(function () {
 	  		// 탑메뉴 페이지 포커싱 처리
 		  	$(".navLeft ul").children("li").eq(page).children("a").addClass("active");
-		    $(document).scroll(function () {
-		        alert("어쭈구리");
-		    });
+		  
 		});
 	  </script>
 	</head>
@@ -35,7 +33,7 @@
 						<li><a class="nav-link" href="/evweb/monitoring">충전소현황</a></li>
 						<li><a class="nav-link" href="/evweb/service">고객센터</a></li>
 						<li><a class="nav-link" href="/evweb/admin">관리자</a></li>
-			          	<li><a class="nav-link" href="/evweb/mypage">MYPAGE</a></li>
+			          	<li><a class="nav-link" href="/evweb/customer/read.do">MYPAGE</a></li>
 					</ul>
 				</div>
 				<div class="navRight">
