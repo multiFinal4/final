@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.file.BoardFileDTO;
+
 @Repository
 public class NoticeDAOImpl implements NoticeDAO {
 	
@@ -62,18 +64,20 @@ public class NoticeDAOImpl implements NoticeDAO {
 	}
 
 	@Override
-	public int insertFile(List<NoticeFileDTO> boardfiledtolist) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert("com.project.notice.fileinsert", boardfiledtolist);
+	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
+		return sqlSession.insert("com.project.notice.notice_fileinsert", boardfiledtolist);
 	}
 
-	@Override
-	public List<NoticeFileDTO> getFileList(String notice_no) {
-		return sqlSession.selectList("com.project.notice.fileselect", notice_no);
-	}
 
-	@Override
-	public NoticeFileDTO getFile(NoticeFileDTO inputdata) {
-		return sqlSession.selectOne("com.project.notice.getfileinfo", inputdata);
-	}
+//	@Override
+//	public List<BoardFileDTO> getFileList(String notice_no) {
+//		return sqlSession.selectList("com.project.notice.fileselect", notice_no);
+//	}
+//
+//	@Override
+//	public BoardFileDTO getFile(String inputdata) {
+//		return sqlSession.selectOne("com.project.notice.getfileinfo", inputdata);
+//
+//	}
+
 }

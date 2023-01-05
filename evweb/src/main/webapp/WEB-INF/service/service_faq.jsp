@@ -28,9 +28,10 @@
 
 			<table align="center" border="0" width="700">
 				<tr bgcolor="#FFFFFF">
-					<th>글번호(임시)</th>
+					<th></th>
 					<th>제목</th>
 					<th>내용</th>
+					<th>수정</th>
 					<th>삭제</th>
 				</tr>
 				<%
@@ -38,10 +39,11 @@
 					FaqDTO faq = faqlist.get(i);
 				%>
 				<tr>
-					<td><%=faq.get_id()%></td>
+					<td>▶</td>
 					<td><a
 						href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
 					<td><%=faq.getcontent()%></td>
+					<td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
 					<td><a href="mybatisDel.do?_id=<%=faq.get_id()%>">삭제</a></td>
 				</tr>
 				<%
@@ -50,10 +52,9 @@
 				<tr></tr>
 				<tr align="center">
 					<td colspan="10"><a href="/evweb/faq/paginglist?pageNo=0">1</a>
-						<a href="/evweb/faq/paginglist?pageNo=1">2</a>
-						<a href="/evweb/faq/paginglist?pageNo=2">3</a>
-						<a href="/evweb/faq/paginglist?pageNo=3">4</a>
-						</td>
+						<a href="/evweb/faq/paginglist?pageNo=1">2</a> <a
+						href="/evweb/faq/paginglist?pageNo=2">3</a> <a
+						href="/evweb/faq/paginglist?pageNo=3">4</a></td>
 				</tr>
 			</table>
 		</div>
