@@ -119,5 +119,23 @@ public class ManagerController {
 	@ResponseBody
 	public boolean idcheak(String manager_id) {
 		return service.idCheck(manager_id); 
+	
+	}
+	@RequestMapping("/customerRead.do")
+	public String customerread(String customer_id,String read,Model model) {
+		CustomerDTO customerinfo = customerservice.getCustomerInfo(customer_id);
+		String view = "";
+		if(read.equals("READ")) {
+			view  = "admin_customer_read";
+		}else if(read.equals("UPDATE")) {
+			view  = "admin_customer_update";
+		}
+		model.addAttribute("customerinfo", customerinfo);
+		return view;
+	}
+	@RequestMapping("/change.do")
+	public String cusToMgr(ManagerDTO manager, Model model) {
+		service.register(manager);
+		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 }

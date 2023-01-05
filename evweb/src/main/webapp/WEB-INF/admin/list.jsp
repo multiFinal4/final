@@ -73,8 +73,8 @@
 	                    		<td>${customerlist.email}</td>
 	                    		<td>${customerlist.state}</td>
 	                    		<td>일반 사용자</td>
-	                    		<td><button class="btn btn-primary rounded-pill" style = "line-height: 1.0 " onclick="location.href='/evweb/customer/customer/read.do?manager_id=${customerlist.customer_id}&read=READ'">상세</button></td>
-	                    		<td><button class="btn btn-primary rounded-pill" style = "line-height: 1.0 " onclick="location.href='/evweb/customer/customer/delete.do?manager_id=${customerlist.customer_id}'">탈퇴</button></td>
+	                    		<td><button class="btn btn-primary rounded-pill" style = "line-height: 1.0 " onclick="location.href='/evweb/manager/customerRead.do?customer_id=${customerlist.customer_id}&read=READ'">상세</button></td>
+	                    		<td><button class="btn btn-primary rounded-pill" style = "line-height: 1.0 " onclick="location.href='/evweb/customer/customer/delete.do?customer_id=${customerlist.customer_id}'">탈퇴</button></td>
 	                  	</tr>
                  	</c:forEach>
                 </tbody>
