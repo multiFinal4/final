@@ -54,5 +54,11 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/admin/admin_service_reply_read.jsp"></put-attribute>
 	</definition>
+	<definition name="admin_customer_read" extends="admin">   
+		<put-attribute name="content" value="/WEB-INF/admin/admin_customer_read.jsp"></put-attribute>
+	</definition>
+	<definition name="admin_customer_update" extends="admin">   
+		<put-attribute name="content" value="/WEB-INF/admin/admin_customer_update.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>
 

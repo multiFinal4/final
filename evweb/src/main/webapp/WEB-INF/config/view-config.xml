@@ -13,4 +13,6 @@
 	<view-controller path="/service/notice" view-name="service"/>
 	<!-- faq -->
 	<view-controller path="/service/faq" view-name="service_faq"/>
+	<view-controller path="/monitering/weather" view-name="weather"/>
+	
 </beans:beans>
