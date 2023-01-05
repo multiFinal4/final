@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.charger">
+<!-- <typeAlias type="com.project.charger.ChargerDTO" alias="charger"/>  -->
+
+	<select id="chargerlist" resultType="charger">
+		select c.* from station_tb s, charger_tb c where s.station_id=c.station_id
+	</select>
+	
+</mapper>

@@ -7,6 +7,8 @@
 		<typeAlias type="com.project.station.StationDTO" alias="station"/>
 		<typeAlias type="com.project.manager.ManagerDTO" alias="manager"/>
 		<typeAlias type="com.project.file.BoardFileDTO" alias="file"/> 
+		<typeAlias type="com.project.notice.NoticeDTO" alias="notice"/> 
+		<typeAlias type="com.project.charger.ChargerDTO" alias="charger"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -14,6 +16,8 @@
 		<mapper resource="mapper/ServiceReply_TB.xml"/>
 		<mapper resource="mapper/chargeStation.xml"/>
 		<mapper resource="mapper/login.xml"/>
-		<mapper resource="mapper/file.xml"/>
+		<mapper resource="mapper/file.xml"/> 
+		<mapper resource="mapper/faqboard.xml"/> 
+		<mapper resource="mapper/charger.xml"/> 
 	</mappers>
 </configuration>

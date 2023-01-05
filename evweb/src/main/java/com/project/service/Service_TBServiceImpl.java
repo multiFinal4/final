@@ -15,7 +15,13 @@ public class Service_TBServiceImpl implements Service_TBService {
 		this.dao = dao;
 	}
 	
-	// 게시글등록
+	// 게시글등록 - 첨부파일 없이
+	@Override
+	public int insert(Service_TBDTO board) {
+		return dao.insert(board);
+	}
+
+	// 게시글+첨부파일 등록
 	// => 게시글기본정보 저장, 첨부된 파일에 대한 정보 저장. 
 	// dao클래스에 정의된 글등록, 파일등록 두 개의 기능을 각각 실행(메소드 둘 다 호출)
 	@Override
@@ -44,6 +50,14 @@ public class Service_TBServiceImpl implements Service_TBService {
 	public int delete(String board_no) {
 		return dao.delete(board_no);
 	}
+	@Override
+	public int delete_file(String board_no) {  //게시글 삭제 전 파일삭제
+		return dao.delete_file(board_no);
+	}
+	@Override
+	public int delete_reply(String board_no) {  //게시글 삭제 전 댓글삭제
+		return dao.delete_reply(board_no);
+	}
 
 	@Override
 	public List<Service_TBDTO> search(String tag, String data) {
@@ -68,7 +82,6 @@ public class Service_TBServiceImpl implements Service_TBService {
 	public int updateState(String board_no) {
 		return dao.updateState(board_no);
 	}
-
 
 }
 
