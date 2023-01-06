@@ -20,13 +20,13 @@
 				<div class="row mb-3">
 					<label for="customer_name" class="col-sm-2 col-form-label"> 이름 </label>
 					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="manager_name" value="${customerinfo.customer_name}" readonly="readonly">
+					  <input type="text" class="form-control" name="manager_name" value="${customerinfo.name}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="customer_pass" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="manager_pass" value="${customerinfo.customer_pass}" readonly="readonly">
+					  <input type="text" class="form-control" name="manager_pass" value="${customerinfo.pass}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -76,7 +76,7 @@
 						</div>
 						<label for="inputText" class="col-sm-2 col-form-label">(예시 : 2022-12-17)</label>
 					</div>
-					<input name="state" class="form-control" type="hidden" value="정상">
+					<input name="state" class="form-control" type="hidden" value="재직">
 				<div class="text-center">
 					<div class="">
 							<button type="submit" class="btn btn-primary">완료</button>

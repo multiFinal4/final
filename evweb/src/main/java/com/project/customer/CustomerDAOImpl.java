@@ -98,4 +98,9 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	}
 
+	@Override
+	public int change(String customer_id) {
+		
+		return sqlsession.delete("com.project.customer.change", customer_id);
+	}
 }

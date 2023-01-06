@@ -6,7 +6,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,20 +33,20 @@ public class WeatherController {
 	public String WeathergetData(StationDTO station, Model model) throws IOException{
 	        String base_date = getDate(); // 발표 날짜 
 	        String base_time = getTime(); // 발표 시간
-	        station.setStation_id("STN1085");
+	        station.setStation_id("BNJG3401");
 	        StationDTO stationInfo = stationservice.read(station.getStation_id()); //충전소 위치 정보 받아오기
 	        String code = "1"; // 0 (격자->위경도), 1 (위경도->격자)
-	        //String location_no = stationInfo.getMap_code(); //지역구분 상세
-	        String location_name = stationInfo.getAddr_sigun()+stationInfo.getAddr_detail(); // 주소 시군구+읍면동
+	        String location_no = stationInfo.getMap_code(); //지역구분 상세
+	        String location_name = stationInfo.getAddr_sigun()+" "+stationInfo.getAddr_detail(); // 주소 시군구+읍면동
 	        //위경도 -> 격자값 변환 127.08453333333333	37.535738888888886
 
-	        String[] nxny = change.changenxny(new String[]{"", code, "127.08453333333333"/*stationInfo.getMap_longtude()*/,"37.535738888888886" /*stationInfo.getMap_latitude()*/});
+	        String[] nxny = change.changenxny(new String[]{"", code, stationInfo.getMap_longtude(),stationInfo.getMap_latitude()});
 	       	String nx = nxny[0];	/*예보지점의 X 좌표값*/
 	       	String ny = nxny[1]; 	/*예보지점의 Y 좌표값*/
 	        WeatherAPIDTO dto = new WeatherAPIDTO(base_date, base_time, nx, ny);
 	        //api호출, json값 받음
 	        String result = pull.getAPIData(dto);
-			List<WeatherDTO> weatherList = pull.DataSave(result, /*location_no*/"00", location_name);
+			List<WeatherDTO> weatherList = pull.DataSave(result, location_no, location_name);
 			for (int i = 0; i < weatherList.size(); i++) {
 				weatherService.insert(weatherList.get(i));
 				System.out.println(weatherList.get(i));
@@ -83,11 +82,11 @@ public class WeatherController {
         }else if(Integer.parseInt(formatedNow)>1110) {
         	baseTime = "1100";
         }else if(Integer.parseInt(formatedNow)>810) {
-        	baseTime = "800";
+        	baseTime = "0800";
         }else if(Integer.parseInt(formatedNow)>510) {
-        	baseTime = "500";
+        	baseTime = "0500";
         }else if(Integer.parseInt(formatedNow)>210) {
-        	baseTime = "200";
+        	baseTime = "0200";
         }else {
         	baseTime = "2300";
         }
