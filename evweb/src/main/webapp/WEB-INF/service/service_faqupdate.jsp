@@ -38,15 +38,16 @@
 					<div class="col-sm-3">
 						<input type="text" id="title" name="title" placeholder="title"
 							class="form-control"   value="<%=dto.gettitle() %>">
+
 					</div>
 				</div>
-				
 				<div class="form-group">
 					<!-- FAQ 내용-->
 					<label class="control-label col-sm-2" for="orgloc">FAQ 내용</label>
 					<div class="col-sm-3">
 						<input type="text" id="content" name="content" placeholder=content
 							class="form-control"   value="<%=dto.getcontent() %>">
+
 					</div>
 				</div>
 	
@@ -54,6 +55,7 @@
 					<!-- Button -->
 					<div class="col-sm-3 col-sm-offset-2">
 						<input type="submit" value="수정하기" class="btn btn-success" />
+
 					</div>
 				</div>
 			</fieldset>

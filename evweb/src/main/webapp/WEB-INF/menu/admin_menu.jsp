@@ -46,6 +46,18 @@
                     <span>회원 관리</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/admin_notice.do">
+                    <i class="bi bi-journal-text"></i>
+                    <span>공지사항</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/admin_faq.do?pageNo=0">
+                    <i class="bi bi-journal-text"></i>
+                    <span>FAQ</span>
+                    </a>
+                </li>
             </ul>
         </aside>
     </body>
