@@ -3,10 +3,14 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-	<definition name="loginTemplate" template="/WEB-INF/login/login.jsp">
-	</definition>
-	<definition name="login" extends="loginTemplate">
-	</definition>
+	<definition name="loginTemplate" template="/WEB-INF/login/login.jsp"></definition>
+	<definition name="login" extends="loginTemplate"></definition>
+	
+	<definition name="idpassfindTemplate" template="/WEB-INF/login/idpassfind.jsp"></definition>	
+	<definition name="login/idpassfind" extends="idpassfindTemplate"></definition>
+	
+	<definition name="resultTemplate" template="/WEB-INF/login/result.jsp"></definition>
+	<definition name="login/result" extends="resultTemplate"></definition>
 </tiles-definitions>
 
 

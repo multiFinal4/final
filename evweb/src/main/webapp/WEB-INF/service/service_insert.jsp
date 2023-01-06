@@ -9,7 +9,8 @@
 <title>service</title>
 </head>
 <body>
-	<div class="col-lg-8">  <!-- 가로범위 -->
+	<div class="col-lg-8">
+		<!-- 가로범위 -->
 		<div class="card-body">
 			<h5 class="card-title">
 				<strong>1:1 문의글 작성하기</strong>
@@ -18,12 +19,13 @@
 			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
 
 			<!-- General Form Elements -->
-			<form action="/evweb/service/write.do" method="post">
+			<form action="/evweb/service/write.do" method="post"
+				enctype="multipart/form-data">
 				<div class="row mb-3">
 					<label class="col-sm-2 col-form-label">카테고리</label>
 					<div class="col-sm-10">
-						<select class="form-select" name="board_category" aria-label="Default select example">
-							<option selected="">선택하세요.</option>
+						<select class="form-select" name="board_category"
+							aria-label="Default select example">
 							<option value="계정문의">계정문의</option>
 							<option value="사이트오류접수">사이트 오류접수</option>
 							<option value="기타">기타</option>
@@ -48,26 +50,30 @@
 				<div class="row mb-3">
 					<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
 					<div class="col-sm-10">
-						<textarea class="form-control" style="height: 300px" name="board_content"></textarea>
+						<textarea class="form-control" style="height: 300px"
+							name="board_content"></textarea>
 					</div>
 				</div>
 
 				<div class="row mb-3">
-					<label for="inputNumber" class="col-sm-2 col-form-label">파일첨부</label>
+					<label class="col-sm-2 col-form-label">파일첨부</label>
 					<div class="col-sm-10">
-						<input class="form-control" type="file" id="formFile" multiple="multiple">
+						<input class="form-control" type="file" id="files" name="files"
+							multiple="multiple">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="inputNumber" class="col-sm-2 col-form-label"></label>
+					<label class="col-sm-2 col-form-label"></label>
 					<div class="col-sm-10">
-						<input class="form-control" type="file" id="formFile">
+						<input class="form-control" type="file" id="files" name="files"
+							multiple="multiple">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="inputNumber" class="col-sm-2 col-form-label"></label>
+					<label class="col-sm-2 col-form-label"></label>
 					<div class="col-sm-10">
-						<input class="form-control" type="file" id="formFile">
+						<input class="form-control" type="file" id="files" name="files"
+							multiple="multiple">
 					</div>
 				</div>
 

@@ -3,18 +3,26 @@ package com.project.customer;
 import java.util.List;
 
 public interface CustomerDAO {
-	// È¸¿ø°¡ÀÔ
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int register(CustomerDTO dto);
-	//È¸¿ø¸ñ·Ïº¸±â
+	//È¸ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½
 	List<CustomerDTO> customerList();
-	//È¸¿ø ¼öÁ¤
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int update(CustomerDTO dto);
-	//È¸¿ø »èÁ¦
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	int delete(String customer_id);
-	//id Áßº¹ Ã¼Å©
+	//id ï¿½ßºï¿½ Ã¼Å©
 	boolean idCheck(String customer_id);
-	//mypage¿¡¼­ È¸¿øÁ¤º¸ Á¶È¸
+	//mypageï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	public CustomerDTO getCustomerInfo(String customer_id);
-	
+	//íšŒì›ëª©ë¡ page listë¥¼ ìœ„í•œ ë©”ì†Œë“œ
+	List<CustomerDTO> findByState(String state); 
+	List<CustomerDTO> findListByState(String state,String remainNo, String name);
+	List<CustomerDTO> customerList(String remainNo, String name);
+	//search
+	List<CustomerDTO> findByName(String state,String name); 
+	//ê´€ë¦¬ìì „í™˜
+	int change(String customer_id);
+	int realdelete(String customer_id);
 }
 

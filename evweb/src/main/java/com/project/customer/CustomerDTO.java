@@ -9,18 +9,18 @@ public class CustomerDTO {
 	private String name;
 	private String customer_addr;
 	private String email;
-	private Date birth;
 	private Date insertdate;
-	private String state;
+	private Date birth;
 	private String ps_question;
 	private String ps_answer;
-	
+	private String state;
+
 	public CustomerDTO() {
-		
+
 	}
 
-	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr, String email,
-			Date birth, Date insertdate, String state, String ps_question, String ps_answer) {
+	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr,
+			String email, Date insertdate, Date birth, String ps_question, String ps_answer, String state) {
 		super();
 		this.customer_id = customer_id;
 		this.pass = pass;
@@ -28,18 +28,19 @@ public class CustomerDTO {
 		this.name = name;
 		this.customer_addr = customer_addr;
 		this.email = email;
-		this.birth = birth;
 		this.insertdate = insertdate;
-		this.state = state;
+		this.birth = birth;
 		this.ps_question = ps_question;
 		this.ps_answer = ps_answer;
+		this.state = state;
 	}
 
 	@Override
 	public String toString() {
 		return "CustomerDTO [customer_id=" + customer_id + ", pass=" + pass + ", phone_no=" + phone_no + ", name="
-				+ name + ", addr=" + customer_addr + ", email=" + email + ", birth=" + birth + ", insertdate=" + insertdate
-				+ ", state=" + state + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer + "]";
+				+ name + ", customer_addr=" + customer_addr + ", email=" + email + ", insertdate=" + insertdate
+				+ ", birth=" + birth + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer + ", state=" + state
+				+ "]";
 	}
 
 	public String getCustomer_id() {
@@ -90,14 +91,6 @@ public class CustomerDTO {
 		this.email = email;
 	}
 
-	public Date getBirth() {
-		return birth;
-	}
-
-	public void setBirth(Date birth) {
-		this.birth = birth;
-	}
-
 	public Date getInsertdate() {
 		return insertdate;
 	}
@@ -106,12 +99,12 @@ public class CustomerDTO {
 		this.insertdate = insertdate;
 	}
 
-	public String getState() {
-		return state;
+	public Date getBirth() {
+		return birth;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 
 	public String getPs_question() {
@@ -129,10 +122,20 @@ public class CustomerDTO {
 	public void setPs_answer(String ps_answer) {
 		this.ps_answer = ps_answer;
 	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
 	
 	
+
+	
+	
+
 	
 	
 }
-
-

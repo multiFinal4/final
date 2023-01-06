@@ -4,15 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-	<definition name="service_notice" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_insert.jsp"></put-attribute>
-	</definition>
-	<!-- 템플릿 등록 -->
-	
-	
-	<!-- 서브페이지  -->
-	
 	<!-- 고객센터 추가 -->
 	<!-- 공지사항 -->
 	<definition name="service_notice" extends="subTemplate"> 
@@ -52,4 +43,14 @@
 		<put-attribute name="content" value="/WEB-INF/service/service_faqupdate.jsp"></put-attribute>
 	</definition>
 
+	<!-- 공지사항 글작성 -->
+	<definition name="Notice/writepage" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_notice_insert.jsp"></put-attribute>
+	</definition>
+	<!-- 글등록성공 -->
+	<definition name="insertok" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_insertok.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

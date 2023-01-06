@@ -1,6 +1,9 @@
 package com.project.service;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class Service_TBDTO {
 	private String board_no;
@@ -10,6 +13,7 @@ public class Service_TBDTO {
 	private String board_content;
 	private Date board_date;
 	private String board_state;
+	private List<MultipartFile> files;
 	
 	public Service_TBDTO() {}
 	
@@ -24,13 +28,25 @@ public class Service_TBDTO {
 		this.board_date = board_date;
 		this.board_state = board_state;
 	}
-
 	
+	public Service_TBDTO(String board_no, String manager_id, String board_category, String board_title,
+			String board_content, Date board_date, String board_state, List<MultipartFile> files) {
+		super();
+		this.board_no = board_no;
+		this.manager_id = manager_id;
+		this.board_category = board_category;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_date = board_date;
+		this.board_state = board_state;
+		this.files = files;
+	}
+
 	@Override
 	public String toString() {
 		return "Service_TBDTO [board_no=" + board_no + ", manager_id=" + manager_id + ", board_category="
 				+ board_category + ", board_title=" + board_title + ", board_content=" + board_content + ", board_date="
-				+ board_date + ", board_state=" + board_state + "]";
+				+ board_date + ", board_state=" + board_state + ", files=" + files + "]";
 	}
 
 	public String getBoard_no() {
@@ -74,6 +90,12 @@ public class Service_TBDTO {
 	}
 	public void setBoard_state(String board_state) {
 		this.board_state = board_state;
+	}
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
 	}
 	
 	

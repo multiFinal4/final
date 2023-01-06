@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.project.file.BoardFileDTO;
 @Service
 public class Service_TBServiceImpl implements Service_TBService {
 	Service_TBDAO dao;
@@ -12,10 +14,21 @@ public class Service_TBServiceImpl implements Service_TBService {
 		super();
 		this.dao = dao;
 	}
-
+	
+	// 게시글등록 - 첨부파일 없이
 	@Override
 	public int insert(Service_TBDTO board) {
 		return dao.insert(board);
+	}
+
+	// 게시글+첨부파일 등록
+	// => 게시글기본정보 저장, 첨부된 파일에 대한 정보 저장. 
+	// dao클래스에 정의된 글등록, 파일등록 두 개의 기능을 각각 실행(메소드 둘 다 호출)
+	@Override
+	public int insert(Service_TBDTO board, List<BoardFileDTO> boardfiledtolist) {
+		dao.insert(board);
+		dao.insertFile(boardfiledtolist);
+		return 0;
 	}
 
 	@Override
@@ -25,7 +38,6 @@ public class Service_TBServiceImpl implements Service_TBService {
 
 	@Override
 	public Service_TBDTO getBoardInfo(String board_no) {
-		System.out.println("서비스임플 보드넘버~~~> "+board_no);
 		return dao.getBoardInfo(board_no);
 	}
 
@@ -37,6 +49,14 @@ public class Service_TBServiceImpl implements Service_TBService {
 	@Override
 	public int delete(String board_no) {
 		return dao.delete(board_no);
+	}
+	@Override
+	public int delete_file(String board_no) {  //게시글 삭제 전 파일삭제
+		return dao.delete_file(board_no);
+	}
+	@Override
+	public int delete_reply(String board_no) {  //게시글 삭제 전 댓글삭제
+		return dao.delete_reply(board_no);
 	}
 
 	@Override
@@ -55,6 +75,12 @@ public class Service_TBServiceImpl implements Service_TBService {
 			}
 		}
 		return list;
+	}
+	
+	//1:1문의 글에 답변달리면 state -> '대기'에서 '완료'상태로 변경하기
+	@Override
+	public int updateState(String board_no) {
+		return dao.updateState(board_no);
 	}
 
 }

@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/manager/list.do?type=all">
+                    <a class="nav-link collapsed" href="/evweb/manager/list.do?type=all&pageNo=1&name=">
                     <i class="bi bi-card-list"></i>
                     <span>회원 관리</span>
                     </a>

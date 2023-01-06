@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.customer">
+	<insert id="register" parameterType="customer"> 
+		insert into customer_tb values(
+		#{customer_id},#{pass},
+		#{phone_no},#{name},#{customer_addr},#{email},sysdate,
+		#{birth,jdbcType=DATE},#{ps_question},#{ps_answer},#{state} 
+		)
+	</insert>
+	
+	<update id="update" parameterType="customer">
+		 update customer_tb set pass = #{pass}, phone_no = #{phone_no}, customer_addr = #{customer_addr}, email = #{email} 
+		 where customer_id = #{customer_id}
+	 </update>
+	 
+	<!-- 마이페이지 -->
+	<select id="read" resultType="customer" parameterType="String"> 
+		select * from customer_tb where customer_id = #{customer_id} 
+	</select>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="idcheak" resultType="int" parameterType="String"> 
+		select count(customer_id) from customer_tb where customer_id = #{customer_id} 
+	</select>
+	
+	<select id="list" resultType="customer"> 
+		select * from customer_tb where state != '관리자'
+	</select>
+	
+	<update id="delete" parameterType="String"> 
+		update customer_tb set state = '회원탈퇴' where customer_id = #{customer_id} 
+	</update>
+
+	<select id="findbystate" parameterType="String" resultType="customer">
+		select * from customer_tb
+		where state = #{state}
+	</select>
+	<select id="selectall" resultType="customer" parameterType="Map">
+		select *
+				from(select ROWNUM rn, ct.*
+				        FROM (select * from customer_tb where state !='관리자') ct)
+		<where>
+			<if test='remainNo lte 7'>
+				rn BETWEEN 1 AND #{remainNo} 
+				and name like '%' || #{name} || '%' 
+			</if>
+			<if test='remainNo gt 7'>
+				rn BETWEEN #{remainNo}-6 AND #{remainNo}
+				and name like '%' || #{name} || '%' 
+			</if>
+		</where>
+	</select>
+	<select id="stateSelect" resultType="customer" parameterType="Map">
+		select *
+				from(select ROWNUM rn, ct.*
+				        FROM (select * from customer_tb where state= #{state}) ct)
+		<where>
+			<if test='remainNo lte 7'>
+				rn BETWEEN 1 AND #{remainNo} 
+				and name like '%' || #{name} || '%' 
+			</if>
+			<if test='remainNo gt 7'>
+				rn BETWEEN #{remainNo}-6 AND #{remainNo}
+				and name like '%' || #{name} || '%' 
+			</if>
+		</where>
+	</select>
+	<select id="findbyname" parameterType="Map" resultType="customer">
+		select * from customer_tb 
+		<where>
+			<if test="state == 'all'">
+				name like '%' || #{name} || '%' 
+				and state != '관리자'
+			</if>
+			<if test="state == '정상'">
+				state = '정상' and name like '%' || #{name} || '%' 
+			</if>
+			<if test="state == '불러오지마'">
+				state = '불러오지마'  
+			</if>
+		</where>
+	</select>
+	<update id="change" parameterType="String"> 
+		update customer_tb set state = '관리자' where customer_id = #{customer_id} 
+	</update>
+	<delete id="realdelete">
+		delete customer_tb
+		where customer_id = #{customer_id}
+	</delete>
+</mapper>

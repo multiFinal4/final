@@ -7,6 +7,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.project.file.BoardFileDTO;
 @Repository
 public class Service_TBDAOImpl implements Service_TBDAO {
 	SqlSession sqlSession;
@@ -40,6 +42,14 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	public int delete(String board_no) {
 		return sqlSession.delete("com.project.service.delete",board_no);
 	}
+	@Override
+	public int delete_file(String board_no) {
+		return sqlSession.delete("com.project.service.delete_file", board_no);
+	}
+	@Override
+	public int delete_reply(String board_no) {
+		return sqlSession.delete("com.project.service.delete_reply", board_no);
+	}
 
 	@Override
 	public List<Service_TBDTO> search(String tag, String data) {
@@ -54,5 +64,20 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 		return sqlSession.selectList("com.project.service.categorySelect", 
 				board_category);
 	}
+
+	//1:1문의 글에 답변달리면 state -> '대기'에서 '완료'상태로 변경하기
+	@Override
+	public int updateState(String board_no) {
+		return sqlSession.update("com.project.service.updateState", board_no);
+	}
+	
+	//---------------------첨부파일-----------------------
+	//첨부파일 등록
+	@Override
+	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
+		return sqlSession.insert("com.project.service.fileinsert", boardfiledtolist);
+	}
+
+
 
 }
