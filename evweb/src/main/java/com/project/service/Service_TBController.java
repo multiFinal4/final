@@ -52,8 +52,8 @@ public class Service_TBController {
 		// 3. 파일업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(files, path);
 		// 첨부파일없이 글 등록하면 500에러 해결하기 위해 if문 사용
-		//System.out.println("---------------1:1문의 boardfiledtolist-------------"+boardfiledtolist);
-		if(boardfiledtolist.equals(null)) {
+		System.out.println("---------------1:1문의 boardfiledtolist-------------"+boardfiledtolist);
+		if(boardfiledtolist.isEmpty()) {
 			service.insert(board);
 		}else {
 			// 업로드된 파일의 file_no의 값을 셋팅 - 1부터 1,2,3,4....첨부파일마지막번호
@@ -65,6 +65,7 @@ public class Service_TBController {
 			}
 			// 4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
 			service.insert(board, boardfiledtolist);
+			System.out.println(board);
 		}
 		return "redirect:/insertok.do";
 	}
