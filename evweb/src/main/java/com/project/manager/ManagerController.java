@@ -111,8 +111,13 @@ public class ManagerController {
 		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	@RequestMapping("/delete.do")
-	public String delete(String manager_id) {
-		service.delete(manager_id);
+	public String delete(String manager_id,String customer_id) {
+		if(manager_id!=null) {
+			service.delete(manager_id);
+		}
+		if(customer_id!=null) {
+			customerservice.delete(customer_id);
+		}
 		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
@@ -139,5 +144,10 @@ public class ManagerController {
 		service.register(manager);
 		customerservice.change(manager.getManager_id());
 		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
+	}
+	@RequestMapping("/realdelete.do")
+	public String realdelete(String manager_id) {
+		service.realdelete(manager_id);
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
 }

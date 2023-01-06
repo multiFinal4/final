@@ -14,5 +14,5 @@ public interface ManagerService {
 	int update(ManagerDTO manager);
 	List<ManagerDTO> findListByType(String type,String endNo,String name);
 	List<ManagerDTO> selectList(String endNo,String name);
-
+	int realdelete(String manager_id);
 }

@@ -24,7 +24,7 @@
 		<div>
 		<div >
 			<div class="card-body">
-				<h5 class="card-title">관리자 정보</h5>
+				<h1 class="pagetitle">마이페이지</h1>
 
 				<!-- General Form Elements -->
 				<form action="" method="post">
@@ -101,7 +101,7 @@
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1'" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
+							<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
 							<button type="button" onclick="location.href='/evweb/manager/read.do?&manager_id=${managerinfo.manager_id}&read=UPDATE'"
 							 class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
 							 <button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
@@ -152,7 +152,7 @@
 
 			$("#delBtn").click(function () {
 				$(".alertPop .modal").removeClass("show");
-				location.href='/evweb/manager/delete.do?manager_id=${managerinfo.manager_id}';
+				location.href='/evweb/manager/realdelete.do?manager_id=${managerinfo.manager_id}';
 			});
 		})
 	
