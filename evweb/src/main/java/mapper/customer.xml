@@ -79,10 +79,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="state == '정상'">
 				state = '정상' and name like '%' || #{name} || '%' 
 			</if>
+			<if test="state == '불러오지마'">
+				state = '불러오지마'  
+			</if>
 		</where>
 	</select>
 	<update id="change" parameterType="String"> 
 		update customer_tb set state = '관리자' where customer_id = #{customer_id} 
 	</update>
-
+	<delete id="realdelete">
+		delete customer_tb
+		where customer_id = #{customer_id}
+	</delete>
 </mapper>

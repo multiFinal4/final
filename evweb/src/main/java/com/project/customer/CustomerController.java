@@ -88,6 +88,11 @@ public class CustomerController {
 		return service.idCheck(customer_id); 
 	}
 	
+	@RequestMapping("/customer/realdelete.do")
+	public String realdelete(String customer_id) {
+		service.realdelete(customer_id);
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
+	}
 	
 	
 	

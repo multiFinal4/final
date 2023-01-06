@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h1 class="pagetitle">마이페이지</h1>
+		<h1 class="pagetitle">회원 정보</h1>
 		<div class="card-body">
 			<form action="" method="post">
 				<div class="row mb-3">
@@ -55,7 +55,8 @@
 				</div>
 				<div class="text-center">
 					<button type="button" onclick='location.href="/evweb/manager/customerRead.do?customer_id=${customerinfo.customer_id}&read=UPDATE"' class="btn btn-primary"><i class="bi bi-pencil-square"></i>관리자로 전환</button>
-					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>목록</button>
+					<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
+					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
 				</div>
 			</form>
 			</div>
@@ -94,7 +95,7 @@
 
 			$("#delBtn").click(function () {
 				$(".alertPop .modal").removeClass("show");
-				location.href='/evweb/login.do';
+				location.href='/evweb/customer/realdelete.do?customer_id=${customerinfo.customer_id}';
 			});
 		})
 	

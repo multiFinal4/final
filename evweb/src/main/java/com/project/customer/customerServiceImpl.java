@@ -88,4 +88,9 @@ public class customerServiceImpl implements customerService {
 		return dao.change(customer_id);
 	}
 
+	@Override
+	public int realdelete(String customer_id) {
+		
+		return dao.realdelete(customer_id);
+	}
 }

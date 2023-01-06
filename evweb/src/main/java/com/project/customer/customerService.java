@@ -22,4 +22,5 @@ public interface customerService {
 	List<CustomerDTO> findByName(String state,String name); 
 	//관리자전환
 	int change(String customer_id);
+	int realdelete(String customer_id);
 }

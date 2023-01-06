@@ -30,7 +30,10 @@
 		set state = '퇴사'
 		where manager_id = #{manager_id}
 	</update>
-	
+	<delete id="realdelete">
+		delete manager_tb
+		where manager_id = #{manager_id}
+	</delete>
 	
 	<select id="findbytype" parameterType="String" resultType="manager">
 		select * from manager_tb

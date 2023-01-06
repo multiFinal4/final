@@ -85,4 +85,8 @@ public class ManagerDAOImpl implements ManagerDAO {
 		map.put("name", name);
 		return sqlsession.selectList("com.project.manager.selectallName", map);
 	}
+	@Override
+	public int realdelete(String manager_id) {
+		return sqlsession.delete("com.project.manager.realdelete",manager_id);
+	}
 }
