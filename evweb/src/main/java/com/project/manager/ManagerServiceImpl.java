@@ -75,5 +75,9 @@ public class ManagerServiceImpl implements ManagerService {
 		return manager;
 	}
 
+	@Override
+	public int realdelete(String manager_id) {
+		return dao.realdelete(manager_id);
+	}
 	
 }

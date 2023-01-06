@@ -8,7 +8,7 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h1 class="pagetitle">마이페이지</h1>
+		<h1 class="pagetitle">관리자로 전환</h1>
 		<div class="card-body">
 			<form action="/evweb/manager/change.do" method="post">
 				<div class="row mb-3">
@@ -80,9 +80,7 @@
 				<div class="text-center">
 					<div class="">
 							<button type="submit" class="btn btn-primary">완료</button>
-						</div>
-						<div class="col-sm-3">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?type='all'&pageNo=1&name=" class="btn btn-primary">취소</button>
+							<button type="button" onclick="location.href='/evweb/manager/customerRead.do?customer_id=${customerinfo.customer_id}&read=READ'" class="btn btn-primary">취소</button>
 						</div>
 				</div>
 			</form>
