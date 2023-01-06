@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.project.customer.CustomerDTO;
 import com.project.manager.ManagerDTO;
 
 public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
@@ -14,13 +15,16 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
+		Object user;
 		HttpSession session = request.getSession(false);
 		if(session!=null) {
-			ManagerDTO user = (ManagerDTO) session.getAttribute("user");
+			user = session.getAttribute("user");
 			if(user==null) {
 				response.sendRedirect("/evweb/login.do");
 				return false;
 			}
+				
+			
 		}else {
 			response.sendRedirect("/evweb/login.do");
 			return false;
