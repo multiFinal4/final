@@ -43,7 +43,7 @@
 					<td><a
 						href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
 					<td><%=faq.getcontent()%></td>
-					<td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
+					<td><a href="/evweb/service/basickey=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
 					<td><a href="mybatisDel.do?_id=<%=faq.get_id()%>">삭제</a></td>
 				</tr>
 				<%

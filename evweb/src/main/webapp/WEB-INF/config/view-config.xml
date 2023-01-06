@@ -9,6 +9,10 @@
 	<!-- 필요에 따라 바꾸기 -->
 	<!-- <view-controller path="/json/view" view-name="etcview/json"/> -->
 	<view-controller path="/login/view" view-name="login/login"/>
+	
 	<!-- 공지사항 -->
 	<!-- faq -->
+	<view-controller path="/json/view" view-name="etcview/json"/>
+	<view-controller path="/ajax/view" view-name="etcview/ajax"/>
+	<view-controller path="/ajax/exam" view-name="etcview/ajaxexam"/>
 </beans:beans>
