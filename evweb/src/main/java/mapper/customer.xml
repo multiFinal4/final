@@ -42,13 +42,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="customer" parameterType="Map">
 		select *
 				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb ) ct)
+				        FROM (select * from customer_tb where state !='관리자') ct)
 		<where>
-			<if test='remainNo lte "7"'>
+			<if test='remainNo lte 7'>
 				rn BETWEEN 1 AND #{remainNo} 
 				and name like '%' || #{name} || '%' 
 			</if>
-			<if test='remainNo gt "7"'>
+			<if test='remainNo gt 7'>
 				rn BETWEEN #{remainNo}-6 AND #{remainNo}
 				and name like '%' || #{name} || '%' 
 			</if>
@@ -59,11 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				from(select ROWNUM rn, ct.*
 				        FROM (select * from customer_tb where state= #{state}) ct)
 		<where>
-			<if test='remainNo lte "7"'>
+			<if test='remainNo lte 7'>
 				rn BETWEEN 1 AND #{remainNo} 
 				and name like '%' || #{name} || '%' 
 			</if>
-			<if test='remainNo gt "7"'>
+			<if test='remainNo gt 7'>
 				rn BETWEEN #{remainNo}-6 AND #{remainNo}
 				and name like '%' || #{name} || '%' 
 			</if>
@@ -81,6 +81,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 	</select>
-
+	<update id="change" parameterType="String"> 
+		update customer_tb set state = '관리자' where customer_id = #{customer_id} 
+	</update>
 
 </mapper>

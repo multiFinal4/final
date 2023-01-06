@@ -82,5 +82,10 @@ public class customerServiceImpl implements customerService {
 	public List<CustomerDTO> findByName(String state, String name) {
 		return dao.findByName(state, name);
 	}
+	@Override
+	public int change(String customer_id) {
+		
+		return dao.change(customer_id);
+	}
 
 }

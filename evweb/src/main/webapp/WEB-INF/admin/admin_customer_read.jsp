@@ -10,7 +10,7 @@
 	<body>
 		<h1 class="pagetitle">마이페이지</h1>
 		<div class="card-body">
-			<form action="/evweb/manager/customerRead.do?customer_id=${customerinfo.customer_id}&state=UPDATE" method="post">
+			<form action="" method="post">
 				<div class="row mb-3">
 					<label for="customer_id" class="col-sm-2 col-form-label"> ID </label>
 					<div class="col-sm-5">
@@ -20,13 +20,13 @@
 				<div class="row mb-3">
 					<label for="customer_name" class="col-sm-2 col-form-label"> 이름 </label>
 					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_name" id="customer_name" value="${customerinfo.name}" readonly="readonly">
+					  <input type="text" class="form-control" name="name" id="customer_name" value="${customerinfo.name}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
 					<label for="customer_pass" class="col-sm-2 col-form-label">비밀번호</label>
 					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_pass" id="customer_pass" value="${customerinfo.pass}" readonly="readonly">
+					  <input type="text" class="form-control" name="pass" id="customer_pass" value="${customerinfo.pass}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -50,11 +50,11 @@
 				<div class="row mb-3">
 					<label for="customer_birth" class="col-sm-2 col-form-label">생년월일</label>
 					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_birth" id="customer_birth" value="${customerinfo.birth}" readonly="readonly">
+					  <input type="text" class="form-control" name="birth" id="customer_birth" value="${customerinfo.birth}" readonly="readonly">
 					</div>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>관리자로 전환</button>
+					<button type="button" onclick='location.href="/evweb/manager/customerRead.do?customer_id=${customerinfo.customer_id}&read=UPDATE"' class="btn btn-primary"><i class="bi bi-pencil-square"></i>관리자로 전환</button>
 					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>목록</button>
 				</div>
 			</form>

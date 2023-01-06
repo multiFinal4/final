@@ -20,4 +20,6 @@ public interface customerService {
 	List<CustomerDTO> findListByState(String state,String remainNo, String name);
 	List<CustomerDTO> customerList(String remainNo, String name);
 	List<CustomerDTO> findByName(String state,String name); 
+	//관리자전환
+	int change(String customer_id);
 }
