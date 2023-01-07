@@ -11,6 +11,7 @@
 <title>service</title>
 </head>
 <body>
+<!-- User View -->
 	<div>
 		<h1 class="pagetitle">자주 찾는 도움말</h1>
 		<hr>
@@ -24,7 +25,7 @@
 				<th></th>
 				<th>제목</th>
 				<th>내용</th>
-				<th>수정</th>
+				<!-- <th>수정</th> -->
 			</tr>
 			<%
 			for (int i = 0; i < size; i++) {
@@ -35,7 +36,7 @@
 				<td><a
 					href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
 				<td><%=faq.getcontent()%></td>
-				<td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
+				<%-- <td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td> --%>
 				<%-- <td><a href="mybatisDel.do?_id=<%=faq.get_id()%>">삭제</a></td> --%>
 			</tr>
 			<%
@@ -50,7 +51,7 @@
 			</tr>
 		</table>
 		<div class="nav navbar-nav">
-			<a href="/evweb/service/faqinsert" style="text-align: right;">글쓰기</a>
+			<!-- <a href="/evweb/service/faqinsert" style="text-align: right;">글쓰기</a> -->
 		</div>
 	</div>
 </body>

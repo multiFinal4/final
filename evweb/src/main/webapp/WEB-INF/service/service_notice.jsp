@@ -9,6 +9,7 @@
 <title>service</title>
 </head>
 <body>
+<!-- User View -->
 	<div>
 		<h1 class="pagetitle">공지사항</h1>
 		<br/>
@@ -30,8 +31,8 @@
 			</thead>
 		</table>
 	</div>
-	<div class="nav navbar-nav">
+	<!-- <div class="nav navbar-nav">
 		<a href="/evweb/service/noticeinsert" style="text-align: right;">글쓰기</a>
-	</div>
+	</div> -->
 </body>
 </html>

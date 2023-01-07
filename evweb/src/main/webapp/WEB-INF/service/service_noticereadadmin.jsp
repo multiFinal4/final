@@ -8,7 +8,7 @@
 <meta name="viewport" content="wmanager_idth=device-wmanager_idth, initial-scale=1">
 </head>
 <body>
-<!-- User View -->
+<!-- Admin View -->
 	<form class="form-horizontal"
 		action="/evweb/notice/read.do?state=UPDATE&notice_no=${notice.notice_no }"
 		method="post">
@@ -46,12 +46,12 @@
 				<br>
 				<div class="row mb-3">
 					<div class="col-sm-10" style="text-align: right;">
-					<%-- 	<button type="submit" class="btn btn-primary" 
-						onclick="location.href='/evweb/reply/write.do?board_no=${list.board_no}'">수정</button> --%>
+						<button type="submit" class="btn btn-primary" 
+						onclick="location.href='/evweb/reply/write.do?board_no=${list.board_no}'">수정</button>
 						<button type="button" class="btn btn-primary" 
 						onclick="location.href='/evweb/Notice/list.do'">목록</button>
-					<%-- 	<button type="button" class="btn btn-primary" 
-						onclick="location.href='/evweb/notice/delete.do?notice_no=${notice.notice_no }'">삭제</button> --%>
+						<button type="button" class="btn btn-primary" 
+						onclick="location.href='/evweb/notice/delete.do?notice_no=${notice.notice_no }'">삭제</button>
 					</div>
 				</div>
 			</div>

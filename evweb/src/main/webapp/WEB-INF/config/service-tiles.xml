@@ -10,18 +10,11 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_notice.jsp"></put-attribute>
 	</definition>
-	<definition name="service_noticeinsert" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_noticeinsert.jsp"></put-attribute>
-	</definition>
 	<definition name="service_noticeread" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_noticeread.jsp"></put-attribute>
 	</definition>
-	<definition name="service_noticeupdate" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_noticeupdate.jsp"></put-attribute>
-	</definition>
+	
 	
 	<!-- 1:1 문의하기 -->
 	<definition name="service_insert" extends="subTemplate"> 
@@ -34,20 +27,10 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_faq.jsp"></put-attribute>
 	</definition>
-		<definition name="service_faqinsert" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_faqinsert.jsp"></put-attribute>
-	</definition>
-		<definition name="service_faqupdate" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_faqupdate.jsp"></put-attribute>
-	</definition>
+
 
 	<!-- 공지사항 글작성 -->
-	<definition name="Notice/writepage" extends="subTemplate"> 
-		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_notice_insert.jsp"></put-attribute>
-	</definition>
+
 	<!-- 글등록성공 -->
 	<definition name="insertok" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
