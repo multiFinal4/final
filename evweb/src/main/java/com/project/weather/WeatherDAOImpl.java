@@ -15,18 +15,15 @@ public class WeatherDAOImpl implements WeatherDAO {
 	}
 	@Override
 	public int insert(WeatherDTO dto) {
-		System.out.println(dto);
 		return sqlSession.insert("com.project.weather.insert", dto);
 	}
 	@Override
-	public List<WeatherDTO> readList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<WeatherDTO> readList(String location_no) {
+		return sqlSession.selectList("com.project.weather.select",location_no);
 	}
 	@Override
-	public int delete(String day, String time) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int delete(String location_no) {
+		return sqlSession.delete("com.project.weather.delete",location_no);
 	}
 
 	

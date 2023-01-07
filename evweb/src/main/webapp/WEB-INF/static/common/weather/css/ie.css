@@ -1,0 +1,5 @@
+@charset "utf-8";
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+   .cmp-local-search-input [type='text'].input { height:100%;}
+   .cmp-dfs-slider.mode-table .dfs-tab-body .slide .daily .item-wrap .item li .wdic {transform: rotate(0deg);}
+}

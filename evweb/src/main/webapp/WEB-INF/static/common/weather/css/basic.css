@@ -1,16 +1,14 @@
-@charset "UTF-8";
+@charset "utf-8";
 
 /************************** 
     Font
 ***************************/
-
   
 /************************** 
     Reset
 ***************************/
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,div,figure,article,header,nav,footer,section,aside {margin:0;padding:0;box-sizing:border-box;word-break:keep-all;word-wrap:break-word;white-space:normal;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 body,input,textarea,select,button,table,th,td {font-family:'ns', sans-serif;font-size:13px;color:#000000;font-weight:400;line-height:1.25;letter-spacing:-0.02em;}
-html,body {height:20%;-webkit-overflow-scrolling:touch;}
 h1,h2,h3,h4,h5,h6 {font-weight:normal;}
 img,fieldset,iframe {border:0;vertical-align:top}
 img {max-width:100%;height:auto;width:100%;}
