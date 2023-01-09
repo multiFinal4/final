@@ -44,7 +44,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/weather/getData.do">
+                    <a class="nav-link collapsed" href="/evweb/weather/getlist.do">
                         <i class="bi bi-grid"></i>
                         <span>날씨</span>
                     </a>

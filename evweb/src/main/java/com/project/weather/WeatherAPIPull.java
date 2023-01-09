@@ -115,6 +115,18 @@ public class WeatherAPIPull {
 					weather.setPop((String)fcstValue);
 				}else if(category.equals("TMP")) {
 					weather.setTmp((String)fcstValue);
+				}else if(category.equals("PTY")) {
+					weather.setPty((String)fcstValue);
+				}else if(category.equals("PCP")) {
+					weather.setPcp((String)fcstValue);
+				}else if(category.equals("REH")) {
+					weather.setReh((String)fcstValue);
+				}else if(category.equals("SNO")) {
+					weather.setSno((String)fcstValue);
+				}else if(category.equals("VEC")) {
+					weather.setVec((String)fcstValue);
+				}else if(category.equals("WSD")) {
+					weather.setWsd((String)fcstValue);
 				}
 				// 출력
 				if (!day.equals(fcstDate.toString())) {

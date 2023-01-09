@@ -15,10 +15,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		Object user;
+	
 		HttpSession session = request.getSession(false);
 		if(session!=null) {
-			user = session.getAttribute("user");
+			Object user = session.getAttribute("user");
 			if(user==null) {
 				response.sendRedirect("/evweb/login.do");
 				return false;
