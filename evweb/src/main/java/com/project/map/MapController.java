@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.charger.ChargerService;
@@ -41,42 +43,13 @@ public class MapController {
 		mv.addObject("companyList", companyList);
 		return mv;
 	}
-//	
-//	@RequestMapping("/map/list")
-//	public ModelAndView list(String category, String endNo, String pageNo){
-//		ModelAndView mv = new ModelAndView("station/list");
-//		List<StationDTO> stationlist = service.stationList();
-//		
-//		int showList = 10; // 리스트 보여줄 갯수
-//		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
-//		List<StationDTO> stationlistPage = service.stationListCate(category, endNo);
-//		int endPage = 0; // 페이징 넘버 유동적으로 
-//		if (category.equals("all")) {
-//			if (stationlist.size() <= showList) {
-//				endPage = 1;
-//			}else {
-//				endPage = (stationlist.size()/showList)+1;
-//			}
-//		}
-//		else {
-//			if (stationlistPage.size() <= showList) {
-//				endPage = 1;
-//			}else {
-//
-//				endPage = (stationlistPage.size()/showList)+1;
-//			}
-//		}
-//		List<StationDTO> companyList = service.companyList();
-//		
-//		mv.addObject("stationlistPage", stationlistPage);
-//		mv.addObject("stationlist", stationlist);
-//		mv.addObject("companyList", companyList);
-//		
-//		mv.addObject("category", category);
-//		mv.addObject("endPage", endPage);
-//		mv.addObject("pageNo", pageNo);
-//		
-//		return mv;
-//	}
-	
+
+	// ajax로 충전기정보 업데이트하기
+	@RequestMapping(value = "/ajax/mapStation", produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public StationDTO stationInfo(String stationId, Model model){
+		StationDTO stationInfo = stationService.read(stationId);
+		model.addAttribute("info", stationInfo);
+		return stationInfo;
+	}
 }

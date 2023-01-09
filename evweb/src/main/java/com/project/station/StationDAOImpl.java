@@ -34,6 +34,10 @@ public class StationDAOImpl implements StationDAO {
 		return sqlSession.selectList("com.project.station.selectall", endNo);
 	} 
 	@Override
+	public List<StationDTO> stationListCate(String category) {
+		return sqlSession.selectList("com.project.station.listCate", category);
+	}
+	@Override
 	public List<StationDTO> stationListCate(String category, String endNo) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("category", category);
