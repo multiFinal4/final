@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.charger.ChargerAPIPull;
@@ -55,4 +56,21 @@ public class MonitoringController {
 		
 		return mv;
 	}
+	
+	// ajax로 충전기정보 업데이트하기
+//	@RequestMapping(value = "/ajax/updateList", produces = "application/json;charset=utf-8")
+//	@ResponseBody
+//	public void stationUpdate() throws Exception {
+//		chargerService.deleteAll();
+//		service.deleteAll();
+//		// 충전소 업데이트
+//		for (StationDTO stationDTO : stationAPIPull.stationList()) {
+//			service.insert(stationDTO);
+//		}
+//		// 충전기 업데이트
+//		for (ChargerDTO chargerDTO : chargerAPIPull.chargerList()) {
+//			chargerService.insert(chargerDTO);
+//		}
+//
+//	}
 }

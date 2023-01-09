@@ -9,10 +9,6 @@ public class IndexController {
 	public String index() {
 		return "index";
 	}
-	@RequestMapping("/map")
-	public String mapPage() {
-		return "map";
-	}
 	@RequestMapping("/admin")
 	public String adminPage() {
 		return "admin";

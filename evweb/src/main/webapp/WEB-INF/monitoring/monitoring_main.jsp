@@ -16,6 +16,7 @@
 	<body>
 		<div class="monitoringMain row">
 			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
+			<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 	        <div class="col-lg-12 stationWrap dashboard">
 				<div class="row">
 					<div class="col-md-4 pd-left0">

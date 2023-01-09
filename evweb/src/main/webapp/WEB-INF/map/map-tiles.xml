@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<!-- Map -->
-	<definition name="map/map" extends="subTemplate"> 
+	<definition name="map/main" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/map_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/map/map.jsp"></put-attribute>
 	</definition>

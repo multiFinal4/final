@@ -514,6 +514,13 @@ a:hover{text-decoration:none;}
   font-weight: 600;
   color: #012970;
 }
+/* Map */
+.mapMarkerWrap{
+	position:absolute;
+	left:0;
+	top:0;
+	background-color:#fff;
+}
 /* monitoring */
 .monitoringMain .card{
 	margin-bottom:30px;
@@ -670,6 +677,38 @@ a:hover{text-decoration:none;}
 
 .search-form button i {
   color: #012970;
+}
+/* check/ Radio */
+.form-check{
+    box-sizing: border-box;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: .125rem;
+}
+.form-check-input {
+    width: 1em;
+    height: 1em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid rgba(0,0,0,.25);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    print-color-adjust: exact;
+}
+.form-check-input[type=checkbox] {
+    border-radius: 0.25em;
+}
+.form-check .form-check-input {
+    float: left;
+    margin-left: -1.5em;
 }
 
 /* modal */
