@@ -46,10 +46,12 @@ public class LoginController {
 		String viewName = "";
 		if (managerUser != null && !managerUser.getState().equals("퇴사")) {
 			HttpSession session = request.getSession();
+			System.out.println("로그인 성공");
 			session.setAttribute("user", managerUser);
 			viewName = "index";
-		} else if (customerUser != null && customerUser.getState().equals("정상")){
+		}else if(customerUser != null && customerUser.getState().equals("정상")){
 			HttpSession session = request.getSession();
+			System.out.println("로그인 성공");
 			session.setAttribute("user", customerUser);
 			viewName = "index";
 		}else {
