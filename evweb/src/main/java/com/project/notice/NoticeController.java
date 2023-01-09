@@ -63,7 +63,7 @@ public class NoticeController {
 
 		// 4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
 		service.insert(Notice, boardfiledtolist);
-		return "redirect:/Notice/list.do";
+		return "redirect:/admin_notice.do";
 	}
 
 
@@ -82,7 +82,7 @@ public class NoticeController {
 		return mav;
 	}
 
-	// 글 읽기
+	// User notice read
 	@RequestMapping("/notice/read.do")
 	public String read(String notice_no, String state, Model model) {
 		NoticeDTO notice = service.getNoticeInfo(notice_no);
@@ -91,6 +91,23 @@ public class NoticeController {
 		String view = "";
 		if (state.equals("READ")) {
 			view = "service_noticeread";
+		} else {
+			view = "service_noticeupdate";
+		}
+		model.addAttribute("notice", notice);
+		model.addAttribute("boardfiledtolist", boardfiledtolist);
+		return view;
+	}
+	
+	// admin notice read
+	@RequestMapping("/notice/readadmin.do")
+	public String read2(String notice_no, String state, Model model) {
+		NoticeDTO notice = service.getNoticeInfo(notice_no);
+		List<BoardFileDTO> boardfiledtolist = boardservice.getFileListNo(notice_no);
+		//System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
+		String view = "";
+		if (state.equals("READ")) {
+			view = "service_noticereadadmin";
 		} else {
 			view = "service_noticeupdate";
 		}
@@ -111,7 +128,7 @@ public class NoticeController {
 //			view = "redirect:/Notice/list.do?category=all";
 //		}
 		service.delete(notice_no);
-		view = "redirect:/Notice/list.do";
+		view = "redirect:/admin_notice.do";
 		return view;
 	}
 
@@ -120,7 +137,7 @@ public class NoticeController {
 	public String update(NoticeDTO noticeboard) {
 		System.out.println(noticeboard + "-----------업데이트---------------------");
 		service.update(noticeboard);
-		return "redirect:/Notice/list.do";
+		return "redirect:/admin_notice.do";
 	}
 
 	@RequestMapping("/notice/search.do")

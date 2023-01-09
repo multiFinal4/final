@@ -23,15 +23,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/service/write.do">
-                    <i class="bi bi-journal-text"></i>
-                    <span>1:1 문의하기</span>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link collapsed" href="/evweb/faq/paginglist?pageNo=0">
                     <i class="bi bi-grid"></i>
                     <span>FAQ</span>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/service/write.do">
+                    <i class="bi bi-journal-text"></i>
+                    <span>1:1 문의하기</span>
                     </a>
                 </li>
             </ul>

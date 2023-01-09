@@ -32,7 +32,7 @@ public class FaqController {
 	public String insert(FaqDTO document) {
 		//System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
-		return "redirect:/faq/paginglist?pageNo=0";
+		return "redirect:/admin_faq.do?pageNo=0";
 	}
 	//search
 	@RequestMapping(value="/faq/search",method=RequestMethod.GET)
