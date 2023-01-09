@@ -38,6 +38,10 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_faqinsert.jsp"></put-attribute>
 	</definition>
+		<definition name="service_faqupdate" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_faqupdate.jsp"></put-attribute>
+	</definition>
 
 	<!-- 공지사항 글작성 -->
 	<definition name="Notice/writepage" extends="subTemplate"> 

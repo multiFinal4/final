@@ -12,12 +12,4 @@
 	<!-- <select id="customerloginlogin" resultType="customer" parameterType="customer">
 		select * from customer_tb where customer_id = #{customer_id} and pass = #{pass} 
 	</select>	 -->
-	<!-- <select id="findid" resultType="customer" parameterType="customer">
-		select * from customer_tb where name = #{name} and phone_no = #{phone_no} 
-	</select>	
-	<select id="findpass" resultType="customer" parameterType="customer">
-		select * from customer_tb where customer_id = #{customer_id} and 
-			phone_no = #{phone_no} and ps_question = #{ps_question} and ps_answer = #{ps_answer}
-	</select>	 -->
-	
 </mapper>

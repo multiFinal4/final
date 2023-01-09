@@ -15,6 +15,17 @@ public class BoardFileDTO {
 		this.storeFilename = storeFilename;
 	}
 
+	
+	public BoardFileDTO(String category, String file_no, String originalFilename, String storeFilename,
+			String notice_no) {
+		super();
+		this.category = category;
+		this.file_no = file_no;
+		this.originalFilename = originalFilename;
+		this.storeFilename = storeFilename;
+		this.notice_no = notice_no;
+	}
+
 	public BoardFileDTO(String category, int board_no, String file_no, String originalFilename, String storeFilename,
 			String notice_no) {
 		super();

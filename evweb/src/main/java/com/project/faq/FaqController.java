@@ -30,7 +30,7 @@ public class FaqController {
 	//faq에 insert하기
 	@RequestMapping(value = "/service/faqinsert", method = RequestMethod.POST)
 	public String insert(FaqDTO document) {
-		System.out.println("컨트롤러:"+document);
+		//System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
 		return "redirect:/faq/paginglist?pageNo=0";
 	}
@@ -74,9 +74,16 @@ public class FaqController {
 	@RequestMapping("/faq/paginglist")
 	public ModelAndView pagemongolist(String pageNo) {
 		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
-		System.out.println(pageNo);
+		//System.out.println(pageNo);
 		return new ModelAndView("service_faq", "faqlist", faqlist);
 	}
+	@RequestMapping("/admin_faq.do")
+	public ModelAndView pagemongolist2(String pageNo) {
+		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		//System.out.println(pageNo);
+		return new ModelAndView("admin_faqlist", "faqlist", faqlist);
+	}
+	
 	
 	@RequestMapping(value = "/service/delete", method = RequestMethod.GET)
 	public String delete() {

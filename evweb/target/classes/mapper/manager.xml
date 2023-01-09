@@ -9,32 +9,6 @@
 			#{addr},#{email},#{type},#{company},#{position},#{hire_date,jdbcType=DATE},#{state}
 		)	
 	</insert>
-	<select id="selectall" resultType="manager" parameterType="String">
-		select *
-				from(select ROWNUM rn, mg.*
-				        FROM (select * from manager_tb ) mg)
-		<where>
-			<if test='_parameter == "7"'>
-				rn BETWEEN 1 AND #{endNo} 
-			</if>
-			<if test='_parameter != "7"'>
-				rn BETWEEN #{endNo}-6 AND #{endNo}
-			</if>
-		</where>
-	</select>
-	<select id="typeSelect" resultType="manager" parameterType="Map">
-		select *
-				from(select ROWNUM rn, mg.*
-				        FROM (select * from manager_tb where type= #{type}) mg)
-		<where>
-			<if test='endNo == "7"'>
-				rn BETWEEN 1 AND #{endNo} 
-			</if>
-			<if test='endNo != "7"'>
-				rn BETWEEN #{endNo}-6 AND #{endNo}
-			</if>
-		</where>
-	</select>
 	<update id="update" parameterType="manager">
 		update manager_tb
 		set manager_pass = #{manager_pass}, manager_name = #{manager_name}, phone_no = #{phone_no}, 

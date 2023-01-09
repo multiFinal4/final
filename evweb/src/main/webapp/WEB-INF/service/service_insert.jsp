@@ -11,10 +11,11 @@
 <body>
 	<div class="col-lg-8">
 		<!-- 가로범위 -->
-		<div class="card-body">
+		<div>
 			<h5 class="card-title">
 				<strong>1:1 문의글 작성하기</strong>
 			</h5>
+			<hr>
 			<br />
 			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
 
