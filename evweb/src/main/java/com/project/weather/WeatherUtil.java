@@ -8,11 +8,9 @@ import java.util.List;
 
 public class WeatherUtil {
 
-	public String getDate() {
-        LocalDate now = LocalDate.now();	// 현재 날짜 구하기
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");   // 포맷 정의
+	public String getDate(LocalDate now, String pattern) { //날짜, 패턴
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);   // 포맷 정의
         String formatedNow = now.format(formatter);    // 포맷 적용
-		System.out.println(formatedNow); // 2021-12-02
 		return formatedNow;
 	}
 	
@@ -79,20 +77,30 @@ public class WeatherUtil {
 	public String getTmx(List<WeatherDTO> weatherlist, String today) {
 		String tmx = "";
 		for(int i=0; i<weatherlist.size();i++){
-        	if(!weatherlist.get(i).getTmx().equals("없음")){
-        		tmx = weatherlist.get(i).getTmx();
-        	}
+			if(weatherlist.get(i).getDay().equals(today)) {
+			   	if(!weatherlist.get(i).getTmx().equals("없음")){
+			   		tmx = weatherlist.get(i).getTmx();
+			   	}
+			}
         }
+		if(tmx.equals("")) {
+			tmx = "-";
+		}
 		return tmx;
 	}
 	
 	public String getTmn(List<WeatherDTO> weatherlist, String today) {
 		String tmn = "";
 		for(int i=0; i<weatherlist.size();i++){
-        	if(!weatherlist.get(i).getTmn().equals("없음")){
-        		tmn = weatherlist.get(i).getTmn();
-        	}
+			if(weatherlist.get(i).getDay().equals(today)) {
+	        	if(!weatherlist.get(i).getTmn().equals("없음")){
+	        		tmn = weatherlist.get(i).getTmn();
+	        	}
+			}
         }
+		if(tmn.equals("")) {
+			tmn = "-";
+		}
 		return tmn;
 	}
 	
