@@ -169,6 +169,9 @@
 										<li><a href="/evweb/weather/getlist.do?stationId=${stationId}" class="sym-btn txt-only sym-btn-sm sym-btn-color-blue"	target="_blank" title="새창열림">날씨 예보 바로가기</a></li>
 									</ul>
 								</div>
+								<div class="cmp-cmn-para cmp-cur-weather-air">
+									<p class="right spon"> 정보출처: <a href="https://www.weather.go.kr/w/index.do" target="_blank" title="새창열림">기상청 날씨누리</a></p>
+								</div>
 								<div class="cmp-impact-fct">
 									<p>해당지역에 발효중인 특보가 없습니다.</p>
 								</div>
@@ -198,7 +201,7 @@
 										<li><span class="lbl">초미세먼지<small>(PM2.5)</small></span>
 											<strong class="air-level val"><span	class="air-lvv-wrap air-lvv-2"><span class="air-lvv">27</span>
 											<small class="unit">㎍/m³</small></span>
-											<span class="air-lvt" style="color: #000;">보통<a id="pm25" href="#legend" data-air-type="pm25">범례보기</a></span></strong></li>
+											<span class="air-lvt" style="color: #000;">보통<a  href="#legend" data-air-type="pm25">범례보기</a></span></strong></li>
 											
 										<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
 											<strong	class="air-level val"><span	class="air-lvv-wrap air-lvv-2"><span class="air-lvv">68</span>
