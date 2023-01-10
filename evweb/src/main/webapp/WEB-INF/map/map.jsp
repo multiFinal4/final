@@ -12,113 +12,31 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		initMap();
-		// 지도 인터랙션 옵션
-		$("#interaction").on("click", function(e) {
-		    e.preventDefault();
-		
-		    if (map.getOptions("draggable")) {
-		        map.setOptions({ //지도 인터랙션 끄기
-		            draggable: false,
-		            pinchZoom: false,
-		            scrollWheel: false,
-		            keyboardShortcuts: false,
-		            disableDoubleTapZoom: true,
-		            disableDoubleClickZoom: true,
-		            disableTwoFingerTapZoom: true
-		        });
-		
-		        $(this).removeClass("control-on");
-		    } else {
-		        map.setOptions({ //지도 인터랙션 켜기
-		            draggable: true,
-		            pinchZoom: true,
-		            scrollWheel: true,
-		            keyboardShortcuts: true,
-		            disableDoubleTapZoom: false,
-		            disableDoubleClickZoom: false,
-		            disableTwoFingerTapZoom: false
-		        });
-		
-		        $(this).addClass("control-on");
-		    }
+		$(".mapClose").click(function() {
+			$(".mapMarkerWrap").removeClass("on");
 		});
 		
-		// 관성 드래깅 옵션
-		$("#kinetic").on("click", function(e) {
-		    e.preventDefault();
-		
-		    if (map.getOptions("disableKineticPan")) {
-		        map.setOptions("disableKineticPan", false); //관성 드래깅 켜기
-		        $(this).addClass("control-on");
-		    } else {
-		        map.setOptions("disableKineticPan", true); //관성 드래깅 끄기
-		        $(this).removeClass("control-on");
-		    }
-		});
-		
-		// 타일 fadeIn 효과
-		$("#tile-transition").on("click", function(e) {
-		    e.preventDefault();
-		
-		    if (map.getOptions("tileTransition")) {
-		        map.setOptions("tileTransition", false); //타일 fadeIn 효과 끄기
-		
-		        $(this).removeClass("control-on");
-		    } else {
-		        map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
-		        $(this).addClass("control-on");
-		    }
-		});
-		
-		// min/max 줌 레벨
-		$("#min-max-zoom").on("click", function(e) {
-		    e.preventDefault();
-		
-		    if (map.getOptions("minZoom") === 10) {
-		        map.setOptions({
-		            minZoom: 7,
-		            maxZoom: 21
-		        });
-		        $(this).val(this.name + ': 7 ~ 21');
-		    } else {
-		        map.setOptions({
-		            minZoom: 10,
-		            maxZoom: 21
-		        });
-		        $(this).val(this.name + ': 10 ~ 21');
-		    }
-		});
-		
-		//지도 컨트롤
-		$("#controls").on("click", function(e) {
-		    e.preventDefault();
-		
-		    if (map.getOptions("scaleControl")) {
-		        map.setOptions({ //모든 지도 컨트롤 숨기기
-		            scaleControl: false,
-		            logoControl: false,
-		            mapDataControl: false,
-		            zoomControl: false,
-		            mapTypeControl: false
-		        });
-		        $(this).removeClass('control-on');
-		    } else {
-		        map.setOptions({ //모든 지도 컨트롤 보이기
-		            scaleControl: true,
-		            logoControl: true,
-		            mapDataControl: true,
-		            zoomControl: true,
-		            mapTypeControl: true
-		        });
-		        $(this).addClass('control-on');
-		    }
-		});
-		
-		$("#interaction, #tile-transition, #controls").addClass("control-on");
 	});
 	
 	function initMap() { 
-		var areaArr = new Array();  // 충전소 정보 담는 배열
+
+		var map = new naver.maps.Map('map', {
+	        center: new naver.maps.LatLng(33.3885379, 126.5626925), //지도 시작 지점
+	        zoom: 11, //지도의 초기 줌 레벨
+	        minZoom: 11, //지도의 최소 줌 레벨
+	        zoomControl: true, //줌 컨트롤의 표시 여부
+	        zoomControlOptions: { //줌 컨트롤의 옵션
+	       		position: naver.maps.Position.TOP_RIGHT
+	        }
+	    });
+
+        map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
+        
+		var markers = []; // 마커 정보를 담는 배열
+		var infowindowList = []; // 정보창을 담는 배열
+		
+		
+		var areaArr = [];  // 충전소 정보 담는 배열
 		<c:forEach items="${stationList}" var="list">
 			areaArr.push({
 							chargeid : "${list.station_id}" , 
@@ -134,56 +52,66 @@
 						});
 		</c:forEach>
 		
-		let markers = new Array(); // 마커 정보를 담는 배열
-		let infoWindows = new Array(); // 정보창을 담는 배열
-		var map = new naver.maps.Map('map', {
-	        center: new naver.maps.LatLng(33.3885379, 126.5626925), //지도 시작 지점
-	        zoom: 11, //지도의 초기 줌 레벨
-	        minZoom: 11, //지도의 최소 줌 레벨
-	        zoomControl: true, //줌 컨트롤의 표시 여부
-	        zoomControlOptions: { //줌 컨트롤의 옵션
-	       		position: naver.maps.Position.TOP_RIGHT
-	        }
-	    });
 		
 		
 		for (var i = 0; i < areaArr.length; i++) {
 		    var marker = new naver.maps.Marker({
 		        map: map,
 		        title: areaArr[i].chargeName, // 지역구 이름 
+		        icon:{
+		        	content:"<img alt='Marker' src='/evweb/images/location2.png' style='width:30px;'>"
+		        },
+		        size: new naver.maps.Size(32, 32),
+	            anchor: new naver.maps.Point(16, 32),
 		        position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기 
 		    });
 		    
 		    /* 정보창 */
 			var stationInfo = "";
-			    stationInfo += "<div style='width:200px;text-align:center;padding:10px;'>";
+			    stationInfo += "<div class='markerInfo'><div class='markerName'>";
 			    stationInfo += areaArr[i].chargeName;
-			    stationInfo += "</div>";
-		    var infoWindow = new naver.maps.InfoWindow({content: stationInfo }); // 클릭했을 때 띄워줄 정보 HTML 작성
+			    stationInfo += "</div></div>";
+		    var infoWindow = new naver.maps.InfoWindow({
+		    		content: stationInfo,
+			        backgroundColor: '#00ff0000',
+			        borderColor: '#00ff0000',
+			        anchorSize: new naver.maps.Size(0,0)
+		    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
 													    
 			markers.push(marker); // 생성한 마커를 배열에 담는다.
-			infoWindows.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+			infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
 		}
-	    
+
+	    for (var i=0, ii=markers.length; i<ii; i++) {
+	    	naver.maps.Event.addListener(map, "click", ClickMap(i));
+	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
+	  	}
+		function ClickMap(i) {
+			return function () {
+			  var infowindow = infowindowList[i];
+			  infowindow.close()
+			}
+		}
 	    function getClickHandler(i) {
             return function(e) {  // 마커를 클릭하는 부분
+            	$(".mapMarkerWrap").addClass("on");
                 var marker = markers[i], // 클릭한 마커의 시퀀스로 찾는다.
-                    infoWindow = infoWindows[i]; // 클릭한 마커의 시퀀스로 찾는다
+                    infoWindow = infowindowList[i]; // 클릭한 마커의 시퀀스로 찾는다
                 if (infoWindow.getMap()) {
                     infoWindow.close();
                 } else {
                     infoWindow.open(map, marker); // 표출
+                    /* marker.setIcon({
+                        url: '/evweb/images/location-pointer.png'
+                    }); */
+                    
+                    map.setZoom(18, false);
+                    map.panTo(marker.position);
                 }
-				
                 markerClickAjax(i);
                 
     		}
     	}
-	    
-	    for (var i=0, ii=markers.length; i<ii; i++) {
-	    	console.log(markers[i] , getClickHandler(i));
-	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
-	    }
 	    
 		function markerClickAjax(i) {
 			$.ajax({
@@ -259,8 +187,37 @@
 							on[2] = "on";
 							break;
 						}
-						strHTML += "  <p class='chargerType d-flex mb-0'>"+chgerType+"/"+data[i].method;
-						strHTML += "  	<span>"+data[i].stat+"</span>";
+						strHTML += "  <p class='chargerType d-flex mb-0'>"+chgerType+"/ "+data[i].method;
+						// 충전기상태 (1: 통신이상, 2: 충전대기,3: 충전중, 4: 운영중지,5: 점검중, 9: 상태미확인)
+						chgerStat = data[i].stat;
+						state = "";
+						switch (chgerStat) {
+						case "1":
+							chgerStat = "통신이상";
+							state = "err";
+							break;
+						case "2":
+							chgerStat = "충전대기";
+							break;
+						case "3":
+							chgerStat = "충전중";
+							state = "charging";
+							break;
+						case "4":
+							chgerStat = "운영중지";
+							state = "stop";
+							break;
+						case "5":
+							chgerStat = "점검중";
+							state = "fix";
+							break;
+						default:
+							chgerStat = "상태미확인";
+							state = "noSign";
+							break;
+						}
+						
+						strHTML += "  	<span class='"+state+"'>"+chgerStat+"</span>";
 						strHTML += "  </p>";
 						strHTML += "  <ul class='type d-flex'>";
 						strHTML += "      <li class='"+on[0]+"'>";
@@ -299,30 +256,14 @@
 			});
 		}
 	}
-
-	//setOptions 메서드를 이용해 옵션을 조정할 수도 있습니다.
-	map.setOptions("mapTypeControl", true); //지도 유형 컨트롤의 표시 여부
-	
-	naver.maps.Event.addListener(map, 'zoom_changed', function (zoom) {
-	    console.log('zoom:' + zoom);
-	});
-	
-	map.setOptions('minZoom', 10);
-	console.log('잘못된 참조 시점', map.getOptions('minZoom'), map.getOptions('minZoom') === 10);
-	
-	// 지도의 옵션 참조는 init 이벤트 이후에 참조해야 합니다.
-	naver.maps.Event.once(map, 'init', function () {
-	    console.log('올바른 참조 시점', map.getOptions('minZoom') === 10);
-	});
-	
-	
 </script>
 </head>
 <body>
 	<div id="map" style="width: 100%; height: calc(100vh - 130px);"></div>
 	<div class="mapMarkerWrap">
 	    <div class="stationInfoTop">
-	        <h4 class="stationInfoTitle pb-3"><i class='bi bi-pin-fill'></i>충전소 정보</h4>
+	        <h4 class="stationInfoTitle pb-3 mb-3"><i class='bi bi-pin-fill'></i>충전소 정보</h4>
+	        <span class="mapClose"><i class="bi bi-x-lg"></i></span>
 	        <div class="stationInfoAddr d-flex">
 	            <h5>주소</h5>
 	            <span class="addr"></span>
@@ -338,14 +279,14 @@
 	        <div class="chargeFee d-flex">
 	            <h5>충전 요금</h5>
 	            <ul class="type d-flex">
-	                <li>
+	                <li class="d-flex">
 	                    <h6>회원</h6>
 	                    <p>
 	                        <span class="fee"></span>
 	                        <span class="unit">원/kWh</span>
 	                    </p>
 	                </li>
-	                <li>
+	                <li  class="d-flex">
 	                    <h6>비회원</h6>
 	                    <p>
 	                        <span class="fee"></span>
@@ -356,23 +297,30 @@
 	        </div>
 	        <div class="stationFac d-flex">
 	            <h5>편의시설</h5>
-	            <ul class="type d-flex">
+	            <ul class="type d-flex pl-0">
 	                <li class="pakring">
 	                    <h6>주차여부</h6>
 	                    <p>
-	                        <span class="typeImg"></span>
+	                        <span class="typeImg">
+	                        	<i class="bi bi-p-circle"></i>
+	                        </span>
 	                    </p>
 	                </li>
 	                <li class="fac">
 	                    <h6>편의제공</h6>
 	                    <p>
-	                        <span class="typeImg"></span>
+	                        <span class="typeImg">
+	                        	<i class="bi bi-cup-hot"></i>
+	                        </span>
 	                    </p>
 	                </li>
 	            </ul>
 	        </div>
 	    </div>
 	    <div class="stationInfoMid">
+	        <ul id="chargerInfo" class="pl-0"></ul>
+	    </div>
+	    <div class="mapControl">
 	        <ul id="chargerInfo" class="pl-0"></ul>
 	    </div>
 	</div>

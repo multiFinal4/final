@@ -1,5 +1,6 @@
 package com.project.map;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,6 @@ public class MapController {
 		this.mapAPIPull = mapAPIPull;
 	}
 	
-	
 
 	@RequestMapping("/map")
 	public ModelAndView list() {
@@ -44,7 +44,7 @@ public class MapController {
 		return mv;
 	}
 
-	// ajax로 충전기정보 업데이트하기
+	// ajax로 충전소 정보 확인하기
 	@RequestMapping(value = "/ajax/mapStation", produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public StationDTO stationInfo(String stationId, Model model){
@@ -52,4 +52,17 @@ public class MapController {
 		model.addAttribute("info", stationInfo);
 		return stationInfo;
 	}
+
+	// 충전소 검색하기
+	@RequestMapping("/map/search.do")
+	public ModelAndView search(String category,String keyword) {
+		ModelAndView mv = new ModelAndView("map/main");
+		List<StationDTO> stationList = service.search(category, keyword);
+		mv.addObject("stationList", stationList);
+		mv.addObject("category",category);
+		mv.addObject("keyword",keyword);
+		return mv;
+	}
+	
+	 
 }
