@@ -1,5 +1,6 @@
 package com.project.weather;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,6 +25,14 @@ public class WeatherDAOImpl implements WeatherDAO {
 	@Override
 	public int delete(String station_id) {
 		return sqlSession.delete("com.project.weather.delete",station_id);
+	}
+	@Override
+	public WeatherDTO read(String station_id, String day, String time) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("station_id", station_id);
+		map.put("day", day);
+		map.put("time", time);
+		return sqlSession.selectOne("com.project.weather.read",map);
 	}
 
 	

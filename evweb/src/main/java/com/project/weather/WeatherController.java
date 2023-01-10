@@ -48,7 +48,13 @@ public class WeatherController {
 	}
 	
 	@RequestMapping("/weather/getData.do")
-	public String WeathergetData(String stationId, Model model) throws IOException{
+	public String WeathergetData(String stationId, String path,Model model) throws IOException{
+		String view = "";
+		if(path.equals("refresh")) {
+			view = "redirect:/monitoring/main?stationId="+stationId;
+		}else {
+			view = "redirect:/weather/getlist.do?stationId="+stationId;
+		}
     	WeatherUtil util = new WeatherUtil();    
         String base_time = util.getTime(); // 발표 시간
         String base_date = "";
@@ -76,8 +82,7 @@ public class WeatherController {
 			weatherService.insert(weatherList.get(i));
 			System.out.println(weatherList.get(i));
 		}
-		
-		return "redirect:/weather/getlist.do?stationId="+stationId;
+		return view;
 	}
 	
 	@RequestMapping("/weather/getWeatherData.do")

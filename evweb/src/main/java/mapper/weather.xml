@@ -15,4 +15,9 @@
 	<select id="select" parameterType="String" resultType="weather">
 		select * from weather_tb where station_id = #{station_id} order by weatherrow asc
 	</select>
+	<select id="read" parameterType="Map" resultType="weather">
+		select * from weather_tb where station_id = #{station_id} and day = #{day} and time = #{time}
+	</select>
+	
+	
 </mapper>
