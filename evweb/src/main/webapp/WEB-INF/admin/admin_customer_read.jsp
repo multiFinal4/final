@@ -8,8 +8,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<h1 class="pagetitle">회원 정보</h1>
+		
 		<div class="card-body">
+			<h1 class="pagetitle">회원 정보</h1>
 			<form action="" method="post">
 				<div class="row mb-3">
 					<label for="customer_id" class="col-sm-2 col-form-label"> ID </label>

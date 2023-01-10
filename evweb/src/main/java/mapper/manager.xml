@@ -63,31 +63,26 @@
 	<select id="selectallName" resultType="manager" parameterType="Map">
 		select *
 				from(select ROWNUM rn, mg.*
-				        FROM (select * from manager_tb) mg)
+				        FROM (select * from manager_tb) mg where manager_name like '%' || #{name} || '%'  )
 		<where>
-			<if test='endNo == "7"'>
+			<if test='endNo == "10"'>
 				rn BETWEEN 1 AND #{endNo}
-				and manager_name like '%' || #{name} || '%'  
-				
 			</if>
-			<if test='endNo != "7"' >
-				rn BETWEEN #{endNo}-6 AND #{endNo}
-				and manager_name like '%' || #{name} || '%' 
+			<if test='endNo != "10"' >
+				rn BETWEEN #{endNo}-9 AND #{endNo}
 			</if>
 		</where>
 	</select>
 	<select id="typeSelectName" resultType="manager" parameterType="Map">
 		select *
 				from(select ROWNUM rn, mg.*
-				        FROM (select * from manager_tb where type= #{type}) mg)
+				        FROM (select * from manager_tb where type= #{type}) mg where manager_name like '%' || #{name} || '%'  )
 		<where>
-			<if test='endNo == "7"'>
+			<if test='endNo == "10"'>
 				rn BETWEEN 1 AND #{endNo}  
-				and manager_name like '%' || #{name} || '%'  
 			</if>
-			<if test='endNo != "7"'>
-				rn BETWEEN #{endNo}-6 AND #{endNo}
-				and manager_name like '%' || #{name} || '%' 
+			<if test='endNo != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
 			</if>
 		</where>
 	</select>

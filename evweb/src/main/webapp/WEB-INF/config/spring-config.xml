@@ -102,6 +102,7 @@
 			<mapping path="/map/**"/>                            
 			<mapping path="/mypage/**"/>                            
 			<mapping path="/manager/**"/>                            
+			<mapping path="/weather/**"/>                            
 			<exclude-mapping path="/login"/>                         
 			<exclude-mapping path="/login.do"/>                      
 			<exclude-mapping path="/images/**"/>
