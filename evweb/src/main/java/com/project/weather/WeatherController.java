@@ -44,8 +44,14 @@ public class WeatherController {
 	@RequestMapping("/weather/getData.do")
 	public String WeathergetData(StationDTO station, Model model) throws IOException{
     	WeatherUtil util = new WeatherUtil();    
-		String base_date = util.getDate(LocalDate.now(), "yyyyMMdd"); // 발표 날짜 
         String base_time = util.getTime(); // 발표 시간
+        String base_date = "";
+        if(LocalTime.now().getHour()<2 || LocalTime.now().getMinute()<10) {
+        	base_date = util.getDate(LocalDate.now().minusDays(1), "yyyyMMdd"); // 발표 날짜 
+        }else {
+        	base_date = util.getDate(LocalDate.now(), "yyyyMMdd"); // 발표 날짜 
+        }
+        
         station.setStation_id("BNJG3401");
         StationDTO stationInfo = stationservice.read(station.getStation_id()); //충전소 위치 정보 받아오기
         String code = "1"; // 0 (격자->위경도), 1 (위경도->격자)
