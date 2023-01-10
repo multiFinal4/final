@@ -35,7 +35,7 @@ public class WeatherServiceImpl implements WeatherService {
 						+0.3965*Math.pow(Double.parseDouble(wsd)*3600/1000,0.16)*Double.parseDouble(tmp)));
 		
 		dto.setTime(time);
-		dto.setFtmp(ftmp.substring(0,3));
+		dto.setFtmp(ftmp.substring(0,ftmp.indexOf(".")));
 		dto.setDay(dto.getDay().substring(0, 4)+"-"+dto.getDay().substring(4, 6)+"-"+dto.getDay().substring(6));
 	
 		return dao.insert(dto);

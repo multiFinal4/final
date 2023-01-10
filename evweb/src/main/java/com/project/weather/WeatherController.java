@@ -31,14 +31,20 @@ public class WeatherController {
 		station_id = "BNJG3401";
 		StationDTO stationInfo = stationservice.read(station_id); //충전소 위치 정보 받아오기
 		List<WeatherDTO> weatherList = weatherService.readList(stationInfo.getMap_code());
+		WeatherUtil util = new WeatherUtil();
+		String tmx  =  util.getTmx(weatherList, util.getDate(LocalDate.now() ,"yyyy-MM-dd"));
+		if(tmx.equals("-")) {
+			tmx = util.getTmx(weatherList, util.getDate(LocalDate.now().plusDays(1) ,"yyyy-MM-dd"));
+		}
 		model.addAttribute("weatherList", weatherList);
+		model.addAttribute("tmx",tmx);
 		return "monitoring/weather";
 	}
 	
 	@RequestMapping("/weather/getData.do")
 	public String WeathergetData(StationDTO station, Model model) throws IOException{
     	WeatherUtil util = new WeatherUtil();    
-		String base_date = util.getDate(); // 발표 날짜 
+		String base_date = util.getDate(LocalDate.now(), "yyyyMMdd"); // 발표 날짜 
         String base_time = util.getTime(); // 발표 시간
         station.setStation_id("BNJG3401");
         StationDTO stationInfo = stationservice.read(station.getStation_id()); //충전소 위치 정보 받아오기
@@ -55,7 +61,7 @@ public class WeatherController {
         String result = pull.getAPIData(dto);
         weatherService.delete(location_no);
 		List<WeatherDTO> weatherList = pull.DataSave(result, location_no, location_name);
-		for (int i = 0; i < weatherList.size(); i++) {	
+		for (int i = 0; i < weatherList.size(); i++) {
 			weatherList.get(i).setWeatherrow(i+1);
 			weatherService.insert(weatherList.get(i));
 			System.out.println(weatherList.get(i));
