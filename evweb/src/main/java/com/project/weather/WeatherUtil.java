@@ -23,7 +23,7 @@ public class WeatherUtil {
         String formatedNow = now.format(formatter);    // 포맷 적용
         String baseTime = "";
         if(Integer.parseInt(formatedNow)>=2310) {
-        	baseTime = "2300";
+        	baseTime = "2000";
         }else if(Integer.parseInt(formatedNow)>=2010) {
         	baseTime = "2000";
         }else if(Integer.parseInt(formatedNow)>=1710) {

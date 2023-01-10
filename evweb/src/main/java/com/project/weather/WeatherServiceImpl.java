@@ -51,4 +51,10 @@ public class WeatherServiceImpl implements WeatherService {
 		return dao.delete(station_id);
 	}
 
+	@Override
+	public WeatherDTO read(String station_id, String day, String time) {
+		time = time.substring(0,2);
+		return dao.read(station_id, day, time);
+	}
+
 }

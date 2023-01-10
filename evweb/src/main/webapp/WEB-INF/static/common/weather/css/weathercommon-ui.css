@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+.current-weather-wrap { margin-top:-53px;}
+.current-weather { min-height:182px;}
+.cmp-cur-weather {position:relative; padding:2px 5px; /*z-index:-1;*/ }
+.cmp-cur-weather .updated-at { background:url(/evweb/weather/images/ic_sym_99.png) no-repeat left center; background-size: auto 14px; padding-left: 15px; position: absolute; top:10px; right:10px;color:#000; font-size: 14px; line-height:14px;}
+.cmp-cur-weather ul li { float:left;}
+.cmp-cur-weather .wrap-1 { margin-top: 34px; overflow:hidden;}
+.cmp-cur-weather .w-temp { width:100%; display:block; text-align:center ;font-size: 50px;}
+.cmp-cur-weather .w-temp .tmp { font-weight: 500; line-height: 68px; position:relative; padding-bottom:8px; vertical-align:super;}
+.cmp-cur-weather .w-temp .tmp small {font-size:0.5em; vertical-align:super;}
+.cmp-cur-weather .w-temp .tmp .minmax { line-height:20px; position:absolute; right:4px; bottom:2px; font-size:17px; font-weight:500; display:none;}
+.cmp-cur-weather .w-temp .tmp .minmax span{padding:0 2px;}
+.cmp-cur-weather .w-temp .tmp .minmax span:nth-child(2) { color:#009AE1;}
+.cmp-cur-weather .w-temp .tmp .minmax span:nth-child(4) { color:#DF7722;}
+.cmp-cur-weather .w-temp .tmp .minmax span:nth-child(3):not(:last-child):before { content:'/'; padding-right:4px;}
+.cmp-cur-weather .w-icon .wic { height: 80px; width: 80px; margin-right: 5px; font-size:0; vertical-align:top; }
+.cmp-cur-weather .w-temp .chill { font-weight:500; font-size:20px; vertical-align:super; letter-spacing:-1px; }
+.cmp-cur-weather .w-temp .chill:after { content:''; display:inline-block; width:22px; height:26px; vertical-align:text-bottom; background:url(/evweb/weather/images/ic_sym_16.png) no-repeat center center; background-size:26px 26px; }
+.cmp-cur-weather .w-icon.no-w .wic { display:inline-flex; background-size: 80px auto;}
+.cmp-cur-weather .w-txt { width:100%; font-size: 21px; text-align:center;}
+.cmp-cur-weather .wrap-2 {border-bottom:1px solid #D4D4D4; overflow:hidden; margin-top:7px;}
+.cmp-cur-weather .wrap-2.no-underline{border-bottom:0;}
+.cmp-cur-weather .wrap-2.top-line{border-top:1px solid #D4D4D4;}
+.cmp-cur-weather .wrap-2 li { width:calc(99.9% / 3); position: relative; padding-top:4px; padding-bottom:4px;}
+.cmp-cur-weather .wrap-2 li:before { content:''; position:absolute; width:1px; height:44px; left:0; top:6px; background-color:#D4D4D4;}
+.cmp-cur-weather .wrap-2 li:first-child:before {display:none;} 
+.cmp-cur-weather .wrap-2 .lbl { display:block; font-size: 16px; line-height:26px; font-weight: 500; text-align:center;}
+.cmp-cur-weather .wrap-2 .lbl.rn-hr1 small:first-child{font-size:16px;}
+.cmp-cur-weather .wrap-2 .val { color:#000; display:block; font-size: 15px; line-height: 26px; font-weight: 500; text-align:center;}
+.cmp-cur-weather .wrap-2 .val .air-lvv-wrap { position:absolute; top:0; width:76px; height:76px;}
+.cmp-cur-weather .wrap-2 .unit { color:#000;}
+.cmp-cur-weather .wrap-2.air-wrap li:before {display:none;}
+.cmp-cur-weather .wrap-2.air-wrap .lbl { display:block; font-size: 16px; line-height:20px; font-weight: 500; text-align:center; margin-top:80px;}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap { position:absolute; top:0; width:76px; height:76px;left: 50%;margin-left: -38px; background:url(/evweb/weather/images/ic_bg_air_lvl_01.png) no-repeat center center; background-size:cover;}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap .air-lvv { display:block; text-align:center; line-height:14px; font-size:16px; margin-top:26px;}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap .unit { display:block; text-align:center; line-height:12px; font-size:14px;}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap.air-lvv-0 { background-image:url(/evweb/weather/images/ic_bg_air_lvl_00.png);}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap.air-lvv-1 { background-image:url(/evweb/weather/images/ic_bg_air_lvl_01.png);}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap.air-lvv-2 { background-image:url(/evweb/weather/images/ic_bg_air_lvl_02.png);}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap.air-lvv-3 { background-image:url(/evweb/weather/images/ic_bg_air_lvl_03.png);}
+.cmp-cur-weather .wrap-2.air-wrap .val .air-lvv-wrap.air-lvv-4 { background-image:url(/evweb/weather/images/ic_bg_air_lvl_04.png);} 
+.cmp-cur-weather .wrap-3 { overflow:hidden; display:flex;}
+.cmp-cur-weather .wrap-3 li { line-height: 30px; font-size: 14px; color: #000; padding:5px 5px; flex-basis:115px; flex-shrink:0; }
+.cmp-cur-weather .wrap-3 li .with-txt { margin-right:5px;}
+.cmp-cur-weather .wrap-3 li:last-child { flex-grow:1; text-align:right; }
+.cmp-cur-weather-head { font-weight:500; font-size:16px; padding:12px 8px; background-color:#EEF2F7; text-align:center;}
+.cmp-cur-weather .ic-hm { position:relative; letter-spacing:-1px; }
+.cmp-cur-weather .ic-hm:before { content:''; display:inline-block; padding-right:2px; vertical-align:middle; width:15px; height:14px; background:url(/evweb/weather/images/ic_sym_17.png) no-repeat center center; background-size:auto 14px; }
+.cmp-cur-weather .ic-wind { position:relative; letter-spacing:-1px; }
+.cmp-cur-weather .ic-wind:before { content:''; display:inline-block; padding-right:5px; vertical-align:middle; width:16px; height:16px; background:url(/evweb/weather/images/ic_sym_18.png) no-repeat center center; background-size:17px; }
+.cmp-cur-weather .ic-rn { position:relative; letter-spacing:-1px; }
+.cmp-cur-weather .ic-rn:before { content:''; display:inline-block; padding-right:2px; vertical-align:middle; width:15px; height:14px; background:url(/evweb/weather/images/ic_sym_19.png) no-repeat center center; background-size:auto 14px; }
+.cmp-cur-weather.cmp-cur-weather-lifestyle { z-index:0;}
+
+
+wbg { background-size:auto 150%; background-position:left top; background-color:rgba(0,0,0,0); background-repeat:no-repeat;}
+.wbg.BGDB00 { background-image:none; }
+.wbg.BGDB01 { background-image:none; }
+.wbg.BGDB02 { background-image:none; }
+.wbg.BGDB03 { background-image:none; }
+.wbg.BGDB04 { background-image:none; }
+.wbg.BGDB05 { background-image:url(/evweb/weather/images/BGDB05.png); }
+.wbg.BGDB06 { background-image:url(/evweb/weather/images/BGDB06.png); }
+.wbg.BGDB07 { background-image:url(/evweb/weather/images/BGDB06.png); }
+.wbg.BGDB08 { background-image:url(/evweb/weather/images/BGDB08.png); }
+
+.wbg.wbg-type2.BGDB00 { background-image:none; }
+.wbg.wbg-type2.BGDB01 { background-image:none; }
+.wbg.wbg-type2.BGDB02 { background-image:none; }
+.wbg.wbg-type2.BGDB03 { background-image:none; }
+.wbg.wbg-type2.BGDB04 { background-image:none; }
+.wbg.wbg-type2.BGDB05 { background-image:url(/evweb/weather/images/BGDB05.png); }
+.wbg.wbg-type2.BGDB06 { background-image:url(/evweb/weather/images/BGDB06.png); }
+.wbg.wbg-type2.BGDB07 { background-image:url(/evweb/weather/images/BGDB06.png); }
+.wbg.wbg-type2.BGDB08 { background-image:url(/evweb/weather/images/BGDB08.png); }
+
+/* 메인 영향예보 */
+.cmp-impact-fct { position: relative; }
+.cmp-impact-fct h3 { font-weight: 500; font-size:17px;position: absolute; background:#0099E1; height: 100%; left:0; top:0; text-align:center; width: 120px; color:#fff; }
+.cmp-impact-fct h3 span {position: absolute; left:17px; top:50%; margin-top:-10px;}
+.cmp-impact-fct p { text-align:center; font-weight: 400; font-size:16px;background:#EEF2F7; padding:12px 8px;}
+.cmp-impact-fct p.active:before { content:''; display:inline-block; width:28px; height:28px;background:url('/evweb/weather/images/ic_sym_01.png') no-repeat center center; background-size:auto 28px; margin-top:-5px; margin-bottom:-7px; margin-right:4px;}
+.cmp-impact-fct p span.imp-cw{ color:#0B6B97; }
+.cmp-impact-fct p span.imp-hw{ color:#0B6B97; }
+.cmp-impact-fct p span.wrn{ color:#e60044; font-weight:700;}
+
+/* 검색 */
+.sym-btn { position:relative; display:inline-block; background-size: auto 30px; background-position: center center; background-repeat: no-repeat; background-color: rgba(0,0,0,0); border-radius: 3px; text-indent: -9999px; background-image:url(/evweb/weather/images/ic_sym_03_gray.png);transition: all .3s ease-out;}
+.sym-btn.sch { height: 49px; width: 60px; background-color: #666; background-size: auto 30px; background-image:url(/evweb/weather/images/icon_search.png);}
+.sym-btn.sch-b { height: 49px; width: 49px; background-color: #fff; background-size: auto 30px; background-image:url(/evweb/weather/images/ic_sym_97.png);}
+.sym-btn.star { border:1px solid #979797; width: 35px; height: 35px; background-color: #fff; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_sym_03_gray.png);}
+.sym-btn.star.on { background-image:url(/evweb/weather/images/ic_sym_03_yellow_border.png);}
+.sym-btn.star-big { width: 45px; height: 45px; background-size:auto 30px; }
+.sym-btn.curr { width: 37px; height: 37px; background-color: rgba(0,0,0,0); background-size: auto 22px; background-image:url(/evweb/weather/images/ic_sym_02.png);}
+.sym-btn.quest { border:1px solid #979797; width: 35px; height: 35px; background-color: #fff; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_sym_04.png);}
+.sym-btn.share { border:1px solid #979797; width: 35px; height: 35px; background-color: #fff; background-size: auto 20px; background-image:url(/evweb/weather/images/cont-head-icon04.png);}
+.sym-btn.settings { width: 37px; height: 37px; background-color: rgba(0,0,0,0); background-size: auto 20px;background-image:url(/evweb/weather/images/ic_sym_07.png);}
+.sym-btn.settings-g { width: 45px; height: 45px; background-color: #fff; background-size: auto 27px;background-image:url(/evweb/weather/images/ic_sym_08.png);}
+.sym-btn.hamb { width: 45px; height: 45px; background-color: #fff; background-size: auto 25px;background-image:url(/evweb/weather/images/ic_sym_09.png);}
+.sym-btn.big-close { width:50px; height:50px; background:url(/evweb/weather/images/pop_close_icon.png) no-repeat center;background-size:24px auto;}
+.sym-btn.newwin { border:1px solid #979797; width: 35px; height: 35px; background-color: #fff; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_sym_06.png);}
+
+.sym-btn.iconguide { border:1px solid #B2B2B2; width: 24px; height: 24px; line-height:23px; background-color:#F4F4F4; background-size: auto 13px; background-image:url(/evweb/weather/images/icon_help_2.png);}
+
+.sym-btn.view-composite { width: 38px; height: 38px; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_view_mode_composite_off.png);}
+.sym-btn.view-composite.on { background-image:url(/evweb/weather/images/ic_view_mode_composite.png); background-color:#fff; border:1px solid #666;}
+.sym-btn.view-chart { width: 38px; height: 38px; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_view_mode_chart_off.png);}
+.sym-btn.view-chart.on { background-image:url(/evweb/weather/images/ic_view_mode_chart.png); background-color:#fff; border:1px solid #666;}
+.sym-btn.view-table { width: 38px; height: 38px; background-size: auto 20px; background-image:url(/evweb/weather/images/ic_view_mode_table_off.png);}
+.sym-btn.view-table.on { background-image:url(/evweb/weather/images/ic_view_mode_table.png); background-color:#fff; border:1px solid #666;}
+
+.sym-btn.txt-only { font-size:18px; color:#6D6D6D; font-weight:500; background:#E8E9E9; text-indent:0px; text-align:center; padding:0 16px; line-height:46px;}
+.sym-btn.txt-only.on { font-weight:700; color:#fff; background:#009AE1;}
+.sym-btn.with-txt { text-indent:0px; width:auto; line-height:37px; font-size:15px; padding:1px 10px 0 30px; background-position: 6px center; }
+
+.sym-btn.iconguide.with-txt { line-height:23px; font-size:13px; color:#2B2B2B; padding-left:24px;}
+.sym-btn {transition: all .2s ease-out;}
+.sym-btn:hover { /*box-shadow: inset 0 0 0 150px rgba(0,0,0,0.1); */ }
+.sym-btn.settings-g:hover{ /* box-shadow: inset 0 0 0 150px rgba(0,0,0,0.0); */ }
+.sym-btn.hamb:hover{ /* box-shadow: inset 0 0 0 150px rgba(0,0,0,0.0); */ }
+
+.sym-btn.sym-btn-sm { font-size:14px; line-height:14px; background-color:#fff; padding:2px 10px; border-radius:3px; letter-spacing:-1px; }
+.sym-btn.sym-btn-color-blue { border:1px solid #4489DE; color:#4489DE; }
+
+.sym-ic { display:inline-block; background-size: auto 37px; background-position: center center; background-repeat: no-repeat; background-color: rgba(0,0,0,0); border-radius: 3px; text-indent: -9999px;}
+.sym-ic.alert { width: 37px; height: 37px; background-size: auto 30px; background-image:url(/evweb/weather/images/ic_sym_01.png);background-position: center 2px; }
+.sym-ic.sunrise { width: 30px; height: 30px; background-size: auto 24px;background-image:url(/evweb/weather/images/ic_sym_10.png);}
+.sym-ic.sunset { width: 30px; height: 30px; background-size: auto 24px;background-image:url(/evweb/weather/images/ic_sym_11.png);}
+.sym-ic.uv-index { width: 30px; height: 30px; background-size: auto 28px;background-image:url(/evweb/weather/images/ic_sym_11.png);}
+
+.sym-ic.with-txt { text-indent:0px; width:auto; padding-left:30px; background-position: left center; }
+
+.sym-btn-right { float:right;}
+
+.current-weather .cmp-cur-weather-air { display:block; }
+.cmp-cur-weather-air { z-index:1;}
+.cmp-cur-weather-air .air-lvt a[data-air-type] {vertical-align: middle;text-indent:-99999px; width:18px; height:18px; display:inline-block; background:url(/evweb/weather/images/icon_help_2.png) no-repeat center center; background-size:14px; }
+/* 오른쪽 정렬 문단 */
+.cmp-cmn-para p{ font-size:14px; padding:5px; }
+.cmp-cmn-para .right{ text-align:right;}
+.cmp-cmn-para.odam-updated { position:absolute; text-align:right; right:10px; top:auto; z-index:1;}
+.cmp-cmn-para.odam-updated .updated-at{background:url(/evweb/weather/images/ic_sym_99.png) no-repeat left center;background-size: auto 14px;padding-left: 15px;color:#000;font-size: 16px;line-height:20px;}
+.cmp-cmn-para .spon {color:#000;} 
+
+.cmp-air-legend { position:absolute; width:100%;}
+.cmp-air-legend .shadow-box { height:0; transition: all .2s ease-out; opacity:0; overflow:hidden; display:none;}
+.cmp-air-legend .shadow-box .inner { margin:10px 10px;padding:16px 20px 16px 20px; border-radius:5px; border:1px solid #CBCBCB; box-shadow:0px 0px 10px 0px rgba(0,0,0,0.2); text-align:left; position:relative; background-color:#fff;}
+.cmp-air-legend .shadow-box a.close-box { content:'';position:absolute; top:0; right:0; width:34px; height:34px; background:url(/evweb/weather/images/btn_close.png) no-repeat center center; background-size:14px; text-indent:-9999px;}
+.cmp-air-legend .shadow-box h5 {font-size:15px; font-weight:700; line-height:200%; }
+.cmp-air-legend .shadow-box.on { height:auto; opacity:1;overflow:visible; display:block;}
+.cmp-air-legend .air-legend { display:block; overflow:hidden;}  
+.cmp-air-legend .air-legend li { float:left; width:25%; position:relative;}
+.cmp-air-legend .air-legend li span { font-size:11px; color:#000; display:block; text-align:center; padding:4px 0 8px 0; }
+.cmp-air-legend .air-legend li:after { content:''; position:absolute; left:2px; bottom:0; right:2px; height:4px; }
+.cmp-air-legend .air-legend li.air-legend-1:after { background-color:#1787FF; }
+.cmp-air-legend .air-legend li.air-legend-2:after { background-color:#4DBD78; }
+.cmp-air-legend .air-legend li.air-legend-3:after { background-color:#F29D52; }
+.cmp-air-legend .air-legend li.air-legend-4:after { background-color:#E52B27; }
+.cmp-air-legend .shadow-box p { font-size:11px; color:#838383; padding:4px 0; }
+
+.wic.DB00 { background-color:rgba(0,0,0,0); background-image:none;}
+.wic.DB01 { background-image:url(/evweb/weather/images/DB01.png);}
+.wic.DB02 { background-image:url(/evweb/weather/images/DB02.png);}
+.wic.DB03 { background-image:url(/evweb/weather/images/DB03.png);}
+.wic.DB04 { background-image:url(/evweb/weather/images/DB04.png);}
+.wic.DB01_N { background-image:url(/evweb/weather/images/DB01_N.png);}
+.wic.DB02_N { background-image:url(/evweb/weather/images/DB02_N.png);}
+.wic.DB03_N { background-image:url(/evweb/weather/images/DB03_N.png);}
+.wic.DB04_N { background-image:url(/evweb/weather/images/DB04_N.png);}
+.wic.DB05 { background-image:url(/evweb/weather/images/DB05.png);}
+.wic.DB06 { background-image:url(/evweb/weather/images/DB06.png);}
+.wic.DB07 { background-image:url(/evweb/weather/images/DB07.png);}
+.wic.DB08 { background-image:url(/evweb/weather/images/DB08.png);}
+.wic.DB09 { background-image:url(/evweb/weather/images/DB09.png);}
+.wic.DB10 { background-image:url(/evweb/weather/images/DB10.png);}
+.wic.DB11 { background-image:url(/evweb/weather/images/DB11.png);}
+.wic.DB12 { background-image:url(/evweb/weather/images/DB12.png);}
