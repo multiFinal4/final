@@ -3,7 +3,7 @@ package com.project.weather;
 public class WeatherDTO {
 	private int weatherrow;
 	
-	private String location_no;
+	private String station_id;
 	private String location_name;
 	private String sky;
 	private String tmp;
@@ -24,19 +24,19 @@ public class WeatherDTO {
 		super();
 	}
 	
-	public WeatherDTO(String location_no, String location_name) {
+	public WeatherDTO(String station_id, String location_name) {
 		super();
-		this.location_no = location_no;
+		this.station_id = station_id;
 		this.location_name = location_name;
 	}
 
 	
-	public WeatherDTO(int weatherrow, String location_no, String location_name, String sky, String tmp, String tmn, String tmx,
+	public WeatherDTO(int weatherrow, String station_id, String location_name, String sky, String tmp, String tmn, String tmx,
 			String pty, String pcp, String reh, String sno, String vec, String wsd, String pop, String day,
 			String time,String ftmp) {
 		super();
 		this.weatherrow = weatherrow;
-		this.location_no = location_no;
+		this.station_id = station_id;
 		this.location_name = location_name;
 		this.sky = sky;
 		this.tmp = tmp;
@@ -56,17 +56,17 @@ public class WeatherDTO {
 
 	@Override
 	public String toString() {
-		return "WeatherDTO [location_no=" + location_no + ", location_name=" + location_name + ", sky=" + sky + ", tmp="
+		return "WeatherDTO [station_id=" + station_id + ", location_name=" + location_name + ", sky=" + sky + ", tmp="
 				+ tmp + ", tmn=" + tmn + ", tmx=" + tmx + ", pty=" + pty + ", pcp=" + pcp + ", reh=" + reh + ", sno="
 				+ sno + ", vec=" + vec + ", wsd=" + wsd + ", pop=" + pop + ", day=" + day + ", time=" + time + ", ftmp=" + ftmp +"]" ;
 	}
 
-	public String getLocation_no() {
-		return location_no;
+	public String getStation_id() {
+		return station_id;
 	}
 
-	public void setLocation_no(String location_no) {
-		this.location_no = location_no;
+	public void setStation_id(String station_id) {
+		this.station_id = station_id;
 	}
 
 	public String getLocation_name() {

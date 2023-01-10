@@ -51,6 +51,7 @@
 	            var tempList = JSON.parse($tchartWrap.attr('data-data'));
 	            var tchart = createTChart(tchartId, tempList[0]);
 	            $('.slide-wrap').css({width: tchartWidth+450 + 'px'});
+	            
 		})
 			
 		function createTChart(id, tempList) {
@@ -122,7 +123,13 @@
 </head>
 <body>
 <div class="cmp-dfs-slider hr1-fct" >
-     <button type="button"  class="btn btn-secondary" onclick="location.href='/evweb/weather/getData.do'" >데이터불러오기</button>
+	<h2 class = "pagetitle">날씨 및 미세먼지</h2>
+		<div class = "row"  style="float: right;">
+        
+        <h5 class="sym-btn txt-only" style="float: right; width: 350px; margin-left: 5px; padding-left: 5px; padding-right: 5px;">${station.station_name}</h5>
+        <h5 class="sym-btn txt-only" style="float: right; width: 350px; margin-left: 5px; padding-left: 5px; padding-right: 5px;"><%=weatherlist.get(0).getLocation_name()%></h5>
+		<button type="button" style="float: right; width: 140px; margin-left: 5px; padding-left: 5px; padding-right: 5px;" class="btn btn-secondary" onclick="location.href='/evweb/weather/getData.do?stationId=${stationId}'" >업데이트</button> 
+    	</div>
     <div class="dfs-tab-body" >
     	
         <ul class="item-lbl">
@@ -171,7 +178,6 @@
                                 <li>강수<br>확률</li>
                                 <li>바람</li>
                                 <li>습도</li>
-                                <li>한파<br>영향</li>
                             </ul>
                         </div>
                         <div class="item-wrap" >
@@ -287,7 +293,6 @@
 											</c:choose>
 												<span class="wspd">${weatherList.wsd}<span class="unit">m/s</span></span></li>	
 												<li><span class="hid">습도: </span><span>${weatherList.reh}%</span></li>
-												<li><span class="hid">한파영향: </span><span class="lvl-white lvl-show"></span></li>
 											</ul>
                       	   </c:forEach>	
                            </div>
@@ -311,7 +316,6 @@
                                 <li>강수<br>확률</li>
                                 <li>바람</li>
                                 <li>습도</li>
-                                <li>한파<br>영향</li>
                             </ul>
                         </div>
                         <div class="item-wrap">
@@ -427,7 +431,6 @@
 											</c:choose>
 												<span class="wspd">${weatherList.wsd}<span class="unit">m/s</span></span></li>	
 												<li><span class="hid">습도: </span><span>${weatherList.reh}%</span></li>
-												<li><span class="hid">한파영향: </span><span class="lvl-white lvl-show"></span></li>
 											</ul>
                       	   </c:forEach>	
                          </div>
@@ -451,7 +454,6 @@
                                 <li>강수<br>확률</li>
                                 <li>바람</li>
                                 <li>습도</li>
-                                <li>한파<br>영향</li>
                             </ul>
                         </div>
                         <div class="item-wrap">
@@ -567,7 +569,6 @@
 											</c:choose>
 												<span class="wspd">${weatherList.wsd}<span class="unit">m/s</span></span></li>	
 												<li><span class="hid">습도: </span><span>${weatherList.reh}%</span></li>
-												<li><span class="hid">한파영향: </span><span class="lvl-white lvl-show"></span></li>
 											</ul>
                       	   </c:forEach>	
                          </div>

@@ -18,12 +18,12 @@ public class WeatherDAOImpl implements WeatherDAO {
 		return sqlSession.insert("com.project.weather.insert", dto);
 	}
 	@Override
-	public List<WeatherDTO> readList(String location_no) {
-		return sqlSession.selectList("com.project.weather.select",location_no);
+	public List<WeatherDTO> readList(String station_id) {
+		return sqlSession.selectList("com.project.weather.select",station_id);
 	}
 	@Override
-	public int delete(String location_no) {
-		return sqlSession.delete("com.project.weather.delete",location_no);
+	public int delete(String station_id) {
+		return sqlSession.delete("com.project.weather.delete",station_id);
 	}
 
 	

@@ -13,7 +13,7 @@
 			var stationId = "${stationId}";
 			$(document).ready(function() {
 				$("#stationId").change(function() {
-					location.href="/evweb/monitoring/main?stationId="+encodeURI($(this).val());
+					location.href="/evweb/weather/getlist.do?stationId="+encodeURI($(this).val());
 				});
 				$("#stationId").val(stationId).attr("selected","selected");
 				
@@ -25,14 +25,14 @@
            	<form id="searchForm" class="search-form d-flex align-items-center" method="get" action="/evweb/monitoring/main?stationId=">
 				<select name="stationId"  id="stationId" class="form-control">
 					<option value="all">선택해주세요</option>
-	             	<c:forEach var="station" items="${stationlist}">
+	             	<c:forEach var="station" items="${stationList}">
 						<option value="${station.station_id}">${station.station_name}</option>
 					</c:forEach>
 				</select>
 			</form>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/monitoring/main?stationId=all">
+                    <a class="nav-link collapsed" href="/evweb/monitoring/main?stationId=${stationId}">
                         <i class="bi bi-grid"></i>
                         <span>충전소 정보 메인</span>
                     </a>

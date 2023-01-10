@@ -8,14 +8,14 @@
     Reset
 ***************************/
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,div,figure,article,header,nav,footer,section,aside {margin:0;padding:0;box-sizing:border-box;word-break:keep-all;word-wrap:break-word;white-space:normal;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
-body,input,textarea,select,button,table,th,td {font-family:'ns', sans-serif;font-size:13px;color:#000000;font-weight:400;line-height:1.25;letter-spacing:-0.02em;}
+body,input,textarea,select,button,table,th,td {sans-serif;font-size:13px;color:#000000;font-weight:400;line-height:1.25;letter-spacing:-0.02em;}
 h1,h2,h3,h4,h5,h6 {font-weight:normal;}
 img,fieldset,iframe {border:0;vertical-align:top}
 img {max-width:100%;height:auto;width:100%;}
 textarea {border-radius:0;-webkit-appearance:none;resize:none;}
 ul,ol {list-style:none;}
 em,address,i {font-style:normal;}
-input,select {-webkit-appearance:none;vertical-align:middle;}
+input,select {vertical-align:middle;}
 select::-ms-expand {display: none;}
 option:hover{background:#fff;}
 table {width:100%;border-collapse:separate;border-spacing:0;}
