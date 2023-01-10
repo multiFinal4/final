@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					<div class="text-center">
-						<button type="button" class="btn btn-secondary" onclick="location.href='/evweb/admin/station/list?category=all&pageNo=1'" ><i class="bi bi-list-ul"></i>목록</button>
+						<button type="button" class="btn btn-secondary" onclick="history.go(-2)" ><i class="bi bi-list-ul"></i>목록</button>
 						<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
 						<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
 					</div>

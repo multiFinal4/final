@@ -2,12 +2,24 @@ package com.project.map;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.station.StationDTO;
 
 @Service
 public class MapServiceImpl implements MapService {
+	
+	MapDAO dao;
+	
+	
+	public MapServiceImpl() {}
+	
+	@Autowired
+	public MapServiceImpl(MapDAO dao) {
+		super();
+		this.dao = dao;
+	}
 
 	@Override
 	public int insert(MapStationDTO station) {
@@ -28,21 +40,16 @@ public class MapServiceImpl implements MapService {
 	}
 
 	@Override
-	public List<MapStationDTO> findbynameAll(String stationName) {
+	public List<StationDTO> search(String category, String keyword) {
+		return dao.search(category, keyword);
+	}
+
+	@Override
+	public List<StationDTO> search(MapStationDTO mDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<MapStationDTO> findByName(String category, String stationName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public StationDTO read(String stationId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

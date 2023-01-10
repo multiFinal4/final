@@ -33,30 +33,7 @@ public class ChargerAPIPull {
 			list.setStation_id(charger.get("statId").toString());
 			list.setCharger_id(charger.get("chgerId").toString());
 			list.setCharger_type(charger.get("chgerType").toString());
-			// 충전기상태 (1: 통신이상, 2: 충전대기,3: 충전중, 4: 운영중지,5: 점검중, 9: 상태미확인)
-			chgerStat = charger.get("stat").toString();
-			switch (chgerStat) {
-			case "1":
-				chgerStat = "통신이상";
-				break;
-			case "2":
-				chgerStat = "충전대기";
-				break;
-			case "3":
-				chgerStat = "충전중";
-				break;
-			case "4":
-				chgerStat = "운영중지";
-				break;
-			case "5":
-				chgerStat = "점검중";
-				break;
-			default:
-				chgerStat = "상태미확인";
-				break;
-			}
-			list.setStat(chgerStat);
-			
+			list.setStat(charger.get("stat").toString());
 			list.setStat_UpdDt(charger.get("statUpdDt").toString());
 			list.setLast_Tsdt(charger.get("lastTsdt").toString());
 			list.setLast_Tedt(charger.get("lastTedt").toString());
