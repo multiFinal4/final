@@ -8,6 +8,7 @@ public interface StationDAO{
 	int insert(StationDTO station);
 	List<StationDTO> stationList();
 	List<StationDTO> stationList(String endNo);
+	List<StationDTO> stationListCate(String category);
 	List<StationDTO> stationListCate(String category, String endNo);
 	List<StationDTO> companyList();
 	List<StationDTO> findbynameAll(String stationName); 

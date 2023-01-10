@@ -1,5 +1,5 @@
 @charset "UTF-8";
-*{box-sizing:border-box;}
+*{box-sizing:border-box;list-style:none;}
 a{color: #6997e7;}
 a:hover{text-decoration:none;}
 /*Header Nav*/
@@ -515,11 +515,73 @@ a:hover{text-decoration:none;}
   color: #012970;
 }
 /* Map */
-.mapMarkerWrap{
-	position:absolute;
-	left:0;
-	top:0;
-	background-color:#fff;
+#container>div.mapMarkerWrap {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+    transition:0.3s all;
+    
+}
+
+.stationInfoTitle{
+	font-size:22px;
+	font-weight:bold;
+	color:#295faf;
+	border-bottom:1px solid #e2e2e2;
+}
+.stationInfoTitle .bi{
+	margin-right:10px;
+}
+.stationInfoTop .d-flex h5 {
+    width: 80px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.stationInfoTop .d-flex span{
+	font-size:14px;
+}
+.mapMarkerWrap .typeImg img{
+	width:25px;
+}
+.type li h6 {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom:0;
+}  
+.stationInfoMid{
+	max-height: 495px;
+    overflow-y: auto;
+}
+.chargerNo{  
+	align-items: center;
+	margin-bottom:10px;
+}
+.chargerNo h5{
+	width:30px;
+	height:30px;
+}
+.chargerNo .chargerType{
+    flex-direction: column;    
+    align-items: center;
+    font-size:14px;
+}
+.chargerNo .type li {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-items: center;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    width: 60px;
+    height: 55px;
+    margin: 0 5px;
+}
+.chargerNo .type li.on .typeImg img{
+	filter: invert(47%) sepia(21%) saturate(1390%) hue-rotate(176deg) brightness(123%) contrast(82%);
 }
 /* monitoring */
 .monitoringMain .card{
@@ -607,13 +669,23 @@ a:hover{text-decoration:none;}
 .boardBottom .pagination{
 	margin-bottom:0;
 }
+.pageitemWrap{
+	width:340px;
+	overflow:hidden;
+}
+.pagination li .page-link {
+    color: #37517e;
+    padding:0;
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+}
 .page-item.active .page-link {
     background-color: #37517e;
     border-color: #37517e;
 }
-.page-link {
-    color: #37517e;
-}
+
 /* search*/
 .toggle-sidebar-btn {
   font-size: 32px;

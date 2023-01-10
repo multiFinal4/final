@@ -1,5 +1,6 @@
 package com.project.station;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,11 +53,13 @@ public class StationController {
 	public ModelAndView list(String category, String endNo, String pageNo){
 		ModelAndView mv = new ModelAndView("station/list");
 		List<StationDTO> stationlist = service.stationList();
+		List<StationDTO> stationlistCate = service.stationListCate(category);
 		
 		int showList = 10; // 리스트 보여줄 갯수
 		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
 		List<StationDTO> stationlistPage = service.stationListCate(category, endNo);
 		int endPage = 0; // 페이징 넘버 유동적으로 
+		
 		if (category.equals("all")) {
 			if (stationlist.size() <= showList) {
 				endPage = 1;
@@ -65,11 +68,11 @@ public class StationController {
 			}
 		}
 		else {
-			if (stationlistPage.size() <= showList) {
+			if (stationlistCate.size() <= showList) {
 				endPage = 1;
 			}else {
 
-				endPage = (stationlistPage.size()/showList)+1;
+				endPage = (stationlistCate.size()/showList)+1;
 			}
 		}
 		List<StationDTO> companyList = service.companyList();
@@ -81,6 +84,7 @@ public class StationController {
 		mv.addObject("category", category);
 		mv.addObject("endPage", endPage);
 		mv.addObject("pageNo", pageNo);
+		
 		
 		return mv;
 	}

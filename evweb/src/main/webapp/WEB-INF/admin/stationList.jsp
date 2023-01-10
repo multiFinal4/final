@@ -9,15 +9,34 @@
 		<script type="text/javascript">
 			var cate = "${category}";
 			var pageNo = "${pageNo}"; 
+			var endPage = "${endPage}"; 
 			$(document).ready(function() {
 				$("#category").change(function() {
 					location.href="/evweb/admin/station/list?category="+encodeURI($(this).val())+"&pageNo=1";
 				});
 				$("#category").val(cate).attr("selected","selected");
-				$(".page-item").eq(pageNo).addClass("active");
+				$(".pageitemWrap .page-item").eq(pageNo-1).addClass("active");
+				var pageSlice = Math.floor((pageNo-1)/10);
 				
-				var pagingCount = $(".pagination li").length;
+				$(".pageitemWrap ul").css({"margin-left":(-340*pageSlice)});
+				
+				if(pageSlice == Math.floor(endPage/10)){
+					$(".pageitemWrap").css({"width":"auto"});
+				} 
+					
+				$(".page-item.next").click(function(){
+					location.href="/evweb/admin/station/list?category="+cate+"&pageNo="+((10*(pageSlice+1)+1));
+				});
+
+				$(".page-item.prev").click(function(){
+
+					if(pageSlice != 0){
+						location.href="/evweb/admin/station/list?category="+cate+"&pageNo="+(10*(pageSlice));
+					}
+					
+				});
 				// 페이징처리 리팩토링할 것
+				
 				
 				$("#updateList").click(function () {
 					$.ajax({
@@ -79,13 +98,17 @@
 	            </div>
 				<div class="boardBottom text-right col-sm-12" style="padding-right: 0;">
 					<ul class="pagination">
-							<li class="page-item">
-							  <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+							<li class="page-item prev">
+							  <a class="page-link" href="#"><</a>
 							</li>
-		                	<c:forEach var="page" begin="1" end="${endPage}" step="1" varStatus="status">
-								<li class="page-item"><a class="page-link" href="/evweb/admin/station/list?category=${category}&pageNo=${status.index}">${status.index}</a></li>
-							</c:forEach>
-							<li class="page-item">
+							<li class="pageitemWrap">
+								<ul class="pagination">
+			                	<c:forEach var="page" begin="1" end="${endPage}" step="1" varStatus="status">
+									<li class="page-item"><a class="page-link" href="/evweb/admin/station/list?category=${category}&pageNo=${status.index}">${status.index}</a></li>
+								</c:forEach>
+								</ul>
+							</li>
+							<li class="page-item next">
 							  <a class="page-link" href="#">></a>
 							</li>
 					</ul>

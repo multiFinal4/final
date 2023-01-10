@@ -33,6 +33,9 @@
 	<select id="list" resultType="station" >
 		select * from STATION_TB order by station_id ASC 
 	</select>
+	<select id="listCate" resultType="station" parameterType="String">
+		select * from STATION_TB where station_company=#{category} order by station_id ASC 
+	</select>
 	<select id="selectall" resultType="station" parameterType="String">
 		select *
 				from(select ROWNUM rn, st.*

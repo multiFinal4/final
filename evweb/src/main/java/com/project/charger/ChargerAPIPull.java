@@ -32,34 +32,7 @@ public class ChargerAPIPull {
 			
 			list.setStation_id(charger.get("statId").toString());
 			list.setCharger_id(charger.get("chgerId").toString());
-			
-			// 충전기타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상	+DC콤보,	07: AC3상)
-			chgerType = charger.get("chgerType").toString();
-			switch (chgerType) {
-			case "01":
-				chgerType = "DC차데모";
-				break;
-			case "02":
-				chgerType = "AC완속";
-				break;
-			case "03":
-				chgerType = "DC차데모+AC3상";
-				break;
-			case "04":
-				chgerType = "DC콤보";
-				break;
-			case "05":
-				chgerType = "DC차데모+DC콤보";
-				break;
-			case "06":
-				chgerType = "DC차데모+AC3상";
-				break;
-			default:
-				chgerType = "AC3상";
-				break;
-			}
-			list.setCharger_type(chgerType);
-			
+			list.setCharger_type(charger.get("chgerType").toString());
 			// 충전기상태 (1: 통신이상, 2: 충전대기,3: 충전중, 4: 운영중지,5: 점검중, 9: 상태미확인)
 			chgerStat = charger.get("stat").toString();
 			switch (chgerStat) {

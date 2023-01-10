@@ -54,22 +54,22 @@ public class StationAPIPull{
 	  		else {
 	  			list.setAddr_detail(addrArr[2] + " " + item.get("location").toString());
 			}
-//	      	list.setStation_company(item.get("bnm").toString());
-//	      	list.setBusi_call(item.get("busiCall").toString());
-//	      	list.setManager_id("EV001");
-//	      	list.setService_date("2022/12/31");
-//	      	list.setCharger_no(1);
-//	      	list.setKind(item.get("kind").toString());
-//	      	list.setMap_code(item.get("zscode").toString());
-//	      	list.setMap_latitude(item.get("lat").toString());
-//	      	list.setMap_longtude(item.get("lng").toString());
-//	      	list.setUse_time(item.get("useTime").toString());
-//	      	list.setParking_free(item.get("parkingFree").toString());
-//	      	list.setNote(item.get("note").toString());
-//	      	list.setLimitYn(item.get("limitYn").toString());
-//	      	list.setLimit_detail(item.get("limitDetail").toString());
-//	      	list.setTrafficYn(item.get("trafficYn").toString());
-//	      	stationList.add(list);
+	      	list.setStation_company(item.get("bnm").toString());
+	      	list.setBusi_call(item.get("busiCall").toString());
+	      	list.setManager_id("EV001");
+	      	list.setService_date("2022/12/31");
+	      	list.setCharger_no(1);
+	      	list.setKind(item.get("kind").toString());
+	      	list.setMap_code(item.get("zscode").toString());
+	      	list.setMap_latitude(item.get("lat").toString());
+	      	list.setMap_longtude(item.get("lng").toString());
+	      	list.setUse_time(item.get("useTime").toString());
+	      	list.setParking_free(item.get("parkingFree").toString());
+	      	list.setNote(item.get("note").toString());
+	      	list.setLimitYn(item.get("limitYn").toString());
+	      	list.setLimit_detail(item.get("limitDetail").toString());
+	      	list.setTrafficYn(item.get("trafficYn").toString());
+	      	stationList.add(list);
 		}
 
 		return stationList;
