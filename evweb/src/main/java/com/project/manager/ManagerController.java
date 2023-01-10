@@ -39,9 +39,8 @@ public class ManagerController {
 		}else {
 			state = "불러오지마";
 		}
-		
 		List<CustomerDTO> customerlist = customerservice.findByName(state, name);	
-		int showList = 7; // 리스트 보여줄 갯수
+		int showList = 10; // 리스트 보여줄 갯수
 		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
 		String remainNo = Integer.toString(Integer.parseInt(endNo)-managerlist.size());
 		List<ManagerDTO> managerlistPage = service.findListByType(type, endNo, name);
@@ -52,7 +51,7 @@ public class ManagerController {
 			if (sizeList <= showList) {
 				endPage = 1;
 			}else {
-				endPage = (sizeList/showList)+1;
+				endPage = (int) Math.ceil(sizeList/(double)showList);
 			}
 		}
 		else {
@@ -60,7 +59,7 @@ public class ManagerController {
 				endPage = 1;
 			}else {
 
-				endPage = (sizeList/showList)+1;
+				endPage = (int) Math.ceil(sizeList/(double)showList);
 			}
 		}
 		mav.addObject("managerlistPage", managerlistPage);

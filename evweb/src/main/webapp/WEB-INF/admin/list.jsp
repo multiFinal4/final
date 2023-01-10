@@ -9,13 +9,25 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	var type = "${type}"
-	var pageNo = "${pageNo}"; 
+	var pageNo = "${pageNo}";
+	var endPage = "${endPage}"
 	$(document).ready(function() {
 		$("#type").val(type).attr("selected","selected")
 		$("#type").change(function(){
 			location.href="/evweb/manager/list.do?type="+encodeURI($(this).val())+"&pageNo=1&name="; 
 		});
-		$(".page-item").eq(pageNo).addClass("active");
+		console.log(endPage)
+		console.log(endPage-pageNo)
+		console.log(10-Number(endPage)+Number(pageNo))
+		if(endPage<=10){
+			$(".page-item").eq(pageNo).addClass("active");
+		}else if (pageNo<=6) {
+			$(".page-item").eq(pageNo).addClass("active");
+		}else if ((Number(pageNo)+4)>endPage) {
+			$(".page-item").eq(10-Number(endPage)+Number(pageNo)).addClass("active");
+		}else{
+			$(".page-item").eq(6).addClass("active");
+		}
 	})
 </script>
 
@@ -80,17 +92,46 @@
                 </tbody>
               </table>
             </div>
-            <div class="text-right col-sm-12" style="padding-right: 0;">
-					<ul class="pagination">
+            <div class="text-right col-sm-12" style=" padding-right: 0;">
+					<ul class="pagination" style="justify-content: center;">
 							<li class="page-item">
-							  <a class="page-link" href="#" tabindex="-1" aria-disabled="true"><</a>
+							<c:if test="${pageNo!=1}">
+							  <a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${pageNo-1}&name=${name}" tabindex="-1" aria-disabled="true"><</a>
+							</c:if>
 							</li>
-		                	<c:forEach var="page" begin="1" end="${endPage}" step="1" varStatus="status">
-								<li class="page-item"><a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${status.index}&name=${name}">${status.index}</a></li>
-							</c:forEach>
+							<c:choose>
+								<c:when test="${endPage<=10}">
+				                	<c:forEach var="page" begin="1" end="${endPage}" step="1" varStatus="status">
+										<li class="page-item"><a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${status.index}&name=${name}">${status.index}</a></li>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${pageNo<=5}">
+											<c:forEach var="page" begin="1" end="10" step="1" varStatus="status">
+												<li class="page-item"><a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${status.index}&name=${name}">${status.index}</a></li>
+											</c:forEach>
+										</c:when>
+										<c:when test="${(pageNo+4)>=endPage}">
+											<c:forEach var="page" begin="${endPage-9}" end="${endPage}" step="1" varStatus="status">
+												<li class="page-item"><a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${status.index}&name=${name}">${status.index}</a></li>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<c:forEach var="page" begin="${pageNo-5}" end="${pageNo+4}" step="1" varStatus="status">
+												<li class="page-item"><a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${status.index}&name=${name}">${status.index}</a></li>
+											</c:forEach>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+							
+						
 							<li class="page-item">
-							  <a class="page-link" href="#">></a>
+							<c:if test="${pageNo!=endPage}">
+							  <a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${pageNo+1}&name=${name}">></a>
 							</li>
+							</c:if>
 					</ul>
 			</div>
 		</div>
