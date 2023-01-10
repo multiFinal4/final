@@ -22,21 +22,21 @@ public class WeatherUtil {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");   // 포맷 정의
         String formatedNow = now.format(formatter);    // 포맷 적용
         String baseTime = "";
-        if(Integer.parseInt(formatedNow)>2310) {
+        if(Integer.parseInt(formatedNow)>=2310) {
         	baseTime = "2300";
-        }else if(Integer.parseInt(formatedNow)>2010) {
+        }else if(Integer.parseInt(formatedNow)>=2010) {
         	baseTime = "2000";
-        }else if(Integer.parseInt(formatedNow)>1710) {
+        }else if(Integer.parseInt(formatedNow)>=1710) {
         	baseTime = "1700";
-        }else if(Integer.parseInt(formatedNow)>1410) {
+        }else if(Integer.parseInt(formatedNow)>=1410) {
         	baseTime = "1400";
-        }else if(Integer.parseInt(formatedNow)>1110) {
+        }else if(Integer.parseInt(formatedNow)>=1110) {
         	baseTime = "1100";
-        }else if(Integer.parseInt(formatedNow)>810) {
+        }else if(Integer.parseInt(formatedNow)>=810) {
         	baseTime = "0800";
-        }else if(Integer.parseInt(formatedNow)>510) {
+        }else if(Integer.parseInt(formatedNow)>=510) {
         	baseTime = "0500";
-        }else if(Integer.parseInt(formatedNow)>210) {
+        }else if(Integer.parseInt(formatedNow)>=210) {
         	baseTime = "0200";
         }else {
         	baseTime = "2300";
