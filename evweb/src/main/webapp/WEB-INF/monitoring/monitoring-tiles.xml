@@ -5,6 +5,7 @@
 <tiles-definitions>
 	<!-- 날씨 상세페이지 -->
 	<definition name="monitoring/weather" extends="monitoring">
+		<put-attribute name="menu" value="/WEB-INF/monitoring/monitoring_weather_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/monitoring/weather.jsp"></put-attribute>
 	</definition>
 	

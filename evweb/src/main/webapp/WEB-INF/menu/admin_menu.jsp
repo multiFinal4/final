@@ -46,6 +46,12 @@
                     <span>회원 관리</span>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/weather/getWeatherData.do">
+                    <i class="bi bi-card-list"></i>
+                    <span>날씨 데이터 업데이트</span>
+                    </a>
+                </li>
             </ul>
         </aside>
     </body>

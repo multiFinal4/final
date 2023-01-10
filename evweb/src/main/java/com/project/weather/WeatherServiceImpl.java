@@ -42,13 +42,13 @@ public class WeatherServiceImpl implements WeatherService {
 	}
 
 	@Override
-	public List<WeatherDTO> readList(String location_no) {
-		return dao.readList(location_no);
+	public List<WeatherDTO> readList(String station_id) {
+		return dao.readList(station_id);
 	}
 
 	@Override
-	public int delete(String location_no) {
-		return dao.delete(location_no);
+	public int delete(String station_id) {
+		return dao.delete(station_id);
 	}
 
 }

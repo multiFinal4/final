@@ -54,10 +54,10 @@ public class WeatherAPIPull {
         return sb.toString();
 	}
 	
-	public List<WeatherDTO>  DataSave(String result, String location_no, String location_name)  {
+	public List<WeatherDTO>  DataSave(String result, String station_id, String location_name)  {
 		// Json parser를 만들어 만들어진 문자열 데이터를 객체화
 		List<WeatherDTO> weatherList = new ArrayList<WeatherDTO>();
-		WeatherDTO weather = new WeatherDTO(location_no,location_name);
+		WeatherDTO weather = new WeatherDTO(station_id,location_name);
 		JSONParser parser = new JSONParser();
 		JSONObject obj;
 		try {
@@ -96,7 +96,7 @@ public class WeatherAPIPull {
 						weather.setPop("없음");
 					}
 					weatherList.add(weather);
-					weather = new WeatherDTO(location_no,location_name);
+					weather = new WeatherDTO(station_id,location_name);
 					day = fcstDate.toString();
 					time = fcstTime.toString();
 				}
