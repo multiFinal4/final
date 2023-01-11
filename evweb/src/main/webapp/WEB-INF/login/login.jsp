@@ -19,6 +19,8 @@
   <link href="/evweb/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="/evweb/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="/evweb/css/style.css" rel="stylesheet">
+  <link href="/evweb/css/font.css" rel="stylesheet">
+  <link href="/evweb/css/common.css" rel="stylesheet">
 	<script type="text/javascript">
 	
 	</script>

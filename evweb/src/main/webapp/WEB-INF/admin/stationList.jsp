@@ -35,7 +35,6 @@
 					}
 					
 				});
-				// 페이징처리 리팩토링할 것
 				
 				
 				$("#updateList").click(function () {
@@ -71,7 +70,7 @@
 					</form>
 					<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 			    </div>
-	              <table class="table table-hover">
+	              <table class="table table-hover table-striped">
 	                <thead>
 	                  <tr>
 	                    <th scope="col" style="width:5%;">번호</th>

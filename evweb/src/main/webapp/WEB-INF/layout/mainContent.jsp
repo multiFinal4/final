@@ -11,33 +11,26 @@
 	</head>
 	<body>
 		<div class="main">
-			<section class="section">
+			<section class="section d-flex">
 				<div class="bgOver"></div>
-				<h1>MAIN CONTENT 1</h1>
+				<div class="mainText">
+					<h1>차지모양</h1>
+					<p class="mb-0">
+						차지는 충전과 공간을 뜻하는 중의적인 표현이며,<br>
+						모양은 '모으다'의 제주 방언입니다.
+					</p>
+				</div>
+				<span class="mainScroll">
+					scroll
+					<span class="scrollIcon">
+						<i class="bi bi-mouse"></i>
+					</span>
+				</span>
 			</section>
 			<section class="section">
-				<div id="map" style="width:100%;height: 100%;"></div>
 			</section>
 		</div>
 	</body>
-	<script>
-	var jeju = new naver.maps.LatLngBounds(
-		    new naver.maps.LatLng(33.5864, 126.0526),
-		    new naver.maps.LatLng(33.1508, 127.0391));
-
-		var map = new naver.maps.Map("map", {
-		    minZoom: 11, // 읍면동 레벨
-		    maxBounds: jeju,
-		});
-
-		var rect = new naver.maps.Rectangle({
-		    strokeOpacity: 0,
-		    strokeWeight: 0,
-		    fillOpacity: 0.2,
-		    bounds: jeju,
-		    map: map
-		});
-	</script>
 </html>
 
    

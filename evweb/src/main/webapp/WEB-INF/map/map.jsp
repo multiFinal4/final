@@ -16,6 +16,8 @@
 			$(".mapMarkerWrap").removeClass("on");
 		});
 		
+		
+		
 	});
 	
 	function initMap() { 
@@ -34,6 +36,7 @@
         
 		var markers = []; // 마커 정보를 담는 배열
 		var infowindowList = []; // 정보창을 담는 배열
+		//var list = [];
 		
 		
 		var areaArr = [];  // 충전소 정보 담는 배열
@@ -52,19 +55,23 @@
 						});
 		</c:forEach>
 		
-		
+
+	    
 		
 		for (var i = 0; i < areaArr.length; i++) {
 		    var marker = new naver.maps.Marker({
 		        map: map,
 		        title: areaArr[i].chargeName, // 지역구 이름 
 		        icon:{
-		        	content:"<img alt='Marker' src='/evweb/images/location2.png' style='width:30px;'>"
+		        	content:"<img alt='Marker' src='/evweb/images/location-pin.png' style='width:30px;'>"
 		        },
-		        size: new naver.maps.Size(32, 32),
-	            anchor: new naver.maps.Point(16, 32),
+		        size: new naver.maps.Size(38, 58),
+		        anchor: new naver.maps.Point(19, 58),
 		        position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기 
 		    });
+		    
+		    //var listitem = 
+		    	
 		    
 		    /* 정보창 */
 			var stationInfo = "";
@@ -73,38 +80,57 @@
 			    stationInfo += "</div></div>";
 		    var infoWindow = new naver.maps.InfoWindow({
 		    		content: stationInfo,
-			        backgroundColor: '#00ff0000',
-			        borderColor: '#00ff0000',
-			        anchorSize: new naver.maps.Size(0,0)
+		    		borderWidth: 0,
+		    	    disableAnchor: true,
+		    	    backgroundColor: 'transparent',
+		    	    pixelOffset: new naver.maps.Point(0, -28),
 		    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
 													    
 			markers.push(marker); // 생성한 마커를 배열에 담는다.
 			infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+			//list.push("1");
+			
 		}
 
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	    	naver.maps.Event.addListener(map, "click", ClickMap(i));
 	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
+	        
 	  	}
+	    // 리스트 클릭해도 이동
+	    var $mapSearchList = $(".mapSearchList").children("div");
+	    
+	    $mapSearchList.click(function() {
+			var i = $(this).index();
+			naver.maps.Event.trigger(markers[i], 'click', getClickHandler(i));
+		});
+	    
+	    // 제주도 중심으로 이동
+	    $(".mapControl .center").click(function() {
+			$(".mapMarkerWrap").removeClass("on");
+	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
+	    	map.setCenter(new naver.maps.LatLng(33.3885379, 126.5626925));
+	    	map.setZoom(11);
+
+	    });
+		
+	    // 지도클릭 시 안내창 닫기
 		function ClickMap(i) {
 			return function () {
 			  var infowindow = infowindowList[i];
 			  infowindow.close()
 			}
 		}
+	    // 마커클릭 이벤트
 	    function getClickHandler(i) {
             return function(e) {  // 마커를 클릭하는 부분
             	$(".mapMarkerWrap").addClass("on");
-                var marker = markers[i], // 클릭한 마커의 시퀀스로 찾는다.
-                    infoWindow = infowindowList[i]; // 클릭한 마커의 시퀀스로 찾는다
+                var marker = markers[i], // 클릭한 마커의 index 찾기
+                    infoWindow = infowindowList[i]; // 클릭한 마커와 동일한 index 안내창
                 if (infoWindow.getMap()) {
                     infoWindow.close();
                 } else {
-                    infoWindow.open(map, marker); // 표출
-                    /* marker.setIcon({
-                        url: '/evweb/images/location-pointer.png'
-                    }); */
-                    
+                    infoWindow.open(map, marker); // 나타내기
                     map.setZoom(18, false);
                     map.panTo(marker.position);
                 }
@@ -113,6 +139,7 @@
     		}
     	}
 	    
+	    // ajax로 클릭한 충전소 정보 받아오기
 		function markerClickAjax(i) {
 			$.ajax({
 				url: "/evweb/ajax/mapStation",
@@ -320,10 +347,11 @@
 	    <div class="stationInfoMid">
 	        <ul id="chargerInfo" class="pl-0"></ul>
 	    </div>
-	    <div class="mapControl">
-	        <ul id="chargerInfo" class="pl-0"></ul>
-	    </div>
 	</div>
+    <div class="mapControl">
+        <button class="btn center mb-3" type="button"><i class="bi bi-geo-alt"></i></button>
+        <button class="btn current" type="button"><i class="bi bi-record-circle"></i></button>
+    </div>
 </body>
 
 

@@ -1,13 +1,13 @@
 @charset "UTF-8";
 *{box-sizing:border-box;list-style:none;}
-a{color: #6997e7;}
-a:hover{text-decoration:none;}
+a{color: #767676;font-weight: 500;}
+a:hover{text-decoration:none;color:#F37321;}
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    background-color: #b7caed;
+    background-color: #c0c0c0;
 }
 ::-webkit-scrollbar-track {
     background-color: #e2e2e2;
@@ -81,7 +81,7 @@ a:hover{text-decoration:none;}
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  color: #6997e7;
+  color: #F37321;
 }
 
 .navbar .getstarted,
@@ -90,21 +90,21 @@ a:hover{text-decoration:none;}
   padding: 5px 25px;
   margin-left: 30px;
   border-radius: 50px;
-  color: #6997e7;
+  color: #F37321;
   font-size: 18px;
-  border: 3px solid #6997e7;
+  border: 3px solid #F37321;
   font-weight: 600;
 }
 .index .navbar .getstarted,
 .index .navbar .getstarted:focus{
-  color: #6997e7;
+  color: #F37321;
 }
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover,
 #header.on .navbar .getstarted:hover {
   color: #fff;
   text-decoration:none;
-  background: #6997e7;
+  background: #F37321;
 }
 
 .navbar .dropdown ul {
@@ -318,23 +318,59 @@ a:hover{text-decoration:none;}
 
 /*content*/
 .main .section{
-	height:80vh;
-	background-color:#2a394b;
-	padding:20%;
+	height:100vh;
 	color:#fff;
-	text-align:center;
 }
 .main .section:first-child{
 	background-image: url("/evweb/images/mainBg1.jpg");
 	background-attachment: fixed;
 	background-size:cover;
 	position: relative;
+	align-items: center;
 }
-.main .section h1{
+.main .section .mainText{
+	width:70%;
+	margin:0 auto;
+	padding-left:30px;
 	position: relative;
 	z-index: 1;
+}
+.main .section .mainText:after{    
+	content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 4px;
+    height: 122px;
+    background-color: #fff;
+}
+.main .section .mainText h1{
 	font-size:60px;
 	font-weight: bold;
+}
+.main .section .mainText p{
+	color:#fff;
+	font-size:20px;
+	font-weight:300;
+    letter-spacing: -1px;
+}
+.mainScroll {
+    position: absolute;
+    bottom: 50px;
+    width: 50px;
+    left: calc(50% - 25px);
+    text-align: center;
+}
+.mainScroll .scrollIcon {
+	display:block;
+    font-size: 40px;
+    animation: motion 0.8s linear 0s infinite alternate;
+    margin-top: 0;
+}
+@keyframes motion {
+	0% {margin-bottom: 0px;}
+	100% {margin-bottom: -10px;}
 }
 .main .section .bgOver{
 	width:100%;
@@ -368,7 +404,7 @@ a:hover{text-decoration:none;}
 	border-right:2px solid #e2e2e2;
 }
 .sidebar h2{
-	color:#37517e;
+	color:#F37321;
 	font-size:25px;
 	font-weight:bold;
 	padding:15px;
@@ -444,25 +480,25 @@ a:hover{text-decoration:none;}
 .sidebar-nav .nav-link i {
 	font-size: 16px;
 	margin-right: 10px;
-	color: #37517e;
+	color: #444444;
 }
 
 .sidebar-nav .nav-link.collapsed {
-	color: #37517e;
+	color: #444444;
 	background: #fff;
 }
 
 .sidebar-nav .nav-link.collapsed i {
-	color: #333;
+	color: #444444;
 }
 
 .sidebar-nav .nav-link:hover {
-	color: #6997e7;
-	background: #f6f9ff;
+	color: #F37321;
+	background: #f7f7f7;
 }
 
 .sidebar-nav .nav-link:hover i {
-	color: #6997e7;
+	color: #F37321;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -512,6 +548,10 @@ a:hover{text-decoration:none;}
 	font-size:15px;
 	padding:5px;
 }
+.mapSidebar .bootstrap-select > .dropdown-toggle.btn-light{
+	background-color:#fff;
+	border:1px solid #e2e2e2;
+}
 .mapSidebar .mapSearchResult{
 	padding:10px;
 	background-color:#f6f6f6;
@@ -529,6 +569,45 @@ a:hover{text-decoration:none;}
 	font-size:16px;
 	font-weight:bold;
 }
+.mapSearchList .card-title .bi{
+	color:#F37321;
+}
+.mapSearchList .card-subtitle{
+	font-size:12px;
+	padding-left:20px;
+}
+.mapSearchList .card-text{
+	font-size:14px;
+	font-weight:600;
+}
+.clickInfo{
+	display:block;
+	position:absolute;
+	border-radius:100px;
+	width:30px;
+	height:30px;
+	color:#fff;
+	background-color:#F37321;
+	text-align:center;
+	line-height:2;
+	top:calc(50% - 15px);
+	right:20px;
+	cursor:pointer;
+}
+.mapControl{
+	position:absolute;
+	right:20px;
+	bottom:30px;
+	padding:0 !important;
+}
+.mapControl button{
+	width:40px;
+	display:block;
+	background-color:#fff;
+	height:40px;
+	border-radius:5px;
+	
+}
 /* content */
 #container{
 	padding:0;
@@ -541,14 +620,22 @@ a:hover{text-decoration:none;}
 }
 /* button */
 .btn-primary{
-	background-color:#37517e;
-	border-color:#37517e;
+	background-color:#F37321;
+	border-color:#F37321;
+}
+.btn-primary:hover, 
+.btn-primary:not(:disabled):not(.disabled).active, 
+.btn-primary:not(:disabled):not(.disabled):active, 
+.show>.btn-primary.dropdown-toggle{
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
 }
 .pagetitle{
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: #F37321;
 }
 /* Map */
 #container>div.mapMarkerWrap {
@@ -573,17 +660,14 @@ a:hover{text-decoration:none;}
 	cursor:pointer;
 	
 }
-.markerInfo{
-	position:relative;
+.markerInfo{    
+	position: relative;
+    left: 100%;
+    bottom: -70px;
 }
 .markerName{
-	width: auto;
-    top: -25px;
-    left: 40px;
-    position: absolute;
-	min-width:150px;
     text-align: center;
-    background-color: #37517e;
+    background-color: #444444;
     padding: 10px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 30%);
     color: #fff;
@@ -593,7 +677,7 @@ a:hover{text-decoration:none;}
 .stationInfoTitle{
 	font-size:22px;
 	font-weight:bold;
-	color:#295faf;
+	color:#F37321;
 	border-bottom:1px solid #e2e2e2;
 }
 .stationInfoTitle .bi{
@@ -630,10 +714,11 @@ a:hover{text-decoration:none;}
 .type li h6 {
     font-weight: bold;
     font-size: 12px;
-    margin-bottom:0;
+    margin-bottom:0;    
+    letter-spacing: -0.7px;
 }  
 .stationInfoMid{
-	max-height: 470px;
+	max-height: 430px;
     overflow-y: auto;
 }
 .chargerNo{  
@@ -650,7 +735,7 @@ a:hover{text-decoration:none;}
     margin-bottom:0;
     line-height: 30px;
     color: #fff;
-    background-color: #37517e;
+    background-color: #F37321;
 }
 .chargerNo .chargerType{
     flex-direction: column;    
@@ -788,7 +873,7 @@ a:hover{text-decoration:none;}
 	overflow:hidden;
 }
 .pagination li .page-link {
-    color: #37517e;
+    color: #444;
     padding:0;
     line-height: 35px;
     width: 35px;
@@ -796,8 +881,8 @@ a:hover{text-decoration:none;}
     text-align: center;
 }
 .page-item.active .page-link {
-    background-color: #37517e;
-    border-color: #37517e;
+    background-color: #F37321;
+    border-color: #F37321;
 }
 
 /* search*/
@@ -960,7 +1045,7 @@ a:hover{text-decoration:none;}
 /*footer*/
 #footer {
   font-size: 14px;
-  background: #37517e;
+  background: #292929;
 }
 #footer.sub{
 	width:100%;
@@ -1041,7 +1126,7 @@ a:hover{text-decoration:none;}
   line-height: 1;
   text-transform: uppercase;
   font-weight: 600;
-  color: #37517e;
+  color: #F37321;
 }
 
 #footer .footer-top .footer-contact p {
@@ -1055,7 +1140,7 @@ a:hover{text-decoration:none;}
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: bold;
-  color: #37517e;
+  color: #F37321;
   position: relative;
   padding-bottom: 12px;
 }

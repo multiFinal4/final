@@ -13,9 +13,56 @@
 
 <script type="text/javascript">
 	var page = 1;
+	var cate = '${category}';
+	var key = '${keyword}';
 	$(document).ready(function () {
-		$('select').selectpicker();
 		$("#category").val(cate).attr("selected","selected");
+		
+		$("input:checkbox").click(function() {
+			if($(this).prop('checked')) {
+	          	var chckVal = $(this).val();
+	        }
+			else {
+				var chckVal = "N";
+			}
+			$.ajax({
+				url: "/evweb/ajax/map/search.do",
+				type: "get",
+				data: {
+					"category" : cate,
+					"keyword" : key,
+					"park" : chckVal,
+				},
+				success: function(data){
+					strHTML = "";
+					for (var i = 0; i < data.length; i++) {
+						strHTML += "<div class='card mb-1 mr-1'>";
+						strHTML += "    <div class='card-body'>";
+						strHTML += "		<h5 class='card-title'><i class='bi bi-geo-alt-fill mr-1'></i>";
+						strHTML += 				data[i].station_name;
+						strHTML += "		</h5>";
+						strHTML += "		<h6 class='card-subtitle mb-2 text-muted'>";
+						strHTML	+=				data[i].addr_do+" "+data[i].addr_sigun+"<br>"+data[i].addr_detail;
+						strHTML += "		</h6>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>";
+						strHTML +=  			data[i].station_company;
+						strHTML += "		</p>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>";
+						strHTML +=				data[i].use_time;
+						strHTML += "		</p>";
+						strHTML += "    	<span class='clickInfo'><i class='bi bi-send-fill'></i></span>";
+						strHTML += "    </div>";
+						strHTML += "</div>";
+					}
+					$(".mapSearchList").html(strHTML);
+				},
+				error: function(){
+				  console.error("insertDiagram.do Error");
+				}
+			});
+		});
+		
+		$("select#company").selectpicker();
 	});
 	
 </script>
@@ -37,10 +84,10 @@
 		</form>
 		<div class="mapSearchResult">
 			<div class="searchSelect">
-				<div class="form-check">
+				<div class="form-check mb-3 pl-0">
 					<select name="company"  id="company" class="selectpicker form-control" multiple data-live-search="true" data-actions-box="true" data-actions-box="true">
 						<c:forEach var="company" items="${companyList}">
-							<option value="${company.station_company}">${company.station_company}</option>
+							<option value="${company}">${company}</option>
 						</c:forEach>
 					</select>
 		        </div>
@@ -56,34 +103,31 @@
 					</div>
 				</div>
 				<h5 class="card-title">주차</h5>
-				<div class="form-check d-flex">
+				<div class="form-check d-flex parkChck">
 					<label class="form-check-label">
 						<input class="form-check-input" type="checkbox" name="park" value="Y">무료주차
 					</label>
-					<label class="form-check-label">
-						<input class="form-check-input" type="checkbox" name="park" value="N">유료주차
-					</label>
 		        </div>
 				<h5 class="card-title">충전타입</h5>
-				<div class="form-check d-flex">
+				<div class="form-check d-flex typeChck">
 					<label class="form-check-label">
 						<input class="form-check-input" type="checkbox" name="quick" value="Y">급속
 					</label>
 					<label class="form-check-label">
 						<input class="form-check-input" type="checkbox" name="quick" value="N">완속
 					</label>
+					
 		        </div>
 	        </div>
 	        <div class="mapSearchList">
 		         <c:forEach var="list" items="${stationList}">
 		        	<div class="card mb-1 mr-1">
 			            <div class="card-body">
-							<h5 class="card-title">${list.station_name}</h5>
-							<h6 class="card-subtitle mb-2 text-muted">${list.addr_do} ${list.addr_sigun} ${list.addr_detail}</h6>
-							<p class="card-text">${list.station_company}</p>
-							<p class="card-text">${list.use_time}</p>
-							<a href="#" class="card-link">Card link</a>
-							<a href="#" class="card-link">Another link</a>
+							<h5 class="card-title"><i class="bi bi-geo-alt-fill mr-1"></i>${list.station_name}</h5>
+							<h6 class="card-subtitle mb-2 text-muted">${list.addr_do} ${list.addr_sigun}<br>${list.addr_detail}</h6>
+							<p class="card-text mb-0"><i class="bi bi-building"></i> ${list.station_company}</p>
+							<p class="card-text mb-0"><i class="bi bi-clock"></i> ${list.use_time}</p>
+			            	<span class="clickInfo"><i class="bi bi-send-fill"></i></span>
 			            </div>
 		          	</div>
 	          	</c:forEach>
