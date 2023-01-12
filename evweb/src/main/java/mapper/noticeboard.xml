@@ -10,12 +10,13 @@
 	 <select id="getfileinfo" parameterType="boardfile" resultType="boardfile">
 		select * from file_tb where notice_no = #{notice_no} and file_no =#{file_no}
 	</select> -->
+	
 	<insert id="write" parameterType="notice">
 		insert into notice_tb 
-		values(notice_tb_seq.nextval,#{notice_title},#{notice_content},#{manager_id},sysdate)
+		values(notice_tb_seq.nextval,#{notice_title},#{notice_content},#{manager_id},sysdate, #{notice_fix})
 	</insert>
 	<select id="selectall" resultType="notice">
-		select * from notice_tb
+		select * from notice_tb order by notice_writedate desc
 	</select>
 	<insert id="notice_fileinsert" parameterType="java.util.List">
 	insert all

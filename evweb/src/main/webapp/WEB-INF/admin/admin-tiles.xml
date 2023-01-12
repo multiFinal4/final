@@ -64,10 +64,6 @@
 	<definition name="admin_noticelist" extends="admin">   
 		<put-attribute name="content" value="/WEB-INF/service/service_notice2.jsp"></put-attribute>
 	</definition>
-<!-- 	<definition name="Notice/writepage" extends="subTemplate"> 
-			<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
-		<put-attribute name="content" value="/WEB-INF/service/service_notice_insert.jsp"></put-attribute>
-	</definition> 확인하고 삭제 예정 1.7 -->
 	<definition name="service_noticeinsert" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_noticeinsert.jsp"></put-attribute>
@@ -85,6 +81,10 @@
 	<definition name="admin_faqlist" extends="admin">   
 		<put-attribute name="content" value="/WEB-INF/service/service_faq2.jsp"></put-attribute>
 	</definition>
+	<definition name="service_faqread" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_faqreadadmin.jsp"></put-attribute>
+	</definition>
 		<definition name="service_faqinsert" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_faqinsert.jsp"></put-attribute>
@@ -93,5 +93,6 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/admin_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_faqupdate.jsp"></put-attribute>
 	</definition>
+	
 </tiles-definitions>
 

@@ -19,9 +19,7 @@
 </script>
 </head>
 <body>
-	<h4>
-		공지사항 게시글 수정하기
-	</h4>
+	<h4>공지사항 게시글 수정하기</h4>
 	<hr>
 	<form class="form-horizontal" action="/evweb/notice/update.do"
 		method="post">
@@ -39,21 +37,21 @@
 			</div>
 			<div class="col-md-8">${board.id}</div>
 		</div> --%>
-		<div class="form-group" style="solid #eff2f7">
+		<div class="form-group" style="">
 			<label class="col-sm-2 col-sm-2 control-label">작성자</label>
 			<div class="col-sm-10">
 
 				<p class="form-control-static">${notice.manager_id }</p>
 				<input type="hidden" name="manager_id" value="${notice.manager_id }">
-		</div>
-		
-			
+			</div>
+
+
 			<!-- <div class="form-group"> -->
-				<label class="col-sm-2 col-sm-2 control-label">제목</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control" name="notice_title"
-						value="${notice.notice_title }"> <span class="help-block">게시글
-						유형에 맞는 내용으로 작성 부탁드립니다. </span>
+			<label class="col-sm-2 col-sm-2 control-label">제목</label>
+			<div class="col-sm-8">
+				<input type="text" class="form-control" name="notice_title"
+					value="${notice.notice_title }"> <span class="help-block">게시글
+					유형에 맞는 내용으로 작성 부탁드립니다. </span>
 				<!-- </div> -->
 			</div>
 
@@ -74,7 +72,8 @@
 				<label for="notice_writedate" class="control-label">최초 작성날짜</label>
 			</div>
 			<div class="col-md-8">${notice.notice_writedate }</div>
-			<input type="hidden" name="notice_writedate" value="${notice.notice_writedate }">
+			<input type="hidden" name="notice_writedate"
+				value="${notice.notice_writedate }">
 		</div>
 		<div class="form-group">
 			<label class="col-sm-2 col-sm-2 control-label">내용</label>
@@ -84,6 +83,24 @@
 					rows=15 name="notice_content">${notice.notice_content } </textarea>
 
 			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label class="col-sm-2 col-form-label">고정하기</label>
+			<fieldset>
+				<c:choose>
+					<c:when test="${notice.notice_fix eq 'y'}">
+						X <input type="radio" name="notice_fix" value="n" />
+						O <input type="radio" name="notice_fix" value="y" checked />
+					</c:when>
+				</c:choose>
+				<c:choose>
+					<c:when test="${notice.notice_fix eq 'n'}">
+						X <input type="radio" name="notice_fix" value="n" checked/>
+						O <input type="radio" name="notice_fix" value="y"/>
+					</c:when>
+				</c:choose>
+			</fieldset>
 		</div>
 
 		<div class="form-group">

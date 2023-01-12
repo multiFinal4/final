@@ -12,6 +12,7 @@ public class NoticeDTO {
 	private String notice_content;
 	private String manager_id;
 	private String notice_writedate;
+	private String notice_fix;
 	
 	//클라이언트가 전송하는 바이너리 파일 데이터를 스프링 MVC내부에서 MultipartFile객체로 만들어서 저장
 	//첨부 파일이 여러 개인 경우 List에 저장하거나 배열로 관리
@@ -21,19 +22,21 @@ public class NoticeDTO {
 	}
 
 	public NoticeDTO(String notice_no, String notice_title, String notice_content, String manager_id,
-			String notice_writedate, List<MultipartFile> files) {
+			String notice_writedate, List<MultipartFile> files, String notice_fix) {
 		super();
 		this.notice_no = notice_no;
 		this.notice_title = notice_title;
 		this.notice_content = notice_content;
 		this.manager_id = manager_id;
 		this.notice_writedate = notice_writedate;
+		this.notice_fix = notice_fix;
 	}
 
 	@Override
 	public String toString() {
-		return "noticeDTO [notice_no=" + notice_no + ", notice_title=" + notice_title + ", notice_content="
-				+ notice_content + ", manager_id=" + manager_id + ", notice_writedate=" + notice_writedate + "]";
+		return "NoticeDTO [notice_no=" + notice_no + ", notice_title=" + notice_title + ", notice_content="
+				+ notice_content + ", manager_id=" + manager_id + ", notice_writedate=" + notice_writedate
+				+ ", notice_fix=" + notice_fix + ", files=" + files + "]";
 	}
 
 	public String getNotice_no() {
@@ -80,5 +83,13 @@ public class NoticeDTO {
 	}
 	public void setFiles(List<MultipartFile> files) {
 		this.files = files;
+	}
+
+	public String getNotice_fix() {
+		return notice_fix;
+	}
+
+	public void setNotice_fix(String notice_fix) {
+		this.notice_fix = notice_fix;
 	}
 }

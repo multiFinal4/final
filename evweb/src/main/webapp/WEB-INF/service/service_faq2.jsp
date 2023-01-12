@@ -25,7 +25,7 @@
 				<th></th>
 				<th>제목</th>
 				<th>내용</th>
-				<th>수정</th>
+				<!-- <th>수정</th> -->
 			</tr>
 			<%
 			for (int i = 0; i < size; i++) {
@@ -33,21 +33,19 @@
 			%>
 			<tr>
 				<td>▶</td>
-				<td><a
-					href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
+				<td><a 
+					href="/evweb/faq/detail?key=_id&value=<%=faq.get_id()%>&action=read"><%=faq.gettitle()%></a></td>
 				<td><%=faq.getcontent()%></td>
-				<td><a href="/evweb/service/detail?key=id&value=<%=faq.get_id()%>&action=update">수정</a></td>
-				<%-- <td><a href="mybatisDel.do?_id=<%=faq.get_id()%>">삭제</a></td> --%>
 			</tr>
 			<%
 			}
 			%>
 			<tr></tr>
 			<tr align="center">
-				<td colspan="10"><a href="/evweb/faq/paginglist?pageNo=0">1</a>
-					<a href="/evweb/faq/paginglist?pageNo=1">2</a> <a
-					href="/evweb/faq/paginglist?pageNo=2">3</a> <a
-					href="/evweb/faq/paginglist?pageNo=3">4</a></td>
+				<td colspan="10"><a href="/evweb/admin_faq.do?pageNo=0">1</a>
+					<a href="/evweb/admin_faq.do?pageNo=1">2</a> <a
+					href="/evweb/admin_faq.do?pageNo=2">3</a> <a
+					href="/evweb/admin_faq.do?pageNo=3">4</a></td>
 			</tr>
 		</table>
 		<div class="nav navbar-nav">
