@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.charge.ChargeService;
 import com.project.charger.ChargerAPIPull;
 import com.project.charger.ChargerController;
 import com.project.charger.ChargerDTO;
@@ -24,11 +25,11 @@ import com.project.weather.WeatherUtil;
 
 @Controller
 public class MonitoringController {
-
 	StationService service;
 	ChargerService chargerService;
 	ManagerService managerService;
 	WeatherService weatherService;
+	ChargeService chargeService;
 	StationAPIPull stationAPIPull;
 	ChargerAPIPull chargerAPIPull;
 	ChargerController chargerCtrl;
@@ -36,7 +37,7 @@ public class MonitoringController {
 	public MonitoringController() {}
 	@Autowired
 	public MonitoringController(StationService service, ChargerService chargerService, ManagerService managerService,
-			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargerController chargerCtrl, WeatherService weatherService) {
+			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargerController chargerCtrl, WeatherService weatherService, ChargeService chargeService) {
 		super();
 		this.service = service;
 		this.chargerService = chargerService;
@@ -45,6 +46,7 @@ public class MonitoringController {
 		this.chargerAPIPull = chargerAPIPull;
 		this.chargerCtrl = chargerCtrl;
 		this.weatherService = weatherService;
+		this.chargeService = chargeService;
 	}
 
 	@RequestMapping("/monitoring/main")
@@ -69,9 +71,9 @@ public class MonitoringController {
 		mv.addObject("weather", weather);
 		mv.addObject("tmx", tmx);
 		mv.addObject("tmn", tmn);
-		
-		
-		
+		//충전량
+		String chargeAmount = chargeService.sumchargeAmount(stationId, weatherutil.getDate(LocalDate.now(), "yyyyMMdd"));
+		mv.addObject("chargeAmount", chargeAmount);
 		return mv;
 	}
 	

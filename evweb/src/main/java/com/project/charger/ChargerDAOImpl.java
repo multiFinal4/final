@@ -27,7 +27,7 @@ public class ChargerDAOImpl implements ChargerDAO {
 
 	@Override
 	public List<ChargerDTO> chargerList() {
-		return null;
+		return sqlSession.selectList("com.project.charger.selectAll");
 	}
 
 	@Override

@@ -83,6 +83,7 @@
 					<div class="card info-card sales-card">
 						<div class="card-header">
 							<h5 class="card-title">일간 충전량</h5>
+							<h1>${chargeAmount}</h1>
 						</div>
 						<div class="card-body"></div>
 					</div>

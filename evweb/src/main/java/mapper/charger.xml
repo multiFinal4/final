@@ -14,6 +14,8 @@
 	</delete>
 	<select id="chargerlist" resultType="charger">
 		select c.* from station_tb s, charger_tb c where s.station_id=c.station_id
+	<select id="selectAll" resultType="charger">
+		select * from CHARGER_TB
 	</select>
  </mapper>
  
