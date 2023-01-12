@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/customer")
 public class CustomerController {
 	customerService service;
 	
@@ -29,16 +28,16 @@ public class CustomerController {
 		return mav;
 	}
 	
+
 	
-	
-	@RequestMapping("/customer/read.do")//¸¶ÀÌÆäÀÌÁö
+	@RequestMapping("/customer/read.do")//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String read(String customer_id,String state,Model model) {
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
 		if(state.equals("READ")) {
-			view = "customer_mypage_read";
+			view = "customer/customer_read";
 		}else {
-			view = "customer_update";
+			view = "customer/customer_update";
 		}
 		model.addAttribute("customerinfo", customerinfo);
 		return view;
@@ -46,22 +45,30 @@ public class CustomerController {
 	
 	
 	
-	//È¸¿ø °¡ÀÔ ÆäÀÌÁö 
-	@RequestMapping(value = "/customer/register.do", method = RequestMethod.GET)
+	//È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+	@RequestMapping(value ="/customer/register.do", method = RequestMethod.GET)
 	public String registerPage() {
-		return "customerRegister";
+		return "customer_register";
 	}
 	
 	
-	//È¸¿ø°¡ÀÔ Ã³¸®
-	@RequestMapping(value = "/customer/register.do",  method = RequestMethod.POST)
+	//íšŒì›ê°€ì…
+	@RequestMapping(value ="/customer/register.do", method=RequestMethod.POST)
 	public String register(CustomerDTO customer) {
 		service.register(customer);
-		return "redirect:/login.do";  // È¸¿ø°¡ÀÔ ¿Ï·áµÇ¸é ·Î±×ÀÎÆäÀÌÁö¸¦ È£Ãâ
+		return "login";  
+	}
+	
+	//íšŒì›ì •ë³´ ìˆ˜ì •
+	@RequestMapping(value = "/customer/update.do", method = RequestMethod.GET)
+	public String updatePage() {
+		return "customer_update";
 	}
 	
 	
-	//Á¤º¸ ¼öÁ¤ ¿Ï·áÇÏ¸é ´Ù½Ã ¸¶ÀÌÆäÀÌÁö·Î! 
+	
+	
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½Ï¸ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½! 
 	@RequestMapping("/customer/update.do")
 	public String update(CustomerDTO customer) {
 		service.update(customer);
@@ -69,11 +76,10 @@ public class CustomerController {
 	}
 	
 	
-	//È¸¿øÅ»Åğ!
 	@RequestMapping("/customer/delete.do")
-	public String delete(String manager_id) {
-		service.delete(manager_id);
-		return "redirect:/index.do"; 	
+	public String delete(String customer_id) {
+		service.delete(customer_id);
+		return "login/login"; 	
 	}
 	
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
@@ -82,6 +88,11 @@ public class CustomerController {
 		return service.idCheck(customer_id); 
 	}
 	
+	@RequestMapping("/customer/realdelete.do")
+	public String realdelete(String customer_id) {
+		service.realdelete(customer_id);
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
+	}
 	
 	
 	

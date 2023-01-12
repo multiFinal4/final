@@ -1,6 +1,8 @@
 package com.project.customer;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,11 +55,57 @@ public class CustomerDAOImpl implements CustomerDAO {
 	
 	}
 
-    // ¸¶ÀÌÆäÀÌÁö
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public CustomerDTO getCustomerInfo(String customer_id) {
 		
 		return sqlsession.selectOne("com.project.customer.read", customer_id);
 	}
 
+
+	@Override
+	public List<CustomerDTO> findByState(String state) {
+		return sqlsession.selectList("com.project.customer.findbystate", state);
+	}
+
+
+	@Override
+	public List<CustomerDTO> findListByState(String state, String remainNo, String name) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("state", state);
+		map.put("remainNo", remainNo);
+		map.put("name", name);
+		return sqlsession.selectList("com.project.customer.stateSelect", map);
+	
+	}
+
+
+	@Override
+	public List<CustomerDTO> customerList(String remainNo, String name) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("remainNo", remainNo);
+		map.put("name", name);	
+		return sqlsession.selectList("com.project.customer.selectall",map);
+	}
+
+
+	@Override
+	public List<CustomerDTO> findByName(String state, String name) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("state", state);
+		map.put("name", name);	
+		return sqlsession.selectList("com.project.customer.findbyname",map);
+	
+	}
+
+	@Override
+	public int change(String customer_id) {
+		
+		return sqlsession.delete("com.project.customer.change", customer_id);
+	}
+	@Override
+	public int realdelete(String customer_id) {
+		
+		return sqlsession.delete("com.project.customer.realdelete", customer_id);
+	}
 }

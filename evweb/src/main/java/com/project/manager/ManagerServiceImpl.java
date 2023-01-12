@@ -13,35 +13,25 @@ public class ManagerServiceImpl implements ManagerService {
 		super();
 		this.dao = dao;
 	}
-
+	@Override
+	public List<ManagerDTO> selectList() {
+		return dao.selectList();
+	}
 	@Override
 	public int register(ManagerDTO dto) {
 		return dao.register(dto);
 	}
-
+	@Override
+	public int update(ManagerDTO manager) {
+		return dao.update(manager);
+	}
 	@Override
 	public List<ManagerDTO> managerfind(String manager_name,String type) {
 		return dao.managerfind(manager_name, type);
 	}
-
-	
 	@Override
 	public int delete(String manager_id) {
 		return dao.delete(manager_id);
-	}
-	@Override
-	public List<ManagerDTO> selectList(String endNo) {
-		return dao.selectList(endNo);
-	}
-	@Override
-	public List<ManagerDTO> findListByType(String type,String endNo) {
-		List<ManagerDTO> list = null;
-		if(type.equals("all")) {
-				list = dao.selectList(endNo);
-		}else {
-			list = dao.findListByType(type, endNo);
-		}
-		return list;
 	}
 	@Override
 	public List<ManagerDTO> findByType(String type) {
@@ -53,7 +43,20 @@ public class ManagerServiceImpl implements ManagerService {
 		}
 		return list;
 	}
-
+	@Override
+	public List<ManagerDTO> selectList(String endNo, String name) {
+		return dao.selectList(endNo, name);
+	}
+	@Override
+	public List<ManagerDTO> findListByType(String type,String endNo, String name) {
+		List<ManagerDTO> list = null;
+		if(type.equals("all")) {
+				list = dao.selectList(endNo, name);
+		}else {
+			list = dao.findListByType(type, endNo, name);
+		}
+		return list;
+	}
 	@Override
 	public List<ManagerDTO> findByName(String type,String name) {
 		return dao.findByName(type,name);
@@ -62,11 +65,9 @@ public class ManagerServiceImpl implements ManagerService {
 		return dao.idCheck(manager_id);
 	}
 
-	@Override
-	public List<ManagerDTO> selectList() {
-		return dao.selectList();
-	}
-
+	
+	
+	//조회시 연월일만 표시
 	@Override
 	public ManagerDTO getManagerInfo(String manager_id) {
 		ManagerDTO manager = dao.getManagerInfo(manager_id);
@@ -75,7 +76,8 @@ public class ManagerServiceImpl implements ManagerService {
 	}
 
 	@Override
-	public int update(ManagerDTO manager) {
-		return dao.update(manager);
+	public int realdelete(String manager_id) {
+		return dao.realdelete(manager_id);
 	}
+	
 }

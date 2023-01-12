@@ -1,23 +1,21 @@
 package com.project.charger;
 
 public class ChargerDTO {
-	private String station_id;   // 충전소아이디
-	private String charger_id;   // 충전기아이디
-	private String charger_type; // 충전기 타입
-	private String stat;         // 충전기 상태
-	private String stat_UpdDt;   // 상태갱신일시
-	private String last_Tsdt;    // 마지막 충전시작일시
-	private String last_Tedt;    // 마지막 충전종료일시
-	private String now_Tsdt;     // 충전중 시작일시
-	private String output;       // 충전용량(kW)
-	private String method;       // 충전방식 (단독/동시)
-	private String delYn;        // 충전방식충전기 정보 삭제 여부 (최근 삭제된 충전기 정보 제공)
-	private String del_detail;   // 충전기 정보 삭제 사유
-
-	public ChargerDTO() {
-	}
-
-	public ChargerDTO(String station_id, String charger_id, String charger_type, String stat, String stat_UpdDt,
+	private String station_id; 		// 충전소ID
+	private String charger_id; 		// 충전기ID
+	private String charger_type;	// 충전기 타입
+	private String stat; 			// 충전기 상태
+	private String stat_UpdDt; 		// 상태갱신일시
+	private String last_Tsdt;		// 마지막 충전시작일시
+	private String last_Tedt; 		// 마지막 충전종료일시
+	private String now_Tsdt; 		// 충전중 시작일시
+	private String output; 			// 충전용량(kW)
+	private String method; 			// 충전방식 (단독/동시)
+    private String delYn; 			// 충전방식충전기 정보 삭제 여부 (최근 삭제된 충전기 정보 제공)
+    private String del_detail;		// 충전기 정보 삭제 사유
+	
+    public ChargerDTO() {};
+    public ChargerDTO(String station_id, String charger_id, String charger_type, String stat, String stat_UpdDt,
 			String last_Tsdt, String last_Tedt, String now_Tsdt, String output, String method, String delYn,
 			String del_detail) {
 		super();
@@ -34,7 +32,7 @@ public class ChargerDTO {
 		this.delYn = delYn;
 		this.del_detail = del_detail;
 	}
-
+    
 	@Override
 	public String toString() {
 		return "ChargerDTO [station_id=" + station_id + ", charger_id=" + charger_id + ", charger_type=" + charger_type
@@ -139,4 +137,5 @@ public class ChargerDTO {
 		this.del_detail = del_detail;
 	}
 
-}
+    
+}   

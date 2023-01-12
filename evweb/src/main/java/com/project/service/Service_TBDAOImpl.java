@@ -20,7 +20,7 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 
 	@Override
 	public int insert(Service_TBDTO board) {
-		return sqlSession.insert("com.project.service.insert", board);
+		return sqlSession.insert("com.project.service.write", board);
 	}
 
 	@Override

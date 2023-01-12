@@ -17,7 +17,7 @@
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/service/notice">
+                    <a class="nav-link collapsed" href="/evweb/Notice/list.do">
                     <i class="bi bi-grid"></i>
                     <span>공지사항</span>
                     </a>
@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/service/faq">
+                    <a class="nav-link collapsed" href="/evweb/faq/paginglist?pageNo=0">
                     <i class="bi bi-grid"></i>
                     <span>FAQ</span>
                     </a>

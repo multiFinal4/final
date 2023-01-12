@@ -8,7 +8,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
+@Service("notice")
 public class FileUploadLogic {
 	//파일을 업로드한 후 이 정보를 NoticeFileDTO로 변환해서 리턴
 	public List<NoticeFileDTO> uploadFiles(List<MultipartFile> multipartFiles, String path) throws IllegalStateException, IOException{

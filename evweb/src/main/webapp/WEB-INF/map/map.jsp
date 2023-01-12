@@ -217,5 +217,4 @@ function initMap() {
 	
 	$("#interaction, #tile-transition, #controls").addClass("control-on");
 </script>
-
 </html>

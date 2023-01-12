@@ -1,37 +1,46 @@
 package com.project.weather;
 
-import java.sql.Time;
-
 public class WeatherDTO {
 	private String location_no;
 	private String location_name;
 	private String sky;
-	private int tmn;
-	private int tmx;
-	private int pop;
-	private Time time;
+	private String tmp;
+	private String tmn;
+	private String tmx;
+	private String pop;
+	private String day;
+	private String time;
 	
 	public WeatherDTO() {
 		super();
 	}
+	
+	public WeatherDTO(String location_no, String location_name) {
+		super();
+		this.location_no = location_no;
+		this.location_name = location_name;
+	}
 
-	public WeatherDTO(String location_no, String location_name, String sky, int tmn, int tmx, int pop, Time time) {
+	public WeatherDTO(String location_no, String location_name, String sky, String tmp, String tmn, String tmx,
+			String pop, String day, String time) {
 		super();
 		this.location_no = location_no;
 		this.location_name = location_name;
 		this.sky = sky;
+		this.tmp = tmp;
 		this.tmn = tmn;
 		this.tmx = tmx;
 		this.pop = pop;
+		this.day = day;
 		this.time = time;
 	}
 
+
 	@Override
 	public String toString() {
-		return "WeatherDTO [location_no=" + location_no + ", location_name=" + location_name + ", sky=" + sky + ", tmn="
-				+ tmn + ", tmx=" + tmx + ", pop=" + pop + ", time=" + time + "]";
+		return "WeatherDTO [location_no=" + location_no + ", location_name=" + location_name + ", sky=" + sky + ", tmp="
+				+ tmp + ", tmn=" + tmn + ", tmx=" + tmx + ", pop=" + pop + ", day=" + day + ", time=" + time + "]";
 	}
-
 	public String getLocation_no() {
 		return location_no;
 	}
@@ -56,36 +65,50 @@ public class WeatherDTO {
 		this.sky = sky;
 	}
 
-	public int getTmn() {
+	public String getTmn() {
 		return tmn;
 	}
 
-	public void setTmn(int tmn) {
+	public void setTmn(String tmn) {
 		this.tmn = tmn;
 	}
 
-	public int getTmx() {
+	public String getTmx() {
 		return tmx;
 	}
 
-	public void setTmx(int tmx) {
+	public void setTmx(String tmx) {
 		this.tmx = tmx;
 	}
 
-	public int getPop() {
+	public String getPop() {
 		return pop;
 	}
 
-	public void setPop(int pop) {
+	public void setPop(String pop) {
 		this.pop = pop;
 	}
 
-	public Time getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(Time time) {
+	public void setTime(String time) {
 		this.time = time;
+	}
+
+	public String getDay() {
+		return day;
+	}
+
+	public void setDay(String day) {
+		this.day = day;
+	}
+	public String getTmp() {
+		return tmp;
+	}
+	public void setTmp(String tmp) {
+		this.tmp = tmp;
 	}
 	
 	
