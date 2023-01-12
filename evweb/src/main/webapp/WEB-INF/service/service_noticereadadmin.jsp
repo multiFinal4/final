@@ -1,3 +1,5 @@
+<%@page import="com.project.file.BoardFileDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -26,14 +28,20 @@
 				<h4 class="row mb-3">
 					<label class="col-form-label"><strong>[ ${notice.notice_title } ]</strong></label>
 				</h4>
-				<div class="row mb-3">
-					<div class="col-sm-6">
-						<label class="col-sm-3 col-form-label">첨부파일</label>
-						<c:forEach var="file" items="${boardfiledtolist}">
-							<a href="/evweb/notice/download/${notice.manager_id}/${notice.notice_no}/${file.file_no}">${file.originalFilename}</a>
-						</c:forEach>
+				<% List<BoardFileDTO> list = (List<BoardFileDTO>) request.getAttribute("boardfiledtolist");
+			int size = list.size(); 
+					if (size > 0) { %>
+					<div class="row mb-3">
+						<div class="col-sm-6">
+							<label class="col-sm-3 col-form-label">첨부파일</label>
+
+							<c:forEach var="file" items="${boardfiledtolist}">
+								<a
+									href="/evweb/notice/download/${notice.manager_id}/${notice.notice_no}/${file.file_no}">${file.originalFilename}</a>
+							</c:forEach>
+						</div>
 					</div>
-				</div>
+					<%} %>
 				<div class="row mb-3">
 					<div class="col-sm-10">
 						<div class="card">

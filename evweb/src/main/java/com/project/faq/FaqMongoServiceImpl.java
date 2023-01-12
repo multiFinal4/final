@@ -36,11 +36,6 @@ public class FaqMongoServiceImpl implements FaqMongoService {
 	}
 
 	@Override
-	public void update(FaqDTO document) {
-		dao.update(document);
-	}
-
-	@Override
 	public List<FaqDTO> findAll() {
 		return dao.findAll();
 	}
@@ -51,6 +46,18 @@ public class FaqMongoServiceImpl implements FaqMongoService {
 		//fiindAll 메소드 내부에서 페이징 처리를 할 수 있도록 PageRequest객체를 이용해서 실행할 페이지의 번호와 한 페이지를 구성할 document
 		//를 매개 변수로 전달해야하 한다.
 		return dao.findAll(pageNo);
+	}
+
+	@Override
+	public void update(FaqDTO document) {
+		System.out.println("서비스입플 도큐먼트입니다 ~~~ "+document);
+		dao.update(document);
+	}
+	
+	@Override
+	public void delete(String _id) {
+		System.out.println("서비스임플입니다 _id >> "+_id);
+		dao.delete(_id);
 	}
 
 }

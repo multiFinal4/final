@@ -43,7 +43,7 @@ public class NoticeController {
 
 	@RequestMapping(value = "/service/noticeinsert", method = RequestMethod.POST)
 	public String insert(NoticeDTO Notice, HttpSession session) throws IllegalStateException, IOException {
-		//System.out.println("Notice=>" + Notice);
+		System.out.println("Notice=>" + Notice);
 		// 1. MultipartFile 정보를 추출하기
 		List<MultipartFile> files = Notice.getFiles();
 		// 2. 업로드될 서버의 경로 - 실제 서버의 경로를 추출하기 위해서 context의 정보를 담고 있는 ServletContext객체를 추출
@@ -87,7 +87,7 @@ public class NoticeController {
 	public String read(String notice_no, String state, Model model) {
 		NoticeDTO notice = service.getNoticeInfo(notice_no);
 		List<BoardFileDTO> boardfiledtolist = boardservice.getFileListNo(notice_no);
-		//System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
+		System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
 		String view = "";
 		if (state.equals("READ")) {
 			view = "service_noticeread";
