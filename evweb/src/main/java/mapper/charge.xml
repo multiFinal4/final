@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.charger">
+	<insert id="insert" parameterType="charge">
+		insert into CHARGE_TB values(#{charger_id}, #{station_id}, #{base_date},#{charging_time},#{charging_amount})
+	</insert>
+	<select id="findById" resultType="charge" parameterType="String">
+		select * from CHARGE_TB where station_id=#{stationId}
+	</select>
+	<delete id="delAll">
+		delete from CHARGE_TB
+	</delete>
+ </mapper>
+ 
