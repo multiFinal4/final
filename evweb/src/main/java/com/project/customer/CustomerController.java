@@ -2,6 +2,8 @@ package com.project.customer;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,14 +32,16 @@ public class CustomerController {
 	
 
 	
-	@RequestMapping("/customer/read.do")//����������
+	@RequestMapping("/customer/read.do")//마이페이지 (로그인 정보)
 	public String read(String customer_id,String state,Model model) {
+		System.out.println(customer_id+state);
+		ModelAndView mav = new ModelAndView();
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
 		if(state.equals("READ")) {
-			view = "customer/customer_read";
-		}else {
-			view = "customer/customer_update";
+			view = "customer_read";
+		}else if(state.equals("UPDATE")){
+			view = "customer_update";
 		}
 		model.addAttribute("customerinfo", customerinfo);
 		return view;
@@ -45,34 +49,27 @@ public class CustomerController {
 	
 	
 	
-	//ȸ�� ���� ������ 
+	//회원가입 페이지 호출 
 	@RequestMapping(value ="/customer/register.do", method = RequestMethod.GET)
 	public String registerPage() {
 		return "customer_register";
 	}
 	
 	
-	//회원가입
+	//회원가입 처리
 	@RequestMapping(value ="/customer/register.do", method=RequestMethod.POST)
 	public String register(CustomerDTO customer) {
 		service.register(customer);
 		return "login";  
 	}
 	
-	//회원정보 수정
-	@RequestMapping(value = "/customer/update.do", method = RequestMethod.GET)
-	public String updatePage() {
-		return "customer_update";
-	}
+
 	
-	
-	
-	
-	//���� ���� �Ϸ��ϸ� �ٽ� ������������! 
+	//
 	@RequestMapping("/customer/update.do")
 	public String update(CustomerDTO customer) {
 		service.update(customer);
-		return "redirect:/customer/read.do";
+		return "redirect:/index";
 	}
 	
 	
@@ -91,9 +88,13 @@ public class CustomerController {
 	@RequestMapping("/customer/realdelete.do")
 	public String realdelete(String customer_id) {
 		service.realdelete(customer_id);
-		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
+		return "redirect:/customer/list.do?type=all&pageNo=1&name="; 	
 	}
 	
+	
+	
+	
+
 	
 	
 }

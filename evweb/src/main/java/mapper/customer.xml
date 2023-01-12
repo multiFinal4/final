@@ -13,7 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="customer">
-		 update customer_tb set pass = #{pass}, phone_no = #{phone_no}, customer_addr = #{customer_addr}, email = #{email} 
+		 update customer_tb 
+		 set pass = #{pass}, phone_no = #{phone_no},name = #{name}, customer_addr = #{customer_addr}, email = #{email},
+		 birth = #{birth,jdbcType=DATE}, ps_question = #{ps_question}, ps_answer = #{ps_answer}, state = #{state} 
 		 where customer_id = #{customer_id}
 	 </update>
 	 
@@ -32,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="delete" parameterType="String"> 
-		update customer_tb set state = '회원탈퇴' where customer_id = #{customer_id} 
+		update customer_tb set state = '탈퇴' where customer_id = #{customer_id} 
 	</update>
 
 	<select id="findbystate" parameterType="String" resultType="customer">
