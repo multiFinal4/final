@@ -1,6 +1,8 @@
+<%@page import="com.project.customer.CustomerDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +29,7 @@
 					<div class="col-sm-10">
 						<select class="form-select" name="board_category"
 							aria-label="Default select example">
+							<option value="충전소/충전기관련문의">충전소/충전기관련 문의</option>
 							<option value="계정문의">계정문의</option>
 							<option value="사이트오류접수">사이트 오류접수</option>
 							<option value="기타">기타</option>
@@ -37,7 +40,19 @@
 				<div class="row mb-3">
 					<label for="inputId" class="col-sm-2 col-form-label">아이디</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" name="manager_id">
+						<c:choose>
+							<c:when test="${user.state=='재직'}">
+								<!-- 매니저로 로그인했다면 -->
+								<input type="hidden" class="form-control" name="manager_id" value="${user.manager_id}">
+								${user.manager_id}
+							</c:when>
+							<c:otherwise>
+								<!-- 일반회원으로 로그인했다면 -->
+								<input type="hidden" class="form-control" name="customer_id" value="${user.customer_id}">
+								${user.customer_id}
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 

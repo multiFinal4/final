@@ -13,29 +13,30 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>CHAARRGE</h3>
+            <h3>차지모양</h3>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>사업자 정보</h4>
-              <strong>주소:</strong><p>
+              <strong>주소:</strong><div>
               서울특별시 강남구 언주로<br>
               508 14층(역삼동, 서울상록빌딩)<br>
               <br>
-              <strong>Phone:</strong> +82 10-5555-5555<br>
+              <strong>Phone:</strong> +82 10-5554-5555<br>
               <strong>Email:</strong> multi4@gmail.com<br>
-              <strong>CEO:</strong> 박성태 <br>
+              <strong>CEO:</strong> 차현수 <br>
               <strong>사업자등록번호:</strong> 111-11-12345<br>
-            </p>
+            </div>
           </div>
 
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">충전소현황</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">고객센터</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">공란</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/map">Map</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/fee.do">요금정보</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/monitoring/main?stationId=all">충전소현황</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/Notice/list.do">고객센터</a></li>
             </ul>
           </div>
 

@@ -4,74 +4,121 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.service">
 	<!-- <typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/> -->
-	<insert id="insert" parameterType="servicetb">
-		insert into service_tb 
-		values(service_tb_seq.nextval, #{manager_id}, #{board_category}, #{board_title}, 
-		#{board_content}, sysdate, '대기')
+	<insert id="insert" parameterType="servicetb">      <!-- 매니저 -->
+		insert into service_tb
+		values(service_tb_seq.nextval, #{manager_id}, #{board_category}, #{board_title},
+		#{board_content}, sysdate, '대기', '없음')
 	</insert>
-	
+	<insert id="insertCus" parameterType="servicetb">   <!-- 일반유저 -->
+		insert into service_tb
+		values(service_tb_seq.nextval, '없음', #{board_category}, #{board_title},
+		#{board_content}, sysdate, '대기', #{customer_id})
+	</insert>
+
 	<select id="selectall" resultType="servicetb">
-		select * from service_tb order by board_no desc
+		select * from service_tb order
+		by board_no desc
 	</select>
-	
+
 	<select id="read" resultType="servicetb" parameterType="String">
-		select * from SERVICE_TB where board_no = #{board_no}
+		select *
+		from SERVICE_TB where board_no = #{board_no}
 	</select>
-	
-	<update id="update" parameterType="servicetb">
-		update SERVICE_TB
-		set category=#{category}, title=#{title}, content=#{content}
-		where board_no=#{board_no}
-	</update>
-	
+
 	<delete id="delete" parameterType="String">
-		delete from service_tb where board_no = #{board_no}
+		delete from service_tb where
+		board_no = #{board_no}
 	</delete>
 	<delete id="delete_file" parameterType="String">
-		delete from file_tb where board_no = #{board_no}
+		delete from file_tb where
+		board_no = #{board_no}
 	</delete>
 	<delete id="delete_reply" parameterType="String">
-		delete from service_reply_tb where board_no = #{board_no}
+		delete from
+		service_reply_tb where board_no = #{board_no}
 	</delete>
-	
-	<select id="dynamicSearch" resultType="servicetb" parameterType="Map">
+
+<!-- 	<select id="dynamicSearch" resultType="servicetb"
+		parameterType="Map">
 		select * from SERVICE_TB
 		<where>
-			<if test="tag=='title' and data!=''" >
-				title like '%' || #{data} || '%'
+			<if test="tag=='title' and data!=''">
+				title like '%' || #{data} ||
+				'%'
 			</if>
-			<if test="tag=='id' and data!=''" >
+			<if test="tag=='id' and data!=''">
 				id like '%' || #{data} || '%'
 			</if>
-			<if test="tag=='content' and data!=''" >
-				content like '%' || #{data} || '%'
+			<if test="tag=='content' and data!=''">
+				content like '%' || #{data}
+				|| '%'
 			</if>
-			<if test="tag=='write_date' and data!=''" >
+			<if test="tag=='write_date' and data!=''">
 				<![CDATA[
 					write_date <= #{data}
 				]]>
 			</if>
 		</where>
-	</select>
+	</select> -->
 	
-	<select id="categorySelect" resultType="servicetb" parameterType="String">
-		select * from service_tb where board_category=#{board_category} order by board_no desc
+
+	<select id="categorySelect" resultType="servicetb"
+		parameterType="String">
+		select * from service_tb where
+		board_category=#{board_category} order by board_no desc
 	</select>
-	
+
 	<update id="updateState">
-		update service_tb set board_state = '완료' where board_no = #{board_no}
+		update service_tb set board_state = '완료' where
+		board_no = #{board_no}
 	</update>
-	
+
 	<!-- =========== 1:1문의하기에서 파일첨부하기 ========== -->
 	<!-- 공지사항 파일첨부기능 => notice_no은 공지사항 게시글번호이므로 0번으로 넘겨버림 -->
 	<insert id="fileinsert" parameterType="java.util.List">
 		insert all
 		<foreach collection="list" item="file" separator=" ">
-			into file_tb values
-			(#{file.file_no}, service_tb_seq.currval,  #{file.storeFilename}, #{file.originalFilename}, '1:1문의', 0)	
+			into file_tb
+			values
+			(#{file.file_no}, service_tb_seq.currval,
+			#{file.storeFilename}, #{file.originalFilename}, '1:1문의', 0)
 		</foreach>
 		select * from dual
 	</insert>
+	
+	<!-- ==================페이징================ -->
+	<select id="listPage" resultType="servicetb" parameterType="SearchCriteria">
+		select * from
+		(
+		select rownum rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
+		from service_tb
+		where 1=1 order by board_no desc
+		<include refid="search"></include>
+		) MP
+		where rn BETWEEN #{rowStart} AND #{rowEnd}
+		
+	</select>
+	
+	
+	<select id="listCount" parameterType="SearchCriteria" resultType="int">
+		select count(board_no) 
+		from service_tb
+		WHERE 1=1
+		<include refid="search"></include>	
+		AND board_no > 0
+	</select>
+	
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND board_TITLE LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND board_CONTENT LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND manager_id LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (board_TITLE LIKE '%' || #{keyword} || '%') or (board_CONTENT LIKE '%' || #{keyword} || '%')</if>
+			<if test="searchType == 'ctgr'.toString()">AND board_category LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+	
 </mapper>
 
 

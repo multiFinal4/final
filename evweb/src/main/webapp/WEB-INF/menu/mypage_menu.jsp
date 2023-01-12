@@ -7,7 +7,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>MY PAGE</title>
 	    <script type="text/javascript">
-	    	var page = 5;
+	    	var page = 6;
 	    </script>
     </head>
     <body>

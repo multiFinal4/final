@@ -12,6 +12,7 @@
 		<typeAlias type="com.project.notice.NoticeDTO" alias="notice"/>
 		<typeAlias type="com.project.weather.WeatherDTO" alias="weather"/> 
 		<typeAlias type="com.project.charge.ChargeDTO" alias="charge"/> 
+		<typeAlias type="com.project.service.SearchCriteria" alias="SearchCriteria"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>

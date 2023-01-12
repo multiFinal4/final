@@ -8,7 +8,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>CHARGE STATION</title>
 	    <script type="text/javascript">
-	    	var page = 2;
+	    	var page = 3;
 
 			var stationId = "${stationId}";
 			$(document).ready(function() {

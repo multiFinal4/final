@@ -83,6 +83,18 @@ public class Service_TBServiceImpl implements Service_TBService {
 		return dao.updateState(board_no);
 	}
 
+	
+	//---------------------페이징-----------------------
+	@Override
+	public List<Service_TBDTO> list(SearchCriteria scri) {
+		return dao.list(scri);
+	}
+	
+	@Override
+	public int listCount(SearchCriteria scri) {
+		return dao.listCount(scri);
+	}
+
 }
 
 

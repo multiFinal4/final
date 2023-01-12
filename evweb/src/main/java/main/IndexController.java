@@ -21,5 +21,9 @@ public class IndexController {
 	public String myPage() {
 		return "mypage";
 	}
+	@RequestMapping("/fee.do")
+	public String fee() {
+		return "fee";
+	}
 
 }

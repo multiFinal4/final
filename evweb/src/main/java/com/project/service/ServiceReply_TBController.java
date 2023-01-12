@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import oracle.net.aso.l;
-
 @Controller
 public class ServiceReply_TBController {
 	ServiceReply_TBService service;
@@ -44,8 +42,9 @@ public class ServiceReply_TBController {
 	@RequestMapping("/reply/list.do")
 	public ModelAndView list(String board_no) {
 		ModelAndView mav = new ModelAndView("admin_service_reply_read");
-		List<ServiceReply_TBDTO> list = service.replyList(board_no);
-		mav.addObject("list", list);
+		List<ServiceReply_TBDTO> replylist = service.replyList(board_no);
+		System.out.println(replylist);
+		mav.addObject("list", replylist);
 		return mav; 
 	}
 }

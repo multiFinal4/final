@@ -341,8 +341,8 @@ a:hover{text-decoration:none;color:#F37321;}
     position: absolute;
     top: 10px;
     left: 0;
-    width: 4px;
-    height: 122px;
+    width: 6px;
+    height: 236px;
     background-color: #fff;
 }
 .main .section .mainText h1{
@@ -354,6 +354,7 @@ a:hover{text-decoration:none;color:#F37321;}
 	font-size:20px;
 	font-weight:300;
     letter-spacing: -1px;
+    text-align: left;
 }
 .mainScroll {
     position: absolute;
@@ -382,7 +383,7 @@ a:hover{text-decoration:none;color:#F37321;}
 	z-index:0;
 }
 .main .section:nth-child(2){
-	background-color:#e2e2e2;
+	background-color:#ffffff;
 	padding:0;
 	color:#333;
 }

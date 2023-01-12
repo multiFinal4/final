@@ -18,49 +18,6 @@
 	$(document).ready(function () {
 		$("#category").val(cate).attr("selected","selected");
 		
-		$("input:checkbox").click(function() {
-			if($(this).prop('checked')) {
-	          	var chckVal = $(this).val();
-	        }
-			else {
-				var chckVal = "N";
-			}
-			$.ajax({
-				url: "/evweb/ajax/map/search.do",
-				type: "get",
-				data: {
-					"category" : cate,
-					"keyword" : key,
-					"park" : chckVal,
-				},
-				success: function(data){
-					strHTML = "";
-					for (var i = 0; i < data.length; i++) {
-						strHTML += "<div class='card mb-1 mr-1'>";
-						strHTML += "    <div class='card-body'>";
-						strHTML += "		<h5 class='card-title'><i class='bi bi-geo-alt-fill mr-1'></i>";
-						strHTML += 				data[i].station_name;
-						strHTML += "		</h5>";
-						strHTML += "		<h6 class='card-subtitle mb-2 text-muted'>";
-						strHTML	+=				data[i].addr_do+" "+data[i].addr_sigun+"<br>"+data[i].addr_detail;
-						strHTML += "		</h6>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>";
-						strHTML +=  			data[i].station_company;
-						strHTML += "		</p>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>";
-						strHTML +=				data[i].use_time;
-						strHTML += "		</p>";
-						strHTML += "    	<span class='clickInfo'><i class='bi bi-send-fill'></i></span>";
-						strHTML += "    </div>";
-						strHTML += "</div>";
-					}
-					$(".mapSearchList").html(strHTML);
-				},
-				error: function(){
-				  console.error("insertDiagram.do Error");
-				}
-			});
-		});
 		
 		$("select#company").selectpicker();
 	});

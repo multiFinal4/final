@@ -7,7 +7,7 @@
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>SERVICE</title>
 	    <script type="text/javascript">
-	    	var page = 3;
+	    	var page = 4;
 	    </script>
     </head>
     <body>

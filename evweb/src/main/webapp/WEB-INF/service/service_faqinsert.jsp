@@ -12,7 +12,7 @@
 		<!-- 가로범위 -->
 		<div>
 			<h5 class="card-title">
-				<strong>FAQ 작성하기</strong>
+				<strong>공지사항 작성하기</strong>
 			</h5>
 			<hr>
 			<form role="form" class="form-horizontal"

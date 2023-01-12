@@ -20,7 +20,14 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 
 	@Override
 	public int insert(Service_TBDTO board) {
-		return sqlSession.insert("com.project.service.write", board);
+		String view = "";
+		System.out.println(board.getManager_id());
+		if(board.getManager_id()==null) { //일반유저가 글등록
+			view = "com.project.service.insertCus";
+		}else {  //매니저가 글등록
+			view = "com.project.service.insert";
+		}
+		return sqlSession.insert(view, board);
 	}
 
 	@Override
@@ -76,6 +83,18 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	@Override
 	public int insertFile(List<BoardFileDTO> boardfiledtolist) {
 		return sqlSession.insert("com.project.service.fileinsert", boardfiledtolist);
+	}
+
+	
+	//---------------------페이징-----------------------
+	@Override
+	public List<Service_TBDTO> list(SearchCriteria scri) {
+		return sqlSession.selectList("com.project.service.listPage", scri);
+	}
+
+	@Override
+	public int listCount(SearchCriteria scri) {
+		return sqlSession.selectOne("com.project.service.listCount", scri);
 	}
 
 

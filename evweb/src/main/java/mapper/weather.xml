@@ -10,7 +10,7 @@
 		#{time},#{pty},#{pcp},#{reh},#{sno},#{vec},#{wsd},#{ftmp})
 	</insert>
 	<delete id="delete">
-		delete weather_tb where station_id = #{station_id}
+		delete from weather_tb where station_id = #{station_id}
 	</delete>
 	<select id="select" parameterType="String" resultType="weather">
 		select * from weather_tb where station_id = #{station_id} order by weatherrow asc

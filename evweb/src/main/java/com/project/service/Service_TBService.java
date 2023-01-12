@@ -7,10 +7,16 @@ import com.project.file.BoardFileDTO;
 public interface Service_TBService {
 	// 게시글등록 - 첨부파일없이
 	int insert(Service_TBDTO board);
-	// 게시글등록  - service_tb테이블과 file_tb테이블에 저장
+	// 게시글등록  - 첨부파일O
 	int insert(Service_TBDTO board, List<BoardFileDTO> boardfiledtolist);
 	// 게시글목록보기
 	List<Service_TBDTO> boardList();
+	
+	// --------게시글목록보기(페이징)--------
+	List<Service_TBDTO> list(SearchCriteria scri);
+	// 게시글 리스트 count
+	int listCount(SearchCriteria scri);
+	
 	// 게시글상세조회
 	Service_TBDTO getBoardInfo(String board_no);
 	// 게시글수정
