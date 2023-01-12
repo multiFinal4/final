@@ -72,15 +72,6 @@ public class MapController {
 		List<StationDTO> stationList = service.search(category, keyword);
 		List<String> companyList = new ArrayList<String>();
 		
-		List<StationDTO> resultListParkY = new ArrayList<>();// 주차여부 검색
-		
-		for(StationDTO item :stationList) {
-			String parkType = item.getParking_free();
-			if (parkType.equals("Y")) {
-				resultListParkY.add(item);
-			} 
-		}
-		
 		// 검색한 리스트에서 충전소운영기관 목록 받기
 		for(StationDTO item :stationList){
 	        String comName = item.getStation_company();
