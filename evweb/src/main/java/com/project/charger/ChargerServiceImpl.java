@@ -27,7 +27,7 @@ public class ChargerServiceImpl implements ChargerService {
 
 	@Override
 	public List<ChargerDTO> chargerList() {
-		return null;
+		return dao.chargerList();
 	}
 
 	@Override

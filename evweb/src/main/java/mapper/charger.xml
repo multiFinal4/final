@@ -12,5 +12,8 @@
 	<delete id="delAll">
 		delete from CHARGER_TB
 	</delete>
+	<select id="selectAll" resultType="charger">
+		select * from CHARGER_TB
+	</select>
  </mapper>
  

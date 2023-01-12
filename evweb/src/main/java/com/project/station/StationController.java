@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.charge.ChargeDTO;
+import com.project.charge.ChargeDataPull;
+import com.project.charge.ChargeService;
 import com.project.charger.ChargerAPIPull;
 import com.project.charger.ChargerDTO;
 import com.project.charger.ChargerService;
@@ -21,19 +24,23 @@ public class StationController {
 	StationService service;
 	ChargerService chargerService;
 	ManagerService managerService;
+	ChargeService chargeService;
 	StationAPIPull stationAPIPull;
 	ChargerAPIPull chargerAPIPull;
+	ChargeDataPull chargeDataPull;
 
 	public StationController() {}
 	@Autowired
 	public StationController(StationService service, ChargerService chargerService, ManagerService managerService,
-			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull) {
+			ChargeService chargeService, StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargeDataPull chargeDataPull) {
 		super();
 		this.service = service;
 		this.chargerService = chargerService;
 		this.managerService = managerService;
+		this.chargeService = chargeService;
 		this.stationAPIPull = stationAPIPull;
 		this.chargerAPIPull = chargerAPIPull;
+		this.chargeDataPull = chargeDataPull;
 	}
 	
 	@RequestMapping(value = "/admin/station/insert", method = RequestMethod.GET)
@@ -164,7 +171,10 @@ public class StationController {
 		for (ChargerDTO chargerDTO : chargerAPIPull.chargerList()) {
 			chargerService.insert(chargerDTO);
 		}
-
+		
+		for (ChargeDTO chargeDTO : chargeDataPull.chargelist()) {
+			chargeService.insert(chargeDTO);
+		}
 	}
 	
 	
