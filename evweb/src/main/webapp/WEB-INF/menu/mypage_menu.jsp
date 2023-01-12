@@ -13,7 +13,7 @@
     <body>
         <aside id="sidebar" class="sidebar">
             <h2>
-            	<span>마이페이지</span>
+            	<span></span>
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
@@ -34,12 +34,7 @@
                         <span>문의내역</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
-                        <i class="bi bi-grid"></i>
-                        <span>관리자페이지</span>
-                    </a>
-                </li>
+               
             </ul>
         </aside>
     </body>

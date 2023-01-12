@@ -1,65 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-	</head>
-	<body>
-		<h1 class="pagetitle">마이페이지</h1>
-		<div class="card-body">
-			<form action="/evweb/customer/update.do?customer_id=${customerinfo.customer_id}&state=UPDATE" method="post">
-				<div class="row mb-3">
-					<label for="customer_id" class="col-sm-2 col-form-label"> ID </label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_id" id="customer_id" value="${customerinfo.customer_id}" readonly="readonly">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+
+<title>마이페이지</title>
+	<link href="https://fonts.gstatic.com" rel="preconnect">
+	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+		rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<main id="main" class="main">
+		<div class="pagetitle">
+			<h1></h1>
+		</div>
+		
+		<div >
+			<div class="card-body">
+				<h1 class="pagetitle">마이페이지</h1>
+				<hr/>
+
+				<!-- General Form Elements -->
+				<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
+					<div class="row mb-3">
+						<input type="hidden" name="customerinfo_id" value="${customerinfo.customer_id}">
+						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
+						<div class="col-sm-3">
+							${customerinfo.customer_id}
+						</div>
+						
 					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="customer_name" class="col-sm-2 col-form-label"> 이름 </label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_name" id="customer_name" value="${customerinfo.customer_name}" readonly="readonly">
+					<div class="row mb-3">
+						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+						<div class="col-sm-3">
+							${customerinfo.pass}
+						</div>
 					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="customer_pass" class="col-sm-2 col-form-label">비밀번호</label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_pass" id="customer_pass" value="${customerinfo.customer_pass}" readonly="readonly">
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
+						<div class="col-sm-3">
+							${customerinfo.name}
+						</div>
 					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="phone_no" class="col-sm-2 col-form-label">전화번호</label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="phone_no" id="phone_no" value="${customerinfo.phone_no}" readonly="readonly">
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
+							번호</label>
+						<div class="col-sm-3">
+							${customerinfo.phone_no}
+						</div>
+						<label for="inputText" class="col-sm-2 col-form-label"></label>
 					</div>
-				</div>
-				<div class="row mb-3"> 
-					<label for="customer_addr" class="col-sm-2 col-form-label">주소</label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_addr" id="customer_addr" value="${customerinfo.customer_addr}" readonly="readonly">
+					<div class="row mb-3">
+						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
+						<div class="col-sm-3">
+							${customerinfo.customer_addr}
+						</div>
 					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="email" class="col-sm-2 col-form-label">Email</label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="email" id="email" value="${customerinfo.email}" readonly="readonly">
+					<div class="row mb-3">
+						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+						<div class="col-sm-3">
+							${customerinfo.email}
+						</div>
 					</div>
-				</div>
-				<div class="row mb-3">
-					<label for="customer_birth" class="col-sm-2 col-form-label">생년월일</label>
-					<div class="col-sm-5">
-					  <input type="text" class="form-control" name="customer_birth" id="customer_birth" value="${customerinfo.customer_birth}" readonly="readonly">
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label">생년월일</label>
+						<div class="col-sm-3">
+							${customerinfo.birth}
+						</div>
+						
 					</div>
-				</div>
+						<div class="row mb-3">
+						<label class="col-sm-2 col-form-label">비밀번호찾기 질문</label>
+						<div class="col-sm-3">
+							${customerinfo.ps_question}
+						</div>
+					</div>
+						<div class="row mb-3">
+						<label class="col-sm-2 col-form-label">비밀번호찾기 대답</label>
+						<div class="col-sm-3">
+							${customerinfo.ps_answer}
+						</div>
+					
+				
+
+					</div>
+					
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
 					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
 					<!-- 탈퇴 버튼 누르면 "/customer/delete.do?customer_id=${customerinfo.customer_id}" 로 이어지게 -->
 				</div>
-			</form>
+				</form>
 			</div>
+			 </main>
 		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
@@ -81,6 +121,8 @@
 					</div>
 				</div>
           </div>
+          </div>
+        
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function () {
@@ -95,13 +137,13 @@
 
 			$("#delBtn").click(function () {
 				$(".alertPop .modal").removeClass("show");
-				location.href='/customer/delete.do';
+				location.href='/evweb/customer/delete.do?customer_id=${customerinfo.customer_id}';
 			});
 		})
 	
 	</script>
 		
-	</body>
+	
 	
 	
 </html>
