@@ -74,6 +74,11 @@ public class MonitoringController {
 		//충전량
 		String chargeAmount = chargeService.sumchargeAmount(stationId, weatherutil.getDate(LocalDate.now(), "yyyyMMdd"));
 		mv.addObject("chargeAmount", chargeAmount);
+		
+		//메뉴관리를 위한 변수 state
+		String state = "main";
+		mv.addObject("state", state);
+				
 		return mv;
 	}
 	

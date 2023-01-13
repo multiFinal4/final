@@ -9,14 +9,22 @@
         <title>CHARGE STATION</title>
 	    <script type="text/javascript">
 	    	var page = 3;
-
 			var stationId = "${stationId}";
+			var state = "${state}"
 			$(document).ready(function() {
-				$("#stationId").change(function() {
-					location.href="/evweb/monitoring/main?stationId="+encodeURI($(this).val());
-				});
-				$("#stationId").val(stationId).attr("selected","selected");
+				console.log(state)
+				console.log(stationId)
 				
+					$("#stationId").change(function() {
+						if(state == "main"){
+							location.href="/evweb/monitoring/main?stationId="+encodeURI($(this).val());
+						}else if (state == "weather") {
+							location.href="/evweb/weather/getlist.do?stationId="+encodeURI($(this).val());
+						}else if (state == "chart") {
+							location.href="/evweb/charge/chart.do?stationId="+encodeURI($(this).val());
+						}
+					});
+					$("#stationId").val(stationId).attr("selected","selected");
 			});
 	    </script>
     </head>
@@ -32,13 +40,13 @@
 			</form>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/monitoring/main?stationId=all">
+                    <a class="nav-link collapsed" href="/evweb/monitoring/main?stationId=${stationId}">
                         <i class="bi bi-grid"></i>
                         <span>충전소 정보 메인</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/charge/chart.do?stationId=${stationId}">
                         <i class="bi bi-grid"></i>
                         <span>충전 차트</span>
                     </a>
