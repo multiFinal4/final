@@ -43,7 +43,7 @@
 					<li><a class="nav-link" href="/evweb/index">HOME</a></li>
 					<li><a class="nav-link" href="/evweb/map">Map</a></li>
 					<li><a class="nav-link" href="/evweb/fee.do">요금정보</a></li>
-					<li><a class="nav-link" href="/evweb/monitoring/main?stationId=all">충전소현황</a></li>
+					<li><a class="nav-link" href="/evweb/monitoring/main?stationId=BNJG3401">충전소현황</a></li>
 					<li><a class="nav-link" href="/evweb/Notice/list.do">고객센터</a></li>
 					<c:choose>
 						<c:when test="${user.state=='재직'&&user.type=='사이트 관리자'}">

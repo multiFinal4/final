@@ -71,8 +71,74 @@
 									</div>
 									<div class="chargerInfoMid">
 										<h6>${charger.charger_id}</h6>
-										<span class="text-muted small pt-2 ps-1">${charger.charger_type}</span>
-										<span class="chrgrStat text-success small pt-1 fw-bold">${charger.stat}</span>
+										<c:if test="${charger.charger_type eq '01' }">
+											<span class="text-muted small pt-2 ps-1">DC차데모</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '02' }">
+											<span class="text-muted small pt-2 ps-1">AC완속</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '03' }">
+											<span class="text-muted small pt-2 ps-1">DC차데모+AC3상</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '04' }">
+											<span class="text-muted small pt-2 ps-1">DC콤보</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '05' }">
+											<span class="text-muted small pt-2 ps-1">DC차데모+DC콤보</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '06' }">
+											<span class="text-muted small pt-2 ps-1">DC차데모+AC3상+DC콤보</span>
+										</c:if>
+										<c:if test="${charger.charger_type eq '07' }">
+											<span class="text-muted small pt-2 ps-1">AC3상</span>
+										</c:if>
+										
+										<%-- 충전기상태 (1: 통신이상, 2: 충전대기,3: 충전중, 4: 운영중지,5: 점검중, 9: 상태미확인)--%>
+
+										<c:if test="${charger.stat eq '1' }">
+											<span class="chrgrStat small pt-1 fw-bold err">통신이상</span>
+										</c:if>
+										<c:if test="${charger.stat eq '2' }">
+											<span class="chrgrStat small pt-1 fw-bold">충전대기</span>
+										</c:if>
+										<c:if test="${charger.stat eq '3' }">
+											<span class="chrgrStat small pt-1 fw-bold charging">충전중</span>
+										</c:if>
+										<c:if test="${charger.stat eq '4' }">
+											<span class="chrgrStat small pt-1 fw-bold stop">운영중지</span>
+										</c:if>
+										<c:if test="${charger.stat eq '5' }">
+											<span class="chrgrStat small pt-1 fw-bold fix">점검중</span>
+										</c:if>
+										<c:if test="${charger.stat eq '9' }">
+											<span class="chrgrStat small pt-1 fw-bold noSign">상태미확인</span>
+										</c:if>
+										
+										
+										<%-- <c:choose>
+											  <!-- 충전기타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상+DC콤보,	07: AC3상) -->
+										      <c:when test="${charger.charger_type == '01'}">
+												<span class="text-muted small pt-2 ps-1">DC차데모</span>
+										      </c:when> 
+										      <c:when test="${charger.charger_type == '02'}">
+												<span class="text-muted small pt-2 ps-1">AC완속,</span>
+										      </c:when> 
+										      <c:when test="${charger.charger_type == '03'}">
+												<span class="text-muted small pt-2 ps-1">DC차데모+AC3상</span>
+										      </c:when> 
+										      <c:when test="${charger.charger_type == '04'}">
+												<span class="text-muted small pt-2 ps-1">DC콤보</span>
+										      </c:when> 
+										      <c:when test="${charger.charger_type == '05'}">
+												<span class="text-muted small pt-2 ps-1">DC차데모+DC콤보</span>
+										      </c:when> 
+										      <c:when test="${charger.charger_type == '06'}">
+												<span class="text-muted small pt-2 ps-1">DC차데모+AC3상+DC콤보</span>
+										      </c:when> 
+										      <c:otherwise>
+												<span class="text-muted small pt-2 ps-1">${charger.charger_type}</span>
+										      </c:otherwise> 
+										</c:choose>  --%>
 									</div>
 								</div>
 							</c:forEach>

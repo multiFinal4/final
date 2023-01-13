@@ -35,6 +35,7 @@
 				},
 				success: function(data){
 					strHTML = "";
+					var testArr = [];
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";
@@ -53,9 +54,14 @@
 						strHTML += "    	<span class='clickInfo'><i class='bi bi-send-fill'></i></span>";
 						strHTML += "    </div>";
 						strHTML += "</div>";
+						
+						testArr.push(data[i]);
 					}
 					$(".mapSearchList").html(strHTML);
+					
 					initMap(chckVal);
+					
+					// String으로 변환하여 출력
 					
 				},
 				error: function(){
@@ -67,7 +73,7 @@
 		
 	});
 	
-	function initMap() { 
+	function initMap(chckVal) { 
 
 		var map = new naver.maps.Map('map', {
 	        center: new naver.maps.LatLng(33.3885379, 126.5626925), //지도 시작 지점
@@ -101,8 +107,7 @@
 							NY:"${list.map_latitude}"
 						});
 		</c:forEach>
-		
-		
+	
 		for (var i = 0; i < areaArr.length; i++) {
 		    var marker = new naver.maps.Marker({
 		        map: map,
@@ -115,8 +120,6 @@
 		        position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기 
 		    });
 		    
-		    //var listitem = 
-		    	
 		    
 		    /* 정보창 */
 			var stationInfo = "";

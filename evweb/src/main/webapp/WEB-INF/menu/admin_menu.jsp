@@ -27,8 +27,6 @@
 				href="/evweb/service/boardListPaging.do"> <i
 					class="bi bi-journal-text"></i> <span>고객센터 문의사항 확인</span>
 			</a></li>
-
-			</li>
 			<li class="nav-item"><a class="nav-link collapsed"
 				href="/evweb/admin_notice.do"> <i class="bi bi-journal-text"></i>
 					<span>공지사항</span>
