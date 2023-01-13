@@ -23,7 +23,6 @@
   display: block;
   transition: all 0.3s;
 }
-
 /* Vertical line */
 .collapsible-link::after {
   content: '';
@@ -36,20 +35,16 @@
   display: block;
   transition: all 0.3s;
 }
-
 .collapsible-link[aria-expanded='true']::after {
   transform: rotate(90deg) translateX(-1px);
 }
-
 .collapsible-link[aria-expanded='true']::before {
   transform: rotate(180deg);
 }
-
 /* 내용 css바꾸기 */
 .card{
   background-color: #e7f1ff;
 }
-
 /* 
 body {
   background: #86b7fe;
@@ -92,6 +87,14 @@ body {
 		<%
 			}
 		%>
+		<table align="center">
+					<tr align="center">
+				<td colspan="10"><a href="/evweb/faq/paginglist?pageNo=0">1</a>
+					<a href="/evweb/faq/paginglist?pageNo=1">2</a> <a
+					href="/evweb/faq/paginglist?pageNo=2">3</a> <a
+					href="/evweb/faq/paginglist?pageNo=3">4</a></td>
+			</tr>
+		</table>
 		
         <!-- <!-- Accordion item 1
         <div class="card">
@@ -104,7 +107,6 @@ body {
             </div>
           </div>
         </div>
-
         Accordion item 2
         <div class="card">
           <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
@@ -116,7 +118,6 @@ body {
             </div>
           </div>
         </div>
-
         Accordion item 3
         <div class="card">
           <div id="headingThree" class="card-header bg-white shadow-sm border-0">
@@ -128,11 +129,9 @@ body {
             </div>
           </div>
         </div> -->
-
       </div>
     </div>
   </div>
-
 	
 </body>
 </html>
