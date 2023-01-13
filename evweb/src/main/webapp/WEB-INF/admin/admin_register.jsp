@@ -107,7 +107,7 @@
 						</div>
 						<label for="inputText" class="col-sm-2 col-form-label">(예시 : 2022-12-17)</label>
 					</div>
-					<input name="state" class="form-control" type="hidden" value="정상">
+					<input name="state" class="form-control" type="hidden" value="재직">
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="col-sm-3">
