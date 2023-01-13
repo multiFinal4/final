@@ -26,7 +26,7 @@ public class WeatherUtil {
         	baseTime = "2000";
         }else if(Integer.parseInt(formatedNow)>=2010) {
         	baseTime = "2000";
-        }else if(Integer.parseInt(formatedNow)>=1710) {
+        }else if(Integer.parseInt(formatedNow)>=1810) {
         	baseTime = "1700";
         }else if(Integer.parseInt(formatedNow)>=1410) {
         	baseTime = "1400";

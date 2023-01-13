@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="stateSelect" resultType="customer" parameterType="Map">
 		select *
 				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb where state= #{state}) ct where name like '%' || #{name} || '%' ))
+				        FROM (select * from customer_tb where state= #{state}) ct where name like '%' || #{name} || '%' )
 		<where>
 			<if test='remainNo lte 10'>
 				rn BETWEEN 1 AND #{remainNo} 
