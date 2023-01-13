@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- 회원등록페이지 -->
+	<definition name="customer_register" extends="subTemplate">
+ 	<put-attribute name="menu" value=""></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_register.jsp"></put-attribute>
+		
+	</definition>
+
+
+	<!-- 회원정보 수정페이지 -->
+	<definition name="customer_update" extends="subTemplate">
+ 	<put-attribute name="menu" value=""></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_update.jsp"></put-attribute>
+		
+
+	</definition>
+
+	<!-- 마이페이지 템플릿 -->
+	<definition name="customer_read" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_read.jsp"></put-attribute>
+	</definition>
+
+
+</tiles-definitions>

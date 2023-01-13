@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.weather">
+	<insert id="insert" parameterType="weather"> 
+		insert into weather_tb values(
+		#{weatherrow}, #{station_id},#{location_name},
+		#{sky},#{tmp},#{tmn},#{tmx},#{pop},#{day},
+		#{time},#{pty},#{pcp},#{reh},#{sno},#{vec},#{wsd},#{ftmp})
+	</insert>
+	<delete id="delete">
+		delete from weather_tb where station_id = #{station_id}
+	</delete>
+	<select id="select" parameterType="String" resultType="weather">
+		select * from weather_tb where station_id = #{station_id} order by weatherrow asc
+	</select>
+	<select id="read" parameterType="Map" resultType="weather">
+		select * from weather_tb where station_id = #{station_id} and day = #{day} and time = #{time}
+	</select>
+	
+	
+</mapper>

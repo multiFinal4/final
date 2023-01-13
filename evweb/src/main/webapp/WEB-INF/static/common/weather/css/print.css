@@ -1,0 +1,9 @@
+@charset "utf-8";
+@media print {
+	header, .header, footer, .footer { display:none !important;}
+	.page-wrap { padding-left:0 !important;}
+	.subp .cont-head { display:none !important;}
+	.subp .right-content { padding-left: 0 !important;}
+	.subp01 .tom-mark::after { display: none !important; }
+	@page { margin: 0; }
+}
