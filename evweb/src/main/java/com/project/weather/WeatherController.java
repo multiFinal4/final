@@ -3,7 +3,6 @@ package com.project.weather;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +38,10 @@ public class WeatherController {
 		if(tmx.equals("-")) {
 			tmx = util.getTmx(weatherList, util.getDate(LocalDate.now().plusDays(1) ,"yyyy-MM-dd"));
 		}
-		model.addAttribute("stationList", stationList);
+		//메뉴관리를 위한 변수 state
+		String state = "weather";
+		model.addAttribute("state", state);
+		model.addAttribute("stationlist", stationList);
 		model.addAttribute("station", station);
 		model.addAttribute("weatherList", weatherList);
 		model.addAttribute("tmx",tmx);
