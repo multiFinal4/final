@@ -25,7 +25,28 @@
 .nav-link {
 	color : #0d6efd
 }
-</style>	
+ 
+ @font-face {
+    font-family: 'jejudoldam';
+    src: url('/evweb/css/jejudoldam.ttf');
+	font-weight: normal;
+    font-style: normal;
+}
+.btn-primary{
+	background-color: #F37321;
+	border-color: #F37321;
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
+}
+.nav-link{
+	color: #F37321;
+}
+h1 a {font-family: 'jejudoldam';}
+</style>
+	
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#idbtn").click(function() {
