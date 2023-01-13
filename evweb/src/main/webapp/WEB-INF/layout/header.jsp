@@ -51,7 +51,11 @@
 						
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
-						<c:when test="${user.state=='재직'&&user.type=='충전소 관리자'||user.state=='정상'}">
+						<c:when test="${user.state=='재직'&&user.type=='충전소 관리자'}">
+							          	<li><a class="nav-link" href="/evweb/manager/read.do?read=MYPAGE&manager_id=${user.manager_id}">MYPAGE</a></li>
+										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
+						</c:when>
+						<c:when test="${user.state=='정상'}">
 							          	<li><a class="nav-link" href="/evweb/customer/read.do?state=READ&customer_id=${user.customer_id}">MYPAGE</a></li>
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
