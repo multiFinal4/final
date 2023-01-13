@@ -42,38 +42,37 @@
 		<div class="mapSearchResult">
 			<div class="searchSelect">
 				<div class="form-check mb-3 pl-0">
-					<select name="company"  id="company" class="selectpicker form-control" multiple data-live-search="true" data-actions-box="true" data-actions-box="true">
+					<span class="col-sm-4" style="float:left;">회사명</span>
+					<select name="company"  id="company" class="selectpicker form-control col-sm-8" multiple data-live-search="true" data-actions-box="true" data-actions-box="true">
 						<c:forEach var="company" items="${companyList}">
 							<option value="${company}">${company}</option>
 						</c:forEach>
 					</select>
 		        </div>
-		         <div class="dropdown" style="float: left;">
-					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-					  더보기
-					</button>
-					<div class="dropdown-menu">
-					  <a class="dropdown-item" href="#">낮은 가격순</a>
-					  <a class="dropdown-item" href="#">높은 가격순</a>
-					  <a class="dropdown-item" href="#">인기순</a>
-					  <a class="dropdown-item" href="#">이용순</a>
+				<div>
+					<h5 class="card-title">검색조건</h5>
+					<div class="form-check d-flex">
+						<label class="form-check-label">
+							<input class="form-check-input" type="checkbox" name="filter" value="Y">무료주차
+						</label>
+						<label class="form-check-label">
+							<input class="form-check-input" type="checkbox" name="filter" value="Y">급속
+						</label>
+						<label class="form-check-label">
+							<input class="form-check-input" type="checkbox" name="filter" value="Y">완속
+						</label>
+			        </div>
+			         <div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						  더보기
+						</button>
+						<div class="dropdown-menu">
+						  <a class="dropdown-item" href="#">낮은 가격순</a>
+						  <a class="dropdown-item" href="#">높은 가격순</a>
+						  <a class="dropdown-item" href="#">인기순</a>
+						  <a class="dropdown-item" href="#">이용순</a>
+						</div>
 					</div>
-				</div>
-				<h5 class="card-title">주차</h5>
-				<div class="form-check d-flex parkChck">
-					<label class="form-check-label">
-						<input class="form-check-input" type="checkbox" name="park" value="Y">무료주차
-					</label>
-		        </div>
-				<h5 class="card-title">충전타입</h5>
-				<div class="form-check d-flex typeChck">
-					<label class="form-check-label">
-						<input class="form-check-input" type="checkbox" name="quick" value="Y">급속
-					</label>
-					<label class="form-check-label">
-						<input class="form-check-input" type="checkbox" name="quick" value="N">완속
-					</label>
-					
 		        </div>
 	        </div>
 	        <div class="mapSearchList">

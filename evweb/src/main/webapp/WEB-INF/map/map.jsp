@@ -18,20 +18,32 @@
 		
 		$("input:checkbox").click(function() {
 
+			/* var checkboxValues = [];
+		    $("input[name='filter']:checked").each(function(i) {
+		        checkboxValues.push($(this).val());
+		    });
+			
+		    for (var i = 0; i < checkboxValues.length; i++) {
+		    	if (checkboxValues[i] != "Y") {
+					checkboxValues[i] = "N";
+				}
+			}
+		     */
           	var chckVal = "";
 			if($(this).prop('checked')) {
 				chckVal = $(this).val();
 	        }
 			else {
 				chckVal = "N";
-			}
+			} 
+			
 			$.ajax({
 				url: "/evweb/ajax/map/search.do",
 				type: "get",
 				data: {
 					"category" : cate,
 					"keyword" : key,
-					"park" : chckVal,
+					"park" : chckVal
 				},
 				success: function(data){
 					strHTML = "";
@@ -58,9 +70,8 @@
 						testArr.push(data[i]);
 					}
 					$(".mapSearchList").html(strHTML);
-					
-					initMap(chckVal);
-					
+					initMap(chckVal, testArr);
+										
 					// String으로 변환하여 출력
 					
 				},
@@ -73,8 +84,8 @@
 		
 	});
 	
-	function initMap(chckVal) { 
-
+	function initMap(chckVal, testArr) { 
+		
 		var map = new naver.maps.Map('map', {
 	        center: new naver.maps.LatLng(33.3885379, 126.5626925), //지도 시작 지점
 	        zoom: 11, //지도의 초기 줌 레벨
@@ -93,21 +104,30 @@
 		
 		
 		var areaArr = [];  // 충전소 정보 담는 배열
-		<c:forEach items="${stationList}" var="list">
-			areaArr.push({
-							chargeid : "${list.station_id}" , 
-							chargeName : "${list.station_name}" , 
-							lat : "${list.map_latitude}", 
-							lng : "${list.map_longtude}", 
-							chargetype : "${list.map_latitude}", 
-							chargeway : "${list.map_latitude}", 
-							chargekW:"${list.map_latitude}", 
-							chargestate:"${list.map_latitude}",
-							update:"${list.map_latitude}", 
-							NY:"${list.map_latitude}"
-						});
-		</c:forEach>
-	
+		
+		// 주차 체크여부
+		if (chckVal != "Y") {
+			<c:forEach items="${stationList}" var="list">
+				areaArr.push({
+								chargeid : "${list.station_id}" , 
+								chargeName : "${list.station_name}" , 
+								lat : "${list.map_latitude}", 
+								lng : "${list.map_longtude}"
+							});
+			</c:forEach>
+			
+		}else{
+			for (var i = 0; i < testArr.length; i++) {
+				areaArr.push({
+					chargeid : testArr[i].station_id, 
+					chargeName : testArr[i].station_name , 
+					lat : testArr[i].map_latitude, 
+					lng : testArr[i].map_longtude
+				});
+			}
+
+		}
+
 		for (var i = 0; i < areaArr.length; i++) {
 		    var marker = new naver.maps.Marker({
 		        map: map,
@@ -139,6 +159,7 @@
 			//list.push("1");
 			
 		}
+		
 
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	    	naver.maps.Event.addListener(map, "click", ClickMap(i));
@@ -330,6 +351,7 @@
 				}
 			});
 		}
+	    
 	}
 </script>
 </head>

@@ -10,16 +10,24 @@
 		<title>Insert title here</title>
 		<link href="/evweb/weather/css/weatherbasic.css" rel="stylesheet" type="text/css">
 		<link href="/evweb/weather/css/weathercommon-ui.css" rel="stylesheet" type="text/css">
-		
 		<script type="text/javascript">
 			var stationId = "${stationId}";
 			$(document).ready(function() {
 				
 			});
 		</script>
+		<style type="text/css">
+			body, html{
+				overflow-y:hidden;
+			}
+			#container{
+				height:calc(100vh - 130px);
+				overflow-y:auto; 
+			}
+		</style>
 	</head>
 	<body>
-		<div class="monitoringMain row">
+		<div class="monitoringMain row d-flex">
 			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
 			<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 	        <div class="col-lg-12 stationWrap dashboard">
@@ -57,7 +65,7 @@
 				            </div>
 			          	</div>
 	            	</div>
-				<div class="col-md-8 chargerInfo">
+				<div class="col-md-8 chargerInfo pr-0">
 					<div class="card info-card sales-card">
 						<div class="card-header">
 							<h5 class="card-title">충전기 정보</h5>
@@ -166,7 +174,7 @@
 				
 				
 				
-				<div class="col-xxl-4 col-md-4">
+				<div class="col-xxl-4 col-md-4 pr-0">
 					<div class="card info-card sales-card">
 						<div class="card-header">
 							<h5 class="card-title">날씨 정보</h5>

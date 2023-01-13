@@ -6,9 +6,9 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Insert title here</title>
+		<title>차지모양</title>
+		<link rel="icon" href="/evweb/images/favicon/favicon.ico" type="image/x-icon" sizes="16x16">
 	  	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	  
 		<script type="text/javascript">
 		  	$(document).ready(function () {
 		  		// 스크롤이벤트

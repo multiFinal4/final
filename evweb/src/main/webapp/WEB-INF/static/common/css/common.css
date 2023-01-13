@@ -15,19 +15,22 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 /*Header Nav*/
 #header{
-	border-bottom:2px solid #e2e2e2;
 	position:relative;
-	z-index:3;	
+	z-index:11;	
 	transition: all 0.3s;
 }
 #header.index{
 	border-bottom:none;
 	position:fixed;	
 }
-#header .mainNav{width:100%;padding:0 15px;}
+#header.sub{
+	border-bottom:2px solid #e2e2e2;
+}
+#header .mainNav{padding:0 15px;}
 #header.index .mainNav{width:70%;margin:0 auto;}
+#header.sub .mainNav{width:100%;}
 #header.index .logo a{color:#fff;font-size:30px;}
-#header .logo a, #header.on .logo a{color:#333;font-weight:600;font-size:30px;}
+#header .logo a,#header.sub .logo a, #header.on .logo a{color:#333;font-weight:600;font-size:30px;}
 
 /*header 스크롤*/
 #header.on{
@@ -62,7 +65,8 @@ a:hover{text-decoration:none;color:#F37321;}
   white-space: nowrap;
   transition: 0.3s;
 }
-#header.on .navbar a{
+#header.on .navbar a, 
+#header.sub .navbar a{
   color: #333;
 }
 .index .navbar a,
@@ -78,13 +82,15 @@ a:hover{text-decoration:none;color:#F37321;}
 
 .navbar a:hover,
 #header.on .navbar a:hover,
+#header.sub .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #F37321;
 }
 
-.navbar .getstarted,
+#header .navbar .getstarted,
+#header.sub .navbar .getstarted,
 .navbar .getstarted:focus,
 #header.on .navbar .getstarted{
   padding: 5px 25px;
@@ -99,8 +105,8 @@ a:hover{text-decoration:none;color:#F37321;}
 .index .navbar .getstarted:focus{
   color: #F37321;
 }
-.navbar .getstarted:hover,
-.navbar .getstarted:focus:hover,
+#header.sub .navbar .getstarted:hover,
+#header.sub .navbar .getstarted:focus:hover,
 #header.on .navbar .getstarted:hover {
   color: #fff;
   text-decoration:none;
@@ -752,8 +758,13 @@ a:hover{text-decoration:none;color:#F37321;}
 	color:#fff;
 }
 .chrgrStat{
-	padding-top:0 !important;
 	font-weight:bold;
+}
+.chargerInfoMid .chrgrStat{
+	padding-top:0 !important;
+}
+.alertPop .chrgrStat{
+	padding: 5px 10px;
 }
 span.err{
 	background-color:#ff8000;
@@ -789,6 +800,9 @@ span.noSign{
 	filter: invert(47%) sepia(21%) saturate(1390%) hue-rotate(176deg) brightness(123%) contrast(82%);
 }
 /* monitoring */
+.monitoringMain {
+	justify-content: space-between;
+}
 .monitoringMain .card{
 	margin-bottom:30px;
 }
@@ -817,8 +831,8 @@ span.noSign{
 }
 
 .dashboard .sales-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
+   color: #707070;
+   background: #f1eeed;
 }
 
 .dashboard .revenue-card .card-icon {
@@ -1047,6 +1061,42 @@ span.noSign{
 }
 .table thead.fixedHeader th{
 	border:0;
+}
+/* loading */
+.loading{
+	display:none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    z-index: 9999999;
+}
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+   	border: 10px solid rgb(51 51 51 / 48%);
+    border-radius: 50%;
+    border-top: 10px solid #f37321;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 /*footer*/
 #footer {

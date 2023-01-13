@@ -89,7 +89,7 @@ public class MapController {
 	// ajax로 충전소 정보 검색하기(체크박스)
 	@RequestMapping(value = "/ajax/map/search.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public List<StationDTO> chckList(String category,String keyword, String park, String type) {
+	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard) {
 		List<StationDTO> stationList;
 		if (category == null || keyword == null) {
 			stationList = stationService.stationList();
@@ -100,6 +100,8 @@ public class MapController {
 		
 		
 		List<StationDTO> resultListParkY = new ArrayList<>();// 주차여부 검색
+
+		System.out.println(park+","+quick+","+standard);
 		
 		for(StationDTO item :stationList) {
 			String parkType = item.getParking_free();
