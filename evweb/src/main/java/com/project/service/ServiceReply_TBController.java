@@ -1,14 +1,10 @@
 package com.project.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import oracle.net.aso.l;
 
 @Controller
 public class ServiceReply_TBController {
@@ -33,8 +29,9 @@ public class ServiceReply_TBController {
 	//답변 작성하기 실행
 	@RequestMapping(value = "/reply/write.do", method = RequestMethod.POST)
 	public ModelAndView write(ServiceReply_TBDTO user, String board_no) {
+		System.out.println(user+", "+board_no);
 		servicetb.updateState(board_no); //답글이 달리면 그 게시글의 답변상태가 '대기'에서 '완료'로 바뀜
-		ModelAndView mav = new ModelAndView("redirect:/service/list.do?board_category=all");
+		ModelAndView mav = new ModelAndView("redirect:/service/boardListPaging.do");
 		service.insert(user);
 		mav.addObject("list", user);
 		return mav;
