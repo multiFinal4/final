@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.project.charger.ChargerDTO;
 import com.project.charger.ChargerService;
 import com.project.station.StationDTO;
 import com.project.station.StationService;
+import com.project.weather.WeatherUtil;
 
 @Controller
 @RequestMapping("/charge")
@@ -35,10 +37,20 @@ public class ChargeController {
 	public String chargeAmountChart(String stationId, Model model) {
 		//메뉴관리를 위한 변수 state
 		String state = "chart";
-		List<StationDTO> stationlist = stationService.stationList();
+		List<StationDTO> stationlist = stationService.stationList(); //메뉴의 스테이션리스트을 위한 것
+		//오늘 요일 구하기
+		WeatherUtil util = new WeatherUtil();
+		int day = LocalDate.now().getDayOfWeek().getValue(); //1:월, 7:일 
+		List<String> amountlist = new ArrayList<String>();
+		for(int i=0; i<7; i++) {
+			String date = util.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyyMMdd"); //날짜구하기 (일,월,화,수,목,금,토)
+			amountlist.add(service.sumchargeAmount(stationId, date));	
+		}
+		
 		model.addAttribute("state",state);
 		model.addAttribute("stationId",stationId);
 		model.addAttribute("stationlist",stationlist);
+		model.addAttribute("amountlist",amountlist);
 		return "monitoring/chargeamount";
 		
 	}
