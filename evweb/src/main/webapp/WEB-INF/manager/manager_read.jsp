@@ -101,10 +101,9 @@
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
-							<button type="button" onclick="location.href='/evweb/manager/read.do?&manager_id=${managerinfo.manager_id}&read=UPDATE'"
+							<button type="button" onclick="location.href='/evweb/manager/read.do?read=MPUPDATE&manager_id=${user.manager_id}'"
 							 class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
-							 <button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
+							 <button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>탈퇴</button>
 						</div>
 						<div class="col-sm-3">
 							
@@ -122,11 +121,11 @@
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">삭제하시겠습니까?</h5>
+								<h5 class="modal-title">탈퇴하시겠습니까?</h5>
 									<button type="button" class="btn-close"></button>
 								</div>
 								<div class="modal-body">
-									데이터를 삭제하면 복구는 불가능합니다. 그래도 삭제하시겠습니까?
+									탈퇴를 하시면 더이상 서비스를 이용할 수 없습니다. 그래도 탈퇴하시겠습니까?
 								</div>
 								<div class="modal-footer">
 									<button type="button" id="delBtn" class="btn btn-primary"><i class="bi bi-check-square"></i>예</button>
@@ -154,7 +153,7 @@
 
 			$("#delBtn").click(function () {
 				$(".alertPop .modal").removeClass("show");
-				location.href='/evweb/manager/realdelete.do?manager_id=${managerinfo.manager_id}';
+				location.href='/evweb/manager/delete.do?manager_id=${managerinfo.manager_id}';
 			});
 		})
 	

@@ -9,11 +9,13 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-<title>관리자 등록</title>
+<title>관리자 수정</title>
 	<link href="https://fonts.gstatic.com" rel="preconnect">
 	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 		rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	</script>
 </head>
 
 <body>
@@ -24,139 +26,91 @@
 		<div>
 		<div >
 			<div class="card-body">
-				<h1 class="pagetitle">마이페이지</h1>
+				<h5 class="pagetitle">내 정보 수정</h5>
 
 				<!-- General Form Elements -->
-				<form action="" method="post">
+				<form action="/evweb/manager/update.do" method="post">
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
 						<div class="col-sm-3">
 							${managerinfo.manager_id}
+							<input name="manager_id" class="form-control" type="hidden" value="${managerinfo.manager_id}">
 						</div>
 						<span id="checkVal" style="color: red;"></span>
 					</div>
 					<div class="row mb-3">
 						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
 						<div class="col-sm-3">
-							${managerinfo.manager_pass}
+							<input name="manager_pass" type="password" class="form-control" value="${managerinfo.manager_pass}" minlength="4" required>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-3">
 							${managerinfo.manager_name}
+							<input name="manager_name" class="form-control" type="hidden" value="${managerinfo.manager_name}">
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
 							번호</label>
 						<div class="col-sm-3">
-							${managerinfo.phone_no}
+							<input name="phone_no" type="text" class="form-control" value="${managerinfo.phone_no}" minlength="1" required>
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label"></label>
+						<label for="inputText" class="col-sm-2 col-form-label">(예시 :010-0000-0000)</label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
 						<div class="col-sm-3">
-							${managerinfo.addr}
+							<input name="addr" class="form-control" value="${managerinfo.addr}" type="text" minlength="5" required>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-3">
-							${managerinfo.email}
+							<input name="email" type="email" value="${managerinfo.email}" class="form-control" minlength="5" required>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">권한</label>
-						<div class="col-sm-10">
+						<label for="inputText" class="col-sm-2 col-form-label">권한</label>
+						<div class="col-sm-3">
 							${managerinfo.type}
+							<input name="type" class="form-control" type="hidden" value="${managerinfo.type}">
 						</div>
-						
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">회사</label>
 						<div class="col-sm-3">
-							${managerinfo.company}
+							<input name="company" type="text" value="${managerinfo.company}" class="form-control" minlength="1" required>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">직급</label>
 						<div class="col-sm-3">
-							${managerinfo.position}
+							<input name="position" value="${managerinfo.position}" class="form-control" type="text" minlength="1" required>
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">입사일</label>
 						<div class="col-sm-3">
-							${managerinfo.hire_date}
+							<input name="hire_date" class="form-control" type="text" value="${managerinfo.hire_date}">
 						</div>
+						<label for="inputText" class="col-sm-2 col-form-label">(예시 : 2022-12-17)</label>
 					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">상태</label>
-						<div class="col-sm-3">
-							${managerinfo.state}
-						</div>
-					</div>
+					<input name="state" class="form-control" type="hidden" value="${managerinfo.state}">
+					
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
-							<button type="button" onclick="location.href='/evweb/manager/read.do?&manager_id=${managerinfo.manager_id}&read=UPDATE'"
-							 class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
-							 <button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
+							<button type="submit" class="btn btn-primary">완료</button>
 						</div>
 						<div class="col-sm-3">
-							
-							
+							<button type="button" onclick="location.href='/evweb/manager/read.do?manager_id=${managerinfo.manager_id}&read=MYPAGE'" class="btn btn-primary">취소</button>
 						</div>
-						
 					</div>
 				</form>
 			</div>
 		</div>
 		</div>
-		<div class="alertPop">
-			<div class="alertBox">
-				<div class="modal fade">
-					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">삭제하시겠습니까?</h5>
-									<button type="button" class="btn-close"></button>
-								</div>
-								<div class="modal-body">
-									데이터를 삭제하면 복구는 불가능합니다. 그래도 삭제하시겠습니까?
-								</div>
-								<div class="modal-footer">
-									<button type="button" id="delBtn" class="btn btn-primary"><i class="bi bi-check-square"></i>예</button>
-									<button type="button" id="cancel" class="btn btn-secondary"><i class="bi bi-dash-square"></i>아니오</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-          </div>
-		
 </body>
-<script type="text/javascript">
-		$(document).ready(function () {
-			// 삭제 전 확인 alert
-			
-			$(".delBtn").click(function () {
-				$(".alertPop .modal").addClass("show");
-				$(".alertPop .modal-content").addClass("show");
-			});
-			$("#cancel").click(function () {
-				$(".alertPop .modal").removeClass("show");
-				$(".alertPop .modal-content").removeClass("show");
-			});
-
-			$("#delBtn").click(function () {
-				$(".alertPop .modal").removeClass("show");
-				location.href='/evweb/manager/realdelete.do?manager_id=${managerinfo.manager_id}';
-			});
-		})
-	
-	</script>
 </html>
