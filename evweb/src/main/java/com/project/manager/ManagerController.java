@@ -89,6 +89,10 @@ public class ManagerController {
 			view  = "adminRead";
 		}else if(read.equals("UPDATE")) {
 			view  = "adminUpdate";
+		}else if(read.equals("MYPAGE")) {
+			view  = "manager_mypage";
+		}else if(read.equals("MPUPDATE")) {
+			view  = "manager_update";
 		}
 		model.addAttribute("managerinfo", managerinfo);
 		return view;
@@ -133,10 +137,6 @@ public class ManagerController {
 			view  = "admin_customer_read";
 		}else if(read.equals("UPDATE")) {
 			view  = "admin_customer_update";
-		}else if(read.equals("MYPAGE")) {
-			view  = "manager_mypage";
-		}else if(read.equals("MPUPDATE")) {
-			view  = "manager_update";
 		}
 		model.addAttribute("customerinfo", customerinfo);
 		return view;
