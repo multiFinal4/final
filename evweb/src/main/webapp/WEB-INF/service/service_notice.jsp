@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +9,29 @@
 <title>service</title>
 </head>
 <body>
-	<h1>설명 : 고객센터 누르면 공지사항화면이 나옵s</h1>
-	
-	<div class="col-lg-8">  <!-- 가로범위 ~ 문의글작성 범위인데 통일성을 위해서 일단 넣어놨어요-->
-		<div class="card-body">
-			<h5 class="card-title">
-				<strong>FAQ</strong>
-			</h5>
-			<br />
-			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
-
-			<!-- 여기에 내용뿌리면 됩니다 -->
-			내용
-		</div>
+	<div>
+		<h1 class="pagetitle">공지사항</h1>
+		<br/>
+		<!-- 본문 시작 -->
+		<table class="table table-hover">
+			<thead>
+				<tr bgcolor="#FFFFFF">
+					<th>제목</th>
+					<th></th>
+				</tr>
+				<c:forEach var="notice" items="${noticelist }">
+					<tr>
+						<td style="color: gray;">✔ <a
+							href="/evweb/notice/read.do?notice_no=${notice.notice_no }&state=READ">  ${notice.notice_title }</a></td>
+						<td style="text-align: right;">${notice.notice_writedate } </td>
+						<%-- <td><a href="/evweb/notice/delete.do?notice_no=<%=notice.getNotice_no() %>">삭제</a></td> --%>
+					</tr>
+				</c:forEach>
+			</thead>
+		</table>
 	</div>
-
+	<div class="nav navbar-nav">
+		<a href="/evweb/service/noticeinsert" style="text-align: right;">글쓰기</a>
+	</div>
 </body>
 </html>

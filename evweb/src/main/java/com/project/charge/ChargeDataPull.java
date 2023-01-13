@@ -26,7 +26,7 @@ public class ChargeDataPull {
 		List<ChargeDTO> chargelist = new ArrayList<ChargeDTO>();
 		ChargeDTO dto = null;
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		List<ChargerDTO> chargerlist = chargerService.chargerlist(); //충전기 리스트
+		List<ChargerDTO> chargerlist = chargerService.chargerList(); //충전기 리스트
 		for(ChargerDTO charger : chargerlist) {
 			if(charger.getLast_Tsdt()==null) {
 				System.out.println("시작시간 null");

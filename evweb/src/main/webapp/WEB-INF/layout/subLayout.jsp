@@ -17,7 +17,7 @@
 			 		 <div id="sideNav" class="col-sm-2">
 						<tiles:insertAttribute name="menu"></tiles:insertAttribute>
       				 </div>
-				 	<div class="col-sm-9">
+				 	<div id="container" class="col-sm-10" style="padding:0;">
 						<tiles:insertAttribute name="content"></tiles:insertAttribute>
 				 	</div>
 				</div>

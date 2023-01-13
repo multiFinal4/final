@@ -2,18 +2,29 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/>     <!-- SERVICE_TB -->
+		<typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/>    <!-- SERVICE_TB -->
 		<typeAlias type="com.project.service.ServiceReply_TBDTO" alias="replytb"/>    <!-- SERVICE_REPLY_TB -->
 		<typeAlias type="com.project.station.StationDTO" alias="station"/>
+		<typeAlias type="com.project.charger.ChargerDTO" alias="charger"/>
 		<typeAlias type="com.project.manager.ManagerDTO" alias="manager"/>
 		<typeAlias type="com.project.file.BoardFileDTO" alias="file"/> 
+		<typeAlias type="com.project.customer.CustomerDTO" alias="customer"/> 
+		<typeAlias type="com.project.notice.NoticeDTO" alias="notice"/>
+		<typeAlias type="com.project.weather.WeatherDTO" alias="weather"/> 
+		<typeAlias type="com.project.charge.ChargeDTO" alias="charge"/> 
+		<typeAlias type="com.project.service.SearchCriteria" alias="SearchCriteria"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
 		<mapper resource="mapper/Service_TB.xml"/>
 		<mapper resource="mapper/ServiceReply_TB.xml"/>
 		<mapper resource="mapper/chargeStation.xml"/>
+		<mapper resource="mapper/charger.xml"/>
 		<mapper resource="mapper/login.xml"/>
 		<mapper resource="mapper/file.xml"/>
+		<mapper resource="mapper/customer.xml"/>
+		<mapper resource="mapper/noticeboard.xml"/>
+		<mapper resource="mapper/weather.xml"/>
+		<mapper resource="mapper/charge.xml"/>
 	</mappers>
 </configuration>

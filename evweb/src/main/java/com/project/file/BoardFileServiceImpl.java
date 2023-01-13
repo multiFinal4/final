@@ -18,9 +18,20 @@ public class BoardFileServiceImpl implements BoardFileService {
 	public List<BoardFileDTO> getFileList(String board_no) {
 		return dao.getFileList(board_no);
 	}
+	
+	@Override
+	public List<BoardFileDTO> getFileListNo(String notice_no) {
+		return dao.getFileListNo(notice_no);
+	}
 
 	@Override
 	public BoardFileDTO getFile(BoardFileDTO inputdata) {
 		return dao.getFile(inputdata);
 	}
+
+	@Override
+	public BoardFileDTO getFileNo(BoardFileDTO inputdata) {
+		return dao.getFileNo(inputdata);
+	}
+	
 }

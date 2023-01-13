@@ -5,9 +5,15 @@ import java.util.List;
 public interface StationService {
 	int insert(StationDTO station);
 	List<StationDTO> stationList();
+	List<StationDTO> stationList(String endNo);
 	List<StationDTO> stationListCate(String category);
+	List<StationDTO> stationListCate(String category, String endNo);
 	List<StationDTO> companyList();
+	List<StationDTO> findbynameAll(String stationName); 
+	List<StationDTO> findByName(String category,String companyName); 
 	StationDTO read(String stationId);
 	int update(StationDTO station);
 	int delete(String stationId);
+	int deleteAll();
 }
+ 

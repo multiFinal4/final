@@ -11,6 +11,7 @@
 	</definition>
 	
 	<definition name="index" extends="indexTemplate"></definition>
+		
 	
 	<!-- 서브페이지  -->
 	<!-- 샘플 -->
@@ -20,14 +21,17 @@
 		<put-attribute name="content" value="/WEB-INF/layout/subContent.jsp"></put-attribute>
 		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"></put-attribute>
 	</definition>
-	<definition name="sub" extends="subTemplate"></definition>
-	<!-- 샘플 끝 -->
 	
-	<definition name="map" extends="subTemplate">
+	<definition name="sub" extends="subTemplate"></definition>
+	
+	<!-- 샘플 끝 -->
+	<definition name="map" extends="subTemplate"> 
 		<put-attribute name="menu" value="/WEB-INF/menu/map_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/map/map.jsp"></put-attribute>
 	</definition>
 	<definition name="monitoring" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/monitoring_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/monitoring/monitoring_main.jsp"></put-attribute>
 	</definition>
 	<definition name="service" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
@@ -39,6 +43,11 @@
 	</definition>
 	<definition name="mypage" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
+	</definition>
+	<!-- 요금관련 -->
+	<definition name="fee" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/fee_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/fee/fee_info.jsp"></put-attribute>
 	</definition>
 	
 </tiles-definitions>

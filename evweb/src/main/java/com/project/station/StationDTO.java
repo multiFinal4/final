@@ -1,16 +1,27 @@
 package com.project.station;
 
 public class StationDTO {
-	private int rownum;
-	private String station_id;
-	private String station_name;
-	private String addr_do;
-	private String addr_sigun;
-	private String addr_detail;
-	private String station_company;
-	private String manager_id;
-	private String service_date;
-	private int	charge_no;
+	private int rn;					// 리스트용 Rownum
+	private String station_id;		// 충전소 ID
+	private String station_name;	// 충전소 이름
+	private String addr_do;			// 도
+	private String addr_sigun;		// 시/군/구
+	private String addr_detail;		// 상세주소
+	private String station_company;	// 충전소 운영기관
+	private String busi_call; 		// 운영기관연락처
+	private String manager_id;		// 충전소 담당자
+	private String service_date;	// 서비스 기간
+	private int	charger_no;			// 충전기 갯수
+	private String kind; 			// 충전소 구분
+	private String map_code; 		// 지역구분 상세(행정구역코드 앞 2자리+법정동코드3자리)
+	private String map_latitude; 	// 위도
+	private String map_longtude; 	// 경도
+	private String use_time; 		// 운영시간
+	private String parking_free; 	//무료주차여부
+	private String note; 			// 특이사항
+	private String limitYn; 		// 이용제한여부
+	private String limit_detail; 	// 이용제한여부 상세
+	private String trafficYn; 		// 편의사항여부
 	
 	public StationDTO() {}
 
@@ -19,10 +30,37 @@ public class StationDTO {
 		this.station_company = station_company;
 	}
 
-	public StationDTO(int rownum, String station_id, String station_name, String addr_do, String addr_sigun,
-			String addr_detail, String station_company, String manager_id, String service_date, int charge_no) {
+	//insert(API)
+	public StationDTO(String station_id, String station_name, String addr_do, String addr_sigun, String addr_detail,
+			String station_company, String busi_call, String manager_id, String service_date, int charger_no,
+			String kind, String map_code, String map_latitude, String map_longtude, String use_time,
+			String parking_free, String note, String limitYn, String limit_detail, String trafficYn) {
 		super();
-		this.rownum = rownum;
+		this.station_id = station_id;
+		this.station_name = station_name;
+		this.addr_do = addr_do;
+		this.addr_sigun = addr_sigun;
+		this.addr_detail = addr_detail;
+		this.station_company = station_company;
+		this.busi_call = busi_call;
+		this.manager_id = manager_id;
+		this.service_date = service_date;
+		this.charger_no = charger_no;
+		this.kind = kind;
+		this.map_code = map_code;
+		this.map_latitude = map_latitude;
+		this.map_longtude = map_longtude;
+		this.use_time = use_time;
+		this.parking_free = parking_free;
+		this.note = note;
+		this.limitYn = limitYn;
+		this.limit_detail = limit_detail;
+		this.trafficYn = trafficYn;
+	}
+	public StationDTO(int rn, String station_id, String station_name, String addr_do, String addr_sigun,
+			String addr_detail, String station_company, String manager_id, String service_date, int charger_no) {
+		super();
+		this.rn = rn;
 		this.station_id = station_id;
 		this.station_name = station_name;
 		this.addr_do = addr_do;
@@ -31,11 +69,27 @@ public class StationDTO {
 		this.station_company = station_company;
 		this.manager_id = manager_id;
 		this.service_date = service_date;
-		this.charge_no = charge_no;
+		this.charger_no = charger_no;
 	}
 
+	//read
+	public StationDTO(String station_id, String station_name, String addr_do, String addr_sigun, String addr_detail,
+			String station_company, String manager_id, String service_date, int charger_no) {
+		super();
+		this.station_id = station_id;
+		this.station_name = station_name;
+		this.addr_do = addr_do;
+		this.addr_sigun = addr_sigun;
+		this.addr_detail = addr_detail;
+		this.station_company = station_company;
+		this.manager_id = manager_id;
+		this.service_date = service_date;
+		this.charger_no = charger_no;
+	}
+
+	// update
 	public StationDTO(String station_name, String addr_do, String addr_sigun, String addr_detail,
-			String station_company, String manager_id, String service_date, int charge_no) {
+			String station_company, String manager_id, String service_date, int charger_no) {
 		super();
 		this.station_name = station_name;
 		this.addr_do = addr_do;
@@ -44,23 +98,26 @@ public class StationDTO {
 		this.station_company = station_company;
 		this.manager_id = manager_id;
 		this.service_date = service_date;
-		this.charge_no = charge_no;
+		this.charger_no = charger_no;
 	}
 
 	@Override
 	public String toString() {
-		return "StationDTO [rownum=" + rownum + ", station_id=" + station_id + ", station_name=" + station_name
-				+ ", addr_do=" + addr_do + ", addr_sigun=" + addr_sigun + ", addr_detail=" + addr_detail
-				+ ", station_company=" + station_company + ", manager_id=" + manager_id + ", service_date="
-				+ service_date + ", charge_no=" + charge_no + "]";
+		return "StationDTO [rn=" + rn + ", station_id=" + station_id + ", station_name=" + station_name + ", addr_do="
+				+ addr_do + ", addr_sigun=" + addr_sigun + ", addr_detail=" + addr_detail + ", station_company="
+				+ station_company + ", busi_call=" + busi_call + ", manager_id=" + manager_id + ", service_date="
+				+ service_date + ", charger_no=" + charger_no + ", kind=" + kind + ", map_code=" + map_code
+				+ ", map_latitude=" + map_latitude + ", map_longtude=" + map_longtude + ", use_time=" + use_time
+				+ ", parking_free=" + parking_free + ", note=" + note + ", limitYn=" + limitYn + ", limit_detail="
+				+ limit_detail + ", trafficYn=" + trafficYn + "]";
 	}
 
-	public int getRownum() {
-		return rownum;
+	public int getRn() {
+		return rn;
 	}
 
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
+	public void setRn(int rn) {
+		this.rn = rn;
 	}
 
 	public String getStation_id() {
@@ -111,6 +168,14 @@ public class StationDTO {
 		this.station_company = station_company;
 	}
 
+	public String getBusi_call() {
+		return busi_call;
+	}
+
+	public void setBusi_call(String busi_call) {
+		this.busi_call = busi_call;
+	}
+
 	public String getManager_id() {
 		return manager_id;
 	}
@@ -127,16 +192,93 @@ public class StationDTO {
 		this.service_date = service_date;
 	}
 
-	public int getCharge_no() {
-		return charge_no;
+	public int getCharger_no() {
+		return charger_no;
 	}
 
-	public void setCharge_no(int charge_no) {
-		this.charge_no = charge_no;
+	public void setCharger_no(int charger_no) {
+		this.charger_no = charger_no;
 	}
-	
-	
-	
+
+	public String getKind() {
+		return kind;
+	}
+
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+
+	public String getMap_code() {
+		return map_code;
+	}
+
+	public void setMap_code(String map_code) {
+		this.map_code = map_code;
+	}
+
+	public String getMap_latitude() {
+		return map_latitude;
+	}
+
+	public void setMap_latitude(String map_latitude) {
+		this.map_latitude = map_latitude;
+	}
+
+	public String getMap_longtude() {
+		return map_longtude;
+	}
+
+	public void setMap_longtude(String map_longtude) {
+		this.map_longtude = map_longtude;
+	}
+
+	public String getUse_time() {
+		return use_time;
+	}
+
+	public void setUse_time(String use_time) {
+		this.use_time = use_time;
+	}
+
+	public String getParking_free() {
+		return parking_free;
+	}
+
+	public void setParking_free(String parking_free) {
+		this.parking_free = parking_free;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public String getLimitYn() {
+		return limitYn;
+	}
+
+	public void setLimitYn(String limitYn) {
+		this.limitYn = limitYn;
+	}
+
+	public String getLimit_detail() {
+		return limit_detail;
+	}
+
+	public void setLimit_detail(String limit_detail) {
+		this.limit_detail = limit_detail;
+	}
+
+	public String getTrafficYn() {
+		return trafficYn;
+	}
+
+	public void setTrafficYn(String trafficYn) {
+		this.trafficYn = trafficYn;
+	}
 	
 	
 }   

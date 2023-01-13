@@ -41,11 +41,12 @@ public class ServiceReply_TBController {
 	}
 	
 	//1:1문의 답변목록보기
-	@RequestMapping("/reply/list.do")
-	public ModelAndView list(String board_no) {
-		ModelAndView mav = new ModelAndView("admin_service_reply_read");
-		List<ServiceReply_TBDTO> list = service.replyList(board_no);
-		mav.addObject("list", list);
-		return mav; 
-	}
+//	@RequestMapping("/reply/list.do")
+//	public ModelAndView list(String board_no) {
+//		ModelAndView mav = new ModelAndView("admin_service_reply_read");
+//		List<ServiceReply_TBDTO> replylist = service.replyList(board_no);
+//		System.out.println(replylist);
+//		mav.addObject("replylist", replylist);
+//		return mav; 
+//	}
 }

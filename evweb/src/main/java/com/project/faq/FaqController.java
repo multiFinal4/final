@@ -31,7 +31,7 @@ public class FaqController {
 
 	// faq에 insert하기
 	@RequestMapping(value = "/service/faqinsert", method = RequestMethod.POST)
-	public String insert(faqDTO document) {
+	public String insert(FaqDTO document) {
 		// System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
 		System.out.println("FAQ컨트롤러 ~~"+document);
@@ -46,7 +46,7 @@ public class FaqController {
 
 	@RequestMapping(value = "/faq/search", method = RequestMethod.POST)
 	public ModelAndView search(String field, String criteria, String value) {
-		List<faqDTO> docs = service.findCriteria(field + "," + criteria, value);
+		List<FaqDTO> docs = service.findCriteria(field + "," + criteria, value);
 		return new ModelAndView("list", "faqlist", docs);
 	}
 
@@ -54,7 +54,7 @@ public class FaqController {
 	@RequestMapping("/faq/detail")
 	public ModelAndView findById(String key, String value, String action) {
 		System.out.println("findById _id 1234 : "+ value);
-		faqDTO list = service.findById(key, value);
+		FaqDTO list = service.findById(key, value);
 		System.out.println("list 1234 : "+ list);
 		String view = "";
 		if (action.equals("read")) {
@@ -79,7 +79,7 @@ public class FaqController {
 
 	@RequestMapping("/faq/list")
 	public String mongolist(Model model) {
-		List<faqDTO> faqlist = service.findAll();
+		List<FaqDTO> faqlist = service.findAll();
 		model.addAttribute("faqlist", faqlist);
 		return "list";
 	}
@@ -87,7 +87,7 @@ public class FaqController {
 	// user list
 	@RequestMapping("/faq/paginglist")
 	public ModelAndView pagemongolist(String pageNo) {
-		List<faqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
 		// System.out.println(pageNo);
 		return new ModelAndView("service_faq", "faqlist", faqlist);
 	}
@@ -95,13 +95,13 @@ public class FaqController {
 	// admin list
 	@RequestMapping("/admin_faq.do")
 	public ModelAndView pagemongolist2(String pageNo) {
-		List<faqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
 		// System.out.println(pageNo);
 		return new ModelAndView("admin_faqlist", "faqlist", faqlist);
 	}
 	
 	@RequestMapping(value = "/faq/update", method = RequestMethod.POST)
-	public String update(faqDTO document, @RequestParam String _id) {
+	public String update(FaqDTO document, @RequestParam String _id) {
 		System.out.println("update test1234 : " + document);
 		System.out.println("_id test1234 : " + _id);
 		document.set_id(_id);

@@ -22,5 +22,4 @@ public class ServiceReply_TBServiceImpl implements ServiceReply_TBService {
 	public List<ServiceReply_TBDTO> replyList(String board_no) {
 		return dao.replyList(board_no);
 	}
-
 }

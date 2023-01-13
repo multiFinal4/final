@@ -14,15 +14,25 @@ public class BoardFileDAOImpl implements BoardFileDAO {
 		this.sqlSession = sqlSession;
 	}
 
-	//------------------첨부파일------------------
 	@Override
 	public List<BoardFileDTO> getFileList(String board_no) {
 		return sqlSession.selectList("com.project.file.fileselect", board_no);
+	}
+	
+	@Override
+	public List<BoardFileDTO> getFileListNo(String notice_no) {
+		return sqlSession.selectList("com.project.file.fileselectNo", notice_no);
 	}
 
 	@Override
 	public BoardFileDTO getFile(BoardFileDTO inputdata) {
 		return sqlSession.selectOne("com.project.file.getfileinfo", inputdata);
 	}
+
+	@Override
+	public BoardFileDTO getFileNo(BoardFileDTO inputdata) {
+		return sqlSession.selectOne("com.project.file.getfileinfoNo", inputdata);
+	}
+
 
 }

@@ -34,8 +34,7 @@
 </head>
 <body>
 			<div class="card-body">
-				<h2 class="card-title">관리자 등록</h2>
-
+				<h2 class="pagetitle">관리자 등록</h2>
 				<!-- General Form Elements -->
 				<form action="/evweb/manager/register.do" method="post">
 					<div class="row mb-3">
@@ -63,8 +62,8 @@
 						<div class="col-sm-3">
 							<input name="phone_no" type="text" class="form-control" minlength="1" required>
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label">(-
-							제외하고 입력)</label>
+						<label for="inputText" class="col-sm-2 col-form-label">(예시 :010-
+							0000-0000)</label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
@@ -117,6 +116,5 @@
 					</div>
 				</form>
 			</div>
-		</div>
 </body>
 </html>

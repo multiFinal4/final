@@ -19,6 +19,11 @@
   <link href="/evweb/vendor/quill/quill.snow.css" rel="stylesheet">
   <link href="/evweb/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="/evweb/css/style.css" rel="stylesheet">
+  <link href="/evweb/css/font.css" rel="stylesheet">
+  <link href="/evweb/css/common.css" rel="stylesheet">
+	<script type="text/javascript">
+	
+	</script>
 </head>
 
 <body>
@@ -61,6 +66,9 @@
                       <input type="password" name="pass" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">비밀번호를 입력하세요.</div>
                     </div>
+                     <div class="col-12" align="right">
+                       <p class="small mb-0"><a href="" onclick="window.open('/evweb/idpassfind','아이디/비밀번호 찾기' ,'width = 500px, height=600px, top=300px, left=300px, scrollbars=yes')">아이디 찾기, 비밀번호 찾기</a></p>
+                    </div>
 					<div class="col-12">
                       <div class="form-check">
                       <br/>
@@ -70,23 +78,18 @@
                       <button class="btn btn-primary w-100" type="submit">로그인</button>
                     </div>
                     <div class="col-12">
-                       <p class="small mb-0">계정이 없으신가요? <a href="#">계정 만들기</a></p>
+                       <p class="small mb-0">계정이 없으신가요? <a href="/evweb/customer/register.do">계정 만들기</a></p>
                     </div>
                   </form>
-
+					
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
-
       </section>
-
     </div>
   </main>
 </body>
 
-</html>
 </html>

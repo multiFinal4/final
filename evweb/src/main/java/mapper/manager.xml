@@ -30,36 +30,63 @@
 		set state = '퇴사'
 		where manager_id = #{manager_id}
 	</update>
-	
+	<delete id="realdelete">
+		delete manager_tb
+		where manager_id = #{manager_id}
+	</delete>
 	
 	<select id="findbytype" parameterType="String" resultType="manager">
 		select * from manager_tb
 		where type = #{type}
 	</select>
-	<select id="findbyname" parameterType="String" resultType="manager">
-		select * from manager_tb
-		where manager_name = #{manager_name}
-	</select>
-	<select id="managefind" resultType="manager" parameterType="Map">
-		select * from manager_tb
-		where manager_name = #{manager_name}
-		
+	
+	<select id="findbyname" parameterType="Map" resultType="manager">
+		select * from manager_tb 
 		<where>
-			<if test="type=='title' and data != ''">
-				title like '%' || #{data} || '%' order by board_no desc
+			<if test="type=='all'">
+				manager_name like '%' || #{manager_name} || '%' 
+				and state != '관리자'
 			</if>
-			<if test="tag=='id' and data != ''">
-				id like '%' || #{data} || '%'  order by board_no desc
+			<if test="type=='일반 사용자'">
+				type = '일반 사용자' and manager_name like '%' || #{manager_name} || '%' 
 			</if>
-			<if test="tag=='content' and data != ''">
-				content like '%' || #{data} || '%' order by board_no desc
+			<if test="type=='사이트 관리자'">
+				type = '사이트 관리자' and manager_name like '%' || #{manager_name} || '%' 
+				and state != '관리자'
 			</if>
-			<if test="tag=='write_date' and data != ''">
-				<![CDATA[
-				write_date <= #{data} order by board_no desc
-				]]>		
+			<if test="type=='충전소 관리자'">
+				type = '충전소 관리자' and manager_name like '%' || #{manager_name} || '%'
+				and state != '관리자' 
 			</if>
 		</where>
-	</select>	
+	</select>
+	<select id="selectallName" resultType="manager" parameterType="Map">
+		select *
+				from(select ROWNUM rn, mg.*
+				        FROM (select * from manager_tb) mg where manager_name like '%' || #{name} || '%'  )
+		<where>
+			<if test='endNo == "10"'>
+				rn BETWEEN 1 AND #{endNo}
+			</if>
+			<if test='endNo != "10"' >
+				rn BETWEEN #{endNo}-9 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	<select id="typeSelectName" resultType="manager" parameterType="Map">
+		select *
+				from(select ROWNUM rn, mg.*
+				        FROM (select * from manager_tb where type= #{type}) mg where manager_name like '%' || #{name} || '%'  )
+		<where>
+			<if test='endNo == "10"'>
+				rn BETWEEN 1 AND #{endNo}  
+			</if>
+			<if test='endNo != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	
+	
 	
 </mapper>

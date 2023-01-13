@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<!-- 고객센터 추가 -->
+	<!-- 공지사항 -->
+	<definition name="service_notice" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_notice.jsp"></put-attribute>
+	</definition>
+	<definition name="service_noticeread" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_noticeread.jsp"></put-attribute>
+	</definition>
+	
+	
+	<!-- 1:1 문의하기 -->
+	<definition name="service_insert" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_insert.jsp"></put-attribute>
+	</definition>
+	
+	<!-- faq -->
+	<definition name="service_faq" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_faq.jsp"></put-attribute>
+	</definition>
+
+
+	<!-- 공지사항 글작성 -->
+
+	<!-- 글등록성공 -->
+	<definition name="insertok" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_insertok.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
