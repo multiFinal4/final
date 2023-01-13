@@ -66,7 +66,10 @@
 			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
 
 			<!-- General Form Elements -->
+<<<<<<< HEAD
 			<form action="/evweb/service/boardListPaging.do" method="post">
+=======
+>>>>>>> origin/HaneuL
 				<h3>
 					<strong>고객 문의 내용</strong>
 				</h3>
@@ -74,7 +77,7 @@
 				<div class="row mb-3">
 					<div class="col-sm-8">
 						<label class="col-sm-2 col-form-label">글번호  :</label>
-						<input type="hidden" name="board_no" value="${list.board_no}"> ${list.board_no}
+						${list.board_no}
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -117,6 +120,7 @@
 					<strong>답변하기 :</strong>
 				</h3>
 				<br/>
+			<form action="/evweb/reply/write.do" method="post">
 				<div class="row mb-3">
 					<div class="col-sm-10">	
 						담당자 아이디 : ${user.manager_id}<input type="hidden" name="manager_id" value="${user.manager_id}"> 
@@ -131,6 +135,7 @@
 						<button type="button" id="cancel_btn" class="btn btn-primary" 
 						onclick="history.go(-1)">취소</button>
 					</div>
+					<input type="hidden" name="board_no" value="${list.board_no}"> 
 				</div>
 				<br/>
 				<br/>

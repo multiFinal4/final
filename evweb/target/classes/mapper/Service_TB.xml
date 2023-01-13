@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.service">
+	<!-- <typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/> -->
+	<insert id="write" parameterType="servicetb">
+		insert into service_tb 
+		values(service_tb_seq.nextval, #{manager_id}, #{board_category}, #{board_title}, 
+		#{board_content}, sysdate, '대기')
+	</insert>
+	
+	<select id="selectall" resultType="servicetb">
+		select * from service_tb order by board_no desc
+	</select>
+	
+	<select id="read" resultType="servicetb" parameterType="String">
+		select * from SERVICE_TB where board_no = #{board_no}
+	</select>
+	
+	<update id="update" parameterType="servicetb">
+		update SERVICE_TB
+		set category=#{category}, title=#{title}, content=#{content}
+		where board_no=#{board_no}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from service_tb where board_no = #{board_no}
+	</delete>
+	
+	<select id="dynamicSearch" resultType="servicetb" parameterType="Map">
+		select * from SERVICE_TB
+		<where>
+			<if test="tag=='title' and data!=''" >
+				title like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='id' and data!=''" >
+				id like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='content' and data!=''" >
+				content like '%' || #{data} || '%'
+			</if>
+			<if test="tag=='write_date' and data!=''" >
+				<![CDATA[
+					write_date <= #{data}
+				]]>
+			</if>
+		</where>
+	</select>
+	
+	<select id="categorySelect" resultType="servicetb" parameterType="String">
+		select * from service_tb where board_category=#{board_category} order by board_no desc
+	</select>
+	
+	<update id="updateState">
+		update service_tb set board_state = '완료' where board_no = #{board_no}
+	</update>
+	
+	<!-- =========== 1:1문의하기에서 파일첨부하기 ========== -->
+	<insert id="fileinsert" parameterType="java.util.List">
+		insert all
+		<foreach collection="list" item="file" separator=" ">
+			into file_tb values
+			(#{file.file_no}, service_tb_seq.currval,  #{file.storeFilename}, #{file.originalFilename}, '1:1문의')	
+		</foreach>
+		select * from dual
+	</insert>
+</mapper>
+
+
+
+
+
+
+

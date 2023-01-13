@@ -86,16 +86,19 @@
 		select * from dual
 	</insert>
 	
+	
+	
 	<!-- ==================페이징================ -->
 	<select id="listPage" resultType="servicetb" parameterType="SearchCriteria">
 		select * from
 		(
-		select rownum rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
+		select ROW_NUMBER() OVER(ORDER BY board_no DESC) as rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
 		from service_tb
-		where 1=1 order by board_no desc
+		where 1=1
 		<include refid="search"></include>
 		) MP
 		where rn BETWEEN #{rowStart} AND #{rowEnd}
+		order by board_no desc
 		
 	</select>
 	

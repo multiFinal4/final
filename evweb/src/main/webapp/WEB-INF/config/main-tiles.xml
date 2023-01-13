@@ -46,7 +46,7 @@
 	</definition>
 	<!-- 요금관련 -->
 	<definition name="fee" extends="subTemplate">
-		<!-- <put-attribute name="menu" value="/WEB-INF/menu/fee_menu.jsp"></put-attribute> -->
+		<put-attribute name="menu" value="/WEB-INF/menu/fee_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/fee/fee_info.jsp"></put-attribute>
 	</definition>
 	

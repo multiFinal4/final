@@ -2,7 +2,6 @@ package com.project.map;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.charger.ChargerService;
-import com.project.manager.ManagerDTO;
 import com.project.station.StationDTO;
 import com.project.station.StationService;
 
