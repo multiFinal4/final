@@ -14,7 +14,7 @@
 <!-- Admin View -->
 	<div>
 		<h1 class="pagetitle">자주 찾는 도움말</h1>
-		<hr>
+		<br>
 		<%
 		List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");
 		int size = faqlist.size();

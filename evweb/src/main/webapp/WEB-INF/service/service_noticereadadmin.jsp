@@ -57,7 +57,7 @@
 						<button type="submit" class="btn btn-primary" 
 						onclick="location.href='/evweb/reply/write.do?board_no=${list.board_no}'">수정</button>
 						<button type="button" class="btn btn-primary" 
-						onclick="location.href='/evweb/Notice/list.do'">목록</button>
+						onclick="location.href='/evweb/admin_notice.do'">목록</button>
 						<button type="button" class="btn btn-primary" 
 						onclick="location.href='/evweb/notice/delete.do?notice_no=${notice.notice_no }'">삭제</button>
 					</div>

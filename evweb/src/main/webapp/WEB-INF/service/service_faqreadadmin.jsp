@@ -15,11 +15,9 @@
 	<!-- Admin View -->
 	<div class="col-lg-8">
 		<!-- 가로범위 -->
-		<div class="card-body">
-			<h5 class="card-title">
-				<strong>FAQ 읽기</strong>
-			</h5>
-			<hr />
+	<div>
+		<h1 class="pagetitle">FAQ 읽기</h1>
+		<br />
 			
 <%
 	FaqDTO list = (FaqDTO)request.getAttribute("list");
@@ -49,7 +47,7 @@
 					<button type="button" class="btn btn-primary"
 						onclick="location.href='/evweb/faq/delete.do?_id=<%=list.get_id()%>&action=delete'">삭제하기</button>
 					<button type="button" class="btn btn-primary"
-						onclick="location.href='/evweb/service/list.do?board_category=all'">목록보기</button>
+						onclick="location.href='/evweb/admin_faq.do?pageNo=0'">목록보기</button>
 				</div>
 			</div>
 		</div>
