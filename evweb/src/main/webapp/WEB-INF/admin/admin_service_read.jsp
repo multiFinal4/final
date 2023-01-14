@@ -49,6 +49,10 @@
 	border: var(- -bs-card-border-width) solid var(- -bs-card-border-color);
 	border-radius: var(- -bs-card-border-radius);
 }
+
+.col-form-label{
+    padding: 0;
+}
 </style>
 
 
