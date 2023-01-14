@@ -10,6 +10,8 @@ import com.project.file.BoardFileDTO;
 public interface NoticeService {
 		//게시글등록 - tbNotice테이블과 Notice_file테이블에 저장
 	int insert(NoticeDTO Notice, List<BoardFileDTO> boardfiledtolist);
+	//게시글 그냥 등록
+	int insert(NoticeDTO Notice);
 	//게시글목록보기
 	List<NoticeDTO> noticeList();
 	//게시글상세조회
