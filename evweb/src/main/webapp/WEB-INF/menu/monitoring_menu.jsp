@@ -7,6 +7,9 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <title>CHARGE STATION</title>
+		<link rel="stylesheet" href="/evweb/vendor/bootstrap/css/bootstrap-select.css" />
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="/evweb/vendor/bootstrap/js/bootstrap-select.min.js"></script>
 	    <script type="text/javascript">
 	    	var page = 3;
 			var stationId = "${stationId}";
@@ -25,15 +28,28 @@
 						}
 					});
 					$("#stationId").val(stationId).attr("selected","selected");
+
+					$("#stationId").selectpicker();
 			});
 	    </script>
+	    <style type="text/css">
+		    .dropdown-menu {
+			    max-height: 200px;
+			}
+			.search-form{
+				float: none;
+			}
+			.search-form button{
+				margin-left: 0;
+				padding: 6px 12px;
+			}
+	    </style>
     </head>
     <body>
         <aside id="sidebar" class="sidebar">
            	<form id="searchForm" class="search-form d-flex align-items-center" method="get" action="/evweb/monitoring/main?stationId=">
-				<select name="stationId"  id="stationId" class="form-control">
-					<option value="all">선택해주세요</option>
-	             	<c:forEach var="station" items="${stationlist}">
+				<select name="stationId"  id="stationId" class="border rounded form-control selectpicker" data-live-search="true" data-actions-box="true" data-width="100%">
+					<c:forEach var="station" items="${stationlist}">
 						<option value="${station.station_id}">${station.station_name}</option>
 					</c:forEach>
 				</select>

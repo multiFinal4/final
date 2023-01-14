@@ -43,7 +43,7 @@
 			<div class="searchSelect">
 				<div class="form-check mb-3 pl-0">
 					<span class="col-sm-4" style="float:left;">회사명</span>
-					<select name="company"  id="company" class="selectpicker form-control col-sm-8" multiple data-live-search="true" data-actions-box="true" data-actions-box="true">
+					<select name="company"  id="company" class="selectpicker form-control col-sm-8" multiple data-live-search="true" data-width="100%" data-actions-box="true">
 						<c:forEach var="company" items="${companyList}">
 							<option value="${company}">${company}</option>
 						</c:forEach>

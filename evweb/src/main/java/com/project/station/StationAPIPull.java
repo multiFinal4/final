@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,7 +68,42 @@ public class StationAPIPull{
 
 		    int aFrequency = Collections.frequency(chargerCount, item.get("statId").toString()); // 충전소 ID중복 횟수로 충전기 갯수 입력
 	      	list.setCharger_no(aFrequency);
-	      	list.setKind(item.get("kind").toString());
+	      	
+	      	// 충전소 구분
+	      	String kind = item.get("kind").toString();
+	      	switch (kind) {
+			case "A0":
+				kind = "공공시설";
+				break;
+			case "B0":
+				kind = "주차시설";
+				break;
+			case "C0":
+				kind = "휴게시설";
+				break;
+			case "D0":
+				kind = "관광시설";
+				break;
+			case "E0":
+				kind = "상업시설";
+				break;
+			case "F0":
+				kind = "차량정비시설";
+				break;
+			case "G0":
+				kind = "기타시설";
+				break;
+			case "H0":
+				kind = "공동주택시설";
+				break;
+			case "I0":
+				kind = "근린생활시설";
+				break;
+			default:
+				kind = "교육문화시설";
+				break;
+			}
+	      	list.setKind(kind);
 	      	list.setMap_code(item.get("zscode").toString());
 	      	list.setMap_latitude(item.get("lat").toString());
 	      	list.setMap_longtude(item.get("lng").toString());

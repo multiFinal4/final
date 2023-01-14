@@ -159,7 +159,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-xxl-4 col-md-4 pl-0">
 				
 				<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 				<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
@@ -237,7 +236,7 @@
 				  }
 				})
 				</script>
-				<div class="col-xxl-4 col-md-4">
+				<div class="col-xxl-4 col-md-4 pl-0">
 					<div class="card info-card sales-card">
 						<div class="card-header">
 							<h5 class="card-title">날씨 정보</h5>
@@ -420,26 +419,27 @@
 						</div>
 					</div>
 				</div>
+				
+				<!-- 충전량 -->
+		        <div class="col-md-8 pr-0">
+						<div class="card info-card sales-card">
+							<div class="card-header">
+								<h5 class="card-title">일간 충전량</h5>
+								<h1>${chargeAmount}</h1>
+							</div>
+							<div class="card-body"></div>
+						</div>
+						<div class="card info-card sales-card">
+							<div class="card-header">
+								<h5 class="card-title">주간 충전량</h5>
+							</div>
+							<div class="card-body">
+								 <div id="line-chart" style="height: 300px;"></div>
+							</div>
+						</div>
+					</div>
+		        </div>
 			</div>
-			<!-- 충전량 -->
-	        <div class="col-md-8 pr-0">
-					<div class="card info-card sales-card">
-						<div class="card-header">
-							<h5 class="card-title">일간 충전량</h5>
-							<h1>${chargeAmount}</h1>
-						</div>
-						<div class="card-body"></div>
-					</div>
-					<div class="card info-card sales-card">
-						<div class="card-header">
-							<h5 class="card-title">주간 충전량</h5>
-						</div>
-						<div class="card-body">
-							 <div id="line-chart" style="height: 300px;"></div>
-						</div>
-					</div>
-				</div>
-	        </div>
 		</div>
 	</body>
 </html>

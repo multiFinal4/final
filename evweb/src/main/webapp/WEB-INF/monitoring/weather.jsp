@@ -111,6 +111,8 @@
 	        
 		</script>
 		<style>
+		#header.index{position: relative;}
+		#content{padding-top: 0}
             .table-col td:first-of-type { border-left:1px solid #e0e6ef;}
             body {height:20%;}
             footer {position: relative; line-height: 1.45; letter-spacing: 0; font-size: 14px;width: 100%;height: 52px;background: #fff;z-index: 1001;border-top:1px solid #E6E6E6;}
