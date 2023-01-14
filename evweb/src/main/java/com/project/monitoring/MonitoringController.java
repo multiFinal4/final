@@ -2,6 +2,7 @@ package com.project.monitoring;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +79,22 @@ public class MonitoringController {
 		//메뉴관리를 위한 변수 state
 		String state = "main";
 		mv.addObject("state", state);
-				
+		
+		//주간 충전량
+		//메뉴관리를 위한 변수 state
+		//오늘 요일 구하기
+		int day = LocalDate.now().getDayOfWeek().getValue(); //1:월, 7:일 
+		List<String> amountlist = new ArrayList<String>();
+		List<String> datelist = new ArrayList<String>();
+		for(int i=0; i<7; i++) {
+			String date = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyyMMdd"); //날짜구하기 (일,월,화,수,목,금,토)
+			String datebar = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i), "MM-dd"); //날짜구하기 (일,월,화,수,목,금,토)
+			datelist.add(datebar);
+			amountlist.add(chargeService.sumchargeAmount(stationId, date));	
+		}
+		mv.addObject("datelist",datelist);
+		mv.addObject("amountlist",amountlist);
+		
 		return mv;
 	}
 	

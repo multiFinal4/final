@@ -42,11 +42,15 @@ public class ChargeController {
 		WeatherUtil util = new WeatherUtil();
 		int day = LocalDate.now().getDayOfWeek().getValue(); //1:월, 7:일 
 		List<String> amountlist = new ArrayList<String>();
+		List<String> datelist = new ArrayList<String>();
 		for(int i=0; i<7; i++) {
 			String date = util.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyyMMdd"); //날짜구하기 (일,월,화,수,목,금,토)
+			String datebar = util.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyy-MM-dd"); //날짜구하기 (일,월,화,수,목,금,토)
+			datelist.add(datebar);
 			amountlist.add(service.sumchargeAmount(stationId, date));	
 		}
 		
+		model.addAttribute("datelist",datelist);
 		model.addAttribute("state",state);
 		model.addAttribute("stationId",stationId);
 		model.addAttribute("stationlist",stationlist);

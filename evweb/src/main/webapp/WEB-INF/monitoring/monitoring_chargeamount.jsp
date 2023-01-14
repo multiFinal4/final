@@ -33,28 +33,22 @@
  * ----------
  */
 //LINE randomly generated data
-<%List<String> amountlist =  (ArrayList<String>)request.getAttribute("amountlist"); %>
+<%List<String> amountlist =  (ArrayList<String>)request.getAttribute("amountlist"); 
+  List<String> datelist =  (ArrayList<String>)request.getAttribute("datelist"); %>
 
 const data = [];
 const tick = [];
 <%for(int i=0;i<amountlist.size();i++){%>
 	data.push([<%=i+1%>,<%=amountlist.get(i)%>])
 <%}%>
-/* data.push([1,10]);
-data.push([2,8]);
-data.push([3,4]);
-data.push([4,13]);
-data.push([5,17]);
-data.push([6,9]);
-data.push([7,9]); */
 
-tick.push([1,'(일)']);
-tick.push([2,'(월)']);
-tick.push([3,'(화)']);
-tick.push([4,'(수)']);
-tick.push([5,'(목)']);
-tick.push([6,'(금)']);
-tick.push([7,'(토)']);
+tick.push([1,'<%=datelist.get(0)%>(일)']);
+tick.push([2,'<%=datelist.get(1)%>(월)']);
+tick.push([3,'<%=datelist.get(2)%>(화)']);
+tick.push([4,'<%=datelist.get(3)%>(수)']);
+tick.push([5,'<%=datelist.get(4)%>(목)']);
+tick.push([6,'<%=datelist.get(5)%>(금)']);
+tick.push([7,'<%=datelist.get(6)%>(토)']);
 
 const dataset = {
   label: "충전량",
@@ -84,7 +78,8 @@ $.plot('#line-chart', [dataset], {
     color: '#f37321'
   },
   yaxis : {
-    show: true
+    show: true,
+    min: 0
   },
   xaxis : {
     show: true,
