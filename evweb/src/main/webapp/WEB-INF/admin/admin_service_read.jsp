@@ -13,6 +13,14 @@
 <title>admin</title>
 
 <style type="text/css">
+
+body, html{
+	overflow-y:hidden;
+}
+#container{
+	height:calc(100vh - 130px);
+	overflow-y:auto; 
+}
 .card {
 	margin-bottom: 30px;
 	border: none;
@@ -53,9 +61,8 @@
 .col-form-label{
     padding: 0;
 }
+
 </style>
-
-
 <script type="text/javascript">
 </script>
 </head>
