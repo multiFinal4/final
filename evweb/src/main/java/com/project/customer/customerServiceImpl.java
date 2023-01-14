@@ -93,4 +93,11 @@ public class customerServiceImpl implements customerService {
 		
 		return dao.realdelete(customer_id);
 	}
+	
+	//========================카카오로그인============================
+	@Override
+	public int kakaoInsert(CustomerDTO dto) {
+		System.out.println("카카오로그인 서비스임플====> "+dto);
+		return dao.kakaoInsert(dto);
+	}
 }

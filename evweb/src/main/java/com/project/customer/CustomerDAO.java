@@ -24,5 +24,8 @@ public interface CustomerDAO {
 	//관리자전환
 	int change(String customer_id);
 	int realdelete(String customer_id);
+	
+	//카카오 회원가입
+	int kakaoInsert(CustomerDTO dto);
 }
 

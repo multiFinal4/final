@@ -108,4 +108,11 @@ public class CustomerDAOImpl implements CustomerDAO {
 		
 		return sqlsession.delete("com.project.customer.realdelete", customer_id);
 	}
+
+	//========================카카오로그인============================
+	@Override
+	public int kakaoInsert(CustomerDTO dto) {
+		System.out.println("카카오로그인 다오임플~~~~~~~~> "+dto);
+		return sqlsession.insert("com.project.customer.kakaoInsert",dto);
+	}
 }
