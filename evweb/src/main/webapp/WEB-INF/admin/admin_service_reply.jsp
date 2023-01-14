@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>admin</title>
 
+
 <style type="text/css">
 .card {
 	margin-bottom: 30px;
@@ -66,10 +67,6 @@
 			<!-- 게시판 제목이랑 내용물이랑 너무 붙어있어서 공백추가함 -->
 
 			<!-- General Form Elements -->
-<<<<<<< HEAD
-			<form action="/evweb/service/boardListPaging.do" method="post">
-=======
->>>>>>> origin/HaneuL
 				<h3>
 					<strong>고객 문의 내용</strong>
 				</h3>

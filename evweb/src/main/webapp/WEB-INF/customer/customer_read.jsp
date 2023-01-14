@@ -99,12 +99,12 @@
 				</div>
 				</form>
 			</div>
-			 </main>
+	 </main>
 		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
 					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
+						<div class="modal-content ">
 							<div class="modal-header">
 								<h5 class="modal-title">탈퇴하시겠습니까?</h5>
 									<button type="button" class="btn-close"></button>
@@ -130,9 +130,11 @@
 			
 			$(".delBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
+				$(".alertPop .modal-content").addClass("show");
 			});
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
 			});
 
 			$("#delBtn").click(function () {

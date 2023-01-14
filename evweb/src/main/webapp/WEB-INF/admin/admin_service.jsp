@@ -101,10 +101,7 @@
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/HaneuL
 		<!-- 페이징 -->
 		<div class="boardBottom text-right col-sm-12"
 			style="justify-content: center;">

@@ -87,8 +87,8 @@
 	function initMap(chckVal, testArr) { 
 		
 		var map = new naver.maps.Map('map', {
-	        center: new naver.maps.LatLng(33.3885379, 126.5626925), //지도 시작 지점
-	        zoom: 11, //지도의 초기 줌 레벨
+	        center: new naver.maps.LatLng(33.5104135, 126.4913534), //지도 시작 지점
+	        zoom: 13, //지도의 초기 줌 레벨
 	        minZoom: 11, //지도의 최소 줌 레벨
 	        zoomControl: true, //줌 컨트롤의 표시 여부
 	        zoomControlOptions: { //줌 컨트롤의 옵션

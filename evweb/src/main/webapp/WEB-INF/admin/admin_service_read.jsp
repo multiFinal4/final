@@ -13,6 +13,14 @@
 <title>admin</title>
 
 <style type="text/css">
+
+body, html{
+	overflow-y:hidden;
+}
+#container{
+	height:calc(100vh - 130px);
+	overflow-y:auto; 
+}
 .card {
 	margin-bottom: 30px;
 	border: none;
@@ -50,8 +58,6 @@
 	border-radius: var(- -bs-card-border-radius);
 }
 </style>
-
-
 <script type="text/javascript">
 </script>
 </head>
