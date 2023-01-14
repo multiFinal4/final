@@ -4,14 +4,21 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+//import java.util.List;
+//
+//import javax.xml.parsers.DocumentBuilderFactory;
+//
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
+//
+//import com.project.dust.dustDTO;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-import com.project.weather.WeatherDTO;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,15 +29,13 @@ import java.io.IOException;
 //서비스URL http://apis.data.go.kr/B552584/ArpltnInforInqireSvc
 
 public class AirqualityAPIPull {
-	public static void main(String[] args) throws IOException {
+	public String GetAPIData(AirqualityDTO dto) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
 				+ "=wBIi6XmZTSSDCA0D96alN%2Fpz0o6zAqN%2BkjrsB4AMlYty5FEL9KE8%2B0AGY%2FUyaa3MifurBesU%2Bp9myAc9wPByLQ%3D%3D"); /*
 																																 * 서비스
-																																 * 키
 																																 */
-
 		urlBuilder.append("&" + URLEncoder.encode("returnType", "UTF-8") + "="
 				+ URLEncoder.encode("json", "UTF-8")); /* xml 또는 json */
 		urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "="
@@ -62,22 +67,63 @@ public class AirqualityAPIPull {
 		rd.close();
 		conn.disconnect();
 		System.out.println(sb.toString());
+		return sb.toString();
 	}
 
-//	public List<AirqualityDTO> DataSave(String name, String result) {
-//		
-////		String name = "";
-////		String result = "";
-//		
-//		BufferedReader bf;
-//		bf = new BufferedReader(new InputStreamReader(url.openStream(), "UTF-8"));
-//		result = bf.readLine();
-//		
-//		JSONParser jsonParser = new JSONParser();
-//		JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-//		JSONObject movieInfoResult = (JSONObject)jsonObject.get("movieInfoResult");
-//		JSONObject movieInfo = (JSONObject)movieInfoResult.get("movieInfo");
-//
-//		// https://velog.io/@garam0410/Java-OPEN-API-%ED%8C%8C%EC%8B%B1%ED%95%98%EA%B8%B0-JSON
-//	}
+	public List<AirqualityDTO> DataSave(String result, String stationName) {
+		// Json parser를 만들어 만들어진 문자열 데이터를 객체화
+		List<AirqualityDTO> dustList = new ArrayList<AirqualityDTO>();
+		AirqualityDTO dust = new AirqualityDTO(stationName);
+		JSONParser parser = new JSONParser();
+		JSONObject obj;
+
+		try {
+			obj = (JSONObject) parser.parse(result);
+			// response 키를 가지고 데이터를 파싱
+			JSONObject parse_response = (JSONObject) obj.get("response");
+			// response 로 부터 body 찾기
+			JSONObject parse_body = (JSONObject) parse_response.get("body");
+			// body 로 부터 items 찾기
+			JSONObject parse_items = (JSONObject) parse_body.get("items");
+
+			// items로 부터 itemlist 를 받기
+			JSONArray parse_item = (JSONArray) parse_items.get("item");
+			String category;
+			JSONObject data; // parse_item은 배열형태이기 때문에 하나씩 데이터를 하나씩 가져올때 사용
+			// 카테고리와 값만 받아오기
+			String dataTime = ((JSONObject) parse_item.get(0)).get("fcstdataTime").toString();
+			for (int i = 0; i < parse_item.size(); i++) {
+				data = (JSONObject) parse_item.get(i);
+				Object fcstValue = data.get("fcstValue"); // 1.14 숙제 ..
+				Object fcstDate = data.get("fcstDate");
+				Object fcstdataTime = data.get("fcstdataTime");
+				if (!dataTime.equals(fcstdataTime.toString())) {
+					if (dust.getPm10() == null) {
+						dust.setPm10("없음");
+					}
+					if (dust.getPm25() == null) {
+						dust.setPm25("없음");
+					}
+					dustList.add(dust);
+					dust = new AirqualityDTO(stationName);
+					dataTime = fcstdataTime.toString();
+				}
+				//
+				category = (String) data.get("category");
+				dust.setDataTime(dataTime);
+				if (category.equals("pm10")) {
+					dust.setPm10((String) fcstValue);
+				} else if (category.equals("pm25")) {
+					dust.setPm25((String) fcstValue);
+				}
+				// 출력
+				if (!dataTime.equals(fcstDate.toString())) {
+					dataTime = fcstDate.toString();
+				}
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dustList;
+	}
 }

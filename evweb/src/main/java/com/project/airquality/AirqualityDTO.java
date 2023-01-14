@@ -1,12 +1,13 @@
 package com.project.airquality;
 
 public class AirqualityDTO {
-	private String dataTime;
-	private String pm10;
-	private String pm25;
-	private String stationName;
+	private String stationName; //측정소 이름
+	private String dataTime;	//데이터 시간
+	private String pm10;		//미세먼지
+	private String pm25;		//초미세먼지
 	
 	public AirqualityDTO() {
+		super();
 	}
 	
 	public AirqualityDTO(String dataTime, String pm10, String pm25, String stationName) {
@@ -14,6 +15,11 @@ public class AirqualityDTO {
 		this.dataTime = dataTime;
 		this.pm10 = pm10;
 		this.pm25 = pm25;
+		this.stationName = stationName;
+	}
+	
+	public AirqualityDTO(String stationName) {
+		super();
 		this.stationName = stationName;
 	}
 

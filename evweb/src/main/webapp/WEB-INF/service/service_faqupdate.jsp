@@ -9,11 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="col-lg-8">
-		<h5 class="card-title">
-			<strong style="color: navy;">공지사항 수정</strong>
-		</h5>
-		<hr />
+	<div>
+		<h1 class="pagetitle">FAQ 수정</h1>
+		<br />
 		<form class="form-horizontal"
 			action="/evweb/faq/update?_id=${list._id}" method="post">
 			<%-- 				<input type="hidden" name="_id" value="${list._id }"> --%>
