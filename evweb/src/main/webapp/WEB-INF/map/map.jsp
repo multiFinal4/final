@@ -13,7 +13,7 @@
 	$(document).ready(function() {
 		
 		// 초기 검색 값
-		var chckArr = ["N","N"];;
+		var chckArr = ["N","N","N"];;
 		var filterArr = [];
 		var filterData = {};
 
@@ -31,14 +31,17 @@
         	var chckNum = $(this).parent("label").index();
 	        if($(this).is(":checked")){
 	        	chckArr[chckNum] = "Y";
+	        	$(this).parent("label").addClass("on");
 	        }else{
 	        	chckArr[chckNum] = "N";
+	        	$(this).parent("label").removeClass("on");
 	        }
 	        
 	        // 검색체크항목
 	        filterData = { 
 					"park": chckArr[0],
 					"quick": chckArr[1],
+					"standard": chckArr[2],
 					"category" : "${category}",
 					"keyword" :"${keyword}"
 			};
@@ -92,6 +95,7 @@
 		var lat = "${lat}";
 		var longt = "${longt}";
 		
+		
 		// 검색시 가장 첫번째 충전소 위치로 이동
 		var map = new naver.maps.Map('map', {
 	        center: new naver.maps.LatLng(lat, longt), //지도 시작 지점
@@ -111,10 +115,10 @@
 		var areaArr = [];  // 충전소 정보 담는 배열
 		
 		// 주차 체크여부
-		if (filterData.park != "Y") {
-			setDeaultList()
-		}else{
+		if ($("input:checkbox").is(":checked")) {
 			setFilterList(filterArr);
+		}else{
+			setDeaultList();
 		}
 		
 		setMarker(areaArr);
@@ -141,6 +145,26 @@
 	    	map.setZoom(11);
 
 	    });
+	    // 현재 내 위치로 이동
+	    $(".mapControl .current").click(function(){
+			$(".mapMarkerWrap").removeClass("on");
+	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
+	    	map.setZoom(16);
+	    	navigator.geolocation.getCurrentPosition(function(pos){
+	    		var currPosi = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+	    		map.setCenter(currPosi);
+		    	var circle = new naver.maps.Circle({
+		    	    map: map,
+		    	    center: currPosi,
+		    	    radius: 200,
+		    	    fillColor: '#076ff9',
+		    	    fillOpacity: 0.2
+		    	});
+			});
+            map.panTo(currPosi);
+	    });
+		
+		
 	    
 	    // 충전소 리스트 생성 (전체)
 	    function setDeaultList() {
@@ -373,6 +397,7 @@
 	    
 	}
 </script>
+
 </head>
 <body>
 	<div id="map" style="width: 100%; height: calc(100vh - 130px);"></div>

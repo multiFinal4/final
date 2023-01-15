@@ -10,7 +10,6 @@
 <title>Map</title>
 <link rel="stylesheet" href="/evweb/vendor/bootstrap/css/bootstrap-select.css" />
 <script src="/evweb/vendor/bootstrap/js/bootstrap-select.min.js"></script>
-
 <script type="text/javascript">
 	var page = 1;
 	var cate = '${category}';
@@ -33,6 +32,11 @@
 	});
 	
 </script>
+<style>
+	body, html {
+		overflow-y:hidden;
+	}
+</style>
 </head>
 <body>
 	<aside id="sidebar" class="sidebar mapSidebar">
@@ -51,8 +55,8 @@
 		</form>
 		<div class="mapSearchResult">
 			<div class="searchSelect">
-				<div class="form-check mb-3 pl-0 d-flex">
-					<h5 class="card-title col-sm-4 pl-1">회사명</h5>
+				<div class="form-check mb-2 pl-0 d-flex mr-0">
+					<h5 class="card-title col-sm-4 pl-0 mb-0 pr-0">회사명</h5>
 					<div class="form-check col-sm-8 pl-0 pr-0">
 						<select name="company"  id="company" class="selectpicker form-control" multiple data-live-search="true" data-actions-box="true">
 							<c:forEach var="company" items="${companyList}">
@@ -63,18 +67,20 @@
 		        </div>
 					
 				<div class="form-check mb-3 pl-0" style="align-items: center;">
-					<h5 class="card-title col-sm-12 pl-1">검색조건</h5>
-					<div class="col-sm-12 pl-2 pr-0 d-flex">
+					<div class="col-sm-12 pl-0 pr-0 d-flex">
 						<div class="form-check d-flex col-sm-8 pl-0 pr-0">
 							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox" name="filter">무료주차
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">주차
 							</label>
 							<label class="form-check-label">
-								<input class="form-check-input" type="checkbox" name="filter">급속
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">급속
+							</label>
+							<label class="form-check-label">
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">완속
 							</label>
 				        </div>
-			         	<div class="dropdown col-sm-4 pl-0">
-							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="padding: 5px 10px;">
+			         	<div class="dropdown col-sm-4 pl-0 pr-0">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
 							  더보기
 							</button>
 							<div class="dropdown-menu">
