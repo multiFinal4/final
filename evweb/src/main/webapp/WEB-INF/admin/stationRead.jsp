@@ -146,7 +146,35 @@
 							strHTML += "<td class='chrgrType tb-center'>"+ data[i].charger_type + "</td>";
 							strHTML += "<td class='chrgrMethod tb-center'>"+ data[i].method + "</td>";
 							strHTML += "<td class='chrgrOut tb-center'>"+ data[i].output + "</td>";
-							strHTML += "<td class='chrgrStat tb-center'>"+ data[i].stat + "</td>";
+							
+							chgerStat = data[i].stat;
+							state = "";
+							switch (chgerStat) {
+							case "1":
+								chgerStat = "통신이상";
+								state = "err";
+								break;
+							case "2":
+								chgerStat = "충전대기";
+								break;
+							case "3":
+								chgerStat = "충전중";
+								state = "charging";
+								break;
+							case "4":
+								chgerStat = "운영중지";
+								state = "stop";
+								break;
+							case "5":
+								chgerStat = "점검중";
+								state = "fix";
+								break;
+							default:
+								chgerStat = "상태미확인";
+								state = "noSign";
+								break;
+							}
+							strHTML += "<td class='tb-center'><span class='chrgrStat "+state+"'>"+ chgerStat + "</span></td>";
 							strHTML += "<td class='chrgrUdt tb-center'>"+ data[i].stat_UpdDt + "</td>";
 							strHTML += "<td class='chrgrDelYn tb-center'>"+ data[i].delYn + "</td>";
 							strHTML += "</tr>";

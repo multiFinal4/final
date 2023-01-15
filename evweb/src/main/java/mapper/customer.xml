@@ -44,30 +44,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectall" resultType="customer" parameterType="Map">
 		select *
 				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb where state !='관리자') ct)
+				        FROM (select * from customer_tb where state !='관리자') ct where name like '%' || #{name} || '%' )
 		<where>
-			<if test='remainNo lte 7'>
+			<if test='remainNo lte 10'>
 				rn BETWEEN 1 AND #{remainNo} 
-				and name like '%' || #{name} || '%' 
+				
 			</if>
-			<if test='remainNo gt 7'>
-				rn BETWEEN #{remainNo}-6 AND #{remainNo}
-				and name like '%' || #{name} || '%' 
+			<if test='remainNo gt 10'>
+				rn BETWEEN #{remainNo}-9 AND #{remainNo}
 			</if>
 		</where>
 	</select>
 	<select id="stateSelect" resultType="customer" parameterType="Map">
 		select *
 				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb where state= #{state}) ct)
+				        FROM (select * from customer_tb where state= #{state}) ct where name like '%' || #{name} || '%' )
 		<where>
-			<if test='remainNo lte 7'>
+			<if test='remainNo lte 10'>
 				rn BETWEEN 1 AND #{remainNo} 
-				and name like '%' || #{name} || '%' 
 			</if>
-			<if test='remainNo gt 7'>
-				rn BETWEEN #{remainNo}-6 AND #{remainNo}
-				and name like '%' || #{name} || '%' 
+			<if test='remainNo gt 10'>
+				rn BETWEEN #{remainNo}-9 AND #{remainNo}
 			</if>
 		</where>
 	</select>
@@ -95,14 +92,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	
-	<!-- 카카오로그인 -->
-		<insert id="kakaoInsert" parameterType="customer"> 
+	<!-- ==========================카카오로그인========================= -->
+	<insert id="kakaoInsert" parameterType="customer"> 
 		insert into customer_tb values(
-		#{customer_id},'정보없음',
-		'정보없음','정보없음','정보없음',#{email},sysdate,
-		'정보없음','정보없음','정보없음','정상' 
-		)
+		#{customer_id}, '정보없음',
+		'정보없음', '정보없음', '정보없음', #{email}, sysdate,
+		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
 	</insert>
+	
+	<insert id="kakaoInsertNull" parameterType="customer"> 
+		insert into customer_tb values(
+		#{customer_id}, '정보없음',
+		'정보없음', '정보없음', '정보없음', '정보없음', sysdate,
+		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
+	</insert>
+	
+	<select id="findkakao" parameterType="customer" resultType="customer">
+		select * from customer_tb where customer_id = #{customer_id}
+	</select>
 </mapper>
 
 

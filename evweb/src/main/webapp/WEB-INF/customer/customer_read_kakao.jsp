@@ -9,7 +9,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 
-<title>관리자 등록</title>
+<title>마이페이지</title>
 	<link href="https://fonts.gstatic.com" rel="preconnect">
 	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 		rel="stylesheet">
@@ -19,114 +19,70 @@
 <body>
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1></h1>
 		</div>
+		
 		<div>
-		<div >
 			<div class="card-body">
 				<h1 class="pagetitle">마이페이지</h1>
-
+				<hr/>
+				<br>
 				<!-- General Form Elements -->
-				<form action="" method="post">
+				<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
-						<div class="col-sm-3">
-							${managerinfo.manager_id}
-						</div>
-						<span id="checkVal" style="color: red;"></span>
-					</div>
-					<div class="row mb-3">
-						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
-						<div class="col-sm-3">
-							${managerinfo.manager_pass}
-						</div>
+						<h5><label for="inputPassword" class="col-sm-12 col-form-label">카카오회원</label></h5>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-3">
-							${managerinfo.manager_name}
+							${customerinfo.name}
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
 							번호</label>
 						<div class="col-sm-3">
-							${managerinfo.phone_no}
+							${customerinfo.phone_no}
 						</div>
 						<label for="inputText" class="col-sm-2 col-form-label"></label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
 						<div class="col-sm-3">
-							${managerinfo.addr}
+							${customerinfo.customer_addr}
 						</div>
 					</div>
 					<div class="row mb-3">
 						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-3">
-							${managerinfo.email}
+							${customerinfo.email}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">권한</label>
-						<div class="col-sm-10">
-							${managerinfo.type}
-						</div>
-						
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">회사</label>
+						<label class="col-sm-2 col-form-label">생년월일</label>
 						<div class="col-sm-3">
-							${managerinfo.company}
+							정보없음
 						</div>
 					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">직급</label>
-						<div class="col-sm-3">
-							${managerinfo.position}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">입사일</label>
-						<div class="col-sm-3">
-							${managerinfo.hire_date}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">상태</label>
-						<div class="col-sm-3">
-							${managerinfo.state}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label"></label>
-						<div class="">
-							<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
-							<button type="button" onclick="location.href='/evweb/manager/read.do?&manager_id=${managerinfo.manager_id}&read=UPDATE'"
-							 class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
-							 <button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
-						</div>
-						<div class="col-sm-3">
-							
-							
-						</div>
-						
-					</div>
+					
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
+					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
+					<!-- 탈퇴 버튼 누르면 "/customer/delete.do?customer_id=${customerinfo.customer_id}" 로 이어지게 -->
+				</div>
 				</form>
 			</div>
-		</div>
-		</div>
+	 </main>
 		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
 					<div class="modal-dialog modal-dialog-centered">
-						<div class="modal-content">
+						<div class="modal-content ">
 							<div class="modal-header">
-								<h5 class="modal-title">삭제하시겠습니까?</h5>
+								<h5 class="modal-title">탈퇴하시겠습니까?</h5>
 									<button type="button" class="btn-close"></button>
 								</div>
 								<div class="modal-body">
-									데이터를 삭제하면 복구는 불가능합니다. 그래도 삭제하시겠습니까?
+									탈퇴하면 데이터는 복구 불가능합니다. 그래도 탈퇴하시겠습니까?
 								</div>
 								<div class="modal-footer">
 									<button type="button" id="delBtn" class="btn btn-primary"><i class="bi bi-check-square"></i>예</button>
@@ -137,9 +93,10 @@
 					</div>
 				</div>
           </div>
-		
-</body>
-<script type="text/javascript">
+          </div>
+        
+	</body>
+	<script type="text/javascript">
 		$(document).ready(function () {
 			// 삭제 전 확인 alert
 			
@@ -154,9 +111,13 @@
 
 			$("#delBtn").click(function () {
 				$(".alertPop .modal").removeClass("show");
-				location.href='/evweb/manager/realdelete.do?manager_id=${managerinfo.manager_id}';
+				location.href='/evweb/customer/delete.do?customer_id=${customerinfo.customer_id}';
 			});
 		})
 	
 	</script>
+		
+	
+	
+	
 </html>

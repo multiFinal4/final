@@ -101,9 +101,8 @@
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">입사일</label>
 						<div class="col-sm-3">
-							<input name="hire_date" class="form-control" type="text" value="${managerinfo.hire_date}">
+							<input name="hire_date" class="form-control" type="date" value="${managerinfo.hire_date}">
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label">(예시 : 2022-12-17)</label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">상태</label>

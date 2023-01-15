@@ -20,13 +20,12 @@
 <body>
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1></h1>
 		</div>
 		<div>
 		<div >
 			<div class="card-body">
 				<h5 class="card-title">일반회원 수정</h5>
-
+				<br>
 				<!-- General Form Elements -->
 				<form action="/evweb/customer/update.do" method="post">
 					<div class="row mb-3">
@@ -111,5 +110,6 @@
 			</div>
 		</div>
 		</div>
+	</main>
 </body>
 </html>

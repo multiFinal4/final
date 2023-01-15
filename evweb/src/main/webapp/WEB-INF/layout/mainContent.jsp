@@ -16,7 +16,7 @@
 		<section class="section d-flex">
 			<div class="bgOver"></div>
 			<div class="mainText">
-				<div style="max-width: 25%">
+				<div>
 					<h2>
 						<span>C</span><span>h</span><span>a</span><span>r</span><span>g</span><span>i</span><span>n</span><span>g</span>
 						<span> </span><span>Je</span><span>Ju</span>
