@@ -17,7 +17,10 @@
 		<script type="text/javascript">
 			var stationId = "${stationId}";
 			$(document).ready(function() {
-				
+				$("#updateList").click(function () {
+					loading();
+					ajaxCall();
+				});
 			});
 		</script>
 		<style type="text/css">
