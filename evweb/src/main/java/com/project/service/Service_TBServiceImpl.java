@@ -96,8 +96,13 @@ public class Service_TBServiceImpl implements Service_TBService {
 	}
 
 	@Override
-	public List<Service_TBDTO> selectbyId(String id, String type) {
-		return dao.selectbyId(id, type);
+	public List<Service_TBDTO> selectbyId(SearchCriteria scri,String id, String type) {
+		return dao.selectbyId(scri, id, type);
+	}
+
+	@Override
+	public int listCountId(SearchCriteria scri, String id, String type) {
+		return dao.listCountId(scri, id, type);
 	}
 
 }

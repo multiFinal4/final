@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}">
                         <i class="bi bi-grid"></i>
                         <span>문의내역</span>
                     </a>

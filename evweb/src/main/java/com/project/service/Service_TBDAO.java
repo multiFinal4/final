@@ -37,5 +37,6 @@ public interface Service_TBDAO {
 	//첨부파일을 저장하기 위한 메소드	
 	int insertFile(List<BoardFileDTO> boardfiledtolist);
 	//내문의내역
-	List<Service_TBDTO> selectbyId(String id, String type);
+	List<Service_TBDTO> selectbyId(SearchCriteria scri,String id, String type);
+	int listCountId(SearchCriteria scri,String id, String type);
 }
