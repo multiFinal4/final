@@ -11,7 +11,9 @@
 	</definition>
 	
 	<definition name="index" extends="indexTemplate"></definition>
-		
+	
+	<definition name="oauth" template="/WEB-INF/login/oauth.jsp">	
+	</definition>
 	
 	<!-- 서브페이지  -->
 	<!-- 샘플 -->
