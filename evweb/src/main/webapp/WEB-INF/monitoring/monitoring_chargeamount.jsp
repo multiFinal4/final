@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,13 +36,13 @@
 			<%for(int i=0;i<weekamountlist.size();i++){%>
 				chargemonthdata.push([<%=weekamountlist.get(i)%>])
 			<%}%>
-			date.push(['<%=datelist.get(0)%>(일)']);
-			date.push(['<%=datelist.get(1)%>(월)']);
-			date.push(['<%=datelist.get(2)%>(화)']);
-			date.push(['<%=datelist.get(3)%>(수)']);
-			date.push(['<%=datelist.get(4)%>(목)']);
-			date.push(['<%=datelist.get(5)%>(금)']);
-			date.push(['<%=datelist.get(6)%>(토)']);
+			date.push(['<%=datelist.get(0)%>(월)']);
+			date.push(['<%=datelist.get(1)%>(화)']);
+			date.push(['<%=datelist.get(2)%>(수)']);
+			date.push(['<%=datelist.get(3)%>(목)']);
+			date.push(['<%=datelist.get(4)%>(금)']);
+			date.push(['<%=datelist.get(5)%>(토)']);
+			date.push(['<%=datelist.get(6)%>(일)']);
 			<%for(int i=0;i<weeklist.size();i++){%>
 				week.push('<%=weeklist.get(i)%>')
 			<%}%>
@@ -58,12 +59,28 @@
 				height:calc(100vh - 130px);
 				overflow-y:auto; 
 			}
+			#chargemonth{
+				height: 250px;
+			}
+			
+			#chargeweek {
+			    height: 250px;
+			}
+			#chargelist{
+				height: 680px;
+				overflow-y:auto; 
+			}
+			th {
+			    position: sticky;
+			    top: -0.5px;
+			    background-color: #dee2e6;
+		    }
 		</style>
 	</head>
 	<body>
 	<div class="monitoringMain row d-flex">
 		<h1 class="pagetitle" id="stationName">충전 차트</h1>
-		<div class="col-lg-12 stationWrap dashboard">
+		<div class="col-lg-12 stationWrap dashboard d-flex" >
 			<div class="col-md-8 pr-0">
 				<div class="card info-card sales-card " style="z-index: 1;">
 					<div class="card-header">
@@ -77,12 +94,6 @@
 						</figure>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-4 pr-0">
-			</div>
-		</div>
-		<div class="col-lg-12 stationWrap dashboard">
-			<div class="col-md-8 pr-0">
 				<div class="card info-card sales-card " style="z-index: 0;">
 					<div class="card-header">
 						<h5 class="card-title">
@@ -96,9 +107,37 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 pr-0">
+			<div class="col-md-4 pr-0" id = "chargelist">
+					<table class="table table-hover table-striped" >
+		                <thead >
+		                  <tr>
+		                    <th scope="col" style="width:12%;">번호</th>
+		                    <th scope="col" style="width:30%;">날짜</th>
+		                    <th scope="col" style="width:25%;">충전 시간</th>
+		                    <th scope="col" style="width:25%;">충전량[kWh]</th>
+		                  </tr>
+		                </thead>
+		                <tbody >
+			                <c:forEach varStatus="status" var="list" items="${chargelist}">
+								<tr>
+								  <td>${status.count}</td>
+								  <td>${list.charging_date}</td>
+								  <c:choose>
+								  	<c:when test="${chargetimelist.get(status.index)>59}">
+								  		<fmt:parseNumber var="hour" integerOnly="true" value="${chargetimelist.get(status.index)/60}" />
+								   		<td>${hour}시간 ${chargetimelist.get(status.index)%60}분</td>
+								   	</c:when>
+								   	<c:otherwise>
+								   		<td>${chargetimelist.get(status.index)}분</td>
+								   	</c:otherwise>
+								  </c:choose>
+								  <td>${list.charging_amount}</td>
+								</tr>
+		                  	</c:forEach>
+		                </tbody>
+		              </table>
+				</div>
 			</div>
-		</div>
 	</div>
 </body>
 </html>

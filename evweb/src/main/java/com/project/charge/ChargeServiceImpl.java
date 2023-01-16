@@ -1,5 +1,7 @@
 package com.project.charge;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,10 @@ public class ChargeServiceImpl implements ChargeService {
 	@Override
 	public String sumchargeAmount(String station_id, String charging_date) {
 		return dao.sumchargeAmount(station_id, charging_date);
+	}
+	@Override
+	public List<ChargeDTO> list(String station_id, String charging_date) {
+		return dao.list(station_id, charging_date);
 	}
 	
 }

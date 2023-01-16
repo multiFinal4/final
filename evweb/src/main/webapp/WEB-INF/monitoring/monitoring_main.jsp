@@ -28,24 +28,24 @@
 			const chargedata = [<%=yesandtoamount[0]%>,<%=yesandtoamount[1]%>]
 			const chargedate = ['<%=yesandtoday[0]%>','<%=yesandtoday[1]%>']
 			const chargeweekdata = [];
-			const category = [];
+			const date = [];
 			<%for(int i=0;i<amountlist.size();i++){%>
 			chargeweekdata.push([<%=amountlist.get(i)%>])
 			<%}%>
-			category.push(['<%=datelist.get(0)%>(일)']);
-			category.push(['<%=datelist.get(1)%>(월)']);
-			category.push(['<%=datelist.get(2)%>(화)']);
-			category.push(['<%=datelist.get(3)%>(수)']);
-			category.push(['<%=datelist.get(4)%>(목)']);
-			category.push(['<%=datelist.get(5)%>(금)']);
-			category.push(['<%=datelist.get(6)%>(토)']);
+			date.push(['<%=datelist.get(0)%>(월)']);
+			date.push(['<%=datelist.get(1)%>(화)']);
+			date.push(['<%=datelist.get(2)%>(수)']);
+			date.push(['<%=datelist.get(3)%>(목)']);
+			date.push(['<%=datelist.get(4)%>(금)']);
+			date.push(['<%=datelist.get(5)%>(토)']);
+			date.push(['<%=datelist.get(6)%>(일)']);
 			$(document).ready(function() {
 				$("#updateList").click(function () {
 					loading();
 					ajaxCall();
 				});
 				highchartday(chargedata,chargedate);
-				highchartweek(category,chargeweekdata)
+				highchartweek(date,chargeweekdata)
 			});
 		</script>
 		<style type="text/css">
@@ -55,6 +55,12 @@
 			#container{
 				height:calc(100vh - 130px);
 				overflow-y:auto; 
+			}
+			#chargeday {
+			    height: 180px;
+			}
+			#chargeweek {
+			    height: 250px;
 			}
 		</style>
 	</head>

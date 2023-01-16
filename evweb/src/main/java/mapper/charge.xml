@@ -13,5 +13,9 @@
 		select sum(charging_amount) from CHARGE_TB 
 		where station_id=#{station_id} and charging_date = #{charging_date}
 	</select>
+	<select id="list" resultType="charge" parameterType="Map">
+		select * from CHARGE_TB 
+		where station_id=#{station_id} and charging_date = #{charging_date}
+	</select>
  </mapper>
  
