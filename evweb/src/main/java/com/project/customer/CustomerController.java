@@ -30,16 +30,24 @@ public class CustomerController {
 	
 
 	
-	@RequestMapping("/customer/read.do")//마이페이지 (로그인 정보)
+	@RequestMapping("/customer/read.do")//마이페이지 
 	public String read(String customer_id,String state,Model model) {
-		System.out.println(customer_id+state);
+		//System.out.println(customer_id+state);
 		ModelAndView mav = new ModelAndView();
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
 		if(state.equals("READ")) {
-			view = "customer_read";
+			if(customerinfo.getState().equals("정상")) {
+				view = "customer_read";
+			}else {
+				view = "customer_read_kakao";
+			}
 		}else if(state.equals("UPDATE")){
-			view = "customer_update";
+			if(customerinfo.getState().equals("정상")) {
+				view = "customer_update";
+			}else {
+				view = "customer_update_kakao";
+			}
 		}
 		model.addAttribute("customerinfo", customerinfo);
 		return view;
@@ -67,7 +75,7 @@ public class CustomerController {
 	@RequestMapping("/customer/update.do")
 	public String update(CustomerDTO customer) {
 		service.update(customer);
-		return "redirect:/index";
+		return "redirect:/customer/read.do?customer_id="+customer.getCustomer_id()+"&state=READ";
 	}
 	
 	

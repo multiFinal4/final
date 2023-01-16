@@ -40,6 +40,10 @@
 			date.push(['<%=datelist.get(5)%>(토)']);
 			date.push(['<%=datelist.get(6)%>(일)']);
 			$(document).ready(function() {
+				$("#updateList").click(function () {
+					loading();
+					ajaxCall();
+				});
 				highchartday(chargedata,chargedate);
 				highchartweek(date,chargeweekdata)
 			});

@@ -10,19 +10,33 @@
 <title>Map</title>
 <link rel="stylesheet" href="/evweb/vendor/bootstrap/css/bootstrap-select.css" />
 <script src="/evweb/vendor/bootstrap/js/bootstrap-select.min.js"></script>
-
 <script type="text/javascript">
 	var page = 1;
 	var cate = '${category}';
 	var key = '${keyword}';
+	var resultCount = '${noResult}';
 	$(document).ready(function () {
 		$("#category").val(cate).attr("selected","selected");
-		
-		
+
+		if (resultCount == "0") {
+			$(".key").html(key);
+			$(".alertPop .modal").addClass("show");
+			$(".alertPop .modal-content").addClass("show");
+			
+			$(".cancel").click(function () {
+				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
+			});
+		}
 		$("select#company").selectpicker();
 	});
 	
 </script>
+<style>
+	body, html {
+		overflow-y:hidden;
+	}
+</style>
 </head>
 <body>
 	<aside id="sidebar" class="sidebar mapSidebar">
@@ -41,36 +55,40 @@
 		</form>
 		<div class="mapSearchResult">
 			<div class="searchSelect">
-				<div class="form-check mb-3 pl-0">
-					<span class="col-sm-4" style="float:left;">회사명</span>
-					<select name="company"  id="company" class="selectpicker form-control col-sm-8" multiple data-live-search="true" data-width="100%" data-actions-box="true">
-						<c:forEach var="company" items="${companyList}">
-							<option value="${company}">${company}</option>
-						</c:forEach>
-					</select>
+				<div class="form-check mb-2 pl-0 d-flex mr-0">
+					<h5 class="card-title col-sm-4 pl-0 mb-0 pr-0">회사명</h5>
+					<div class="form-check col-sm-8 pl-0 pr-0">
+						<select name="company"  id="company" class="selectpicker form-control" multiple data-live-search="true" data-actions-box="true">
+							<c:forEach var="company" items="${companyList}">
+								<option value="${company}">${company}</option>
+							</c:forEach>
+						</select>
+					</div>
 		        </div>
-				<div>
-					<h5 class="card-title">검색조건</h5>
-					<div class="form-check d-flex">
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" name="filter" value="Y">무료주차
-						</label>
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" name="filter" value="Y">급속
-						</label>
-						<label class="form-check-label">
-							<input class="form-check-input" type="checkbox" name="filter" value="Y">완속
-						</label>
-			        </div>
-			         <div class="dropdown">
-						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-						  더보기
-						</button>
-						<div class="dropdown-menu">
-						  <a class="dropdown-item" href="#">낮은 가격순</a>
-						  <a class="dropdown-item" href="#">높은 가격순</a>
-						  <a class="dropdown-item" href="#">인기순</a>
-						  <a class="dropdown-item" href="#">이용순</a>
+					
+				<div class="form-check mb-3 pl-0" style="align-items: center;">
+					<div class="col-sm-12 pl-0 pr-0 d-flex">
+						<div class="form-check d-flex col-sm-8 pl-0 pr-0">
+							<label class="form-check-label">
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">주차
+							</label>
+							<label class="form-check-label">
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">급속
+							</label>
+							<label class="form-check-label">
+								<input class="form-check-input txt-hide" type="checkbox" name="filter">완속
+							</label>
+				        </div>
+			         	<div class="dropdown col-sm-4 pl-0 pr-0">
+							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+							  더보기
+							</button>
+							<div class="dropdown-menu">
+							  <a class="dropdown-item" href="#">낮은 가격순</a>
+							  <a class="dropdown-item" href="#">높은 가격순</a>
+							  <a class="dropdown-item" href="#">인기순</a>
+							  <a class="dropdown-item" href="#">이용순</a>
+							</div>
 						</div>
 					</div>
 		        </div>
@@ -90,5 +108,26 @@
 	        </div>
         </div>
 	</aside>
+	<div class="alertPop">
+		<div class="alertBox">
+			<div class="modal fade">
+				<div class="modal-dialog modal-dialog-centered">
+					
+					<div class="modal-content delete">
+						<div class="modal-header">
+							<h5 class="modal-title">입력하신 "<span class="key font-weight-bold"></span>"에 대한 검색결과가 없습니다.</h5>
+						</div>
+						<div class="modal-body">
+							단어의 철자가 정확한지 확인해 주세요.<br>
+							검색어의 단어 수를 줄이거나 보다 정확한 단어로 검색해 주세요.
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary cancel"><i class="bi bi-check-square"></i>확인</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
 </body>
 </html>

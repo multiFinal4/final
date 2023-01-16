@@ -11,43 +11,50 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		initMap();
+		
+		// 초기 검색 값
+		var chckArr = ["N","N","N"];;
+		var filterArr = [];
+		var filterData = {};
+
+		// 지도 실행
+		initMap(filterData,filterArr);
+
+		// 충전소 정보창 닫기
 		$(".mapClose").click(function() {
 			$(".mapMarkerWrap").removeClass("on");
 		});
-		
+
+		// 검색필터 체크 이벤트
 		$("input:checkbox").click(function() {
 
-			/* var checkboxValues = [];
-		    $("input[name='filter']:checked").each(function(i) {
-		        checkboxValues.push($(this).val());
-		    });
-			
-		    for (var i = 0; i < checkboxValues.length; i++) {
-		    	if (checkboxValues[i] != "Y") {
-					checkboxValues[i] = "N";
-				}
-			}
-		     */
-          	var chckVal = "";
-			if($(this).prop('checked')) {
-				chckVal = $(this).val();
+        	var chckNum = $(this).parent("label").index();
+	        if($(this).is(":checked")){
+	        	chckArr[chckNum] = "Y";
+	        	$(this).parent("label").addClass("on");
+	        }else{
+	        	chckArr[chckNum] = "N";
+	        	$(this).parent("label").removeClass("on");
 	        }
-			else {
-				chckVal = "N";
-			} 
-			
-			$.ajax({
+	        
+	        // 검색체크항목
+	        filterData = { 
+					"park": chckArr[0],
+					"quick": chckArr[1],
+					"standard": chckArr[2],
+					"category" : "${category}",
+					"keyword" :"${keyword}"
+			};
+	        
+	        // 체크된 항목에 따른 충전소 리스트 변화
+	        $.ajax({
 				url: "/evweb/ajax/map/search.do",
 				type: "get",
-				data: {
-					"category" : cate,
-					"keyword" : key,
-					"park" : chckVal
-				},
+				data: filterData, 
+				traditional: true,
 				success: function(data){
 					strHTML = "";
-					var testArr = [];
+					filterArr = []; // 필터체크시 배열 초기화(누적방지)
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";
@@ -67,16 +74,15 @@
 						strHTML += "    </div>";
 						strHTML += "</div>";
 						
-						testArr.push(data[i]);
+						filterArr.push(data[i]);
 					}
 					$(".mapSearchList").html(strHTML);
-					initMap(chckVal, testArr);
-										
-					// String으로 변환하여 출력
 					
+					// 변경된 값으로 지도 불러오기
+					initMap(filterData, filterArr);
 				},
 				error: function(){
-				  console.error("insertDiagram.do Error");
+				  console.error("Map Error");
 				}
 			});
 		});
@@ -84,10 +90,15 @@
 		
 	});
 	
-	function initMap(chckVal, testArr) { 
+	function initMap(filterData, filterArr) { 
+		// 위도경도 받아오기
+		var lat = "${lat}";
+		var longt = "${longt}";
 		
+		
+		// 검색시 가장 첫번째 충전소 위치로 이동
 		var map = new naver.maps.Map('map', {
-	        center: new naver.maps.LatLng(33.5104135, 126.4913534), //지도 시작 지점
+	        center: new naver.maps.LatLng(lat, longt), //지도 시작 지점
 	        zoom: 13, //지도의 초기 줌 레벨
 	        minZoom: 11, //지도의 최소 줌 레벨
 	        zoomControl: true, //줌 컨트롤의 표시 여부
@@ -95,77 +106,29 @@
 	       		position: naver.maps.Position.TOP_RIGHT
 	        }
 	    });
+			
 
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         
 		var markers = []; // 마커 정보를 담는 배열
 		var infowindowList = []; // 정보창을 담는 배열
-		//var list = [];
-		
-		
 		var areaArr = [];  // 충전소 정보 담는 배열
 		
 		// 주차 체크여부
-		if (chckVal != "Y") {
-			<c:forEach items="${stationList}" var="list">
-				areaArr.push({
-								chargeid : "${list.station_id}" , 
-								chargeName : "${list.station_name}" , 
-								lat : "${list.map_latitude}", 
-								lng : "${list.map_longtude}"
-							});
-			</c:forEach>
-			
+		if ($("input:checkbox").is(":checked")) {
+			setFilterList(filterArr);
 		}else{
-			for (var i = 0; i < testArr.length; i++) {
-				areaArr.push({
-					chargeid : testArr[i].station_id, 
-					chargeName : testArr[i].station_name , 
-					lat : testArr[i].map_latitude, 
-					lng : testArr[i].map_longtude
-				});
-			}
-
-		}
-
-		for (var i = 0; i < areaArr.length; i++) {
-		    var marker = new naver.maps.Marker({
-		        map: map,
-		        title: areaArr[i].chargeName, // 지역구 이름 
-		        icon:{
-		        	content:"<img alt='Marker' src='/evweb/images/location-pin.png' style='width:30px;'>"
-		        },
-		        size: new naver.maps.Size(38, 58),
-		        anchor: new naver.maps.Point(19, 58),
-		        position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기 
-		    });
-		    
-		    
-		    /* 정보창 */
-			var stationInfo = "";
-			    stationInfo += "<div class='markerInfo'><div class='markerName'>";
-			    stationInfo += areaArr[i].chargeName;
-			    stationInfo += "</div></div>";
-		    var infoWindow = new naver.maps.InfoWindow({
-		    		content: stationInfo,
-		    		borderWidth: 0,
-		    	    disableAnchor: true,
-		    	    backgroundColor: 'transparent',
-		    	    pixelOffset: new naver.maps.Point(0, -28),
-		    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
-													    
-			markers.push(marker); // 생성한 마커를 배열에 담는다.
-			infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
-			//list.push("1");
-			
+			setDeaultList();
 		}
 		
+		setMarker(areaArr);
 
 	    for (var i=0, ii=markers.length; i<ii; i++) {
 	    	naver.maps.Event.addListener(map, "click", ClickMap(i));
 	        naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i)); // 클릭한 마커 핸들러
 	        
 	  	}
+	    
 	    // 리스트 클릭해도 이동
 	    var $mapSearchList = $(".mapSearchList").children("div");
 	    
@@ -182,7 +145,86 @@
 	    	map.setZoom(11);
 
 	    });
+	    // 현재 내 위치로 이동
+	    $(".mapControl .current").click(function(){
+			$(".mapMarkerWrap").removeClass("on");
+	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
+	    	map.setZoom(16);
+	    	navigator.geolocation.getCurrentPosition(function(pos){
+	    		var currPosi = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+	    		map.setCenter(currPosi);
+		    	var circle = new naver.maps.Circle({
+		    	    map: map,
+		    	    center: currPosi,
+		    	    radius: 200,
+		    	    fillColor: '#076ff9',
+		    	    fillOpacity: 0.2
+		    	});
+			});
+            map.panTo(currPosi);
+	    });
 		
+		
+	    
+	    // 충전소 리스트 생성 (전체)
+	    function setDeaultList() {
+			<c:forEach items="${stationList}" var="list">
+				areaArr.push({
+								chargeid : "${list.station_id}" , 
+								chargeName : "${list.station_name}" , 
+								lat : "${list.map_latitude}", 
+								lng : "${list.map_longtude}"
+							});
+			</c:forEach>
+		}
+
+	    // 충전소 리스트 생성 (ajax 필터)
+		function setFilterList(filterArr) {
+			for (var i = 0; i < filterArr.length; i++) {
+				areaArr.push({
+					chargeid : filterArr[i].station_id, 
+					chargeName : filterArr[i].station_name , 
+					lat : filterArr[i].map_latitude, 
+					lng : filterArr[i].map_longtude
+				});
+			}
+		}
+	    
+	    // 마커 생성
+	    function setMarker(areaArr) {
+			for (var i = 0; i < areaArr.length; i++) {
+			    var marker = new naver.maps.Marker({
+			        map: map,
+			        title: areaArr[i].chargeName, // 지역구 이름 
+			        icon:{
+			        	content:"<img alt='Marker' src='/evweb/images/location-pin.png' style='width:30px;'>"
+			        },
+			        size: new naver.maps.Size(38, 58),
+			        anchor: new naver.maps.Point(19, 58),
+			        position: new naver.maps.LatLng(areaArr[i].lat , areaArr[i].lng) // 지역구의 위도 경도 넣기 
+			    });
+			    
+			    
+			    /* 정보창 */
+				var stationInfo = "";
+				    stationInfo += "<div class='markerInfo'><div class='markerName'>";
+				    stationInfo += areaArr[i].chargeName;
+				    stationInfo += "</div></div>";
+			    var infoWindow = new naver.maps.InfoWindow({
+			    		content: stationInfo,
+			    		borderWidth: 0,
+			    	    disableAnchor: true,
+			    	    backgroundColor: 'transparent',
+			    	    pixelOffset: new naver.maps.Point(0, -28),
+			    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
+														    
+				markers.push(marker); // 생성한 마커를 배열에 담는다.
+				infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
+				//list.push("1");
+				
+			}
+		}
+	    
 	    // 지도클릭 시 안내창 닫기
 		function ClickMap(i) {
 			return function () {
@@ -190,6 +232,7 @@
 			  infowindow.close()
 			}
 		}
+	    
 	    // 마커클릭 이벤트
 	    function getClickHandler(i) {
             return function(e) {  // 마커를 클릭하는 부분
@@ -354,6 +397,7 @@
 	    
 	}
 </script>
+
 </head>
 <body>
 	<div id="map" style="width: 100%; height: calc(100vh - 130px);"></div>

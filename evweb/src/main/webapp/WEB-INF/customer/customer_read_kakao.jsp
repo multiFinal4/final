@@ -14,50 +14,36 @@
 	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 		rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
 </head>
 
 <body>
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1></h1>
 		</div>
 		
-		<div >
+		<div>
 			<div class="card-body">
-				<h1 class="pagetitle"><img src='/evweb/images/favicon/favicon.ico' style='width:50px;'> [ 마이페이지 ]</h1>
+				<h1 class="pagetitle">마이페이지</h1>
 				<hr/>
-
+				<br>
 				<!-- General Form Elements -->
 				<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
 					<div class="row mb-3">
-						<input type="hidden" name="customerinfo_id" value="${customerinfo.customer_id}">
-						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
-						<div class="col-sm-3">
-							${customerinfo.customer_id}
-						</div>
-						
-					</div>
-					
-					<div class="row mb-3">
-						<div class="col-sm-2 col-form-label"><label for="inputPassword" class="box">비밀번호</label></div>
-						<div class="col-sm-3">
-							${customerinfo.pass}
-						</div>
+						<h5><label for="inputPassword" class="col-sm-12 col-form-label">카카오회원</label></h5>
 					</div>
 					<div class="row mb-3">
-						<div class="col-sm-2 col-form-label"><label for="inputText" class="box">이름</label></div>
+						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
 						<div class="col-sm-3">
 							${customerinfo.name}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<div class="col-sm-2 col-form-label"><label for="inputText" class="box">핸드폰
-							번호</label></div>
+						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
+							번호</label>
 						<div class="col-sm-3">
 							${customerinfo.phone_no}
 						</div>
-
+						<label for="inputText" class="col-sm-2 col-form-label"></label>
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
@@ -74,24 +60,8 @@
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label">생년월일</label>
 						<div class="col-sm-3">
-							${customerinfo.birth}
+							정보없음
 						</div>
-						
-					</div>
-						<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">비밀번호찾기 질문</label>
-						<div class="col-sm-3">
-							${customerinfo.ps_question}
-						</div>
-					</div>
-						<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">비밀번호찾기 대답</label>
-						<div class="col-sm-3">
-							${customerinfo.ps_answer}
-						</div>
-					
-				
-
 					</div>
 					
 				<div class="text-center">
