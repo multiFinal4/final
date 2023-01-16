@@ -22,6 +22,4 @@
 	<view-controller path="/map.do" view-name="map"/>
 	<!-- 글등록성공 -->
 	<view-controller path="/insertok.do" view-name="insertok"/>
-	<!-- 카카오로그인 -->
-	<view-controller path="/oauth" view-name="oauth"/>
 </beans:beans>

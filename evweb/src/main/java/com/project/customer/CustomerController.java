@@ -37,9 +37,17 @@ public class CustomerController {
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
 		if(state.equals("READ")) {
-			view = "customer_read";
+			if(customerinfo.getState().equals("정상")) {
+				view = "customer_read";
+			}else {
+				view = "customer_read_kakao";
+			}
 		}else if(state.equals("UPDATE")){
-			view = "customer_update";
+			if(customerinfo.getState().equals("정상")) {
+				view = "customer_update";
+			}else {
+				view = "customer_update_kakao";
+			}
 		}
 		model.addAttribute("customerinfo", customerinfo);
 		return view;

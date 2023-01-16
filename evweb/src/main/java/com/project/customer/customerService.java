@@ -24,6 +24,4 @@ public interface customerService {
 	int change(String customer_id);
 	int realdelete(String customer_id);
 	
-	//카카오 회원가입
-	int kakaoInsert(CustomerDTO dto);
 }

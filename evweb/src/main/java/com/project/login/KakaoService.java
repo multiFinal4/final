@@ -9,18 +9,29 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.project.customer.CustomerDAO;
+import com.project.customer.CustomerDTO;
 
 @Service
 public class KakaoService {
-	
-    public String getToken(String code) throws IOException, org.json.simple.parser.ParseException {
+	CustomerDAO dao;
+	KakaoService() {};
+	@Autowired
+    public KakaoService(CustomerDAO dao) {
+		super();
+		this.dao = dao;
+	}
+
+
+	public String getToken(String code) throws IOException, org.json.simple.parser.ParseException {
         // 인가코드로 토큰받기
         String host = "https://kauth.kakao.com/oauth/token";
         URL url = new URL(host);
@@ -41,7 +52,7 @@ public class KakaoService {
             bw.flush();
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = " + responseCode);
+            System.out.println("responseCode 확인 = " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line = "";
@@ -73,21 +84,25 @@ public class KakaoService {
     }
 
     //선택동의한 유저 정보 받아오기
-    public Map<String, Object> getUserInfo(String access_token) throws IOException, org.json.simple.parser.ParseException {
+    public CustomerDTO getUserInfo(String access_token) throws IOException, org.json.simple.parser.ParseException {
         String host = "https://kapi.kakao.com/v2/user/me";
-        Map<String, Object> result = new HashMap<>();
+        HashMap<String, Object> result = new HashMap<String, Object>();
         try {
+        	// 1.url 객체만들기
             URL url = new URL(host);
-
+            // 2.url 에서 url connection 만들기
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            // 3.URL 연결구성
             urlConnection.setRequestProperty("Authorization", "Bearer " + access_token);
-            urlConnection.setRequestMethod("GET");
-
-            int responseCode = urlConnection.getResponseCode();
+            urlConnection.setRequestMethod("GET");      
+            
+            //키값, 속성 적용
+            int responseCode = urlConnection.getResponseCode();     // 서버에서 보낸 http 상태코드 반환
             System.out.println("responseCode = " + responseCode);
             // responsecode가 200이 아닌 경우 if문을 통해서 예외처리 가능
             
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            // 버퍼 사용해 읽기
             String line = "";
             String res = "";
             while((line=br.readLine())!=null)
@@ -97,30 +112,54 @@ public class KakaoService {
 
             System.out.println("res = " + res);
 
-
+            // json으로 파싱하기
             JSONParser parser = new JSONParser();
             JSONObject obj = (JSONObject) parser.parse(res);
             JSONObject kakao_account = (JSONObject) obj.get("kakao_account");
-           // JSONObject properties = (JSONObject) obj.get("properties");  //닉네임, 프로필이미지, 
-
+            //JSONObject properties = (JSONObject) obj.get("properties");  //닉네임, 프로필이미지 ...
+            
             String id = obj.get("id").toString();
-            String email = kakao_account.get("email").toString();
+            // 선택항목(이메일) 체크 여부 나눠서 처리
+            if(kakao_account.get("email")==null) {
+            	result.put("id", id);
+            }else {
+	            String email = kakao_account.get("email").toString();
+	            result.put("id", id);
+	            result.put("email", email);
+            }
+            
             //String birthday = kakao_account.get("birthday").toString();
-
-            result.put("id", id);
-            result.put("email", email);
             //result.put("birthday", birthday);
 
             br.close();
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return result;
+        
+       
+        CustomerDTO dtoresult = dao.findkakao(result);
+        System.out.println("dtoresult================> "+dtoresult);
+        
+        // dtoresult null => 디비에 저장된 정보가 없음. 디비에 저장하기
+        if(dtoresult == null) {
+        	// 선택항목(이메일) 체크 여부 나눠서 데이터저장하기
+        	if(result.get("email")==null) {
+        		dao.kakaoInsertNull(result);
+        	}else {
+        		dao.kakaoInsert(result);
+        	}
+            // 정보 저장 후 컨트롤러에 데이터 보내기
+            return dao.findkakao(result);
+            //dtoresult를 리턴으로 보내면 null이 리턴되므로 위의 코드를 사용.
+        }else {
+            return dtoresult;
+            //정보가 있으므로 dtoresult를 리턴함
+        }
+         
     }
-
+    
+    // 정상적으로 받아왔는지 여부
     public String getAgreementInfo(String access_token)
     {
         String result = "";

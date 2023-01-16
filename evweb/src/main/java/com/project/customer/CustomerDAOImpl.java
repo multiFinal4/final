@@ -109,10 +109,48 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return sqlsession.delete("com.project.customer.realdelete", customer_id);
 	}
 
+
 	//========================카카오로그인============================
 	@Override
-	public int kakaoInsert(CustomerDTO dto) {
-		System.out.println("카카오로그인 다오임플~~~~~~~~> "+dto);
+	public int kakaoInsert(HashMap<String, Object> userInfo) {
+		//System.out.println("카카오insert 다오임플~~~~~~~~> "+userInfo);
+		String customer_id = (String) userInfo.get("id");
+		String email = (String) userInfo.get("email");
+		//System.out.println("insert 커스터머아이디??????? : "+customer_id);
+		//System.out.println("insert 커스터머이메일??????? : "+email);
+		
+		CustomerDTO dto = new CustomerDTO();
+		dto.setCustomer_id(customer_id);
+		dto.setEmail(email);
+		
 		return sqlsession.insert("com.project.customer.kakaoInsert",dto);
 	}
+
+
+	@Override
+	public CustomerDTO findkakao(HashMap<String, Object> userInfo) {
+		//System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@카카오find 다오임플@@@@@@@@@@@@@@@@@@@@@@@@> "+userInfo);
+		String customer_id = (String) userInfo.get("id");
+		String email = (String) userInfo.get("email");
+		//System.out.println("커스터머아이디???? : "+customer_id);
+		//System.out.println("커스터머이메일???? : "+email);
+		
+		CustomerDTO dto = new CustomerDTO();
+		dto.setCustomer_id(customer_id);
+		dto.setEmail(email);
+		return sqlsession.selectOne("com.project.customer.findkakao",dto);
+	}
+
+	@Override
+	public int kakaoInsertNull(HashMap<String, Object> userInfo) {
+		System.out.println("이메일없는userInfo????????????????? "+userInfo);
+		String customer_id = (String) userInfo.get("id");
+		CustomerDTO dto = new CustomerDTO();
+		dto.setCustomer_id(customer_id);
+		return sqlsession.selectOne("com.project.customer.kakaoInsertNull",dto);
+	}
+
+	
+	
+	
 }
