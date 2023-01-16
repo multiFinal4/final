@@ -34,9 +34,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="board" items="${list}">
+					<c:forEach varStatus="status" var="board" items="${list}">
 						<tr>
-							<th scope="row">${board.board_no}</th>
+							<th scope="row">${status.count}</th>
 							<td>${board.board_category}</td>
 
 							<td><c:choose>
