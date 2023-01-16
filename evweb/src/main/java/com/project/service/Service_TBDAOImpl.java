@@ -96,7 +96,14 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	public int listCount(SearchCriteria scri) {
 		return sqlSession.selectOne("com.project.service.listCount", scri);
 	}
-
+	
+	public List<Service_TBDTO> selectbyId(String id, String type) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("id", id);
+		map.put("type", type);
+		return sqlSession.selectList("com.project.service.selectbyId",map); 
+		
+	}
 
 
 }

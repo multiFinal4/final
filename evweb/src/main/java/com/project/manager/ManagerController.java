@@ -12,19 +12,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.customer.CustomerDTO;
 import com.project.customer.customerService;
-import com.project.station.StationDTO;
+import com.project.service.Service_TBDTO;
+import com.project.service.Service_TBService;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
 	ManagerService service;
 	customerService customerservice;
+	Service_TBService questionservice;
 	
 	@Autowired
-	public ManagerController(ManagerService service, customerService customerservice) {
+	public ManagerController(ManagerService service, customerService customerservice, Service_TBService questionservice) {
 		super();
 		this.service = service;
 		this.customerservice = customerservice;
+		this.questionservice = questionservice;
 	}
 	
 	
@@ -153,4 +156,14 @@ public class ManagerController {
 		service.realdelete(manager_id);
 		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
+	
+	@RequestMapping("/servicelist.do")
+	public String servicelist(String manager_id, Model model) {
+		String type = "관리자";
+		List<Service_TBDTO> list = questionservice.selectbyId(manager_id,type);
+		model.addAttribute("list",list);
+		return "manager_service";
+	}
+	
 }
+

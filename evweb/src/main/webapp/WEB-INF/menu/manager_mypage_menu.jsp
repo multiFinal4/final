@@ -23,13 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/manager/read.do?read=MPUPDATE&manager_id=${user.manager_id}">
-                        <i class="bi bi-grid"></i>
-                        <span>회원정보수정</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/manager/servicelist.do?manager_id=${user.manager_id}">
                         <i class="bi bi-grid"></i>
                         <span>문의내역</span>
                     </a>
