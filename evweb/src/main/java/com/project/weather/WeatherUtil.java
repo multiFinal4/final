@@ -1,13 +1,24 @@
 package com.project.weather;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class WeatherUtil {
 
+	public long getChargeTime(String end_time, String start_time) throws ParseException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		Date endtime = format.parse(end_time); 
+		Date starttime = format.parse(start_time);
+		long diff = endtime.getTime() - starttime.getTime(); //충전 시간
+		long diffMinutes = diff / (60 * 1000); //분으로 환산     
+		return diffMinutes; 
+	}
 	public String getDate(LocalDate now, String pattern) { //날짜, 패턴
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);   // 포맷 정의
         String formatedNow = now.format(formatter);    // 포맷 적용

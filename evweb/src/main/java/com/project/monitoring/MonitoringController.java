@@ -91,8 +91,8 @@ public class MonitoringController {
 		String[] yesandtoamount = {chargeService.sumchargeAmount(stationId, weatherutil.getDate(LocalDate.now().minusDays(1), "yyyyMMdd")),chargeService.sumchargeAmount(stationId, weatherutil.getDate(LocalDate.now(), "yyyyMMdd"))};
 		double weekamount = 0;
 		for(int i=0; i<7; i++) {
-			String date = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyyMMdd"); //날짜구하기 (일,월,화,수,목,금,토)
-			String datebar = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i), "yyyy-MM-dd"); //날짜구하기 (일,월,화,수,목,금,토)
+			String date = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i+1), "yyyyMMdd"); //날짜구하기 (일,월,화,수,목,금,토)
+			String datebar = weatherutil.getDate(LocalDate.now().minusDays(day).plusDays(i+1), "yyyy-MM-dd"); //날짜구하기 (일,월,화,수,목,금,토)
 			String amount = chargeService.sumchargeAmount(stationId, date);
 			weekamount += Double.parseDouble(amount);
 			datelist.add(datebar);

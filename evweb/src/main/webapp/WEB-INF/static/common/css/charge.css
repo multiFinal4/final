@@ -6,12 +6,7 @@
     margin: 1em auto;
 }
 
-#chargeday {
-    height: 180px;
-}
-#chargeweek {
-    height: 250px;
-}
+
 .highcharts-data-table table {
     font-family: Verdana, sans-serif;
     border-collapse: collapse;

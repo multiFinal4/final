@@ -1,7 +1,5 @@
 package com.project.charge;
 
-import java.sql.Date;
-
 public class ChargeDTO {
 	private String station_id;
 	private String charger_id;

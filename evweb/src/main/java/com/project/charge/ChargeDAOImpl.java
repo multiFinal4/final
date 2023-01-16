@@ -1,6 +1,7 @@
 package com.project.charge;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,14 @@ public class ChargeDAOImpl implements ChargeDAO {
 			amount = "0";
 		}
 		return amount;
+	}
+
+	@Override
+	public List<ChargeDTO> list(String station_id, String charging_date) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("station_id", station_id);
+		map.put("charging_date", charging_date);
+		return sqlSession.selectList("com.project.charge.list",map);
 	}
 	
 	

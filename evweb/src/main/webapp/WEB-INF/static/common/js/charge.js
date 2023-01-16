@@ -15,6 +15,7 @@ Highcharts.chart('chargeday', {
     },
     yAxis: {
         min: 0,
+        softMax: 50,
         title: {
             text: '충전량 [kWh]',
             align: 'high'
@@ -63,6 +64,7 @@ Highcharts.chart('chargeweek', {
     },
  	yAxis: {
         min: 0,
+        softMax: 50,
         title: {
             text: '충전량 [kWh]',
             align: 'middle'
@@ -108,6 +110,7 @@ Highcharts.chart('chargemonth', {
     },
  	yAxis: {
         min: 0,
+        softMax: 50,
         title: {
             text: '충전량 [kWh]',
             align: 'middle'
