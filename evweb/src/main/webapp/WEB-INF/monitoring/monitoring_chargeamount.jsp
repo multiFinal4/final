@@ -1,112 +1,104 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="com.project.weather.WeatherUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
-  <title>날짜별로 통계 선 차트</title>
-</head>
-
-<body>
-
-  <div class="card info-card sales-card">
-						<div class="card-header">
-							<h5 class="card-title">주간 충전량</h5>
-							<h1></h1>
-						</div>
-    <div class="card-body">
-      <div id="line-chart" style="height: 300px;"></div>
-    </div>
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-<script>
-/*
- * LINE CHART
- * ----------
- */
-//LINE randomly generated data
-<%List<String> amountlist =  (ArrayList<String>)request.getAttribute("amountlist"); 
-  List<String> datelist =  (ArrayList<String>)request.getAttribute("datelist"); %>
-
-const data = [];
-const tick = [];
-<%for(int i=0;i<amountlist.size();i++){%>
-	data.push([<%=i+1%>,<%=amountlist.get(i)%>])
-<%}%>
-
-tick.push([1,'<%=datelist.get(0)%>(일)']);
-tick.push([2,'<%=datelist.get(1)%>(월)']);
-tick.push([3,'<%=datelist.get(2)%>(화)']);
-tick.push([4,'<%=datelist.get(3)%>(수)']);
-tick.push([5,'<%=datelist.get(4)%>(목)']);
-tick.push([6,'<%=datelist.get(5)%>(금)']);
-tick.push([7,'<%=datelist.get(6)%>(토)']);
-
-const dataset = {
-  label: "충전량",
-  data : data,
-  color: '#f37321'
-}
-
-$.plot('#line-chart', [dataset], {
-  grid : {
-    hoverable  : true,
-    borderColor: '#f3f3f3',
-    borderWidth: 1,
-    tickColor  : '#f3f3f3',
-  },
-  series: {
-    shadowSize: 0,
-    lines: {
-      show: true
-    },
-    points : {
-      radius: 5,
-      show: true
-    }
-  },
-  lines : {
-    fill : true,
-    color: '#f37321'
-  },
-  yaxis : {
-    show: true,
-    min: 0
-  },
-  xaxis : {
-    show: true,
-    ticks: tick
-  }
-});
-
-//Initialize tooltip on hover
-$('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
-  position: 'absolute',
-  display : 'none',
-  opacity : 0.8
-}).appendTo('body')
-$('#line-chart').bind('plothover', function (event, pos, item) {
-
-  if (item) {
-    const y = item.datapoint[1].toFixed(0)
-    $('#line-chart-tooltip').html(item.series.label + ' : ' + y + 'kWh')
-      .css({
-        top : item.pageY + 50,
-        left: item.pageX + 50
-      })
-      .fadeIn(200)
-  } else {
-    $('#line-chart-tooltip').hide()
-  }
-
-})
-/* END LINE CHART */
-</script>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Insert title here</title>
+		<link href="/evweb/weather/css/weatherbasic.css" rel="stylesheet" type="text/css">
+		<link href="/evweb/weather/css/weathercommon-ui.css" rel="stylesheet" type="text/css">
+		<link href="/evweb/css/charge.css" rel="stylesheet" type="text/css">
+		<script src="/evweb/js/charge.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		<script type="text/javascript"> //차트에 데이터 넣기
+			<%List<String> dayamountlist =  (ArrayList<String>)request.getAttribute("dayamountlist");
+			  List<String> datelist =  (ArrayList<String>)request.getAttribute("datelist"); 
+			  List<String> weekamountlist =  (ArrayList<String>)request.getAttribute("weekamountlist");
+			  List<String> weeklist =  (ArrayList<String>)request.getAttribute("weeklist"); %>
+			var stationId = "${stationId}";
+			const chargeweekdata = [];
+			const date = [];
+			const chargemonthdata = [];
+			const week = [];
+			<%for(int i=0;i<dayamountlist.size();i++){%>
+				chargeweekdata.push([<%=dayamountlist.get(i)%>])
+			<%}%>
+			<%for(int i=0;i<weekamountlist.size();i++){%>
+				chargemonthdata.push([<%=weekamountlist.get(i)%>])
+			<%}%>
+			date.push(['<%=datelist.get(0)%>(일)']);
+			date.push(['<%=datelist.get(1)%>(월)']);
+			date.push(['<%=datelist.get(2)%>(화)']);
+			date.push(['<%=datelist.get(3)%>(수)']);
+			date.push(['<%=datelist.get(4)%>(목)']);
+			date.push(['<%=datelist.get(5)%>(금)']);
+			date.push(['<%=datelist.get(6)%>(토)']);
+			<%for(int i=0;i<weeklist.size();i++){%>
+				week.push('<%=weeklist.get(i)%>')
+			<%}%>
+			$(document).ready(function() {
+				highchartweek(date,chargeweekdata)
+				highchartmonth(week,chargemonthdata)
+			});
+		</script>
+		<style type="text/css">
+			body, html{
+				overflow-y:hidden;
+			}
+			#container{
+				height:calc(100vh - 130px);
+				overflow-y:auto; 
+			}
+		</style>
+	</head>
+	<body>
+	<div class="monitoringMain row d-flex">
+		<h1 class="pagetitle" id="stationName">충전 차트</h1>
+		<div class="col-lg-12 stationWrap dashboard">
+			<div class="col-md-8 pr-0">
+				<div class="card info-card sales-card " style="z-index: 1;">
+					<div class="card-header">
+						<h5 class="card-title">
+							주간 충전량 <span style="float: right;">${weekamount}kWh</span>
+						</h5>
+					</div>
+					<div class="card-body">
+						<figure class="highcharts-figure">
+							<div id="chargeweek"></div>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 pr-0">
+			</div>
+		</div>
+		<div class="col-lg-12 stationWrap dashboard">
+			<div class="col-md-8 pr-0">
+				<div class="card info-card sales-card " style="z-index: 0;">
+					<div class="card-header">
+						<h5 class="card-title">
+							월간 충전량 <span style="float: right;">${monthamount}kWh</span>
+						</h5>
+					</div>
+					<div class="card-body">
+						<figure class="highcharts-figure">
+							<div id="chargemonth"></div>
+						</figure>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 pr-0">
+			</div>
+		</div>
+	</div>
 </body>
 </html>

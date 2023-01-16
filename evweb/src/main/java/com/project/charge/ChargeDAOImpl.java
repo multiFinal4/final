@@ -41,7 +41,11 @@ public class ChargeDAOImpl implements ChargeDAO {
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("station_id", station_id);
 		map.put("charging_date", charging_date);
-		return sqlSession.selectOne("com.project.charge.sum",map);
+		String amount = sqlSession.selectOne("com.project.charge.sum",map);
+		if(amount==null) {
+			amount = "0";
+		}
+		return amount;
 	}
 	
 	
