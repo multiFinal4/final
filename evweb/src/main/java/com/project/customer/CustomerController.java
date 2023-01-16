@@ -30,9 +30,9 @@ public class CustomerController {
 	
 
 	
-	@RequestMapping("/customer/read.do")//마이페이지 (로그인 정보)
+	@RequestMapping("/customer/read.do")//마이페이지 
 	public String read(String customer_id,String state,Model model) {
-		System.out.println(customer_id+state);
+		//System.out.println(customer_id+state);
 		ModelAndView mav = new ModelAndView();
 		CustomerDTO customerinfo = service.getCustomerInfo(customer_id);
 		String view = "";
@@ -75,7 +75,7 @@ public class CustomerController {
 	@RequestMapping("/customer/update.do")
 	public String update(CustomerDTO customer) {
 		service.update(customer);
-		return "redirect:/index";
+		return "redirect:/customer/read.do?customer_id="+customer.getCustomer_id()+"&state=READ";
 	}
 	
 	
