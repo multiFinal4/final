@@ -14,6 +14,7 @@
 	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 		rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@
 		
 		<div >
 			<div class="card-body">
-				<h1 class="pagetitle">마이페이지</h1>
+				<h1 class="pagetitle"><img src='/evweb/images/favicon/favicon.ico' style='width:50px;'> [ 마이페이지 ]</h1>
 				<hr/>
 
 				<!-- General Form Elements -->
@@ -37,25 +38,26 @@
 						</div>
 						
 					</div>
+					
 					<div class="row mb-3">
-						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+						<div class="col-sm-2 col-form-label"><label for="inputPassword" class="box">비밀번호</label></div>
 						<div class="col-sm-3">
 							${customerinfo.pass}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
+						<div class="col-sm-2 col-form-label"><label for="inputText" class="box">이름</label></div>
 						<div class="col-sm-3">
 							${customerinfo.name}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
-							번호</label>
+						<div class="col-sm-2 col-form-label"><label for="inputText" class="box">핸드폰
+							번호</label></div>
 						<div class="col-sm-3">
 							${customerinfo.phone_no}
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label"></label>
+
 					</div>
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
