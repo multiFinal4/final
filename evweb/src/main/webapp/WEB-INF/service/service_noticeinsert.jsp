@@ -45,7 +45,7 @@
 					<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
 					<div class="col-sm-10">
 						<textarea class="form-control" style="height: 300px"
-							name="notice_content">안녕하세요, 충전해조입니다.</textarea>
+							name="notice_content">안녕하세요, 차지모양입니다.</textarea>
 					</div>
 				</div>
 				<div class="row mb-3">

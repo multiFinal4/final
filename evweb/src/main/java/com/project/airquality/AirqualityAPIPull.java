@@ -110,7 +110,7 @@ public class AirqualityAPIPull {
 				}
 				//
 				category = (String) data.get("category");
-				dust.setDataTime(dataTime);
+				dust.setdatatime(dataTime);
 				if (category.equals("pm10")) {
 					dust.setPm10((String) fcstValue);
 				} else if (category.equals("pm25")) {

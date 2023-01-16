@@ -56,6 +56,7 @@
 	<div class="card-body">
 		<h1 class="pagetitle">자주 찾는 도움말</h1>
 		<hr>
+	<div class="row">
 		<div class="col-lg-12 stationWrap">
 			<!-- 검색 기능 -->
 			<form class="search-bar d-flex" method="post"
@@ -68,9 +69,9 @@
 					name="value" id="keywordInput" style="width: 250px;" />
 				<button type="submit" id="searchBtn" class="btn btn-primary">검색</button>
 			</form>
-		
+		</div>
 
-		
+		<div class="col-lg-12 stationWrap">
 		<div id="accordionExample" class="accordion shadow">
 				<%
 				List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");

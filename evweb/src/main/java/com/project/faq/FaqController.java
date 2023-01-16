@@ -38,16 +38,19 @@ public class FaqController {
 		return "redirect:/admin_faq.do?pageNo=0";
 	}
 
-	// search
-	@RequestMapping(value = "/faq/search", method = RequestMethod.GET)
-	public String searchPage() {
-		return "search";
-	}
+	// search 화면으로 이동
+//	@RequestMapping(value = "/faq/search", method = RequestMethod.GET)
+//	public String searchPage() {
+//		return "faq_search";
+//	}
 
+	// search 하기.
 	@RequestMapping(value = "/faq/search", method = RequestMethod.POST)
 	public ModelAndView search(String field, String criteria, String value) {
 		List<FaqDTO> docs = service.findCriteria(field + "," + criteria, value);
-		return new ModelAndView("list", "faqlist", docs);
+		return new ModelAndView("faq_search", "faqlist", docs);
+		
+//		return new ModelAndView("list", "faqlist", docs);
 	}
 
 	// 읽기
@@ -87,7 +90,12 @@ public class FaqController {
 	// user list
 	@RequestMapping("/faq/paginglist")
 	public ModelAndView pagemongolist(String pageNo) {
-		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		
+		List<FaqDTO> faqlist = service.findAll();
+		int total_article = faqlist.size();
+//		model.addAttribute("faqlist", faqlist);
+//
+//		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
 		// System.out.println(pageNo);
 		return new ModelAndView("service_faq", "faqlist", faqlist);
 	}
@@ -117,5 +125,6 @@ public class FaqController {
 		service.delete(_id);
 		System.out.println("컨트롤러 document > "+_id);
 		return "redirect:/admin_faq.do?pageNo=0";
+		
 	}
 }

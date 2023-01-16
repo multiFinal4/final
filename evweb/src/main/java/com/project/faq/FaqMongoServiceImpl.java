@@ -41,7 +41,7 @@ public class FaqMongoServiceImpl implements FaqMongoService {
 	}
 
 	@Override
-	public List<FaqDTO> findAll(int pageNo) {
+	public List<FaqDTO> findAll(int pageNo) {	//페이징
 		//PaginfAndSortingRepository의 findAll메소드를 호출하면 페이징 처리된 객체를 전달 받을 수 있다.
 		//fiindAll 메소드 내부에서 페이징 처리를 할 수 있도록 PageRequest객체를 이용해서 실행할 페이지의 번호와 한 페이지를 구성할 document
 		//를 매개 변수로 전달해야하 한다.
