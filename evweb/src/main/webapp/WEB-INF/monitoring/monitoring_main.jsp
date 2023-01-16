@@ -13,11 +13,35 @@
 		<title>Insert title here</title>
 		<link href="/evweb/weather/css/weatherbasic.css" rel="stylesheet" type="text/css">
 		<link href="/evweb/weather/css/weathercommon-ui.css" rel="stylesheet" type="text/css">
-		
-		<script type="text/javascript">
+		<link href="/evweb/css/charge.css" rel="stylesheet" type="text/css">
+		<script src="/evweb/js/charge.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+		<script type="text/javascript"> //차트에 데이터 넣기
+			<%String[] yesandtoday = (String[])request.getAttribute("yesandtoday");
+			  String[] yesandtoamount = (String[])request.getAttribute("yesandtoamount");
+			  List<String> amountlist =  (ArrayList<String>)request.getAttribute("amountlist");
+			  List<String> datelist =  (ArrayList<String>)request.getAttribute("datelist"); %>
 			var stationId = "${stationId}";
+			const chargedata = [<%=yesandtoamount[0]%>,<%=yesandtoamount[1]%>]
+			const chargedate = ['<%=yesandtoday[0]%>','<%=yesandtoday[1]%>']
+			const chargeweekdata = [];
+			const category = [];
+			<%for(int i=0;i<amountlist.size();i++){%>
+			chargeweekdata.push([<%=amountlist.get(i)%>])
+			<%}%>
+			category.push(['<%=datelist.get(0)%>(일)']);
+			category.push(['<%=datelist.get(1)%>(월)']);
+			category.push(['<%=datelist.get(2)%>(화)']);
+			category.push(['<%=datelist.get(3)%>(수)']);
+			category.push(['<%=datelist.get(4)%>(목)']);
+			category.push(['<%=datelist.get(5)%>(금)']);
+			category.push(['<%=datelist.get(6)%>(토)']);
 			$(document).ready(function() {
-				
+				highchartday(chargedata,chargedate);
+				highchartweek(category,chargeweekdata)
 			});
 		</script>
 		<style type="text/css">
@@ -160,82 +184,7 @@
 						</div>
 					</div>
 				
-				<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-				<script> //주간 충전량 차트
-				<%List<String> amountlist =  (ArrayList<String>)request.getAttribute("amountlist"); 
-				  List<String> datelist =  (ArrayList<String>)request.getAttribute("datelist"); %>
 				
-				const data = [];
-				const tick = [];
-				<%for(int i=0;i<amountlist.size();i++){%>
-					data.push([<%=i+1%>,<%=amountlist.get(i)%>])
-				<%}%>
-				
-				tick.push([1,'<%=datelist.get(0)%>(일)']);
-				tick.push([2,'<%=datelist.get(1)%>(월)']);
-				tick.push([3,'<%=datelist.get(2)%>(화)']);
-				tick.push([4,'<%=datelist.get(3)%>(수)']);
-				tick.push([5,'<%=datelist.get(4)%>(목)']);
-				tick.push([6,'<%=datelist.get(5)%>(금)']);
-				tick.push([7,'<%=datelist.get(6)%>(토)']);
-				
-				const dataset = {
-				  label: "충전량",
-				  data : data,
-				  color: '#f37321'
-				}
-				
-				$.plot('#line-chart', [dataset], {
-				  grid : {
-				    hoverable  : true,
-				    borderColor: '#f3f3f3',
-				    borderWidth: 1,
-				    tickColor  : '#f3f3f3',
-				  },
-				  series: {
-				    shadowSize: 0,
-				    lines: {
-				      show: true
-				    },
-				    points : {
-				      radius: 5,
-				      show: true
-				    }
-				  },
-				  lines : {
-				    fill : true,
-				    color: '#f37321'
-				  },
-				  yaxis : {
-				    show: true,
-				    label : '충전량[kWh]'
-				  },
-				  xaxis : {
-				    show: true,
-				    ticks: tick
-				  }
-				});
-				$('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
-				  position: 'absolute',
-				  display : 'none',
-				  opacity : 0.8
-				}).appendTo('body')
-				$('#line-chart').bind('plothover', function (event, pos, item) {
-				
-				  if (item) {
-				    const y = item.datapoint[1].toFixed(0)
-				    $('#line-chart-tooltip').html(item.series.label + ' : ' + y + 'kWh')
-				      .css({
-				        top : item.pageY + 50,
-				        left: item.pageX + 50
-				      })
-				      .fadeIn(200)
-				  } else {
-				    $('#line-chart-tooltip').hide()
-				  }
-				})
-				</script>
 				<div class="col-xxl-4 col-md-4 pl-0">
 					<div class="card info-card sales-card">
 						<div class="card-header">
@@ -422,19 +371,24 @@
 				
 				<!-- 충전량 -->
 		        <div class="col-md-8 pr-0">
-						<div class="card info-card sales-card">
+						<div class="card info-card sales-card " style="z-index : 1;">
 							<div class="card-header">
-								<h5 class="card-title">일간 충전량</h5>
-								<h1>${chargeAmount}</h1>
-							</div>
-							<div class="card-body"></div>
-						</div>
-						<div class="card info-card sales-card">
-							<div class="card-header">
-								<h5 class="card-title">주간 충전량</h5>
+								<h5 class="card-title">일간 충전량 <span style="float: right";>${chargeAmount}kWh</span></h5>
 							</div>
 							<div class="card-body">
-								 <div id="line-chart" style="height: 300px;"></div>
+							<figure class="highcharts-figure">
+						    <div id="chargeday"></div>
+							</figure>
+							</div>
+						</div>
+						<div class="card info-card sales-card" style="z-index : 0;">
+							<div class="card-header">
+								<h5 class="card-title">주간 충전량 <span style="float: right";>${weekamount}kWh</span></h5>
+							</div>
+							<div class="card-body">
+								<figure class="highcharts-figure">
+						   		<div id="chargeweek"></div>
+								</figure>
 							</div>
 						</div>
 					</div>
