@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.map">
+	<!-- 충전소테이블 요금 테이블 조인 -->
+	<select id="mapFee" resultType="mapStation" parameterType="String">
+		select  st.*, ft.STANDARD, ft.QUICK, ft.SUPER, ft.NONMEM
+		from  STATION_TB st
+		INNER JOIN FEE_TB ft
+		ON ST.STATION_COMPANY  = ft.STATION_COMPANY
+		where st.STATION_ID = #{stationId}
+	</select>
+ </mapper>

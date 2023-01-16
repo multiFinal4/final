@@ -22,32 +22,13 @@ public class MapServiceImpl implements MapService {
 	}
 
 	@Override
-	public int insert(MapStationDTO station) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public List<MapStationDTO> stationList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<StationDTO> companyList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<StationDTO> search(String category, String keyword) {
 		return dao.search(category, keyword);
 	}
 
 	@Override
-	public List<StationDTO> search(MapStationDTO mDto) {
-		// TODO Auto-generated method stub
-		return null;
+	public MapStationDTO mapStationList(String stationId) {
+		return dao.mapStationList(stationId);
 	}
 
 

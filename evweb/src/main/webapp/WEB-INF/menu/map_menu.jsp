@@ -58,7 +58,7 @@
 				<div class="form-check mb-2 pl-0 d-flex mr-0">
 					<h5 class="card-title col-sm-4 pl-0 mb-0 pr-0">회사명</h5>
 					<div class="form-check col-sm-8 pl-0 pr-0">
-						<select name="company"  id="company" class="selectpicker form-control" multiple data-live-search="true" data-actions-box="true">
+						<select name="company"  id="company" class="selectpicker form-control" title="선택해주세요" data-live-search="true" data-actions-box="true">
 							<c:forEach var="company" items="${companyList}">
 								<option value="${company}">${company}</option>
 							</c:forEach>

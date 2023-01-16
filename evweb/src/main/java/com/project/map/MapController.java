@@ -60,8 +60,8 @@ public class MapController {
 	// ajax로 충전소 정보 확인하기
 	@RequestMapping(value = "/ajax/mapStation", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public StationDTO stationInfo(String stationId, Model model){
-		StationDTO stationInfo = stationService.read(stationId);
+	public MapStationDTO stationInfo(String stationId, Model model){
+		MapStationDTO stationInfo = service.mapStationList(stationId);
 		model.addAttribute("info", stationInfo);
 		return stationInfo;
 	}
@@ -98,7 +98,7 @@ public class MapController {
 	// ajax로 충전소 정보 검색하기(체크박스)
 	@RequestMapping(value = "/ajax/map/search.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard) {
+	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard, String company) {
 		List<StationDTO> stationList;
 		List<ChargerDTO> chargerList;
 		if (category == null || keyword == null) {
@@ -107,7 +107,18 @@ public class MapController {
 		else {
 			stationList = service.search(category, keyword);
 		}
-		
+		// 회사명 필터 적용
+
+		List<StationDTO> comSelectStation = new ArrayList<StationDTO>();
+		if (!company.equals("all")) {
+			for (StationDTO item : stationList) {
+				String comName = item.getStation_company();
+				if(comName.equals(company)) {
+					comSelectStation.add(item);  
+		        } 
+			}
+			stationList = comSelectStation;
+		}
 		List<StationDTO> resultListParkY = new ArrayList<>(); // 주차여부 검색
 		List<String> distinctIdQuick = new ArrayList<String>(); // 급속충전소 아이디만 중복제거 담기
 		List<String> distinctIdStd = new ArrayList<String>(); // 급속충전소 아이디만 중복제거 담기
@@ -115,6 +126,8 @@ public class MapController {
 		List<ChargerDTO> chrgrTypeStD = new ArrayList<>();  // 완속충전기 여부
 		List<StationDTO> resultTypeQuick = new ArrayList<>(); // 급속충전기 보유 충전소 리스트
 		List<StationDTO> resultTypeStd = new ArrayList<>(); // 완속충전기 보유 충전소 리스트
+		
+		
 
 		List<StationDTO> resultList = new ArrayList<>(); // 급속+주차 or 완속 + 주자 보유 충전소 리스트
 		
@@ -172,8 +185,6 @@ public class MapController {
 				resultListParkY.add(item);
 			} 
 		}
-		
-		System.out.println(park+"/"+quick+"/"+standard);
 
 		/* 다중체크 */
 		
@@ -185,7 +196,6 @@ public class MapController {
 					resultList.add(item);
 				} 
 			}
-			System.out.println("주차+급속 : "+resultList.size());
 			return resultList;
 		}
 		// 주차 + 완속
@@ -196,12 +206,10 @@ public class MapController {
 					resultList.add(item);
 				} 
 			}
-			System.out.println("주차+완속 : "+resultList.size());
 			return resultList;
 		}
 		// 주차 + 급속 + 완속 -> 주차되는 충전소와 동일
 		else if (park.equals("Y") && quick.equals("Y") && standard.equals("Y")) {
-			System.out.println("주차+급속+완속-> 곧 주차되느 충전소 : "+resultListParkY.size());
 			return resultListParkY;
 		}
 		
@@ -209,23 +217,17 @@ public class MapController {
 		
 		// 주차체크
 		if (park.equals("Y")) {
-
-			System.out.println("주차 : "+resultListParkY.size());
 			return resultListParkY;
 		}
 		// 급속체크
 		else if (quick.equals("Y")) {
-
-			System.out.println("급속 : "+resultTypeQuick.size());
 			return resultTypeQuick;
 		}
 		// 완속체크
 		else if (standard.equals("Y")) {
-			System.out.println("완속 : "+resultTypeStd.size());
 			return resultTypeStd;
 		}
 		else{
-			System.out.println("전체 : "+stationList.size());
 			return stationList;
 		}
 		
