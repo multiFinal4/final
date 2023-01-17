@@ -16,12 +16,12 @@
 		<put-attribute name="content" value="/WEB-INF/manager/manager_update.jsp"></put-attribute>
 	</definition>
 
-	<!-- 마이페이지 템플릿 -->
+	<!-- 내 문의 -->
 	<definition name="manager_service" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/manager/manager_service.jsp"></put-attribute>
 	</definition>
-	
+	<!-- 내 문의 읽기 -->
 	<definition name="manager_service_read" extends="subTemplate">
 		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/manager/manager_service_read.jsp"></put-attribute>

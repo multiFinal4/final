@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/manager/servicelist.do?manager_id=${user.manager_id}">
+                    <a class="nav-link collapsed" href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}">
                         <i class="bi bi-grid"></i>
                         <span>문의내역</span>
                     </a>

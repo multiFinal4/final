@@ -118,7 +118,10 @@
 	</sql>
 	<!-- ==================내 문의내역 확인================ -->
 	<select id="selectbyId" resultType="servicetb" parameterType="Map">
-		select * from service_tb 
+		select * from
+		(
+		select ROW_NUMBER() OVER(ORDER BY board_no DESC) as rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
+		from service_tb
 		<where>
 			<if test="type == '관리자'">
 				manager_id = #{id}
@@ -127,7 +130,26 @@
 				customer_id = #{id}
 			</if>
 		</where>
+		<include refid="search"></include>
+		) MP
+		where rn BETWEEN #{rowStart} AND #{rowEnd}
 		order by board_no desc
+	</select>
+	
+	<select id="listCountId" parameterType="Map" resultType="int">
+		select count(board_no) 
+		from service_tb
+		<where>
+			<if test="type == '관리자'">
+				manager_id = #{id}
+			</if>
+			<if test="type == '회원'">
+				customer_id = #{id}
+			</if>
+		</where>
+		<include refid="search"></include>	
+		AND board_no > 0
+		
 	</select>
 </mapper>
 

@@ -40,7 +40,7 @@
 					$(function() {
 						$('#searchBtn').click(
 								function() {
-									self.location = "/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}"
+									self.location = "/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}"
 											+ '&${pageMaker.makeQuery(1)}'
 											+ "&searchType="
 											+ $("select option:selected").val()
@@ -87,11 +87,11 @@
 								</c:choose></td>
 
 							<td><a
-								href="/evweb/manager/serviceread.do?board_no=${board.board_no}">${board.board_title}</a></td>
+								href="/evweb/customer/serviceread.do?board_no=${board.board_no}">${board.board_title}</a></td>
 							<td>${board.board_date}</td>
 							<td>${board.board_state}</td>
 							<td><a
-								href="/evweb/manager/servicedelete.do?manager_id=${user.manager_id}&board_no=${board.board_no}">삭제</a></td>
+								href="/evweb/customer/servicedelete.do?customer_id=${user.customer_id}&board_no=${board.board_no}">삭제</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -108,20 +108,20 @@
 			<ul class="pagination">
 				<c:if test="${pageMaker.prev}">
 					<li class="page-item"><a class="page-link"
-						href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}&${pageMaker.makeSearch(pageMaker.startPage - 1)}"><</a></li>
+						href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}&${pageMaker.makeSearch(pageMaker.startPage - 1)}"><</a></li>
 				</c:if>
 
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}"
 					var="idx">
 					<li class="page-item ${pageMaker.cri.page == idx?"active":""}">
 						<a class="page-link"
-						href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}&${pageMaker.makeSearch(idx)}">${idx}</a>
+						href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}&${pageMaker.makeSearch(idx)}">${idx}</a>
 					</li>
 				</c:forEach>
 
 				<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 					<li class="page-item"><a class="page-link"
-						href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}&${pageMaker.makeSearch(pageMaker.endPage + 1)}">></a></li>
+						href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}&${pageMaker.makeSearch(pageMaker.endPage + 1)}">></a></li>
 				</c:if>
 			</ul>
 		</div>

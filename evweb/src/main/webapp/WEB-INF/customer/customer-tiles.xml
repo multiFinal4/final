@@ -36,6 +36,16 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/customer/customer_read_kakao.jsp"></put-attribute>
 	</definition>
-
+	
+	<!-- 내 문의 -->
+	<definition name="customer_service" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_service.jsp"></put-attribute>
+	</definition>
+	<!-- 내 문의 읽기 -->
+	<definition name="customer_service_read" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/customer/customer_service_read.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>
