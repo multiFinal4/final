@@ -15,19 +15,22 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 /*Header Nav*/
 #header{
-	border-bottom:2px solid #e2e2e2;
 	position:relative;
-	z-index:3;	
+	z-index:11;	
 	transition: all 0.3s;
 }
 #header.index{
 	border-bottom:none;
 	position:fixed;	
 }
-#header .mainNav{width:100%;padding:0 15px;}
+#header.sub{
+	border-bottom:2px solid #e2e2e2;
+}
+#header .mainNav{padding:0 15px;}
 #header.index .mainNav{width:70%;margin:0 auto;}
+#header.sub .mainNav{width:100%;}
 #header.index .logo a{color:#fff;font-size:30px;}
-#header .logo a, #header.on .logo a{color:#333;font-weight:600;font-size:30px;}
+#header .logo a,#header.sub .logo a, #header.on .logo a{color:#333;font-weight:600;font-size:30px;}
 
 /*header 스크롤*/
 #header.on{
@@ -62,7 +65,8 @@ a:hover{text-decoration:none;color:#F37321;}
   white-space: nowrap;
   transition: 0.3s;
 }
-#header.on .navbar a{
+#header.on .navbar a, 
+#header.sub .navbar a{
   color: #333;
 }
 .index .navbar a,
@@ -78,13 +82,15 @@ a:hover{text-decoration:none;color:#F37321;}
 
 .navbar a:hover,
 #header.on .navbar a:hover,
+#header.sub .navbar a:hover,
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #F37321;
 }
 
-.navbar .getstarted,
+#header .navbar .getstarted,
+#header.sub .navbar .getstarted,
 .navbar .getstarted:focus,
 #header.on .navbar .getstarted{
   padding: 5px 25px;
@@ -99,8 +105,8 @@ a:hover{text-decoration:none;color:#F37321;}
 .index .navbar .getstarted:focus{
   color: #F37321;
 }
-.navbar .getstarted:hover,
-.navbar .getstarted:focus:hover,
+#header.sub .navbar .getstarted:hover,
+#header.sub .navbar .getstarted:focus:hover,
 #header.on .navbar .getstarted:hover {
   color: #fff;
   text-decoration:none;
@@ -342,7 +348,7 @@ a:hover{text-decoration:none;color:#F37321;}
     top: 10px;
     left: 0;
     width: 6px;
-    height: 236px;
+    height: 237px;
     background-color: #fff;
 }
 .main .section .mainText h1{
@@ -607,6 +613,7 @@ a:hover{text-decoration:none;color:#F37321;}
 	background-color:#fff;
 	height:40px;
 	border-radius:5px;
+    border: 1px solid #d5d5d5;
 	
 }
 /* content */
@@ -662,18 +669,21 @@ a:hover{text-decoration:none;color:#F37321;}
 	
 }
 .markerInfo{    
-	position: relative;
-    left: 100%;
-    bottom: -70px;
+	position: absolute;
+    width: inherit;
 }
 .markerName{
     text-align: center;
     background-color: #444444;
-    padding: 10px;
+    padding: 5px 10px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 30%);
     color: #fff;
     border-radius: 100px;
-    font-size: 18px;
+    font-size: 16px;
+    position:absolute;
+    top: 15px;
+    left: 40px;
+    width: max-content;
 }
 .stationInfoTitle{
 	font-size:22px;
@@ -742,27 +752,34 @@ a:hover{text-decoration:none;color:#F37321;}
     flex-direction: column;    
     align-items: center;
     font-size:14px;
+    width:200px;
 }
-.chargerNo .chargerType span{
+.chargerNo .chargerType span, .chrgrStat {
 	border-radius:50px;
 	background-color:#76ccff;
 	padding:0 10px;
 	font-size:13px;
 	color:#fff;
 }
-.chargerNo .chargerType span.err{
+.chrgrStat{
+	font-weight:bold;
+}
+.alertPop .chrgrStat{
+	padding: 5px 10px;
+}
+span.err{
 	background-color:#ff8000;
 }
-.chargerNo .chargerType span.charging{
+span.charging{
 	background-color:#00ae00;
 }
-.chargerNo .chargerType span.stop{
+span.stop{
 	background-color:#cc0000;
 }
-.chargerNo .chargerType span.fix{
+span.fix{
 	background-color:#8080c0;
 }
-.chargerNo .chargerType span.noSign{
+span.noSign{
 	background-color:#797979;
 }
 .chargerNo .type li, 
@@ -784,21 +801,28 @@ a:hover{text-decoration:none;color:#F37321;}
 	filter: invert(47%) sepia(21%) saturate(1390%) hue-rotate(176deg) brightness(123%) contrast(82%);
 }
 /* monitoring */
+.monitoringMain {
+	justify-content: space-between;
+}
 .monitoringMain .card{
 	margin-bottom:30px;
 }
 .dashboard .card-body{
 	padding:0;
+	min-height:200px;
 }
 .monitoringMain .chargerInfo .card-body{
 	padding:10px;
+	overflow-x: auto;
+    width: 100%;
 }
 .dashboard .info-card h6 {
   font-size: 20px;
   text-align:center;
   color: #012970;
   font-weight: 600;
-  margin: 0;
+  margin-top:10px;
+  margin-bottom:0;
   padding: 0;
 }
 
@@ -812,8 +836,8 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 
 .dashboard .sales-card .card-icon {
-  color: #4154f1;
-  background: #f6f6fe;
+   color: #707070;
+   background: #f1eeed;
 }
 
 .dashboard .revenue-card .card-icon {
@@ -828,6 +852,11 @@ a:hover{text-decoration:none;color:#F37321;}
 .monitoringMain .chargerInfo .card-body, 
 .monitoringMain .chargerInfo .chargerInfoMid{
 	display:flex;
+    align-items: center;
+}
+.monitoringMain .chargerInfo .chrgrWrap{
+    min-width: 150px;
+    margin-right: 5px;
 }
 .monitoringMain .chargerInfo .card-body .d-flex, 
 .monitoringMain .chargerInfo .chargerInfoMid{
@@ -839,6 +868,10 @@ a:hover{text-decoration:none;color:#F37321;}
 	font-size:17px;	
 	margin-bottom:0;
 	color:#333;
+}
+.monitoringMain .chargerInfoMid .chrgrType{
+	font-size:12px;
+	margin:10px 0;
 }
 /* station */
 .stationWrap{
@@ -950,6 +983,14 @@ a:hover{text-decoration:none;color:#F37321;}
 .search-form button i {
   color: #012970;
 }
+/* dropdown*/
+
+.dropdown-item:active, 
+.dropdown-item.active{
+    color: #fff;
+    text-decoration: none;
+    background-color: #F37321;
+}
 /* check/ Radio */
 .form-check{
     box-sizing: border-box;
@@ -1042,6 +1083,42 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 .table thead.fixedHeader th{
 	border:0;
+}
+/* loading */
+.loading{
+	display:none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.1);
+    z-index: 9999999;
+}
+.loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100px;
+    height: 100px;
+    margin: -50px 0 0 -50px;
+   	border: 10px solid rgb(51 51 51 / 48%);
+    border-radius: 50%;
+    border-top: 10px solid #f37321;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 /*footer*/
 #footer {

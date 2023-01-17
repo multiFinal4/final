@@ -3,46 +3,15 @@
 <!doctype html>
 <html>
 <head>
-<link href="/evweb/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/evweb/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
 <meta name='robots'
 	content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
 
-<!-- This site is optimized with the Yoast SEO plugin v19.8 - https://yoast.com/wordpress/plugins/seo/ -->
-<title>충전 요금</title>
-<meta name="description"
-	content="국내 전체 사업자별 전기차 충전 요금 환경부 공공충전인프라 멤버십 완속 292.9원 급속 292.9원 초급속 309.1원" />
-<link rel="canonical" href="https://elecvery.com/charge_cost/" />
-<meta property="og:locale" content="ko_KR" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="충전 요금 - elecvery" />
-<meta property="og:description"
-	content="국내 전체 사업자별 전기차 충전 요금 환경부 공공충전인프라 멤버십 완속 292.9원 급속 292.9원 초급속 309.1원" />
-<meta property="og:url" content="https://elecvery.com/charge_cost/" />
-<meta property="og:site_name" content="elecvery" />
 
-<meta property="article:modified_time"
-	content="2022-12-05T14:27:31+00:00" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:label1" content="Est. reading time" />
-<meta name="twitter:data1" content="45분" />
-<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://elecvery.com/charge_cost/","url":"https://elecvery.com/charge_cost/","name":"충전 요금 - elecvery","isPartOf":{"@id":"https://elecvery.com/#website"},"datePublished":"2022-07-06T04:08:24+00:00","dateModified":"2022-12-05T14:27:31+00:00","description":"국내 전체 사업자별 전기차 충전 요금 환경부 공공충전인프라 멤버십 완속 292.9원 급속 292.9원 초급속 309.1원","breadcrumb":{"@id":"https://elecvery.com/charge_cost/#breadcrumb"},"inLanguage":"ko-KR","potentialAction":[{"@type":"ReadAction","target":["https://elecvery.com/charge_cost/"]}]},{"@type":"BreadcrumbList","@id":"https://elecvery.com/charge_cost/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://elecvery.com/"},{"@type":"ListItem","position":2,"name":"충전 요금"}]},{"@type":"WebSite","@id":"https://elecvery.com/#website","url":"https://elecvery.com/","name":"elecvery","description":"AI 기반 맞춤형 충전 서비스","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://elecvery.com/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"ko-KR"}]}</script>
-<!-- / Yoast SEO plugin. -->
-
-
-<link rel='dns-prefetch' href='//www.googletagmanager.com' />
-<link rel='dns-prefetch' href='//fonts.googleapis.com' />
-<link rel="alternate" type="application/rss+xml"
-	title="elecvery &raquo; 피드" href="https://elecvery.com/feed/" />
-<link rel="alternate" type="application/rss+xml"
-	title="elecvery &raquo; 댓글 피드"
-	href="https://elecvery.com/comments/feed/" />
-<!-- This site uses the Google Analytics by MonsterInsights plugin v8.11.0 - Using Analytics tracking - https://www.monsterinsights.com/ -->
-<script src="//www.googletagmanager.com/gtag/js?id=UA-216468562-1"
-	data-cfasync="false" data-wpfc-render="false" type="text/javascript"
-	async></script>
 <script data-cfasync="false" data-wpfc-render="false"
 	type="text/javascript">
 				var page = 2;
@@ -248,29 +217,6 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14
 </script>
 <style type="text/css">
 
-@font-face {
-	src : url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-	font-family: 'Jeju Gothic';
-	font-weight: normal;
-    font-style: normal;
-}
-
-/* div p {
-	font-family: 'Jeju Gothic';
-} */
-
-
-img.wp-smiley, img.emoji {
-	display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 0.07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
-}
 </style>
 <link rel='stylesheet' id='wp-block-library-css'
 	href='https://elecvery.com/wp-includes/css/dist/block-library/style.min.css'
@@ -342,7 +288,7 @@ body { -
 	-wp--preset--spacing--60: 2.25rem; -
 	-wp--preset--spacing--70: 3.38rem; -
 	-wp--preset--spacing--80: 5.06rem;
-	background-color:transparent;
+	background-color: transparent;
 }
 
 :where(.is-layout-flex) {
@@ -411,232 +357,6 @@ body .is-layout-flex>* {
 	gap: 2em;
 }
 
-.has-black-color {
-	color: var(- -wp--preset--color--black) !important;
-}
-
-.has-cyan-bluish-gray-color {
-	color: var(- -wp--preset--color--cyan-bluish-gray) !important;
-}
-
-.has-white-color {
-	color: var(- -wp--preset--color--white) !important;
-}
-
-.has-pale-pink-color {
-	color: var(- -wp--preset--color--pale-pink) !important;
-}
-
-.has-vivid-red-color {
-	color: var(- -wp--preset--color--vivid-red) !important;
-}
-
-.has-luminous-vivid-orange-color {
-	color: var(- -wp--preset--color--luminous-vivid-orange) !important;
-}
-
-.has-luminous-vivid-amber-color {
-	color: var(- -wp--preset--color--luminous-vivid-amber) !important;
-}
-
-.has-light-green-cyan-color {
-	color: var(- -wp--preset--color--light-green-cyan) !important;
-}
-
-.has-vivid-green-cyan-color {
-	color: var(- -wp--preset--color--vivid-green-cyan) !important;
-}
-
-.has-pale-cyan-blue-color {
-	color: var(- -wp--preset--color--pale-cyan-blue) !important;
-}
-
-.has-vivid-cyan-blue-color {
-	color: var(- -wp--preset--color--vivid-cyan-blue) !important;
-}
-
-.has-vivid-purple-color {
-	color: var(- -wp--preset--color--vivid-purple) !important;
-}
-
-.has-black-background-color {
-	background-color: var(- -wp--preset--color--black) !important;
-}
-
-.has-cyan-bluish-gray-background-color {
-	background-color: var(- -wp--preset--color--cyan-bluish-gray) !important;
-}
-
-.has-white-background-color {
-	background-color: var(- -wp--preset--color--white) !important;
-}
-
-.has-pale-pink-background-color {
-	background-color: var(- -wp--preset--color--pale-pink) !important;
-}
-
-.has-vivid-red-background-color {
-	background-color: var(- -wp--preset--color--vivid-red) !important;
-}
-
-.has-luminous-vivid-orange-background-color {
-	background-color: var(- -wp--preset--color--luminous-vivid-orange)
-		!important;
-}
-
-.has-luminous-vivid-amber-background-color {
-	background-color: var(- -wp--preset--color--luminous-vivid-amber)
-		!important;
-}
-
-.has-light-green-cyan-background-color {
-	background-color: var(- -wp--preset--color--light-green-cyan) !important;
-}
-
-.has-vivid-green-cyan-background-color {
-	background-color: var(- -wp--preset--color--vivid-green-cyan) !important;
-}
-
-.has-pale-cyan-blue-background-color {
-	background-color: var(- -wp--preset--color--pale-cyan-blue) !important;
-}
-
-.has-vivid-cyan-blue-background-color {
-	background-color: var(- -wp--preset--color--vivid-cyan-blue) !important;
-}
-
-.has-vivid-purple-background-color {
-	background-color: var(- -wp--preset--color--vivid-purple) !important;
-}
-
-.has-black-border-color {
-	border-color: var(- -wp--preset--color--black) !important;
-}
-
-.has-cyan-bluish-gray-border-color {
-	border-color: var(- -wp--preset--color--cyan-bluish-gray) !important;
-}
-
-.has-white-border-color {
-	border-color: var(- -wp--preset--color--white) !important;
-}
-
-.has-pale-pink-border-color {
-	border-color: var(- -wp--preset--color--pale-pink) !important;
-}
-
-.has-vivid-red-border-color {
-	border-color: var(- -wp--preset--color--vivid-red) !important;
-}
-
-.has-luminous-vivid-orange-border-color {
-	border-color: var(- -wp--preset--color--luminous-vivid-orange)
-		!important;
-}
-
-.has-luminous-vivid-amber-border-color {
-	border-color: var(- -wp--preset--color--luminous-vivid-amber) !important;
-}
-
-.has-light-green-cyan-border-color {
-	border-color: var(- -wp--preset--color--light-green-cyan) !important;
-}
-
-.has-vivid-green-cyan-border-color {
-	border-color: var(- -wp--preset--color--vivid-green-cyan) !important;
-}
-
-.has-pale-cyan-blue-border-color {
-	border-color: var(- -wp--preset--color--pale-cyan-blue) !important;
-}
-
-.has-vivid-cyan-blue-border-color {
-	border-color: var(- -wp--preset--color--vivid-cyan-blue) !important;
-}
-
-.has-vivid-purple-border-color {
-	border-color: var(- -wp--preset--color--vivid-purple) !important;
-}
-
-.has-vivid-cyan-blue-to-vivid-purple-gradient-background {
-	background: var(- -wp--preset--gradient--vivid-cyan-blue-to-vivid-purple)
-		!important;
-}
-
-.has-light-green-cyan-to-vivid-green-cyan-gradient-background {
-	background: var(- -wp--preset--gradient--light-green-cyan-to-vivid-green-cyan)
-		!important;
-}
-
-.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
-	background: var(- 
-		 -wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange)
-		!important;
-}
-
-.has-luminous-vivid-orange-to-vivid-red-gradient-background {
-	background: var(- -wp--preset--gradient--luminous-vivid-orange-to-vivid-red)
-		!important;
-}
-
-.has-very-light-gray-to-cyan-bluish-gray-gradient-background {
-	background: var(- -wp--preset--gradient--very-light-gray-to-cyan-bluish-gray)
-		!important;
-}
-
-.has-cool-to-warm-spectrum-gradient-background {
-	background: var(- -wp--preset--gradient--cool-to-warm-spectrum)
-		!important;
-}
-
-.has-blush-light-purple-gradient-background {
-	background: var(- -wp--preset--gradient--blush-light-purple) !important;
-}
-
-.has-blush-bordeaux-gradient-background {
-	background: var(- -wp--preset--gradient--blush-bordeaux) !important;
-}
-
-.has-luminous-dusk-gradient-background {
-	background: var(- -wp--preset--gradient--luminous-dusk) !important;
-}
-
-.has-pale-ocean-gradient-background {
-	background: var(- -wp--preset--gradient--pale-ocean) !important;
-}
-
-.has-electric-grass-gradient-background {
-	background: var(- -wp--preset--gradient--electric-grass) !important;
-}
-
-.has-midnight-gradient-background {
-	background: var(- -wp--preset--gradient--midnight) !important;
-}
-
-.has-small-font-size {
-	font-size: var(- -wp--preset--font-size--small) !important;
-}
-
-.has-medium-font-size {
-	font-size: var(- -wp--preset--font-size--medium) !important;
-}
-
-.has-large-font-size {
-	font-size: var(- -wp--preset--font-size--large) !important;
-}
-
-.has-x-large-font-size {
-	font-size: var(- -wp--preset--font-size--x-large) !important;
-}
-
-.wp-block-navigation a:where(:not(.wp-element-button)) {
-	color: inherit;
-}
-
-:where(.wp-block-columns.is-layout-flex) {
-	gap: 2em;
-}
-
 .wp-block-pullquote {
 	font-size: 1.5em;
 	line-height: 1.6;
@@ -670,10 +390,6 @@ html body[data-header-resize="1"] .container-wrap, html body[data-header-format=
 .main-content>.row>#breadcrumbs.yoast {
 	padding: 20px 0;
 }
-
-/* html:not(.page-trans-loaded) {
-	background-color: #ffffff;
-} */
 </style>
 <link rel='stylesheet' id='nectar-header-layout-centered-menu-css'
 	href='https://elecvery.com/wp-content/themes/salient/css/build/header/header-layout-centered-menu.css'
@@ -1198,7 +914,6 @@ Version: 1.0
 	font-family: 'Noto Sans KR', '맑은고딕', 'Open Sans', 'Arial', 'Dotum',
 		sans-serif;
 } */
-
 ul li {
 	list-style: none;
 }
@@ -1434,89 +1149,7 @@ body div[data-style*=minimal] .toggle h3 a, body div[data-style*=minimal] .toggl
 	background-image: url('/wp-content/uploads/2022/07/icon2.png')
 }
 
-/*푸터*/
-#footer-outer {
-	background-color: #132b4a
-}
 
-.logo_wrap {
-	width: 20%;
-	float: left;
-	text-align: left
-}
-
-.footer_menu {
-	width: 14%;
-	margin: 0 1%;
-	float: left;
-	text-align: left
-}
-
-.footer_menu h4 {
-	color: #fff !important;
-	font-size: 17px !important;
-	font-weight: 500 !important;
-	border-bottom: 1px solid #ffffff1c;
-	padding-bottom: 10px;
-	margin-bottom: 10px !important
-}
-
-.footer_menu h4.none {
-	border: none
-}
-
-.footer_menu ul li {
-	padding: 2px
-}
-
-.footer_menu ul li a {
-	font-size: 15px;
-	color: #999 !important
-}
-
-#footer-outer a:hover {
-	color: #f9f9f9 !important
-}
-
-#footer-outer .logo_wrap img {
-	width: 130px
-}
-
-#footer-outer[data-cols="1"][data-disable-copyright="false"] #copyright
-	{
-	padding: 40px 0 !important
-}
-
-.footer_mobile {
-	display: none;
-}
-
-.app_deli_tx {
-	font-size: 34px;
-	font-weight: 700;
-	color: #1f2b49;
-	line-height: 1.5em
-}
-
-.nectar-button.jumbo {
-	font-size: 17px;
-	padding: 20px 50px 20px 48px !important
-}
-
-.deli_no {
-	display: inline-block;
-	background: #444444;
-	font-size: 18px;
-	font-family: 'Poppins';
-	color: #fff;
-	font-weight: 700;
-	text-align: center;
-	padding: 10px;
-	border-radius: 100px;
-	width: 40px;
-	height: 40px;
-	line-height: 20px
-}
 
 /*브랜드*/
 .brand_reveal_wrap .row-bg {
@@ -1966,10 +1599,8 @@ airbridge.init({
 
 <style type="text/css">
 .navbar a, .navbar a:focus {
-    font-weight: 400;
+	font-weight: 400;
 }
-
-
 </style>
 
 
@@ -2038,118 +1669,12 @@ wcs.inflow();
 wcs_do(_nasa);
 }
 </script>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-dark-grayscale">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0 0.49803921568627" />
-		<feFuncG type="table" tableValues="0 0.49803921568627" />
-		<feFuncB type="table" tableValues="0 0.49803921568627" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-grayscale">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0 1" />
-		<feFuncG type="table" tableValues="0 1" />
-		<feFuncB type="table" tableValues="0 1" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-purple-yellow">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" />
-		<feFuncG type="table" tableValues="0 1" />
-		<feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-blue-red">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0 1" />
-		<feFuncG type="table" tableValues="0 0.27843137254902" />
-		<feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-midnight">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0 0" />
-		<feFuncG type="table" tableValues="0 0.64705882352941" />
-		<feFuncB type="table" tableValues="0 1" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-magenta-yellow">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0.78039215686275 1" />
-		<feFuncG type="table" tableValues="0 0.94901960784314" />
-		<feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-purple-green">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" />
-		<feFuncG type="table" tableValues="0 1" />
-		<feFuncB type="table" tableValues="0.44705882352941 0.4" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0"
-		height="0" focusable="false" role="none"
-		style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
-		<defs>
-		<filter id="wp-duotone-blue-orange">
-		<feColorMatrix color-interpolation-filters="sRGB" type="matrix"
-			values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " />
-		<feComponentTransfer color-interpolation-filters="sRGB">
-		<feFuncR type="table" tableValues="0.098039215686275 1" />
-		<feFuncG type="table" tableValues="0 0.66274509803922" />
-		<feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" />
-		<feFuncA type="table" tableValues="1 1" /></feComponentTransfer>
-		<feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg>
-	
-	
-	
-<!-- 컨텐츠 내용시작 -->
 
-	
-	<div class="col-lg-10"><!-- style="height: 1150px; overflow:auto;" -->
-		<div class="ocm-effect-wrap-inner" style="height: 500px; overflow: auto;">
+	<!-- ==========================================컨텐츠 내용시작============================================ -->
+
+	<div class="col-lg-10">
+		<div class="ocm-effect-wrap-inner"
+			style="height: 500px; overflow: auto;">
 			<div id="ajax-loading-screen" data-disable-mobile="1"
 				data-disable-fade-on-click="0" data-effect="center_mask_reveal"
 				data-method="standard">
@@ -2170,42 +1695,7 @@ wcs_do(_nasa);
 				data-padding="30" data-full-width="true" data-condense="false"
 				data-transparent-header="true"
 				data-transparent-shadow-helper="false" data-remove-border="true"
-				class="transparent">
-
-				<div id="search-outer" class="nectar">
-					<div id="search">
-						<div class="container">
-							<div id="search-box">
-								<div class="inner-wrap">
-									<div class="col span_12">
-										<form role="search" action="https://elecvery.com/"
-											method="GET">
-											<input type="text" name="s" value="" aria-label="Search"
-												placeholder="Search" /> <span>Hit enter to search or
-												ESC to close</span>
-										</form>
-									</div>
-									<!--/span_12-->
-								</div>
-								<!--/inner-wrap-->
-							</div>
-							<!--/search-box-->
-							<div id="close">
-								<a href="#"><span class="screen-reader-text">Close
-										Search</span> <span class="close-wrap"> <span
-										class="close-line close-line1"></span> <span
-										class="close-line close-line2"></span>
-								</span> </a>
-							</div>
-						</div>
-						<!--/container-->
-					</div>
-					<!--/search-->
-				</div>
-				<!--/search-outer-->
-
-
-			</div>
+				class="transparent"></div>
 			<div id="ajax-content-wrap">
 				<div class="container-wrap">
 					<div>
@@ -2234,11 +1724,12 @@ wcs_do(_nasa);
 
 												<div class="wpb_text_column wpb_content_element  sub_stit">
 													<div class="wpb_wrapper">
-														<p id="peeInfo" style="font-size: 30px;"><strong>충전 요금 정보</strong></p>
+														<p id="peeInfo" style="font-size: 30px;">
+															<strong>충전 요금 정보</strong>
+														</p>
 													</div>
 												</div>
-												<br>
-												<br>
+												<br> <br>
 												<div>
 													<div class="row-bg-wrap">
 														<div class="row-bg"></div>
@@ -2250,8 +1741,7 @@ wcs_do(_nasa);
 															data-bg-color="" data-bg-opacity="1" data-animation=""
 															data-delay="0">
 															<div class="vc_column-inner">
-																<div class="wpb_wrapper">
-																</div>
+																<div class="wpb_wrapper"></div>
 															</div>
 														</div>
 													</div>
@@ -2277,7 +1767,8 @@ wcs_do(_nasa);
 										class="vc_col-sm-3 vc_hidden-sm vc_hidden-xs wpb_column column_container vc_column_container nectar-sticky-column no-extra-padding inherit_tablet inherit_phone "
 										data-padding-pos="all" data-has-bg-color="false"
 										data-bg-color="" data-bg-opacity="1" data-animation=""
-										data-delay="0">  <!-- 왼쪽 메뉴 배경 색깔 -->
+										data-delay="0">
+										<!-- 왼쪽 메뉴 배경 색깔 -->
 										<div class="vc_column-inner">
 											<div class="wpb_wrapper">
 												<div
@@ -2419,7 +1910,8 @@ wcs_do(_nasa);
 																		<div class="wpb_wrapper">
 																			<table border="1" width="100%">
 																				<tbody>
-																					<tr><!--  style="border: 1; border-width: thick;" -->
+																					<tr>
+																						<!--  style="border: 1; border-width: thick;" -->
 																						<th>완속</th>
 																						<th>급속(50kW)</th>
 																						<th>초급속(100kW 이상)</th>
@@ -2451,8 +1943,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.ev.or.kr/portal/board/notice/12678/?">관련
-																					정보 > 
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2516,8 +2007,7 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://www.everon.co.kr/notice/">관련
-																					정보 >
+																				href="https://www.everon.co.kr/notice/">관련 정보 >
 																			</a></span>
 																		</p>
 																	</div>
@@ -2594,8 +2084,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.chargev.co.kr/customer-support/charging_fee">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2662,8 +2151,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://sscharger.co.kr/membership/charge">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2737,8 +2225,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://chaevi.com/kr/customer/notice.php?bgu=view&#038;idx=59">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2769,7 +2256,8 @@ wcs_do(_nasa);
 																		data-m-rm-animation="" data-stagger=""
 																		data-custom-font-size="true"
 																		style="font-size: 24px; line-height: 25.92px;">
-																		<h3 style="color: #444444;">• 한국 전기차충전서비스 해피차저 멤버십</h3>
+																		<h3 style="color: #444444;">• 한국 전기차충전서비스 해피차저
+																			멤버십</h3>
 																	</div>
 																	<div class="wpb_text_column wpb_content_element ">
 																		<div class="wpb_wrapper">
@@ -2781,9 +2269,9 @@ wcs_do(_nasa);
 																						<th>비회원</th>
 																					</tr>
 																					<tr>
-																						<td>한국충전 충전기 : 286.7원
-																						</td>
-																						<td>한국충전 충전기 : 324.4/347.2원<br /> 환경부 충전기 : 347.2/324.4원
+																						<td>한국충전 충전기 : 286.7원</td>
+																						<td>한국충전 충전기 : 324.4/347.2원<br /> 환경부 충전기 :
+																							347.2/324.4원
 																						</td>
 																						<td>430원</td>
 																					</tr>
@@ -2803,8 +2291,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.happecharger.com/board01Detail.do">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2882,8 +2369,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.ev-line.co.kr/cshelp/fare.asp">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -2957,8 +2443,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="http://www.ecarplug.com/community?tpf=board/view&board_code=1&code=781">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3023,8 +2508,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.gcharger.net/v1/customer_notice_view.jsp?seq=90">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3090,8 +2574,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.e-pit.co.kr/brand-web/epit/charging-fare">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3155,8 +2638,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.starkoff.co.kr/price-list">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3188,7 +2670,8 @@ wcs_do(_nasa);
 																		data-m-rm-animation="" data-stagger=""
 																		data-custom-font-size="true"
 																		style="font-size: 24px; line-height: 25.92px;">
-																		<h3 style="color: #444444;">• 한국전기차 인프라기술 KEVIT 멤버십</h3>
+																		<h3 style="color: #444444;">• 한국전기차 인프라기술 KEVIT
+																			멤버십</h3>
 																	</div>
 																	<div class="wpb_text_column wpb_content_element ">
 																		<div class="wpb_wrapper">
@@ -3224,8 +2707,9 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://www.kevit.co.kr/service/fee">관련 정보 ><span
-																					class="arrow"></span></a></span>
+																				href="https://www.kevit.co.kr/service/fee">관련 정보
+																					><span class="arrow"></span>
+																			</a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3287,8 +2771,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.gscev.com/kr/information/fare">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3347,8 +2830,7 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="http://www.skenergy.com/main.asp">관련
-																					정보 >
+																				href="http://www.skenergy.com/main.asp">관련 정보 >
 																			</a></span>
 																		</p>
 																	</div>
@@ -3420,8 +2902,9 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://botari.imweb.me/Notice/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=6023059&t=board">관련 정보 ><span
-																					class="arrow"></span></a></span>
+																				href="https://botari.imweb.me/Notice/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=6023059&t=board">관련
+																					정보 ><span class="arrow"></span>
+																			</a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3527,7 +3010,8 @@ wcs_do(_nasa);
 																		data-m-rm-animation="" data-stagger=""
 																		data-custom-font-size="true"
 																		style="font-size: 24px; line-height: 25.92px;">
-																		<h3 style="color: #444444;">• 제주전기차자동차서비스 조이이브이 멤버십</h3>
+																		<h3 style="color: #444444;">• 제주전기차자동차서비스 조이이브이
+																			멤버십</h3>
 																	</div>
 																	<div class="wpb_text_column wpb_content_element ">
 																		<div class="wpb_wrapper">
@@ -3568,8 +3052,9 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://joyev.co.kr/community/notice/97">관련 정보 ><span
-																					class="arrow"></span></a></span>
+																				href="https://joyev.co.kr/community/notice/97">관련
+																					정보 ><span class="arrow"></span>
+																			</a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3647,8 +3132,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://evc.kepco.co.kr:4445/service/service02.do">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3727,8 +3211,9 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://evplug.co.kr/notice?currentPage=1&search=%EC%9A%94%EA%B8%88">관련 정보 ><span
-																					class="arrow"></span></a></span>
+																				href="https://evplug.co.kr/notice?currentPage=1&search=%EC%9A%94%EA%B8%88">관련
+																					정보 ><span class="arrow"></span>
+																			</a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3790,8 +3275,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.oilbank.co.kr/main/index.do">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3867,8 +3351,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://kcharger.net/index.php?Mn=5&#038;Sn=1">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -3928,8 +3411,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="http://helloplugin.net/v1/customer_notice_view.jsp?seq=28">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -4067,8 +3549,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://samsungevc.com/reference/evChargingInformation">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -4197,8 +3678,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="https://www.kia.com/kr/kia-ev/green-guide/benefit.html">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -4262,8 +3742,7 @@ wcs_do(_nasa);
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
 																				href="http://www.cus21.co.kr/charging_charge_unit_price_table/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=13299590&t=board">관련
-																					정보 >
-																			</a></span>
+																					정보 > </a></span>
 																		</p>
 																	</div>
 																</div>
@@ -4340,8 +3819,9 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://www.pluglink.kr/service.php">관련 정보 ><span
-																					class="arrow"></span></a></span>
+																				href="https://www.pluglink.kr/service.php">관련 정보
+																					><span class="arrow"></span>
+																			</a></span>
 																		</p>
 																	</div>
 																</div>
@@ -4497,34 +3977,7 @@ wcs_do(_nasa);
 			window.RS_MODULES.type = 'compiled';
 		</script>
 	<script type="text/html" id="wpb-modifications"></script>
-	<link data-pagespeed-no-defer data-nowprocket data-wpacu-skip
-		nitro-exclude data-no-optimize data-noptimize data-no-optimize="1"
-		rel='stylesheet' id='main-styles-non-critical-css'
-		href='https://elecvery.com/wp-content/themes/salient/css/build/style-non-critical.css'
-		type='text/css' media='all' />
-	<link data-pagespeed-no-defer data-nowprocket data-wpacu-skip
-		nitro-exclude data-no-optimize data-noptimize data-no-optimize="1"
-		rel='stylesheet' id='fancyBox-css'
-		href='https://elecvery.com/wp-content/themes/salient/css/build/plugins/jquery.fancybox.css'
-		type='text/css' media='all' />
-	<link data-pagespeed-no-defer data-nowprocket data-wpacu-skip
-		nitro-exclude data-no-optimize data-noptimize data-no-optimize="1"
-		rel='stylesheet' id='nectar-ocm-core-css'
-		href='https://elecvery.com/wp-content/themes/salient/css/build/off-canvas/core.css'
-		type='text/css' media='all' />
-	<link data-pagespeed-no-defer data-nowprocket data-wpacu-skip
-		nitro-exclude data-no-optimize data-noptimize data-no-optimize="1"
-		rel='stylesheet' id='nectar-ocm-simple-css'
-		href='https://elecvery.com/wp-content/themes/salient/css/build/off-canvas/simple-dropdown.css'
-		type='text/css' media='all' />
-	<link rel='stylesheet' id='rs-plugin-settings-css'
-		href='https://elecvery.com/wp-content/plugins/revslider/public/assets/css/rs6.css'
-		type='text/css' media='all' />
-	<style id='rs-plugin-settings-inline-css' type='text/css'>
-#rs-demo-id {
-	
-}
-</style>
+
 	<script type='text/javascript'
 		src='https://elecvery.com/wp-content/plugins/revslider/public/assets/js/rbtools.min.js'
 		defer async id='tp-tools-js'></script>
@@ -4589,9 +4042,9 @@ var vcData = {"currentTheme":{"slug":"salient"}};
 		src='https://elecvery.com/wp-content/plugins/js_composer_salient/assets/js/dist/js_composer_front.min.js'
 		id='wpb_composer_front_js-js'></script>
 	<script>
-    jQuery(document).ready(function() {
-      
-    });
-    </script>
+   jQuery(document).ready(function() {
+     
+   });
+</script>
 </body>
 </html>
