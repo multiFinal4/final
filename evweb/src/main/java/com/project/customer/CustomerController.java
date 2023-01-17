@@ -74,7 +74,7 @@ public class CustomerController {
 	@RequestMapping("/customer/delete.do")
 	public String delete(String customer_id) {
 		service.delete(customer_id);
-		return "login/login"; 	
+		return "redirect:/index"; 	
 	}
 	
 	@RequestMapping(value = "/idcheak", produces = "application/json; charset=utf-8")
