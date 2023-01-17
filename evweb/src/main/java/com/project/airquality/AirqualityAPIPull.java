@@ -19,6 +19,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,6 +29,7 @@ import java.io.IOException;
 //요청주소 http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty
 //서비스URL http://apis.data.go.kr/B552584/ArpltnInforInqireSvc
 
+@Service
 public class AirqualityAPIPull {
 	public String GetAPIData(AirqualityDTO dto) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(

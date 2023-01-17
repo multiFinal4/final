@@ -2,9 +2,12 @@ package com.project.faq;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,31 +37,23 @@ public class FaqController {
 	public String insert(FaqDTO document) {
 		// System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
-		System.out.println("FAQ컨트롤러 ~~"+document);
+		System.out.println("FAQ컨트롤러 ~~" + document);
 		return "redirect:/admin_faq.do?pageNo=0";
 	}
-
-	// search 화면으로 이동
-//	@RequestMapping(value = "/faq/search", method = RequestMethod.GET)
-//	public String searchPage() {
-//		return "faq_search";
-//	}
 
 	// search 하기.
 	@RequestMapping(value = "/faq/search", method = RequestMethod.POST)
 	public ModelAndView search(String field, String criteria, String value) {
 		List<FaqDTO> docs = service.findCriteria(field + "," + criteria, value);
 		return new ModelAndView("faq_search", "faqlist", docs);
-		
-//		return new ModelAndView("list", "faqlist", docs);
 	}
 
 	// 읽기
 	@RequestMapping("/faq/detail")
 	public ModelAndView findById(String key, String value, String action) {
-		System.out.println("findById _id 1234 : "+ value);
+		System.out.println("findById _id 1234 : " + value);
 		FaqDTO list = service.findById(key, value);
-		System.out.println("list 1234 : "+ list);
+		System.out.println("list 1234 : " + list);
 		String view = "";
 		if (action.equals("read")) {
 			view = "service_faqread";
@@ -70,15 +65,14 @@ public class FaqController {
 
 	// get : 디비에서 데이터 가져올 때
 	// post : 디비에 데이터 생성, 수정 할 때
-	
-	// RESTful API 
+
+	// RESTful API
 	//
 	// get.article
 	// post.article
 	// put.article 기존 게시글에 덮어 씌우기 (업데이트. 통째로 덮어씌움)
 	// patch.article 기존 게시글에 일부만 바꿔서 업데이트 (업데이트. 일부만 업데이트 함)
-	// 개발자끼리 이렇게 개발하자고 약속 
-	
+	// 개발자끼리 이렇게 개발하자고 약속
 
 	@RequestMapping("/faq/list")
 	public String mongolist(Model model) {
@@ -88,43 +82,66 @@ public class FaqController {
 	}
 
 	// user list
+	// user list
 	@RequestMapping("/faq/paginglist")
 	public ModelAndView pagemongolist(String pageNo) {
+		ModelAndView mav = new ModelAndView("service_faq");
 		
-		List<FaqDTO> faqlist = service.findAll();
-		int total_article = faqlist.size();
-//		model.addAttribute("faqlist", faqlist);
-//
-//		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
-		// System.out.println(pageNo);
-		return new ModelAndView("service_faq", "faqlist", faqlist);
+		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+		List<FaqDTO> faqcount = service.findAll();
+		int total_article = faqcount.size();
+		mav.addObject("faqlist", faqlist);
+		mav.addObject("faqcount", total_article);
+		return mav;
 	}
+//	@RequestMapping("/faq/paginglist")
+//	public ModelAndView pagemongolist(String pageNo, HttpServletRequest request) {
+//		List<FaqDTO> faqlist = service.findAll();
+//		int total_article = faqlist.size();
+//		// 페이징 객체
+////		Paging paging = new Paging();
+////		paging.setCri(pageNo);
+//		paging.setTotalCount(total_article); // 리스트 총갯수 (디비에서 count(*) 가지고 와야 함)
+//
+//		request.setAttribute("paging", paging);
+//
+////		model.addAttribute("faqlist", faqlist);
+////
+////		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
+//		// System.out.println(pageNo);
+//
+//		return new ModelAndView("service_faq", "faqlist", faqlist);
+//	}
 
 	// admin list
 	@RequestMapping("/admin_faq.do")
 	public ModelAndView pagemongolist2(String pageNo) {
+		ModelAndView mav = new ModelAndView("admin_faqlist");
+		
 		List<FaqDTO> faqlist = service.findAll(Integer.parseInt(pageNo));
-		// System.out.println(pageNo);
-		return new ModelAndView("admin_faqlist", "faqlist", faqlist);
+		List<FaqDTO> faqcount = service.findAll();
+		int total_article = faqcount.size();
+		mav.addObject("faqlist", faqlist);
+		mav.addObject("faqcount", total_article);
+		return mav;
 	}
-	
+
 	@RequestMapping(value = "/faq/update", method = RequestMethod.POST)
 	public String update(FaqDTO document, @RequestParam String _id) {
 		System.out.println("update test1234 : " + document);
 		System.out.println("_id test1234 : " + _id);
 		document.set_id(_id);
-		service.update(document);	
-		
+		service.update(document);
+
 		return "redirect:/admin_faq.do?pageNo=0";
 	}
-	
+
 	// admin delete
 	@RequestMapping(value = "/faq/delete.do", method = RequestMethod.GET)
-	public String delete (String _id) {
+	public String delete(String _id) {
 		System.out.println("FAQ 컨트롤러 ~~삭제하기 눌려짐");
 		service.delete(_id);
-		System.out.println("컨트롤러 document > "+_id);
+		System.out.println("컨트롤러 document > " + _id);
 		return "redirect:/admin_faq.do?pageNo=0";
-		
 	}
 }
