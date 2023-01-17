@@ -15,6 +15,9 @@
 		<link href="/evweb/weather/css/weathercommon-ui.css" rel="stylesheet" type="text/css">
 		<link href="/evweb/css/charge.css" rel="stylesheet" type="text/css">
 		<script src="/evweb/js/charge.js"></script>
+		<script src="/evweb/js/pdf.js"></script>
+		<script src="/evweb/js/html2canvas.js"></script>
+		<script src="/evweb/js/jspdf.min.js"></script>
 		<script src="https://code.highcharts.com/highcharts.js"></script>
 		<script src="https://code.highcharts.com/modules/exporting.js"></script>
 		<script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -46,6 +49,11 @@
 				});
 				highchartday(chargedata,chargedate);
 				highchartweek(date,chargeweekdata)
+				document.getElementById('pdf').addEventListener('click', function () {
+					  Highcharts.charts[1].exportChart({
+					    type: 'application/pdf'
+					  });
+					});
 			});
 		</script>
 		<style type="text/css">
@@ -65,9 +73,10 @@
 		</style>
 	</head>
 	<body>
-		<div class="monitoringMain row d-flex">
+		<div id = "pdfDiv" class="monitoringMain row d-flex">
 			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
-			<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+			<button style="align-self: right" data-html2canvas-ignore="ture" id="savePdf" type="button"  class="btn btn-primary"><i class="bi "></i> Download PDF</button>
+			<button data-html2canvas-ignore="ture" id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 	        <div class="col-lg-12 stationWrap dashboard">
 				<div class="row">
 					<div class="col-md-4 pd-left0">
