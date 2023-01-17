@@ -31,7 +31,7 @@ import java.io.IOException;
 
 @Service
 public class AirqualityAPIPull {
-	public String GetAPIData(AirqualityDTO dto) throws IOException {
+	public String GetAPIDataDust(AirqualityDTO dto) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
@@ -96,7 +96,7 @@ public class AirqualityAPIPull {
 			String dataTime = ((JSONObject) parse_item.get(0)).get("fcstdataTime").toString();
 			for (int i = 0; i < parse_item.size(); i++) {
 				data = (JSONObject) parse_item.get(i);
-				Object fcstValue = data.get("fcstValue"); // 1.14 숙제 ..
+				Object fcstValue = data.get("fcstValue");
 				Object fcstDate = data.get("fcstDate");
 				Object fcstdataTime = data.get("fcstdataTime");
 				if (!dataTime.equals(fcstdataTime.toString())) {
@@ -126,6 +126,8 @@ public class AirqualityAPIPull {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		System.out.println("먼지리수투~"+dustList);
 		return dustList;
+		
 	}
 }
