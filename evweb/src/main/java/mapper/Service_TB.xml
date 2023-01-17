@@ -116,7 +116,19 @@
 			<if test="searchType == 'ctgr'.toString()">AND board_category LIKE concat('%',#{keyword},'%')</if>
 		</if>
 	</sql>
-	
+	<!-- ==================내 문의내역 확인================ -->
+	<select id="selectbyId" resultType="servicetb" parameterType="Map">
+		select * from service_tb 
+		<where>
+			<if test="type == '관리자'">
+				manager_id = #{id}
+			</if>
+			<if test="type == '회원'">
+				customer_id = #{id}
+			</if>
+		</where>
+		order by board_no desc
+	</select>
 </mapper>
 
 

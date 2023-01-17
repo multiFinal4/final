@@ -3,6 +3,7 @@ package com.project.service;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
+import com.project.customer.CustomerDTO;
 import com.project.file.BoardFileDTO;
 import com.project.file.BoardFileService;
 import com.project.file.FileUploadLogic;
+import com.project.manager.ManagerDTO;
 
 @Controller
 public class Service_TBController {
@@ -70,7 +73,7 @@ public class Service_TBController {
 	}
 	
 	@RequestMapping("/service/read.do")
-	public String read(String board_no, Model model, @ModelAttribute("scri") SearchCriteria scri) {
+	public String read(String board_no, Model model, @ModelAttribute("scri") SearchCriteria scri, HttpServletRequest request) {
 		Service_TBDTO board = service.getBoardInfo(board_no);
 		List<BoardFileDTO> boardfiledtolist = boardservice.getFileList(board_no);
 		model.addAttribute("list", board);
@@ -80,8 +83,13 @@ public class Service_TBController {
 		//댓글
 		List<ServiceReply_TBDTO> replylist = servicereply.replyList(board_no);
 		model.addAttribute("replylist", replylist);
-		
-		return "admin_service_read";
+		String view = "admin_service_read";
+		if(request.getSession().getAttribute("user").getClass().equals(ManagerDTO.class)) {
+			view = "manager_service_read";
+		}else if(request.getSession().getAttribute("user").getClass().equals(CustomerDTO.class)){
+			view = "customer_service_read";
+		}
+		return view;
 	}
 	
 	
@@ -101,7 +109,7 @@ public class Service_TBController {
 	
 	
 	@RequestMapping("/service/boardListPaging.do")
-	public String boardListPaging(Model model, @ModelAttribute("scri") SearchCriteria scri) {
+	public String boardListPaging(Model model, @ModelAttribute("scri") SearchCriteria scri, HttpServletRequest request) {
 		model.addAttribute("list", service.list(scri));
 		
 		PageDTO pageMaker = new PageDTO();
@@ -109,7 +117,16 @@ public class Service_TBController {
 		pageMaker.setTotalCount(service.listCount(scri));
 		
 		model.addAttribute("pageMaker", pageMaker);
-		return "admin_service";
+		
+		String view = "admin_service";
+		if(request.getSession().getAttribute("user").getClass().equals(ManagerDTO.class)) {
+			ManagerDTO manager = (ManagerDTO) request.getSession().getAttribute("user");
+			view = "redirect:/manager/servicelist.do?manager_id="+manager.getManager_id();
+		}else if(request.getSession().getAttribute("user").getClass().equals(CustomerDTO.class)){
+			CustomerDTO customer = (CustomerDTO) request.getSession().getAttribute("user");
+			view = "redirect:/customer/servicelist.do?customer_id="+customer.getCustomer_id();
+		}
+		return view;
 	}
 	
 	

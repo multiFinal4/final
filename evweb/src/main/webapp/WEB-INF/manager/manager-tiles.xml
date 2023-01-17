@@ -10,7 +10,6 @@
 		<put-attribute name="content" value="/WEB-INF/manager/manager_read.jsp"></put-attribute>
 	</definition>
 
-
 	<!-- 회원정보 수정페이지 -->
 	<definition name="manager_update" extends="subTemplate">
  	<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
@@ -22,6 +21,10 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/manager/manager_service.jsp"></put-attribute>
 	</definition>
-
-
+	
+	<definition name="manager_service_read" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/manager/manager_service_read.jsp"></put-attribute>
+	</definition>
+	
 </tiles-definitions>
