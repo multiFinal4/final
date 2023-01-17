@@ -46,6 +46,10 @@
 								<input type="hidden" class="form-control" name="manager_id" value="${user.manager_id}">
 								${user.manager_id}
 							</c:when>
+							<c:when test="${user.state=='카카오'}">
+								<input type="hidden" class="form-control" name="customer_id" value="${user.customer_id}">
+								카카오 로그인 회원입니다.
+							</c:when>
 							<c:otherwise>
 								<!-- 일반회원으로 로그인했다면 -->
 								<input type="hidden" class="form-control" name="customer_id" value="${user.customer_id}">

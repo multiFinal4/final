@@ -14,6 +14,7 @@
 		<typeAlias type="com.project.charge.ChargeDTO" alias="charge"/> 
 		<typeAlias type="com.project.service.SearchCriteria" alias="SearchCriteria"/> 
 		<typeAlias type="com.project.map.MapStationDTO" alias="mapStation"/>
+		<typeAlias type="com.project.ranking.RankingDTO" alias="ranking"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -28,5 +29,6 @@
 		<mapper resource="mapper/weather.xml"/>
 		<mapper resource="mapper/charge.xml"/>
 		<mapper resource="mapper/map.xml"/>
+		<mapper resource="mapper/ranking.xml"/>
 	</mappers>
 </configuration>
