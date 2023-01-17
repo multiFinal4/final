@@ -191,6 +191,7 @@
 		</section>
 
 		<!-- Modal -->
+		<!-- 2021년부터 누적된 충전소별 충전량 총 합계 3위랭킹 -->
 		<div class="modal-wrapper">
 			<div class="modal">
 				<div class="head">

@@ -23,7 +23,6 @@ public class RankingController {
 	@RequestMapping(value="/chargingAmountRank", method=RequestMethod.POST)
 	public List<RankingDTO> chargingAmountRank() {
 		List<RankingDTO> list = service.chargingAmountRank();
-		System.out.println("가져온정보?????"+list);
 		return list;
 	}
 }
