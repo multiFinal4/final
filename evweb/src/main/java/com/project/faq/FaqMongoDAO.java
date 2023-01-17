@@ -12,5 +12,5 @@ public interface FaqMongoDAO {
 		
 		//페이징 처리돼있는 목록 화면
 		public List<FaqDTO> findAll();
-		public List<FaqDTO> findAll(int pageNo);
+		public List<FaqDTO> findAll(int pageNo);//페이징
 }

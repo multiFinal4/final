@@ -1,8 +1,8 @@
 package com.project.airquality;
 
 public class AirqualityDTO {
-	private String stationName; //측정소 이름
-	private String dataTime;	//데이터 시간
+	private String stationname; //측정소 이름
+	private String datatime;	//데이터 시간
 	private String pm10;		//미세먼지
 	private String pm25;		//초미세먼지
 	
@@ -10,31 +10,31 @@ public class AirqualityDTO {
 		super();
 	}
 	
-	public AirqualityDTO(String dataTime, String pm10, String pm25, String stationName) {
+	public AirqualityDTO(String datatime, String pm10, String pm25, String stationname) {
 		super();
-		this.dataTime = dataTime;
+		this.datatime = datatime;
 		this.pm10 = pm10;
 		this.pm25 = pm25;
-		this.stationName = stationName;
+		this.stationname = stationname;
 	}
 	
-	public AirqualityDTO(String stationName) {
+	public AirqualityDTO(String stationname) {
 		super();
-		this.stationName = stationName;
+		this.stationname = stationname;
 	}
 
 	@Override
 	public String toString() {
-		return "AirqualityDTO [dataTime=" + dataTime + ", pm10=" + pm10 + ", pm25=" + pm25 + ", stationName="
-				+ stationName + "]";
+		return "AirqualityDTO [datatime=" + datatime + ", pm10=" + pm10 + ", pm25=" + pm25 + ", stationname="
+				+ stationname + "]";
 	}
 
-	public String getDataTime() {
-		return dataTime;
+	public String getdatatime() {
+		return datatime;
 	}
 
-	public void setDataTime(String dataTime) {
-		this.dataTime = dataTime;
+	public void setdatatime(String datatime) {
+		this.datatime = datatime;
 	}
 
 	public String getPm10() {
@@ -53,12 +53,12 @@ public class AirqualityDTO {
 		this.pm25 = pm25;
 	}
 
-	public String getStationName() {
-		return stationName;
+	public String getstationname() {
+		return stationname;
 	}
 
-	public void setStationName(String stationName) {
-		this.stationName = stationName;
+	public void setstationname(String stationname) {
+		this.stationname = stationname;
 	}
 	
 }

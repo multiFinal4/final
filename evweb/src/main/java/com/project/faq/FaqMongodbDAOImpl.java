@@ -99,7 +99,7 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 	//리스트 페이징처리
 	@Override
 	public List<FaqDTO> findAll(int pageNo) {
-		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 5));
+		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 10));
 		return page.getContent();
 	}
 
