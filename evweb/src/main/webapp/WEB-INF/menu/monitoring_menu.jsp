@@ -73,12 +73,6 @@
                         <span>날씨 및 미세먼지</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
-                        <i class="bi bi-grid"></i>
-                        <span>통합보고서</span>
-                    </a>
-                </li>
             </ul>
         </aside>
     </body>

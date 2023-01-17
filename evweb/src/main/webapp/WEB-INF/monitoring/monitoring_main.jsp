@@ -73,10 +73,13 @@
 		</style>
 	</head>
 	<body>
-		<div id = "pdfDiv" class="monitoringMain row d-flex">
+		<div id = "pdfDiv" class="monitoringMain row">
 			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
-			<button style="align-self: right" data-html2canvas-ignore="ture" id="savePdf" type="button"  class="btn btn-primary"><i class="bi "></i> Download PDF</button>
-			<button data-html2canvas-ignore="ture" id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+			<div>
+				<button style="margin-left: 2px;" data-html2canvas-ignore="ture" id="savePdf" type="button"  class="btn btn-primary">Download PDF</button>
+				<button style="margin-left: 2px;"onclick="location.href='/evweb/monitoring/download/excel.do?stationId=${stationInfo.station_id}'" data-html2canvas-ignore="ture" id="exceldown" type="button"  class="btn btn-primary">Download Excel</button>
+				<button style="margin-left: 2px;"data-html2canvas-ignore="ture" id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+	        </div>
 	        <div class="col-lg-12 stationWrap dashboard">
 				<div class="row">
 					<div class="col-md-4 pd-left0">
