@@ -12,47 +12,45 @@
 	</select> -->
 	
 	<insert id="write" parameterType="notice">
-		insert into notice_tb 
-		values(notice_tb_seq.nextval,#{notice_title},#{notice_content},#{manager_id},sysdate, #{notice_fix})
+		insert into NOTICE_TB 
+		values(null,#{notice_title},#{notice_content},#{manager_id},now(), #{notice_fix})
 	</insert>
 	<select id="selectall" resultType="notice">
-		select * from notice_tb order by notice_writedate desc
+		select * from NOTICE_TB order by notice_writedate desc
 	</select>
 	<insert id="notice_fileinsert" parameterType="java.util.List">
-	insert all
-	<foreach collection="list" item="file" separator="">
-		into file_tb values
-		(#{file.file_no}, 0, #{file.storeFilename}, #{file.originalFilename}, '공지사항', notice_tb_seq.currval)
-	</foreach>
-	select * from dual
+		insert into FILE_TB values 
+		<foreach collection="list" item="file" separator="">
+			(#{file.file_no}, 0, #{file.storeFilename}, #{file.originalFilename}, '공지사항', (select ifnull(max(ftb.notice_no), 0)+1 from FILE_TB ftb))
+		</foreach>
 	</insert>
 	<select id="read" resultType="notice" parameterType="String">
-		select * from notice_tb where notice_no = #{notice_no}
+		select * from NOTICE_TB where notice_no = #{notice_no}
 	</select>
 	<delete id="delete" parameterType="String">
-		delete from notice_tb where notice_no = #{notice_no}
+		delete from NOTICE_TB where notice_no = #{notice_no}
 	</delete>
 	<update id="update" parameterType="notice">
-		update notice_tb
+		update NOTICE_TB
 		set notice_title=#{notice_title},notice_content=#{notice_content}
 		where notice_no=#{notice_no}
 	</update>
 	
 	<!-- 검색기능 -->
 	<select id="search" resultType="notice" parameterType="String" >
-		select * from notice_tb where title like  '%' || #{notice_title} || '%'
+		select * from NOTICE_TB where title like  concat('%',#{notice_title},'%')
 	</select>
 	<select id="dynamicSearch" resultType="notice" parameterType="Map">
-		select * from notice_tb
+		select * from NOTICE_TB
 		<where>
 			<if test="tag=='title' and data!=''">
-			title like '%' || #{data} || '%'
+			title like concat('%',#{data},'%')
 			</if>
 			<if test="tag=='id' and data!=''">
-			id like '%' || #{data} || '%'
+			id like concat('%',#{data},'%')
 			</if>
 			<if test="tag=='content' and data!=''">
-			content like '%' || #{data} || '%'
+			content concat('%',#{data},'%')
 			</if>
 			<if test="tag=='notice_writedate' and data!=''">
 				<![CDATA[

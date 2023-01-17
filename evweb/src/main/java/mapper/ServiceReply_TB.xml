@@ -6,13 +6,13 @@
 	<!-- <typeAlias type="com.project.service.Service_Reply_TBDTO" alias="replytb"/> -->
 	
 	<insert id="reply_insert" parameterType="replytb">
-		insert into service_reply_tb 
-		values(service_reply_tb_seq.nextval, #{board_no}, #{manager_id}, #{reply_content}, sysdate)
+		insert into SERVICE_REPLY_TB 
+		values(null,#{board_no}, #{manager_id}, #{reply_content}, now())
 	</insert>
 	
 	<select id="reply_select" resultType="replytb" parameterType="String">
 		select r.*  
-		from service_tb s, service_reply_tb r 
+		from SERVICE_TB s, SERVICE_REPLY_TB r 
 		where r.board_no = s.board_no and r.board_no = #{board_no}
 	</select>
 </mapper>

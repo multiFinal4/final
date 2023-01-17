@@ -5,15 +5,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.project.customer">
 	<insert id="register" parameterType="customer"> 
-		insert into customer_tb values(
+		insert into CUSTOMER_TB values(
 		#{customer_id},#{pass},
-		#{phone_no},#{name},#{customer_addr},#{email},sysdate,
+		#{phone_no},#{name},#{customer_addr},#{email},now(),
 		#{birth,jdbcType=DATE},#{ps_question},#{ps_answer},#{state} 
 		)
 	</insert>
 	
 	<update id="update" parameterType="customer">
-		 update customer_tb 
+		 update CUSTOMER_TB 
 		 set pass = #{pass}, phone_no = #{phone_no},name = #{name}, customer_addr = #{customer_addr}, email = #{email},
 		 birth = #{birth,jdbcType=DATE}, ps_question = #{ps_question}, ps_answer = #{ps_answer}, state = #{state} 
 		 where customer_id = #{customer_id}
@@ -21,20 +21,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 
 	<!-- 마이페이지 -->
 	<select id="read" resultType="customer" parameterType="String"> 
-		select * from customer_tb where customer_id = #{customer_id} 
+		select * from CUSTOMER_TB where customer_id = #{customer_id} 
 	</select>
 	
 	<!-- 아이디 중복확인 -->
 	<select id="idcheak" resultType="int" parameterType="String"> 
-		select count(customer_id) from customer_tb where customer_id = #{customer_id} 
+		select count(customer_id) from CUSTOMER_TB where customer_id = #{customer_id} 
 	</select>
 	
 	<select id="list" resultType="customer"> 
-		select * from customer_tb where state != '관리자'
+		select * from CUSTOMER_TB where state != '관리자'
 	</select>
 	
 	<update id="delete" parameterType="String"> 
-		update customer_tb set state = '탈퇴' where customer_id = #{customer_id} 
+		update CUSTOMER_TB set state = '탈퇴' where customer_id = #{customer_id} 
 	</update>
 
 	<select id="findbystate" parameterType="String" resultType="customer">
@@ -42,9 +42,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where state = #{state}
 	</select>
 	<select id="selectall" resultType="customer" parameterType="Map">
-		select *
-				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb where state !='관리자') ct where name like '%' || #{name} || '%' )
+		select c.*
+				from(select @ROWNUM:=@ROWNUM+1 rn, ct.*
+				        FROM (select @rownum :=0) as r,(select * from CUSTOMER_TB where state !='관리자') ct where name like concat('%',#{name},'%')) as c
 		<where>
 			<if test='remainNo lte 10'>
 				rn BETWEEN 1 AND #{remainNo} 
@@ -56,9 +56,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<select id="stateSelect" resultType="customer" parameterType="Map">
-		select *
-				from(select ROWNUM rn, ct.*
-				        FROM (select * from customer_tb where state= #{state}) ct where name like '%' || #{name} || '%' )
+		select c.*
+				from(select @ROWNUM:=@ROWNUM+1 rn, ct.*
+				        FROM (select @rownum :=0) as r,(select * from CUSTOMER_TB where state= #{state}) ct where name like concat('%',#{name},'%')) as c
 		<where>
 			<if test='remainNo lte 10'>
 				rn BETWEEN 1 AND #{remainNo} 
@@ -69,14 +69,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<select id="findbyname" parameterType="Map" resultType="customer">
-		select * from customer_tb 
+		select * from CUSTOMER_TB 
 		<where>
 			<if test="state == 'all'">
-				name like '%' || #{name} || '%' 
+				name like concat('%',#{name},'%')  
 				and state != '관리자'
 			</if>
 			<if test="state == '정상'">
-				state = '정상' and name like '%' || #{name} || '%' 
+				state = '정상' and name like concat('%',#{name},'%') 
 			</if>
 			<if test="state == '불러오지마'">
 				state = '불러오지마'  
@@ -84,31 +84,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<update id="change" parameterType="String"> 
-		update customer_tb set state = '관리자' where customer_id = #{customer_id} 
+		update CUSTOMER_TB set state = '관리자' where customer_id = #{customer_id} 
 	</update>
 	<delete id="realdelete">
-		delete customer_tb
+		delete CUSTOMER_TB
 		where customer_id = #{customer_id}
 	</delete>
 	
 	
 	<!-- ==========================카카오로그인========================= -->
 	<insert id="kakaoInsert" parameterType="customer"> 
-		insert into customer_tb values(
+		insert into CUSTOMER_TB values(
 		#{customer_id}, '정보없음',
-		'정보없음', '정보없음', '정보없음', #{email}, sysdate,
-		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
+		'정보없음', '정보없음', '정보없음', #{email}, now(),
+		str_to_date('20101020','%Y%m%d'), '정보없음', '정보없음', '카카오')
 	</insert>
 	
 	<insert id="kakaoInsertNull" parameterType="customer"> 
-		insert into customer_tb values(
+		insert into CUSTOMER_TB values(
 		#{customer_id}, '정보없음',
-		'정보없음', '정보없음', '정보없음', '정보없음', sysdate,
-		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
+		'정보없음', '정보없음', '정보없음', '정보없음', now(),
+		str_to_date('20101020','%Y%m%d'), '정보없음', '정보없음', '카카오')
 	</insert>
 	
 	<select id="findkakao" parameterType="customer" resultType="customer">
-		select * from customer_tb where customer_id = #{customer_id}
+		select * from CUSTOMER_TB where customer_id = #{customer_id}
 	</select>
 </mapper>
 

@@ -129,6 +129,13 @@
 			<version>11.2.0.4</version>
 		</dependency>
 
+		<!-- Mysql DB -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.31</version>
+		</dependency>
+		
 		<!-- Mybatis Library -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
