@@ -26,13 +26,21 @@ function kakaopost() {
 }
 </script>
 <style type="text/css">
+label{
+	
+	text-align:center;
+}
  #adrbtn{ margin: 10px;}
+ #input{
+    background : #FBF5EF;
+    
+ }
  
-
-
-
-
 </style>
+
+
+
+
 
 
 
@@ -43,12 +51,12 @@ function kakaopost() {
 		<h1 class="pagetitle">
 			<img src='/evweb/images/favicon/favicon.ico' style='width: 40px;'>
 			회원 가입
-		</h1>
+		</h1><br/>
 
 		<!-- 회원등록 -->
 		<form action="/evweb/customer/register.do" method="post">
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">아이디</label>
 				<div class="col-sm-3">
 					<input type="text" class="form-control" minlength="4"
 						id="customer_id" name="customer_id" required>
@@ -56,24 +64,23 @@ function kakaopost() {
 				
 			</div>
 			<div class="row mb-3">
-				<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+				<label for="inputPassword" class="col-sm-2 col-form-label" id="input">비밀번호</label>
 				<div class="col-sm-3">
 					<input name="pass" type="password" class="form-control"
 						minlength="4" required>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">핸드폰
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">핸드폰
 					번호</label>
 				<div class="col-sm-3">
 					<input name="phone_no" type="text" class="form-control"
 						minlength="1" required>
 				</div>
-				<label for="inputText" class="col-sm-2 col-form-label">(-
-					제외하고 입력하세요)</label>
+				<label for="inputText" class="col-sm-2 col-form-label"></label>
 			</div>
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">이름</label>
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">이름</label>
 				<div class="col-sm-3">
 					<input name="name" type="text" class="form-control" minlength="1"
 						required>
@@ -81,7 +88,7 @@ function kakaopost() {
 			</div>
 
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">주소</label>
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">주소</label>
 				<div class="col-sm-3">
 				<input type="text" name="zipcode" id="zipcode" size="7"
                 readonly><button class="btn btn-primary w-20" id="adrbtn" type="button" value="우편번호찾기" onclick="kakaopost()" >우편번호찾기</button>
@@ -90,7 +97,7 @@ function kakaopost() {
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">상세주소</label>
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">상세주소</label>
 				<div class="col-sm-3">
 					<input name="address" type="text" class="form-control" minlength="3" 
 						required>
@@ -98,7 +105,7 @@ function kakaopost() {
 			</div>
 			
 			<div class="row mb-3">
-				<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+				<label for="inputEmail" class="col-sm-2 col-form-label" id="input">Email</label>
 				<div class="col-sm-3">
 					<input name="email" type="email" class="form-control" minlength="5"
 						required>
@@ -112,7 +119,7 @@ function kakaopost() {
 						<div class="col-sm-3"> -->
 
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">생년월일</label>
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">생년월일</label>
 				<div class="col-sm-3">
 					<input name="birth" type="text" class="form-control" minlength="1"
 						required>
@@ -122,7 +129,7 @@ function kakaopost() {
 			</div>
 
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">비밀번호
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">비밀번호
 					찾기용 질문</label>
 				<div class="col-sm-3">
 					<input name="ps_question" type="text" class="form-control"
@@ -131,7 +138,7 @@ function kakaopost() {
 			</div>
 
 			<div class="row mb-3">
-				<label for="inputText" class="col-sm-2 col-form-label">질문에대한
+				<label for="inputText" class="col-sm-2 col-form-label" id="input">질문에대한
 					대답</label>
 				<div class="col-sm-3">
 					<input name="ps_answer" type="text" class="form-control"
