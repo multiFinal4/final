@@ -1,5 +1,6 @@
 package com.project.notice;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public List<NoticeDTO> noticeList() {
 		List<NoticeDTO> list = sqlSession.selectList("com.project.notice.selectall");
+		for(int i=0; i<list.size();i++) {
+			list.get(i).setNotice_writedate(list.get(i).getNotice_writedate().substring(0,19));
+		}
 		return  list;
 	}
 
