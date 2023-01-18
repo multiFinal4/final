@@ -59,7 +59,7 @@
 						<input type="text" name="stationName" placeholder="${stationName}" title="Enter search keyword">
 						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
 					</form>
-					<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+					<button id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 충전소 전체 업데이트</button>
 			    </div>
 	              <table class="table table-hover table-striped">
 	                <thead>

@@ -1,9 +1,7 @@
 package com.project.charge;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,15 +28,12 @@ public class ChargeDataPull {
 		List<ChargerDTO> chargerlist = chargerService.chargerList(); //충전기 리스트
 		for(ChargerDTO charger : chargerlist) {
 			if(charger.getLast_Tsdt()==null) {
-				System.out.println("시작시간 null");
 				continue;
 			}
 			if(charger.getOutput()==null) {
-				System.out.println("Output null");
 				continue;
 			}
 			if(service.cheak(charger.getStation_id(), charger.getCharger_id(), charger.getLast_Tsdt())) {
-				System.out.println("중복데이터");
 				continue;
 			}
 			dto = new ChargeDTO(charger.getStation_id(),charger.getCharger_id()); //station_id와 충전소 id
@@ -52,9 +47,7 @@ public class ChargeDataPull {
 			dto.setStart_time(charger.getLast_Tsdt());	//충전 종료 시간
 			dto.setEnd_time(charger.getLast_Tedt());	//충전 시작 시간
 			dto.setCharging_date(charge_date);	//충전 날짜
-			System.out.println(dto);
 			if(charging_amount==0.0) {
-				System.out.println("충전량 0");
 				continue;
 			}
 			chargelist.add(dto);

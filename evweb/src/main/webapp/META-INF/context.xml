@@ -41,7 +41,7 @@
               username="multi" password="1234" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
               
-    <!-- Mysql DB -->
+    <!-- Mysql DB(서버) -->
     <!-- <Resource name="jdbc/myspring" auth="Container"
               type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://49.50.163.162:3306/multi?characterEncoding=utf8&amp;useUnicode=true&amp;mysqlEncoding=utf8"
