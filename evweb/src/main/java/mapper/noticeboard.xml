@@ -21,7 +21,7 @@
 	<insert id="notice_fileinsert" parameterType="java.util.List">
 		insert into FILE_TB values 
 		<foreach collection="list" item="file" separator="">
-			(#{file.file_no}, 0, #{file.storeFilename}, #{file.originalFilename}, '공지사항', (select ifnull(max(ftb.notice_no), 0)+1 from FILE_TB ftb))
+			(#{file.file_no}, 0, #{file.storeFilename}, #{file.originalFilename}, '공지사항', last_insert_id())
 		</foreach>
 	</insert>
 	<select id="read" resultType="notice" parameterType="String">
