@@ -3,8 +3,10 @@ package com.project.weather;
 public class WeatherDTO {
 	private int weatherrow;
 	
-	private String station_id;
-	private String location_name;
+	private String nx;
+	private String ny;
+	//private String station_id;
+	//private String location_name;
 	private String sky;
 	private String tmp;
 	private String tmn;
@@ -24,20 +26,20 @@ public class WeatherDTO {
 		super();
 	}
 	
-	public WeatherDTO(String station_id, String location_name) {
+	public WeatherDTO(String nx, String ny) {
 		super();
-		this.station_id = station_id;
-		this.location_name = location_name;
+		this.nx = nx;
+		this.ny = ny;
 	}
 
 	
-	public WeatherDTO(int weatherrow, String station_id, String location_name, String sky, String tmp, String tmn, String tmx,
+	public WeatherDTO(int weatherrow, String nx, String ny, String sky, String tmp, String tmn, String tmx,
 			String pty, String pcp, String reh, String sno, String vec, String wsd, String pop, String day,
 			String time,String ftmp) {
 		super();
 		this.weatherrow = weatherrow;
-		this.station_id = station_id;
-		this.location_name = location_name;
+		this.nx = nx;
+		this.ny = ny;
 		this.sky = sky;
 		this.tmp = tmp;
 		this.tmn = tmn;
@@ -56,25 +58,25 @@ public class WeatherDTO {
 
 	@Override
 	public String toString() {
-		return "WeatherDTO [station_id=" + station_id + ", location_name=" + location_name + ", sky=" + sky + ", tmp="
+		return "WeatherDTO [nx=" + nx + ", ny=" + ny + ", sky=" + sky + ", tmp="
 				+ tmp + ", tmn=" + tmn + ", tmx=" + tmx + ", pty=" + pty + ", pcp=" + pcp + ", reh=" + reh + ", sno="
 				+ sno + ", vec=" + vec + ", wsd=" + wsd + ", pop=" + pop + ", day=" + day + ", time=" + time + ", ftmp=" + ftmp +"]" ;
 	}
 
-	public String getStation_id() {
-		return station_id;
+	public String getNx() {
+		return nx;
 	}
 
-	public void setStation_id(String station_id) {
-		this.station_id = station_id;
+	public void setNx(String nx) {
+		this.nx = nx;
 	}
 
-	public String getLocation_name() {
-		return location_name;
+	public String getNy() {
+		return ny;
 	}
 
-	public void setLocation_name(String location_name) {
-		this.location_name = location_name;
+	public void setNy(String ny) {
+		this.ny = ny;
 	}
 
 	public String getSky() {
