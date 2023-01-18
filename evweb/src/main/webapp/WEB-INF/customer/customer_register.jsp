@@ -142,7 +142,7 @@ label{
 					대답</label>
 				<div class="col-sm-3">
 					<input name="ps_answer" type="text" class="form-control"
-						minlength="5" required>
+						minlength="1" required>
 				</div>
 			</div>
 

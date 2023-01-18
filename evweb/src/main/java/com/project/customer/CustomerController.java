@@ -2,6 +2,8 @@ package com.project.customer;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,8 +74,11 @@ public class CustomerController {
 	
 	
 	@RequestMapping("/customer/delete.do")
-	public String delete(String customer_id) {
+	public String delete(String customer_id,HttpSession session) {
 		service.delete(customer_id);
+		if(session!=null) {
+			session.invalidate();
+		 }
 		return "redirect:/index"; 	
 	}
 	
