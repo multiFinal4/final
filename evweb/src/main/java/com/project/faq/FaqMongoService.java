@@ -14,6 +14,6 @@ public interface FaqMongoService {
 	public void delete(String _id);			//삭제
 	
 	//페이징처리
-	public List<FaqDTO> findAll(int pageNo);
+	public List<FaqDTO> findAll(int pageNo);//페이징
 	void insertAllDocument(List<FaqDTO> docs);
 }

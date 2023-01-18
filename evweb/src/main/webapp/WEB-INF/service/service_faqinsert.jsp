@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.content{
+padding-top 
+}
+padding:1px; 
+</style>
 </head>
 <body>
 	<div class="col-lg-8">
@@ -29,7 +35,7 @@
 						<label for="content" class="col-sm-2 col-form-label">내용</label>
 						<div class="col-sm-10">
 							<textarea class="form-control" style="height: 300px"
-								id="content" name="content"></textarea>
+								id="content" name="content" >안녕하세요, 차지모양입니다.</textarea>
 						</div>
 					</div>
 

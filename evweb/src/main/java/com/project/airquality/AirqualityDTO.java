@@ -1,64 +1,61 @@
 package com.project.airquality;
 
 public class AirqualityDTO {
-	private String stationName; //측정소 이름
-	private String dataTime;	//데이터 시간
-	private String pm10;		//미세먼지
-	private String pm25;		//초미세먼지
+	private String stationname; //측정소 이름
+	private String datatime;	//데이터 시간
+	private String pm10value;		//미세먼지
+	private String pm25value;		//초미세먼지
 	
 	public AirqualityDTO() {
 		super();
 	}
-	
-	public AirqualityDTO(String dataTime, String pm10, String pm25, String stationName) {
+
+	public AirqualityDTO(String stationname, String datatime, String pm10value, String pm25value) {
 		super();
-		this.dataTime = dataTime;
-		this.pm10 = pm10;
-		this.pm25 = pm25;
-		this.stationName = stationName;
-	}
-	
-	public AirqualityDTO(String stationName) {
-		super();
-		this.stationName = stationName;
+		this.stationname = stationname;
+		this.datatime = datatime;
+		this.pm10value = pm10value;
+		this.pm25value = pm25value;
 	}
 
 	@Override
 	public String toString() {
-		return "AirqualityDTO [dataTime=" + dataTime + ", pm10=" + pm10 + ", pm25=" + pm25 + ", stationName="
-				+ stationName + "]";
+		return "AirqualityDTO [stationname=" + stationname + ", datatime=" + datatime + ", pm10value=" + pm10value
+				+ ", pm25value=" + pm25value + "]";
 	}
 
-	public String getDataTime() {
-		return dataTime;
+	public String getStationname() {
+		return stationname;
 	}
 
-	public void setDataTime(String dataTime) {
-		this.dataTime = dataTime;
+	public void setStationname(String stationname) {
+		this.stationname = stationname;
 	}
 
-	public String getPm10() {
-		return pm10;
+	public String getDatatime() {
+		return datatime;
 	}
 
-	public void setPm10(String pm10) {
-		this.pm10 = pm10;
+	public void setDatatime(String datatime) {
+		this.datatime = datatime;
 	}
 
-	public String getPm25() {
-		return pm25;
+	public String getPm10value() {
+		return pm10value;
 	}
 
-	public void setPm25(String pm25) {
-		this.pm25 = pm25;
+	public void setPm10value(String pm10value) {
+		this.pm10value = pm10value;
 	}
 
-	public String getStationName() {
-		return stationName;
+	public String getPm25value() {
+		return pm25value;
 	}
 
-	public void setStationName(String stationName) {
-		this.stationName = stationName;
+	public void setPm25value(String pm25value) {
+		this.pm25value = pm25value;
 	}
+	
+	
 	
 }

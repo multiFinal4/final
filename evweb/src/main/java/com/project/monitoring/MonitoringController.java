@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
+import com.project.airquality.AirqualityDTO;
 import com.project.charge.ChargeDTO;
 import com.project.charge.ChargeService;
 import com.project.charger.ChargerAPIPull;
@@ -121,6 +122,10 @@ public class MonitoringController {
 		mv.addObject("yesandtoamount", yesandtoamount);
 		mv.addObject("datelist",datelist);
 		mv.addObject("amountlist",amountlist);
+
+		
+		AirqualityDTO airqualityInfo  = null;
+		mv.addObject("airqualityInfo",airqualityInfo);
 		
 		return mv;
 	}

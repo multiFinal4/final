@@ -56,6 +56,7 @@
 	<div class="card-body">
 		<h1 class="pagetitle">자주 찾는 도움말</h1>
 		<hr>
+	<div class="row">
 		<div class="col-lg-12 stationWrap">
 			<!-- 검색 기능 -->
 			<form class="search-bar d-flex" method="post"
@@ -68,10 +69,10 @@
 					name="value" id="keywordInput" style="width: 250px;" />
 				<button type="submit" id="searchBtn" class="btn btn-primary">검색</button>
 			</form>
+		</div>
 
-
-
-			<div id="accordionExample" class="accordion shadow">
+		<div class="col-lg-12 stationWrap">
+		<div id="accordionExample" class="accordion shadow">
 				<%
 				List<FaqDTO> faqlist = (List<FaqDTO>) request.getAttribute("faqlist");
 				int size = faqlist.size();
@@ -97,14 +98,50 @@
 					</div>
 				</div>
 				<%
-				} int faqcount = (int)request.getAttribute("faqcount");
+				}
 				%>
 				<table align="center">
 					<tr>
 						<td colspan="10">
-							<div></div> <%for(int i=0; i<(Math.ceil(faqcount/10.0)); i++){ %>
-							<a href="/evweb/faq/paginglist?pageNo=<%=i%>"><%=i+1 %></a>
-							<%} %>
+							<div><%=size%></div> <a href="/evweb/faq/paginglist?pageNo=0">1</a>
+
+							<%
+							if (size > 0) {
+							%> <a href="/evweb/faq/paginglist?pageNo=1">2</a> <a
+							href="/evweb/faq/paginglist?pageNo=2">3</a> <a
+							href="/evweb/faq/paginglist?pageNo=3">4</a> <a
+							href="/evweb/faq/paginglist?pageNo=4">5</a> <a
+							href="/evweb/faq/paginglist?pageNo=5">6</a> <a
+							href="/evweb/faq/paginglist?pageNo=6">7</a> <a
+							href="/evweb/faq/paginglist?pageNo=7">8</a> <a
+							href="/evweb/faq/paginglist?pageNo=8">9</a> <a
+							href="/evweb/faq/paginglist?pageNo=9">10</a> <%
+ } else {
+ %>
+							<p>
+								꼬잉
+								<%
+							}
+							%>
+							
+							<ul class="paging">
+								<c:if test="${paging.prev}">
+									<span><a
+										href='<c:url value="/test?page=${paging.startPage-1}"/>'>이전</a></span>
+								</c:if>
+								<c:forEach begin="${paging.startPage}" end="${paging.endPage}"
+									var="num">
+									<span><a href='<c:url value="/test?page=${num}"/>'>${num}</a></span>
+								</c:forEach>
+								<c:if test="${paging.next && paging.endPage>0}">
+									<span><a
+										href='<c:url value="/test?page=${paging.endPage+1}"/>'>다음</a></span>
+								</c:if>
+							</ul> <!-- 
+							이 게시글의 총 페이지 수 >> 100 페이지
+							이 페이지가 지금 몇 페이지인가 >> 100페이지 중 몇번째 페이지 인지? V
+							
+							 -->
 						</td>
 					</tr>
 				</table>

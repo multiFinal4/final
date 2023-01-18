@@ -19,6 +19,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -28,8 +29,9 @@ import java.io.IOException;
 //요청주소 http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty
 //서비스URL http://apis.data.go.kr/B552584/ArpltnInforInqireSvc
 
+@Service
 public class AirqualityAPIPull {
-	public String GetAPIData(AirqualityDTO dto) throws IOException {
+	public String GetAPIDataDust() throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty"); /* URL */
 		urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8")
@@ -70,10 +72,9 @@ public class AirqualityAPIPull {
 		return sb.toString();
 	}
 
-	public List<AirqualityDTO> DataSave(String result, String stationName) {
+	public List<AirqualityDTO> DataSaveDust(String result) {
 		// Json parser를 만들어 만들어진 문자열 데이터를 객체화
 		List<AirqualityDTO> dustList = new ArrayList<AirqualityDTO>();
-		AirqualityDTO dust = new AirqualityDTO(stationName);
 		JSONParser parser = new JSONParser();
 		JSONObject obj;
 
@@ -84,46 +85,30 @@ public class AirqualityAPIPull {
 			// response 로 부터 body 찾기
 			JSONObject parse_body = (JSONObject) parse_response.get("body");
 			// body 로 부터 items 찾기
-			JSONObject parse_items = (JSONObject) parse_body.get("items");
+			JSONArray parse_items = (JSONArray) parse_body.get("items");
 
-			// items로 부터 itemlist 를 받기
-			JSONArray parse_item = (JSONArray) parse_items.get("item");
 			String category;
 			JSONObject data; // parse_item은 배열형태이기 때문에 하나씩 데이터를 하나씩 가져올때 사용
 			// 카테고리와 값만 받아오기
-			String dataTime = ((JSONObject) parse_item.get(0)).get("fcstdataTime").toString();
-			for (int i = 0; i < parse_item.size(); i++) {
-				data = (JSONObject) parse_item.get(i);
-				Object fcstValue = data.get("fcstValue"); // 1.14 숙제 ..
-				Object fcstDate = data.get("fcstDate");
-				Object fcstdataTime = data.get("fcstdataTime");
-				if (!dataTime.equals(fcstdataTime.toString())) {
-					if (dust.getPm10() == null) {
-						dust.setPm10("없음");
-					}
-					if (dust.getPm25() == null) {
-						dust.setPm25("없음");
-					}
-					dustList.add(dust);
-					dust = new AirqualityDTO(stationName);
-					dataTime = fcstdataTime.toString();
+			String dataTime = ((JSONObject) parse_items.get(0)).get("dataTime").toString();
+			for (int i = 0; i < parse_items.size(); i++) {
+				AirqualityDTO dust = new AirqualityDTO();
+				data = (JSONObject) parse_items.get(i);
+				Object pm10Value = data.get("pm10Value");
+				Object pm25Value = data.get("pm25Value");
+				Object stationName = data.get("stationName");
+				dust.setPm10value((String) pm10Value);
+				dust.setPm25value((String) pm25Value);
+				dust.setStationname((String) stationName);
+				dust.setDatatime(dataTime);
+				dustList.add(dust);
 				}
-				//
-				category = (String) data.get("category");
-				dust.setDataTime(dataTime);
-				if (category.equals("pm10")) {
-					dust.setPm10((String) fcstValue);
-				} else if (category.equals("pm25")) {
-					dust.setPm25((String) fcstValue);
-				}
-				// 출력
-				if (!dataTime.equals(fcstDate.toString())) {
-					dataTime = fcstDate.toString();
-				}
-			}
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		System.out.println("먼지리수투~"+dustList);
 		return dustList;
+		
 	}
 }
