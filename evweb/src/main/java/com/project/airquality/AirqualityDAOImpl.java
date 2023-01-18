@@ -28,8 +28,8 @@ public class AirqualityDAOImpl implements AirqualityDAO{
 	}
 
 	@Override
-	public int delete(String stationname) {
-		return sqlSession.delete("com.project.airquality.delete",stationname);
+	public int delete() {
+		return sqlSession.delete("com.project.airquality.delete");
 	}
 
 	@Override

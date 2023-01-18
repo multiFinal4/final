@@ -13,6 +13,7 @@
 		<typeAlias type="com.project.weather.WeatherDTO" alias="weather"/> 
 		<typeAlias type="com.project.charge.ChargeDTO" alias="charge"/> 
 		<typeAlias type="com.project.service.SearchCriteria" alias="SearchCriteria"/> 
+		<typeAlias type="com.project.airquality.AirqualityDTO" alias="airquality"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -26,5 +27,6 @@
 		<mapper resource="mapper/noticeboard.xml"/>
 		<mapper resource="mapper/weather.xml"/>
 		<mapper resource="mapper/charge.xml"/>
+		<mapper resource="mapper/airquality.xml"/>
 	</mappers>
 </configuration>

@@ -17,29 +17,25 @@ public class AirqualityServiceImpl implements AirqualityService {
 
 	@Override
 	public int insert(AirqualityDTO dto) {
-		String time = dto.getdatatime();
 		
-		int pm10 = Integer.parseInt(dto.getPm10());
-			if(pm10 > 75) 		{ 	dto.setPm10("매우나쁨");	}
-			else if(pm10>35) 	{	dto.setPm10("나쁨");	}
-			else if(pm10>15)	{	dto.setPm10("보통");		}
-			else   {		 		dto.setPm10("좋음");	}
-			
-			int pm25 = Integer.parseInt(dto.getPm25());
-			if(pm25 > 150) 		{ 	dto.setPm25("매우나쁨");	}
-			else if(pm25>80) 	{	dto.setPm25("나쁨");	}
-			else if(pm25>30)	{	dto.setPm25("보통");		}
-			else   {		 		dto.setPm25("좋음");	}
-			
-//			String ftmp = Double.toString(Math.round(13.12 + 0.6215*Double.parseDouble(tmp) 
-//			-11.37*Math.pow(Double.parseDouble(wsd)*3600/1000,0.16)
-//			+0.3965*Math.pow(Double.parseDouble(wsd)*3600/1000,0.16)*Double.parseDouble(tmp)));
-			
-			dto.setdatatime(time);
-//			dto.setFtmp(ftmp.substring(0,ftmp.indexOf(".")));
+//		if (!dto.getPm10value().equals("-")) {
+//			
+//		int Pm10value = Integer.parseInt(dto.getPm10value());
+//			if(Pm10value > 75) 		{ 	dto.setPm10value("매우나쁨");	}
+//			else if(Pm10value>35) 	{	dto.setPm10value("나쁨");	}
+//			else if(Pm10value>15)	{	dto.setPm10value("보통");		}
+//			else   {		 		dto.setPm10value("좋음");	}
+//		}
+//		
+//		if(!dto.getPm25value().equals("-")) {
+//			int Pm25value = Integer.parseInt(dto.getPm25value());
+//			if(Pm25value > 150) 		{ 	dto.setPm25value("매우나쁨");	}
+//			else if(Pm25value>80) 	{	dto.setPm25value("나쁨");	}
+//			else if(Pm25value>30)	{	dto.setPm25value("보통");		}
+//			else   {		 		dto.setPm25value("좋음");	}
+//		}
 		return dao.insert(dto);
-		
-			}
+	}
 
 	@Override
 	public List<AirqualityDTO> airqualityList(String stationname) {
@@ -47,8 +43,8 @@ public class AirqualityServiceImpl implements AirqualityService {
 	}
 
 	@Override
-	public int delete(String stationname) {
-		return dao.delete(stationname);
+	public int delete() {
+		return dao.delete();
 	}
 
 	@Override
@@ -56,5 +52,7 @@ public class AirqualityServiceImpl implements AirqualityService {
 		datatime = datatime.substring(0, 2);
 		return dao.read(stationname, datatime);
 	}
+	
+//	public StationDTO
 
 }

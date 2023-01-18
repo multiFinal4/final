@@ -8,7 +8,7 @@
 		#{stationname}, #{datatime}, #{pm10value}, #{pm25value})
 	</insert>
 	<delete id="delete">
-		delete from airquality_tb where stationname = #{stationname}
+		delete from airquality_tb 
 	</delete>
 	<select id="select" parameterType="String" resultType="airquality">
 		select * from airquality_tb where stationname = #{stationname} order by weatherrow asc
