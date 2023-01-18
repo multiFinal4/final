@@ -78,9 +78,9 @@
 	              <table class="table table-hover table-striped">
 	                <thead>
 	                  <tr>
-	                    <th scope="col" style="width:5%;">번호</th>
-	                    <th scope="col" style="width:15%;">충전소 ID</th>
-	                    <th scope="col" style="width:20%;">충전소 이름</th>
+	                    <th scope="col" style="width:6%;">번호</th>
+	                    <th scope="col" style="width:16%;">충전소 ID</th>
+	                    <th scope="col" style="width:18%;">충전소 이름</th>
 	                    <th scope="col" style="width:20%;">충전소 회사</th>
 	                    <th scope="col" style="width:30%;">주소</th>
 	                    <th scope="col" style="width:10%;">담당자</th>
@@ -100,6 +100,7 @@
 	                </tbody>
 	              </table>
 	            </div>
+	            <br>
 				<div class="boardBottom text-right col-sm-12" style="padding-right: 0;">
 					<ul class="pagination">
 							<li class="page-item prev">

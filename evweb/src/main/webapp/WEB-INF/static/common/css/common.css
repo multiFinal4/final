@@ -21,7 +21,8 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 #header.index{
 	border-bottom:none;
-	position:fixed;	
+	position:fixed;
+	z-index: 9999;
 }
 #header.sub{
 	border-bottom:2px solid #e2e2e2;
@@ -880,7 +881,7 @@ span.noSign{
 .stationWrap .table tbody td,
 .stationWrap .table tbody th
 {
-	padding:8px 10px;
+	padding:10px 10px;
 }
 /* index */
 .mg-right0{
