@@ -129,7 +129,7 @@
 		<div class = "row"  style="float: right;">
         
         <h5 class="sym-btn txt-only" style="float: right; width: 350px; margin-left: 5px; padding-left: 5px; padding-right: 5px;">${station.station_name}</h5>
-        <h5 class="sym-btn txt-only" style="float: right; width: 350px; margin-left: 5px; padding-left: 5px; padding-right: 5px;"><%=weatherlist.get(0).getLocation_name()%></h5>
+        <h5 class="sym-btn txt-only" style="float: right; width: 350px; margin-left: 5px; padding-left: 5px; padding-right: 5px;">${station.addr_sigun} ${station.addr_detail}</h5>
 		<button type="button" style="float: right; width: 140px; margin-left: 5px; padding-left: 5px; padding-right: 5px;" class="btn btn-secondary" onclick="location.href='/evweb/weather/getData.do?stationId=${stationId}&path='" >업데이트</button> 
     	</div>
     <div class="dfs-tab-body" >

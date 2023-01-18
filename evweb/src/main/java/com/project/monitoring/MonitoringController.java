@@ -76,11 +76,16 @@ public class MonitoringController {
 		mv.addObject("chargerlnfo", chargerlnfo);
 		
 		//날씨 정보
-		List<WeatherDTO> weatherlist = weatherService.readList(stationId);
 		WeatherUtil weatherutil = new WeatherUtil();
-		WeatherDTO weather = weatherService.read(stationId, LocalDate.now().toString(), LocalTime.now().toString());
-		String tmx = weatherutil.getTmx(weatherlist, stationId);
-		String tmn = weatherutil.getTmn(weatherlist, stationId);
+		String code = "1"; // 0 (격자->위경도), 1 (위경도->격자)
+		String[] nxny = weatherutil.changenxny(new String[]{"", code, stationInfo.getMap_longtude(),stationInfo.getMap_latitude()});
+	    String nx = nxny[0];	/*예보지점의 X 좌표값*/
+	    String ny = nxny[1]; 	/*예보지점의 Y 좌표값*/
+		List<WeatherDTO> weatherlist = weatherService.readList(nx,ny);
+		
+		WeatherDTO weather = weatherService.read(nx,ny, LocalDate.now().toString(), LocalTime.now().toString());
+		String tmx = weatherutil.getTmx(weatherlist, weatherutil.getDate(LocalDate.now() ,"yyyy-MM-dd"));
+		String tmn = weatherutil.getTmn(weatherlist, weatherutil.getDate(LocalDate.now() ,"yyyy-MM-dd"));
 		mv.addObject("weatherlist", weatherlist);
 		mv.addObject("weather", weather);
 		mv.addObject("tmx", tmx);
