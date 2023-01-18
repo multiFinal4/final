@@ -176,10 +176,33 @@ public class StationController {
 		}
 
 		for (ChargeDTO chargeDTO : chargeDataPull.chargelist()) {
-			System.out.println("충전소 저장전");
 			chargeService.insert(chargeDTO);
 		}
 	}
 	
+	// ajax로 현재 대시보드 업데이트하기(단일)
+		@RequestMapping(value = "/ajax/updateOne", produces = "application/json;charset=utf-8")
+		@ResponseBody
+		public void stationUpdateOne(String stationId) throws Exception{
+			chargerService.deleteId(stationId);
+			service.delete(stationId);
+			for (StationDTO stationDTO : stationAPIPull.stationList()) {
+				if (stationDTO.getStation_id().equals(stationId)) {
+					service.insert(stationDTO);
+				}
+			}
+			// 충전기 업데이트
+			for (ChargerDTO chargerDTO : chargerAPIPull.chargerList()) {
+				if (chargerDTO.getStation_id().equals(stationId)) {
+					chargerService.insert(chargerDTO);
+				}
+			}
+			for (ChargeDTO chargeDTO : chargeDataPull.chargelist()) {
+				if (chargeDTO.getStation_id().equals(stationId)) {
+					chargeService.insert(chargeDTO);
+				}
+				chargeService.insert(chargeDTO);
+			}
+		}
 	
 }

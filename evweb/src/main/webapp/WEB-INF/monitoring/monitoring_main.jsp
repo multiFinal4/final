@@ -43,9 +43,9 @@
 			date.push(['<%=datelist.get(5)%>(토)']);
 			date.push(['<%=datelist.get(6)%>(일)']);
 			$(document).ready(function() {
-				$("#updateList").click(function () {
+				$("#updateListOne").click(function () {
 					loading();
-					ajaxCall();
+					stationUpdate(stationId);
 				});
 				highchartday(chargedata,chargedate);
 				highchartweek(date,chargeweekdata)
@@ -74,11 +74,11 @@
 	</head>
 	<body>
 		<div id = "pdfDiv" class="monitoringMain row">
-			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
+			<h1 class="pagetitle" id="stationName">${stationInfo.station_name} <span id="udtTime"></span></h1>
 			<div>
 				<button style="margin-left: 2px;" data-html2canvas-ignore="ture" id="savePdf" type="button"  class="btn btn-primary">Download PDF</button>
 				<button style="margin-left: 2px;"onclick="location.href='/evweb/monitoring/download/excel.do?stationId=${stationInfo.station_id}'" data-html2canvas-ignore="ture" id="exceldown" type="button"  class="btn btn-primary">Download Excel</button>
-				<button style="margin-left: 2px;"data-html2canvas-ignore="ture" id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+				<button style="margin-left: 2px;"data-html2canvas-ignore="ture" id="updateListOne" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 	        </div>
 	        <div class="col-lg-12 stationWrap dashboard">
 				<div class="row">
@@ -174,31 +174,6 @@
 												<span class="chrgrStat noSign">상태미확인</span>
 											</c:if>
 											
-											
-											<%-- <c:choose>
-												  <!-- 충전기타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상+DC콤보,	07: AC3상) -->
-											      <c:when test="${charger.charger_type == '01'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '02'}">
-													<span class="text-muted small pt-2 ps-1">AC완속,</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '03'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '04'}">
-													<span class="text-muted small pt-2 ps-1">DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '05'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '06'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상+DC콤보</span>
-											      </c:when> 
-											      <c:otherwise>
-													<span class="text-muted small pt-2 ps-1">${charger.charger_type}</span>
-											      </c:otherwise> 
-											</c:choose>  --%>
 										</div>
 									</div>
 								</c:forEach>

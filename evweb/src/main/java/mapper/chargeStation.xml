@@ -91,7 +91,19 @@
 			station_company=#{station_company},
 			manager_id=#{manager_id},
 			service_date=#{service_date}, 
-			CHARGER_NO=#{charger_no} where station_id=#{station_id}
+			service_date=#{service_date}, 
+			service_date=#{service_date}, 
+			service_date=#{service_date}, 
+			kind=#{kind}, 
+			map_latitude=#{map_latitude}, 
+			map_longtude=#{map_longtude}, 
+			use_time=#{use_time}, 
+			parking_free=#{parking_free}, 
+			note=#{note}, 
+			limitYn=#{limitYn}, 
+			limit_detail=#{limit_detail}, 
+			trafficYn=#{trafficYn}
+		where station_id=#{station_id}
 	</update>
 	
 	
