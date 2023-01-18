@@ -46,7 +46,7 @@
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></beans:property>
 		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
-	
+		
 	<!-- DataSource Was -->
 	<beans:bean id="ds" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<beans:property name="jndiName" value="jdbc/myspring"></beans:property>
@@ -102,7 +102,8 @@
 			<mapping path="/monitoring/**"/>                       
 			<mapping path="/mypage/**"/>                            
 			<mapping path="/manager/**"/>                            
-			<mapping path="/weather/**"/>      
+			<mapping path="/weather/**"/>                              
+			<mapping path="/charge/**"/>                            
 			<exclude-mapping path="/login"/>                         
 			<exclude-mapping path="/login.do"/>                      
 			<exclude-mapping path="/images/**"/>

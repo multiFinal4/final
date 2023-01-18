@@ -1,16 +1,26 @@
 package com.project.monitoring;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriUtils;
+import org.springframework.web.util.WebUtils;
 
+import com.project.charge.ChargeDTO;
 import com.project.charge.ChargeService;
 import com.project.charger.ChargerAPIPull;
 import com.project.charger.ChargerController;
@@ -34,11 +44,13 @@ public class MonitoringController {
 	StationAPIPull stationAPIPull;
 	ChargerAPIPull chargerAPIPull;
 	ChargerController chargerCtrl;
+	CreateExcel createExcel;
 	
 	public MonitoringController() {}
 	@Autowired
 	public MonitoringController(StationService service, ChargerService chargerService, ManagerService managerService,
-			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargerController chargerCtrl, WeatherService weatherService, ChargeService chargeService) {
+			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargerController chargerCtrl, WeatherService weatherService, 
+			ChargeService chargeService,CreateExcel createExcel) {
 		super();
 		this.service = service;
 		this.chargerService = chargerService;
@@ -48,6 +60,7 @@ public class MonitoringController {
 		this.chargerCtrl = chargerCtrl;
 		this.weatherService = weatherService;
 		this.chargeService = chargeService;
+		this.createExcel = createExcel;
 	}
 
 	@RequestMapping("/monitoring/main")
@@ -107,6 +120,32 @@ public class MonitoringController {
 		return mv;
 	}
 	
+	@RequestMapping("/monitoring/download/excel.do")
+	public ResponseEntity<UrlResource> downexcel(String stationId,HttpSession session) throws MalformedURLException, FileNotFoundException, UnsupportedEncodingException {
+		StationDTO station = service.read(stationId);
+		List<ChargerDTO> chargerlist = chargerService.chargerList(stationId);
+		List<ChargeDTO> chargelist = new ArrayList<ChargeDTO>();
+		LocalDate today = LocalDate.now();
+		WeatherUtil util = new WeatherUtil();
+		double monweekamount = 0; //월간 차트의 주간충전량
+		double monthamount = 0;
+		for(int i=1; i<=today.lengthOfMonth(); i++) { //월간 데이터
+			String date = util.getDate(today.withDayOfMonth(i),"yyyyMMdd"); // i일
+			String amount = chargeService.sumchargeAmount(stationId, date);
+			for(ChargeDTO dto : chargeService.list(stationId, date)) {
+				dto.setCharging_date(util.getDate(today.withDayOfMonth(i),"yyyy-MM-dd"));
+				chargelist.add(dto);
+			}
+			monweekamount += Double.parseDouble(amount);
+			monthamount += Double.parseDouble(amount);
+			
+		}
+		String filename = createExcel.createXlsx(station, chargerlist, chargelist, monweekamount, monthamount, session); //엑셀 파일 생성 및 파일이름 가져오기
+		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/exceldown/" + filename));
+		String encodedFilename = UriUtils.encode(filename, "UTF-8");
+		String mycontenttype = "attachment; filename=\"" + encodedFilename + "\"";
+		return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, mycontenttype).body(resource);
+	}
 	// ajax로 충전기정보 업데이트하기
 //	@RequestMapping(value = "/ajax/updateList", produces = "application/json;charset=utf-8")
 //	@ResponseBody
