@@ -150,6 +150,7 @@
 
 										</div>
 										<div class="col-12">
+											<br>
 											<p class="small mb-0">
 												계정이 없으신가요? <a href="/evweb/customer/register.do">계정 만들기</a>
 											</p>

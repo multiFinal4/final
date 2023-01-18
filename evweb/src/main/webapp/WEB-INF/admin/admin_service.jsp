@@ -17,7 +17,6 @@
 	<div class="card-body">
 		<h1 class="pagetitle">문의사항 리스트</h1>
 		<br />
-
 		<form role="form" method="get">
 			<div class="search d-flex">
 				<select class="form-control" style="width: 150px">
@@ -52,17 +51,17 @@
 				</script>
 			</div>
 			<!-- 테이블 -->
-			<br /> <br /> <br />
-			<table class="table table-hover">
+			<br /> 
+			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th scope="col" style="width: 150px">번호</th>
-						<th scope="col" style="width: 200px">카테고리</th>
-						<th scope="col" style="width: 200px">아이디</th>
-						<th scope="col" style="width: 500px">제목</th>
-						<th scope="col" style="width: 150px">작성날짜</th>
-						<th scope="col" style="width: 150px">답변상태</th>
-						<th scope="col" style="width: 100px"></th>
+						<th scope="col" style="width: 8%">번호</th>
+						<th scope="col" style="width: 15%">카테고리</th>
+						<th scope="col" style="width: 15%">아이디</th>
+						<th scope="col" style="width: 32%">제목</th>
+						<th scope="col" style="width: 11%">작성날짜</th>
+						<th scope="col" style="width: 11%">답변상태</th>
+						<th scope="col" style="width: 8%"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -98,7 +97,7 @@
 			</table>
 
 		</form>
-
+		<br>
 
 
 

@@ -1724,12 +1724,13 @@ wcs_do(_nasa);
 
 												<div class="wpb_text_column wpb_content_element  sub_stit">
 													<div class="wpb_wrapper">
-														<p id="peeInfo" style="font-size: 30px;">
+														<div id="peeInfo" style="font-size: 30px;">
 															<strong>충전 요금 정보</strong>
-														</p>
+														</div>
+														<hr>
 													</div>
 												</div>
-												<br> <br>
+												<br>
 												<div>
 													<div class="row-bg-wrap">
 														<div class="row-bg"></div>
@@ -2290,7 +2291,7 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://www.happecharger.com/board01Detail.do">관련
+																				href="https://www.happecharger.com/board01.do">관련
 																					정보 > </a></span>
 																		</p>
 																	</div>
@@ -4041,10 +4042,18 @@ var vcData = {"currentTheme":{"slug":"salient"}};
 	<script type='text/javascript'
 		src='https://elecvery.com/wp-content/plugins/js_composer_salient/assets/js/dist/js_composer_front.min.js'
 		id='wpb_composer_front_js-js'></script>
-	<script>
-   jQuery(document).ready(function() {
-     
-   });
-</script>
+<script>
+    $(document).ready(function() {
+        $(function () {
+            $(".menu-item").on("click", function(){
+                var headerHeight = $("header").outerHeight();
+                var href = $(this).attr("href");
+                var target = $(href == "#" || href == "" ? "body" : href);
+                var position = target.offset().top - headerHeight;
+                $("html, body").animate({ scrollTop: position }, 600, "swing");
+            });
+        });
+    });
+    </script>
 </body>
 </html>

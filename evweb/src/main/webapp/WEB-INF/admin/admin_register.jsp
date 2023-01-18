@@ -35,6 +35,7 @@
 <body>
 			<div class="card-body">
 				<h2 class="pagetitle">관리자 등록</h2>
+				<br>
 				<!-- General Form Elements -->
 				<form action="/evweb/manager/register.do" method="post">
 					<div class="row mb-3">
