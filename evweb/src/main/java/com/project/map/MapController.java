@@ -98,7 +98,7 @@ public class MapController {
 	// ajax로 충전소 정보 검색하기(체크박스)
 	@RequestMapping(value = "/ajax/map/search.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard, String company) {
+	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard, String company, String stFilter) {
 		List<StationDTO> stationList;
 		List<ChargerDTO> chargerList;
 		if (category == null || keyword == null) {
@@ -108,6 +108,7 @@ public class MapController {
 			stationList = service.search(category, keyword);
 		}
 		// 회사명 필터 적용
+		System.out.println(stFilter);
 
 		List<StationDTO> comSelectStation = new ArrayList<StationDTO>();
 		if (!company.equals("all")) {

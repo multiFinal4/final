@@ -80,15 +80,12 @@
 							</label>
 				        </div>
 			         	<div class="dropdown col-sm-4 pl-0 pr-0">
-							<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-							  더보기
-							</button>
-							<div class="dropdown-menu">
-							  <a class="dropdown-item" href="#">낮은 가격순</a>
-							  <a class="dropdown-item" href="#">높은 가격순</a>
-							  <a class="dropdown-item" href="#">인기순</a>
-							  <a class="dropdown-item" href="#">이용순</a>
-							</div>
+							<select name="stFilter"  id="stFilter" class="selectpicker form-control" title="선택해주세요" data-live-search="true" data-actions-box="true">
+									<option value="default">기본순</option>
+									<option value="lowFee">낮은 금액순</option>
+									<option value="highFee">높은 금액순</option>
+									<option value="pop">인기순</option>
+							</select>
 						</div>
 					</div>
 		        </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>간단한 지도 표시하기</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=odl70mizmg"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=tfw1jev60y"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -17,6 +17,7 @@
 		var filterArr = [];
 		var filterData = {};
 		var company = "all";
+		var stFilter = "default";
 
 		// 지도 실행
 		initMap(filterData,filterArr);
@@ -27,10 +28,15 @@
 		});
 		$("select#company").change(function() {
 			company = $(this).val();
+			console.log(company, stFilter);
 		});
 
+		$("select#stFilter").change(function() {
+			stFilter = $(this).val();
+			console.log(company, stFilter);
+		});
 		// 검색필터 체크 이벤트
-		$("input:checkbox, select#company").change(function() {
+		$("input:checkbox, select#company, select#stFilter").change(function() {
         	var chckNum = $(this).parent("label").index();
 	        if($(this).is(":checked")){
 	        	chckArr[chckNum] = "Y";
@@ -47,7 +53,8 @@
 					"standard": chckArr[2],
 					"category" : "${category}",
 					"keyword" :"${keyword}",
-	        		"company" : company
+	        		"company" : company,
+	        		"stFilter" : stFilter
 			};
 	        
 	        // 체크된 항목에 따른 충전소 리스트 변화
@@ -59,6 +66,22 @@
 				success: function(data){
 					strHTML = "";
 					filterArr = []; // 필터체크시 배열 초기화(누적방지)
+					
+					 if(stFilter == "lowFee"){
+						data.sort(function(a, b) { // 오름차순 (이름)
+						    return a.station_name < b.station_name ? -1 : a.station_name > b.station_name ? 1 : 0;
+						});
+						alert(JSON.stringify(data));
+					}
+					/* if(stFilter == "lowFee"){
+						var sortingField = "Quick"
+						student.sort(function(a, b) { // 오름차순
+						    return a[sortingField] - b[sortingField];
+						    // 13, 21, 25, 44
+						});
+						alert(JSON.stringify(data));
+					} */
+					
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";

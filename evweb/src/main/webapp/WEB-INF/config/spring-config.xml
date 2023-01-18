@@ -99,8 +99,7 @@
 		<interceptor>                                                
 			<mapping path="/admin/**"/>                              
 			<mapping path="/service/**"/>                            
-			<mapping path="/monitoring/**"/>                            
-			<mapping path="/map/**"/>                            
+			<mapping path="/monitoring/**"/>                       
 			<mapping path="/mypage/**"/>                            
 			<mapping path="/manager/**"/>                            
 			<mapping path="/weather/**"/>      
