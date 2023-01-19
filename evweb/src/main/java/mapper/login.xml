@@ -4,23 +4,23 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.login">
 	<select id="managerlogin" resultType="manager" parameterType="manager">
-		select * from manager_tb where manager_id = #{manager_id} and manager_pass = #{manager_pass} 
+		select * from MANAGER_TB where manager_id = #{manager_id} and manager_pass = #{manager_pass} 
 	</select>	
 	<select id="read" resultType="manager" parameterType="String">
-		select * from manager_tb where manager_id = #{manager_id}
+		select * from MANAGER_TB where manager_id = #{manager_id}
 	</select>	
 	<select id="customerlogin" resultType="customer" parameterType="customer">
-		select * from customer_tb where customer_id = #{customer_id} and pass = #{pass} 
+		select * from CUSTOMER_TB where customer_id = #{customer_id} and pass = #{pass} 
 	</select>	
 	<select id="findid" resultType="customer" parameterType="customer">
-		select * from customer_tb where name = #{name} and phone_no = #{phone_no} 
+		select * from CUSTOMER_TB where name = #{name} and phone_no = #{phone_no} 
 	</select>	
 	<select id="findpass" resultType="customer" parameterType="customer">
-		select * from customer_tb where customer_id = #{customer_id} and 
+		select * from CUSTOMER_TB where customer_id = #{customer_id} and 
 			phone_no = #{phone_no} and ps_question = #{ps_question} and ps_answer = #{ps_answer}
 	</select>	
 	<update id="setpass" parameterType="customer">
-		update customer_tb 
+		update CUSTOMER_TB 
 		set pass = #{pass}
 		where customer_id = #{customer_id} 
 	</update>	

@@ -174,8 +174,9 @@ public class StationController {
 		for (ChargerDTO chargerDTO : chargerAPIPull.chargerList()) {
 			chargerService.insert(chargerDTO);
 		}
-		
+
 		for (ChargeDTO chargeDTO : chargeDataPull.chargelist()) {
+			System.out.println("충전소 저장전");
 			chargeService.insert(chargeDTO);
 		}
 	}

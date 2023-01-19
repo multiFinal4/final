@@ -13,7 +13,7 @@
 		delete from CHARGER_TB
 	</delete>
 	<select id="chargerlist" resultType="charger">
-		select c.* from station_tb s, charger_tb c where s.station_id=c.station_id
+		select c.* from STATION_TB s, CHARGER_TB c where s.station_id=c.station_id
 	</select>
 	<select id="selectAll" resultType="charger">
 		select * from CHARGER_TB

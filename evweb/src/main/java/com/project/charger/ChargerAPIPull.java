@@ -34,10 +34,28 @@ public class ChargerAPIPull {
 			list.setCharger_id(charger.get("chgerId").toString());
 			list.setCharger_type(charger.get("chgerType").toString());
 			list.setStat(charger.get("stat").toString());
-			list.setStat_UpdDt(charger.get("statUpdDt").toString());
-			list.setLast_Tsdt(charger.get("lastTsdt").toString());
-			list.setLast_Tedt(charger.get("lastTedt").toString());
-			list.setNow_Tsdt(charger.get("nowTsdt").toString());
+			
+			String statUpdDt = charger.get("statUpdDt").toString();
+			String lastTsdt = charger.get("lastTsdt").toString();
+			String lastTedt = charger.get("lastTedt").toString();
+			String nowTsdt = charger.get("nowTsdt").toString();
+			
+			if (statUpdDt == null || statUpdDt.isEmpty()) {
+				statUpdDt = null;
+			}
+			if (lastTsdt == null || lastTsdt.isEmpty()) {
+				lastTsdt = null;
+			}
+			if (lastTedt == null || lastTedt.isEmpty()) {
+				lastTedt = null;
+			}
+			if (nowTsdt == null || nowTsdt.isEmpty()) {
+				nowTsdt = null;
+			}
+			list.setStat_UpdDt(statUpdDt);
+			list.setLast_Tsdt(lastTsdt);
+			list.setLast_Tedt(lastTedt);
+			list.setNow_Tsdt(nowTsdt);
 			
 			String output = charger.get("output").toString();
 			String type = charger.get("chgerType").toString();
