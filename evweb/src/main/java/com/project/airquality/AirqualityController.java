@@ -34,9 +34,9 @@ public class AirqualityController {
 	public String WeathergetData(String stationId, String path,Model model) throws IOException{
         
 		String result = pull.GetAPIDataDust();
-       airqualityService.delete();
+		airqualityService.delete();
        
-       System.out.println("result >> "+result);
+		System.out.println("result >> "+result);
 		List<AirqualityDTO> dustList = pull.DataSaveDust(result);
 		for (int i = 0; i < dustList.size(); i++) {
 			System.out.println("dustListGeti >> "+(dustList.get(i)));

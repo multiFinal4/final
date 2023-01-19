@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.station.StationDTO;
+
 @Service
 public class AirqualityServiceImpl implements AirqualityService {
 	AirqualityDAO dao;
@@ -17,23 +19,6 @@ public class AirqualityServiceImpl implements AirqualityService {
 
 	@Override
 	public int insert(AirqualityDTO dto) {
-		
-//		if (!dto.getPm10value().equals("-")) {
-//			
-//		int Pm10value = Integer.parseInt(dto.getPm10value());
-//			if(Pm10value > 75) 		{ 	dto.setPm10value("매우나쁨");	}
-//			else if(Pm10value>35) 	{	dto.setPm10value("나쁨");	}
-//			else if(Pm10value>15)	{	dto.setPm10value("보통");		}
-//			else   {		 		dto.setPm10value("좋음");	}
-//		}
-//		
-//		if(!dto.getPm25value().equals("-")) {
-//			int Pm25value = Integer.parseInt(dto.getPm25value());
-//			if(Pm25value > 150) 		{ 	dto.setPm25value("매우나쁨");	}
-//			else if(Pm25value>80) 	{	dto.setPm25value("나쁨");	}
-//			else if(Pm25value>30)	{	dto.setPm25value("보통");		}
-//			else   {		 		dto.setPm25value("좋음");	}
-//		}
 		return dao.insert(dto);
 	}
 
@@ -48,11 +33,74 @@ public class AirqualityServiceImpl implements AirqualityService {
 	}
 
 	@Override
-	public AirqualityDTO read(String stationname, String datatime) {
-		datatime = datatime.substring(0, 2);
-		return dao.read(stationname, datatime);
+	public AirqualityDTO read(StationDTO station) {
+		String stationname = "";
+		double lon = Double.parseDouble(station.getMap_longtude());
+		double lat = Double.parseDouble(station.getMap_latitude());
+		String mapaddr = station.getAddr_detail().substring(0,3);
+		if(mapaddr.equals("한림읍")) { //주소에서 한번 거름
+			stationname = "한림읍";
+		}else if(mapaddr.equals("성산읍")){
+			stationname = "성산읍";
+		}else if(mapaddr.equals("대정읍")){
+			stationname = "대정읍";
+		}else if(mapaddr.equals("애월읍")){
+			stationname = "애월읍";
+		}else if(mapaddr.equals("남원읍")){
+			stationname = "남원읍";
+		}else if(mapaddr.equals("조천읍")){
+			stationname = "조천읍";
+		}else { //나머지는 좌표로 대략적으로
+			if(lon<=126.22) {
+				if(lat<33.28) {
+					stationname = "대정읍";
+				}else {
+					stationname = "고산리";
+				}
+			}else if(lon<=126.27) {
+				if(lat<=33.28) {
+					stationname = "대정읍";
+				}else if(lat<=33.38) {
+					stationname = "고산리";
+				}else {
+					stationname = "한림읍";
+				}
+			}else if(lat<=33.33) {
+				if(lon<=126.37) {
+					stationname = "대정읍";
+				}else if(lon<=126.54) {
+					stationname = "강정동";
+				}else if(lon<=126.67) {
+					stationname = "동홍동";
+				}else {
+					stationname = "남원읍";
+				}
+			}else if(lat>33.33) {
+				if(lon<=126.30) {
+					stationname = "한림읍";
+				}else if(lat<=33.38 && lon<126.37) {
+					stationname = "한림읍";
+				}else if(lat>33.38 && lon<126.37) {
+					stationname = "애월읍";
+				}else if(lon<126.42) {
+					stationname = "애월읍";
+				}else if(lon<126.49) {
+					stationname = "노형로";
+				}else if(lon<126.53) {
+					stationname = "연동";
+				}else if(lon<126.55) {
+					stationname = "이도동";
+				}else if(lon<126.62) {
+					stationname = "화북동";
+				}else if(lon<126.82) {
+					stationname = "조천읍";
+				}else {
+					stationname = "성산읍";
+				}
+			}
+		}
+		return dao.read(stationname);
 	}
 	
-//	public StationDTO
 
 }
