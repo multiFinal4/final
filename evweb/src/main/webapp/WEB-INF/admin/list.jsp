@@ -51,17 +51,17 @@
 					</div>
 					</form>
 			    </div>
-              <table class="table table-hover">
+              <table class="table table-hover table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">이름</th>
-                    <th scope="col">연락처</th>
-                    <th scope="col">주소</th>
-                    <th scope="col">이메일</th>
-                    <th scope="col">계정상태</th>
-                    <th scope="col">구분</th>
-                    <th scope="col">상세</th>
-                    <th scope="col">퇴사/탈퇴처리</th>
+                    <th scope="col" style="width: 9%">이름</th>
+                    <th scope="col" style="width: 15%">연락처</th>
+                    <th scope="col" style="width: 15%">주소</th>
+                    <th scope="col" style="width: 15%">이메일</th>
+                    <th scope="col" style="width: 15%">계정상태</th>
+                    <th scope="col" style="width: 15%">구분</th>
+                    <th scope="col" style="width: 8%">상세</th>
+                    <th scope="col" style="width: 8%">퇴사/탈퇴처리</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -127,8 +127,8 @@
 							</c:choose>
 							
 						
-							<li class="page-item">
 							<c:if test="${pageNo!=endPage}">
+							<li class="page-item">
 							  <a class="page-link" href="/evweb/manager/list.do?type=${type}&pageNo=${pageNo+1}&name=${name}">></a>
 							</li>
 							</c:if>
