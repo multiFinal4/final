@@ -105,22 +105,4 @@
 			trafficYn=#{trafficYn}
 		where station_id=#{station_id}
 	</update>
-	
-	
-	<!-- Map에 사용하는 부분 -->
- 	<select id="mapSearch" resultType="station" parameterType="Map">
-		select * from STATION_TB 
-		<where>
-			<if test="category == 'all' and keyword!=''">
-			    station_name like concat('%',#{keyword},'%') or addr_do like concat('%',#{keyword},'%') or addr_sigun like concat('%',#{keyword},'%') or addr_detail like concat('%',#{keyword},'%') 
-			</if> 
-			<if test="category == 'name' and keyword!=''" >
-			    station_name like concat('%',#{keyword},'%')
-			  </if>
-			<if test="category == 'addr' and keyword!=''">
-			    addr_do like concat('%',#{keyword},'%') or addr_sigun like concat('%',#{keyword},'%') or addr_detail like concat('%',#{keyword},'%') 
-			</if>  
-      	</where> 
-	</select>
-	
  </mapper>

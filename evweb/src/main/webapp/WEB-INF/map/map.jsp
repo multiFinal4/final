@@ -9,6 +9,7 @@
 <title>간단한 지도 표시하기</title>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=tfw1jev60y"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="/evweb/js/MarkerClustering.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -67,20 +68,20 @@
 					strHTML = "";
 					filterArr = []; // 필터체크시 배열 초기화(누적방지)
 					
-					 if(stFilter == "lowFee"){
+					if(stFilter == "name"){
 						data.sort(function(a, b) { // 오름차순 (이름)
 						    return a.station_name < b.station_name ? -1 : a.station_name > b.station_name ? 1 : 0;
 						});
-						alert(JSON.stringify(data));
-					}
-					/* if(stFilter == "lowFee"){
-						var sortingField = "Quick"
-						student.sort(function(a, b) { // 오름차순
-						    return a[sortingField] - b[sortingField];
-						    // 13, 21, 25, 44
+					}else if (stFilter == "lowFee") {// 요금순 (완속기준)
+						data.sort(function(a, b) {
+							return a.standard - b.standard
 						});
-						alert(JSON.stringify(data));
-					} */
+					}else if (stFilter == "pop") { // 인기순
+						data.sort(function(a, b) {
+							return b.charging_amount - a.charging_amount
+						});
+						
+					}
 					
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
@@ -127,7 +128,7 @@
 		var map = new naver.maps.Map('map', {
 	        center: new naver.maps.LatLng(lat, longt), //지도 시작 지점
 	        zoom: 13, //지도의 초기 줌 레벨
-	        minZoom: 11, //지도의 최소 줌 레벨
+	        minZoom: 6, //지도의 최소 줌 레벨
 	        zoomControl: true, //줌 컨트롤의 표시 여부
 	        zoomControlOptions: { //줌 컨트롤의 옵션
 	       		position: naver.maps.Position.TOP_RIGHT
@@ -249,13 +250,55 @@
 			    	    backgroundColor: 'transparent',
 			    	    pixelOffset: new naver.maps.Point(0, -28),
 			    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
-														    
+								
+		    	
 				markers.push(marker); // 생성한 마커를 배열에 담는다.
 				infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
 				//list.push("1");
 				
 			}
 		}
+	    
+	    // 마커 클러스터링
+	    var mkCluster1 = {
+	            content: '<div class="markClst mc1"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster2 = {
+	            content: '<div class="markClst mc2"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster3 = {
+	            content: '<div class="markClst mc3"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster4 = {
+	            content: '<div class="markClst mc4" "></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster5 = {
+	            content: '<div class="markClst mc5"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        };
+	    
+	    var markerClustering = new MarkerClustering({
+	        minClusterSize: 4,
+	        maxZoom: 15,
+	        map: map,
+	        markers: markers,
+	        disableClickZoom: false,
+	        gridSize: 250,
+	        icons: [mkCluster1, mkCluster2, mkCluster3, mkCluster4, mkCluster5],
+	        indexGenerator: [10, 40, 60, 100, 300],
+	        stylingFunction: function(clusterMarker, count) {
+	            $(clusterMarker.getElement()).find('div:first-child').text(count);
+	        }
+	    });
 	    
 	    // 지도클릭 시 안내창 닫기
 		function ClickMap(i) {

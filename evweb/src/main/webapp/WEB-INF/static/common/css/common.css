@@ -663,7 +663,7 @@ a:hover{text-decoration:none;color:#F37321;}
 	padding:0;
 }
 #container>div{
-	padding:50px 50px 50px 30px;
+	padding:50px;
 }
 #container .row{
 	margin:0;
@@ -724,6 +724,38 @@ a:hover{text-decoration:none;color:#F37321;}
     top: 15px;
     left: 40px;
     width: max-content;
+}
+/* Marker Cluster */
+.markClst{
+	cursor:pointer;
+	width: 55px;
+    height: 55px;
+    line-height: 45px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-size: contain;
+}
+.markClst.mc1{
+	background-image:url(/evweb/images/map/cluster-marker-1.png);
+	color: #ffb400;
+}
+.markClst.mc2{
+	background-image:url(/evweb/images/map/cluster-marker-2.png);
+	color: #ff971c;
+}
+.markClst.mc3{
+	background-image:url(/evweb/images/map/cluster-marker-3.png);
+	color: #ff6400;
+}
+.markClst.mc4{
+	background-image:url(/evweb/images/map/cluster-marker-4.png);
+	color: #e64100;
+}
+.markClst.mc5{
+	background-image:url(/evweb/images/map/cluster-marker-5.png);
+	color: #7f0101;
 }
 .stationInfoTitle{
 	font-size:22px;
@@ -959,6 +991,7 @@ span.noSign{
 .stationWrap .table tbody th
 {
 	padding:10px 10px;
+	vertical-align: middle;
 }
 /* index */
 .mg-right0{
@@ -966,6 +999,12 @@ span.noSign{
 }
 .pd-left0{
 	padding-left:0;
+}
+.stRgiBtn{
+	position: absolute;
+	top:0;
+	right: 0;
+	
 }
 /* table */
 .tb-center{
@@ -975,7 +1014,7 @@ span.noSign{
 .boardBottom{
 	padding:0;    
 	display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .boardBottom .pagination{
 	margin-bottom:0;

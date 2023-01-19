@@ -87,7 +87,7 @@
 	              </table>
 	            </div>
 	            <br>
-				<div class="boardBottom text-right col-sm-12" style="padding-right: 0;">
+				<div class="boardBottom text-center col-sm-12" style="padding-right: 0;">
 					<ul class="pagination">
 							<li class="page-item prev">
 							  <a class="page-link" href="#"><</a>
@@ -103,7 +103,7 @@
 							  <a class="page-link" href="#">></a>
 							</li>
 					</ul>
-					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
+					<button type="submit" onclick="location.href='/evweb/admin/station/insert'" class="btn btn-primary stRgiBtn"><i class="bi bi-pencil-square"></i> 등록</button>
 				</div>
 	      </div>
 	      
