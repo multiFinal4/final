@@ -2,6 +2,16 @@ function loading(){
 	$(".loading").fadeIn();
 }
 
+// 카카오 주소
+function kakaopost() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+           document.querySelector("#zipcode").value = data.zonecode;
+           document.querySelector("#customer_addr").value =  data.address
+        }
+    }).open();
+}
+
 // 충전소 리스트 업데이트				
 function ajaxCall() {
 	$.ajax({

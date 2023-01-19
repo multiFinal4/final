@@ -19,7 +19,6 @@
 		var filterData = {};
 		var company = "all";
 		var stFilter = "default";
-
 		// 지도 실행
 		initMap(filterData,filterArr);
 
@@ -92,10 +91,10 @@
 						strHTML += "		<h6 class='card-subtitle mb-2 text-muted'>";
 						strHTML	+=				data[i].addr_do+" "+data[i].addr_sigun+"<br>"+data[i].addr_detail;
 						strHTML += "		</h6>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>&nbsp;";
 						strHTML +=  			data[i].station_company;
 						strHTML += "		</p>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>&nbsp;";
 						strHTML +=				data[i].use_time;
 						strHTML += "		</p>";
 						strHTML += "    	<span class='clickInfo'><i class='bi bi-send-fill'></i></span>";
@@ -115,6 +114,8 @@
 			});
 		});
 		
+
+		initMap(filterData,filterArr);
 		
 	});
 	
@@ -134,8 +135,6 @@
 	       		position: naver.maps.Position.TOP_RIGHT
 	        }
 	    });
-
-		alert(JSON.stringify(filterArr));	
 
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         
@@ -186,19 +185,26 @@
 	    $(".mapControl .current").click(function(){
 			$(".mapMarkerWrap").removeClass("on");
 	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
-	    	map.setZoom(16);
-	    	navigator.geolocation.getCurrentPosition(function(pos){
-	    		var currPosi = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-	    		map.setCenter(currPosi);
-		    	var circle = new naver.maps.Circle({
-		    	    map: map,
-		    	    center: currPosi,
-		    	    radius: 200,
-		    	    fillColor: '#076ff9',
-		    	    fillOpacity: 0.2
-		    	});
-			});
-            map.panTo(currPosi);
+	    	if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation);
+            }             
+            function onSuccessGeolocation(position) {
+                var location = new naver.maps.LatLng(position.coords.latitude,
+                                                     position.coords.longitude);
+                map.panTo(location);
+                map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정
+                map.setZoom(16); // 지도의 줌 레벨을 변경
+                
+                var circle = new naver.maps.Circle({
+    	    	    map: map,
+    	    	    center: location,
+    	    	    radius: 200,
+    	    	    fillColor: '#076ff9',
+    	    	    fillOpacity: 0.2
+    	    	});
+            }
+            
+	    	
 	    });
 		
 		

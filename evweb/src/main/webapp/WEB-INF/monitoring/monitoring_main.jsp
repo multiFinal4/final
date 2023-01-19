@@ -46,9 +46,9 @@
 			date.push(['<%=datelist.get(5)%>(토)']);
 			date.push(['<%=datelist.get(6)%>(일)']);
 			$(document).ready(function() {
-				$("#updateListOne").click(function () {
+				$("#updateList").click(function () {
 					loading();
-					stationUpdate(stationId);
+					ajaxCall();
 				});
 				highchartday(chargedata,chargedate);
 				highchartweek(date,chargeweekdata)
@@ -77,11 +77,11 @@
 	</head>
 	<body>
 		<div id = "pdfDiv" class="monitoringMain row">
-			<h1 class="pagetitle" id="stationName">${stationInfo.station_name} <span id="udtTime"></span></h1>
+			<h1 class="pagetitle" id="stationName">${stationInfo.station_name}</h1>
 			<div>
 				<button style="margin-left: 2px;" data-html2canvas-ignore="ture" id="savePdf" type="button"  class="btn btn-primary">Download PDF</button>
 				<button style="margin-left: 2px;"onclick="location.href='/evweb/monitoring/download/excel.do?stationId=${stationInfo.station_id}'" data-html2canvas-ignore="ture" id="exceldown" type="button"  class="btn btn-primary">Download Excel</button>
-				<button style="margin-left: 2px;"data-html2canvas-ignore="ture" id="updateListOne" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
+				<button style="margin-left: 2px;"data-html2canvas-ignore="ture" id="updateList" type="button" class="btn btn-primary"><i class="bi bi-arrow-clockwise"></i> 업데이트</button>
 	        </div>
 	        <div class="col-lg-12 stationWrap dashboard">
 				<div class="row">
@@ -176,7 +176,6 @@
 											<c:if test="${charger.stat eq '9' }">
 												<span class="chrgrStat noSign">상태미확인</span>
 											</c:if>
-											
 										</div>
 									</div>
 								</c:forEach>
@@ -389,7 +388,7 @@
 		        <div class="col-md-8 pr-0">
 						<div class="card info-card sales-card " style="z-index : 1;">
 							<div class="card-header">
-								<h5 class="card-title">일간 충전량 <span style="float: right";>${chargeAmount}kWh</span></h5>
+								<h5 class="card-title">일간 충전량 <span style="float: right">${chargeAmount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 							<figure class="highcharts-figure">
@@ -399,7 +398,7 @@
 						</div>
 						<div class="card info-card sales-card" style="z-index : 0;">
 							<div class="card-header">
-								<h5 class="card-title">주간 충전량 <span style="float: right";>${weekamount}kWh</span></h5>
+								<h5 class="card-title">주간 충전량 <span style="float: right">${weekamount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 								<figure class="highcharts-figure">
@@ -410,6 +409,6 @@
 					</div>
 		        </div>
 			</div>
-	
+		</div>
 	</body>
 </html>

@@ -673,6 +673,7 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 /* content */
 #container{
+	min-height:calc(100vh - 130px);
 	padding:0;
 }
 #container>div{
@@ -1121,6 +1122,8 @@ span.noSign{
     text-decoration: none;
     background-color: #F37321;
 }
+/* File */
+
 /* check/ Radio */
 .form-check{
     box-sizing: border-box;
@@ -1157,6 +1160,7 @@ span.noSign{
 	transition:0.3s all;
 	display:block !important;
 	background-color:rgba(0,0,0,0.5);
+	z-index: 99999;
 }
 .alertPop .modal-dialog{
 	max-width:inherit;   

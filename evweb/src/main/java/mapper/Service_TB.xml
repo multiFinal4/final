@@ -118,10 +118,9 @@
 	</sql>
 	<!-- ==================내 문의내역 확인================ -->
 	<select id="selectbyId" resultType="servicetb" parameterType="Map">
-		select * from
-		(
-		select ROW_NUMBER() OVER(ORDER BY board_no DESC) as rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
-		from service_tb
+		select MP.* from
+				(select @ROWNUM:=@ROWNUM+1 rn, svt.*
+					from (select @rownum :=0) as r, (select * from SERVICE_TB order by board_no desc) as svt
 		<where>
 			<if test="type == '관리자'">
 				manager_id = #{id}
@@ -138,7 +137,7 @@
 	
 	<select id="listCountId" parameterType="Map" resultType="int">
 		select count(board_no) 
-		from service_tb
+		from SERVICE_TB
 		<where>
 			<if test="type == '관리자'">
 				manager_id = #{id}

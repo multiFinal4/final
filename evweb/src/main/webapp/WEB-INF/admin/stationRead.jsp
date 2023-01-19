@@ -35,8 +35,9 @@
 					<div class="row mb-3">
 						<div class="row col-sm-4">
 							<label for="charger_no" class="col-sm-4 col-form-label">충전기 대수</label>
-							<div class="col-sm-8">
-							  <input type="text" class="form-control" name="charger_no" id="charger_no" value="${read.charger_no}" readonly="readonly">
+							<div class="col-sm-8 row">
+							  	<input type="text" class="form-control col-sm-6" name="charger_no" id="charger_no" value="${read.charger_no}" readonly="readonly">
+								<button type="button" id="chrgrInfo" class="btn btn-primary col-sm-6"><i class="bi bi-search"></i>충전기 정보</button>
 							</div>
 						</div>
 						<div class="row col-sm-4">
@@ -141,7 +142,7 @@
 						</div>
 					</div>
 					<div class="text-center">
-						<button type="button" class="btn btn-secondary" onclick="history.go(-2)" ><i class="bi bi-list-ul"></i>목록</button>
+						<button type="button" class="btn btn-secondary" onclick="history.go(-1)" ><i class="bi bi-list-ul"></i>목록</button>
 						<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
 						<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
 					</div>

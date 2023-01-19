@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<update id="update" parameterType="customer">
-		 update customer_tb 
+		 update CUSTOMER_TB 
 		 set pass = #{pass}, phone_no = #{phone_no},name = #{name},zipcode=#{zipcode},
 		 customer_addr = #{customer_addr},address=#{address}, email = #{email},
 		  birth = #{birth,jdbcType=DATE}, ps_question = #{ps_question}, ps_answer = #{ps_answer}, state = #{state} 
@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 
 	<select id="findbystate" parameterType="String" resultType="customer">
-		select * from customer_tb
+		select * from CUSTOMER_TB
 		where state = #{state}
 	</select>
 	<select id="selectall" resultType="customer" parameterType="Map">
