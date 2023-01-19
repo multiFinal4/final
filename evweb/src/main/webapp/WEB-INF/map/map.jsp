@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>간단한 지도 표시하기</title>
-<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=odl70mizmg"></script>
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=tfw1jev60y"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -16,18 +16,27 @@
 		var chckArr = ["N","N","N"];;
 		var filterArr = [];
 		var filterData = {};
+		var company = "all";
+		var stFilter = "default";
 
 		// 지도 실행
 		initMap(filterData,filterArr);
 
 		// 충전소 정보창 닫기
 		$(".mapClose").click(function() {
-			$(".mapMarkerWrap").removeClass("on");
+			$(".mapMarkerWrap").fadeOut();
+		});
+		$("select#company").change(function() {
+			company = $(this).val();
+			console.log(company, stFilter);
 		});
 
+		$("select#stFilter").change(function() {
+			stFilter = $(this).val();
+			console.log(company, stFilter);
+		});
 		// 검색필터 체크 이벤트
-		$("input:checkbox").click(function() {
-
+		$("input:checkbox, select#company, select#stFilter").change(function() {
         	var chckNum = $(this).parent("label").index();
 	        if($(this).is(":checked")){
 	        	chckArr[chckNum] = "Y";
@@ -43,7 +52,9 @@
 					"quick": chckArr[1],
 					"standard": chckArr[2],
 					"category" : "${category}",
-					"keyword" :"${keyword}"
+					"keyword" :"${keyword}",
+	        		"company" : company,
+	        		"stFilter" : stFilter
 			};
 	        
 	        // 체크된 항목에 따른 충전소 리스트 변화
@@ -55,6 +66,22 @@
 				success: function(data){
 					strHTML = "";
 					filterArr = []; // 필터체크시 배열 초기화(누적방지)
+					
+					 if(stFilter == "lowFee"){
+						data.sort(function(a, b) { // 오름차순 (이름)
+						    return a.station_name < b.station_name ? -1 : a.station_name > b.station_name ? 1 : 0;
+						});
+						alert(JSON.stringify(data));
+					}
+					/* if(stFilter == "lowFee"){
+						var sortingField = "Quick"
+						student.sort(function(a, b) { // 오름차순
+						    return a[sortingField] - b[sortingField];
+						    // 13, 21, 25, 44
+						});
+						alert(JSON.stringify(data));
+					} */
+					
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";
@@ -137,6 +164,11 @@
 			naver.maps.Event.trigger(markers[i], 'click', getClickHandler(i));
 		});
 	    
+	    // 지도 새로고침
+	    $(".mapControl .refresh").click(function() {
+			loading();
+			ajaxCall();
+	    });
 	    // 제주도 중심으로 이동
 	    $(".mapControl .center").click(function() {
 			$(".mapMarkerWrap").removeClass("on");
@@ -227,16 +259,17 @@
 	    
 	    // 지도클릭 시 안내창 닫기
 		function ClickMap(i) {
+      		$(".mapMarkerWrap").fadeOut("slow");
 			return function () {
 			  var infowindow = infowindowList[i];
-			  infowindow.close()
+			  infowindow.close();
 			}
 		}
 	    
 	    // 마커클릭 이벤트
 	    function getClickHandler(i) {
             return function(e) {  // 마커를 클릭하는 부분
-            	$(".mapMarkerWrap").addClass("on");
+            	$(".mapMarkerWrap").fadeIn("slow");
                 var marker = markers[i], // 클릭한 마커의 index 찾기
                     infoWindow = infowindowList[i]; // 클릭한 마커와 동일한 index 안내창
                 if (infoWindow.getMap()) {
@@ -263,6 +296,10 @@
 				    $(".stationInfoTitle").html("<i class='bi bi-pin-fill'></i>"+data.station_name);
 				    $(".stationInfoAddr .addr").text(data.addr_do+data.addr_sigun+data.addr_detail);
 				    $(".stationInfoCom .com").text(data.station_company);
+				    $(".chargeFee .standard").text(data.standard);
+				    $(".chargeFee .quick").text(data.quick);
+				    $(".chargeFee .super").text(data.superQuick);
+				    $(".chargeFee .nonmem").text(data.nonmem);
 				    $(".stationInfoTime .time").text(data.use_time);
 				    if(data.parking_free == 'Y'){
 				    	$("li.pakring").addClass("on");				    	
@@ -270,6 +307,12 @@
 				    if(data.trafficYn == 'Y'){
 				    	$("li.fee").addClass("on");				    	
 				    };
+				    $(".chargeFee .fee").each(function() {
+					    if ($(this).text().length === 0) {
+							$(this).parent().parent().hide();
+						}
+				    });
+				    
 				},
 				error: function(){
 				  console.error("insertDiagram.do Error");
@@ -358,7 +401,7 @@
 						
 						strHTML += "  	<span class='"+state+"'>"+chgerStat+"</span>";
 						strHTML += "  </p>";
-						strHTML += "  <ul class='type d-flex'>";
+						strHTML += "  <ul class='type d-flex pl-0'>";
 						strHTML += "      <li class='"+on[0]+"'>";
 						strHTML += "          <h6>DC콤보</h6>";
 						strHTML += "          <span class='typeImg'>";
@@ -405,32 +448,46 @@
 	    <div class="stationInfoTop">
 	        <h4 class="stationInfoTitle pb-3 mb-3"><i class='bi bi-pin-fill'></i>충전소 정보</h4>
 	        <span class="mapClose"><i class="bi bi-x-lg"></i></span>
-	        <div class="stationInfoAddr d-flex">
-	            <h5>주소</h5>
+	        <div class="stationInfoAddr d-flex align-items-center mb-2">
+	            <h5 class="mb-0">주소</h5>
 	            <span class="addr"></span>
 	        </div>
-	        <div class="stationInfoCom d-flex">
-	            <h5>운영기관</h5>
+	        <div class="stationInfoCom d-flex align-items-center mb-2">
+	            <h5 class="mb-0">운영기관</h5>
 	            <span class="com"></span>
 	        </div>
-	        <div class="stationInfoTime d-flex">
-	            <h5>운영시간</h5>
+	        <div class="stationInfoTime d-flex align-items-center mb-2">
+	            <h5 class="mb-0">운영시간</h5>
 	            <span class="time"></span>
 	        </div>
-	        <div class="chargeFee d-flex">
-	            <h5>충전 요금</h5>
-	            <ul class="type d-flex">
-	                <li class="d-flex">
-	                    <h6>회원</h6>
-	                    <p>
-	                        <span class="fee"></span>
+	        <div class="chargeFee d-flex align-items-center mb-2">
+	            <h5 class="mb-0">충전 요금</h5>
+	            <ul class="type d-flex pl-0 mb-0">
+	                <li class="mr-2">
+	                    <h6 class="float-left">완속</h6>
+	                    <p class="mb-0 float-left">
+	                        <span class="fee standard"></span>
 	                        <span class="unit">원/kWh</span>
 	                    </p>
 	                </li>
-	                <li  class="d-flex">
-	                    <h6>비회원</h6>
-	                    <p>
-	                        <span class="fee"></span>
+	                <li class="mr-2">
+	                    <h6 class="float-left">급속</h6>
+	                    <p class="mb-0 float-left">
+	                        <span class="fee quick"></span>
+	                        <span class="unit">원/kWh</span>
+	                    </p>
+	                </li>
+	                <li class="mr-2">
+	                    <h6 class="float-left">초급속</h6>
+	                    <p class="mb-0 float-left">
+	                        <span class="fee super"></span>
+	                        <span class="unit">원/kWh</span>
+	                    </p>
+	                </li>
+	                <li class="mr-2">
+	                    <h6 class="float-left">비회원</h6>
+	                    <p class="mb-0 float-left">
+	                        <span class="fee nonmem"></span>
 	                        <span class="unit">원/kWh</span>
 	                    </p>
 	                </li>
@@ -463,7 +520,8 @@
 	    </div>
 	</div>
     <div class="mapControl">
-        <button class="btn center mb-3" type="button"><i class="bi bi-geo-alt"></i></button>
+        <button class="btn refresh mb-2" type="button"><i class="bi bi-arrow-clockwise"></i></button>
+        <button class="btn center mb-2" type="button"><i class="bi bi-geo-alt"></i></button>
         <button class="btn current" type="button"><i class="bi bi-record-circle"></i></button>
     </div>
 </body>

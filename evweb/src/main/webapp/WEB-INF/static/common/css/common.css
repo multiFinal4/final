@@ -696,12 +696,8 @@ a:hover{text-decoration:none;color:#F37321;}
     padding: 30px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
-    transition:0.8s all;
-    opacity:0;
     z-index:1;
-}
-#container>div.mapMarkerWrap.on{
-    opacity:1;
+    display: none;
 }
 .mapClose{
 	position:absolute;
@@ -738,29 +734,61 @@ a:hover{text-decoration:none;color:#F37321;}
 	margin-right:10px;
 }
 .stationInfoTop .d-flex h5 {    
-	width: 80px;
+    width: 80px;
     font-size: 15px;
-    font-weight: bold;
-    background-color: #e2e2e2;
+    font-weight: 600;
+    background-color: #f7f7f7;
     padding: 5px;
+    color: #444444;
     height: 30px;
     text-align: center;
-    border-radius: 40px;
+    border-radius: 5px;
     margin-right: 15px;
 }
 .stationInfoTop .d-flex span{
 	font-size:14px;
-    height: 30px;
-    padding: 5px;
-    line-height:1.5;
+    font-weight: 500;
 }
 .stationInfoTop .d-flex span .bi{
 	font-size:20px;
 	font-weight:bold;
 	color:#e2e2e2;
 }
+.stationInfoTop .chargeFee .type li h6{
+	font-size: 13px;
+    padding: 5px 8px;
+    background-color: #07ad51;
+    margin-right: 5px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+}
+.stationInfoTop .chargeFee .type li:nth-child(2) h6{
+    background-color: #4bbcff;
+}
+.stationInfoTop .chargeFee .type li:nth-child(3) h6{
+    background-color: #2b70c7;
+}
+.stationInfoTop .chargeFee .type li:nth-child(4) h6{
+    background-color: #767676;
+}
+.stationInfoTop .chargeFee .type li .fee{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: #07ad51;
+}
+.stationInfoTop .chargeFee .type li .fee.quick{
+    color: #4bbcff;
+}
+.stationInfoTop .chargeFee .type li .fee.super{
+    color: #2b70c7;
+}
+.stationInfoTop .chargeFee .type li .fee.nonmem{
+    color: #767676;
+}
 .stationFac .type li.on span .bi{
-	color:#34c976;
+	color:#07ad51;
 }
 .mapMarkerWrap .typeImg img{
 	width:25px;
@@ -799,9 +827,10 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 .chargerNo .chargerType span, .chrgrStat {
 	border-radius:50px;
-	background-color:#76ccff;
+	background-color:#4bbcff;
 	padding:0 10px;
 	font-size:13px;
+	font-weight:500;
 	color:#fff;
 }
 .chrgrStat{
@@ -810,18 +839,23 @@ a:hover{text-decoration:none;color:#F37321;}
 .alertPop .chrgrStat{
 	padding: 5px 10px;
 }
+.chargerNo .chargerType span.err,
 span.err{
 	background-color:#ff8000;
 }
+.chargerNo .chargerType span.charging,
 span.charging{
 	background-color:#00ae00;
 }
+.chargerNo .chargerType span.stop,
 span.stop{
 	background-color:#cc0000;
 }
+.chargerNo .chargerType span.fix,
 span.fix{
 	background-color:#8080c0;
 }
+.chargerNo .chargerType span.noSign,
 span.noSign{
 	background-color:#797979;
 }

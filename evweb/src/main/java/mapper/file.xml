@@ -6,19 +6,19 @@
 	<!-- <typeAlias type="com.project.file.BoardFileDTO" alias="file"/> -->
 	
 	<select id="fileselect" parameterType="String" resultType="file">
-		select * from file_tb where board_no = #{board_no} 
+		select * from FILE_TB where board_no = #{board_no} 
 	</select>
 	
 	<select id="fileselectNo" parameterType="String" resultType="file">
-		select * from file_tb where notice_no = #{notice_no} 
+		select * from FILE_TB where notice_no = #{notice_no} 
 	</select>
 	
 	<select id="getfileinfo" parameterType="file" resultType="file">
-		select * from file_tb where board_no = #{board_no}  and file_no = #{file_no}
+		select * from FILE_TB where board_no = #{board_no}  and file_no = #{file_no}
 	</select>
 	
 	<select id="getfileinfoNo" parameterType="file" resultType="file">
-		select * from file_tb where notice_no  = #{notice_no}   and file_no = #{file_no}
+		select * from FILE_TB where notice_no  = #{notice_no}   and file_no = #{file_no}
 	</select>
 	
 	

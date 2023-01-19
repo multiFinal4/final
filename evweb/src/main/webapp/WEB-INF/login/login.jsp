@@ -45,7 +45,7 @@
 
 							<div class="d-flex justify-content-center py-4">
 								<a href="index.do" class="logo d-flex align-items-center w-auto">
-									<span class="d-none d-lg-block">충전해조</span>
+									<span class="d-none d-lg-block" style="font-family: 'jejudoldam'; color: #333333; font-size: 40px">차지모양</span>
 								</a>
 							</div>
 							<!-- End Logo -->
@@ -55,7 +55,7 @@
 								<div class="card-body">
 
 									<div class="pt-4 pb-2">
-										<h4 class="card-title text-center pb-0 fs-4">Login to
+										<h4 class="card-title text-center pb-0 fs-4" style=" color: #333333;">Login to
 											Your Account</h4>
 										<p class="text-center small">Enter your ID & password to
 											login</p>
@@ -101,6 +101,7 @@
 												<img alt="카카오 로그인 버튼"
 												src="/evweb/images/kakao_login_medium_wide.png">
 											</a>
+											
 											
 											<!-- <a id="kakao-login-btn"></a>
 											<button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button>

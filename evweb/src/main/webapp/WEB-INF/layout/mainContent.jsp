@@ -10,13 +10,102 @@
 <title>Insert title here</title>
 <script type="text/javascript"
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=odl70mizmg"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<style type="text/css">
+.ib-container div {
+	background: #fff;
+	z-index: 1;
+	box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 1), 1px 1px 3px 10px
+		rgba(0, 0, 0, 0.2);
+	transition: opacity 0.4s linear, transform 0.4s ease-in-out, box-shadow
+		0.4s ease-in-out;
+}
+
+.ib-container div.blur {
+	box-shadow: 0px 0px 20px 10px rgba(255, 255, 255, 1);
+	transform: scale(0.9);
+	opacity: 0.7;
+}
+
+.ib-container div.active {
+	transform: scale(1.05);
+	box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 1), 1px 11px 15px 10px
+		rgba(0, 0, 0, 0.4);
+	z-index: 100;
+	opacity: 1;
+}
+</style>
+
+<script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						$("#rankButton")
+								.on(
+										"click",
+										function() {
+											var querydata = {
+												"station_name" : $("#station_name")
+														.val(),
+												"charging_amount" : $(
+														"#charging_amount")
+														.val()
+											}
+											$.ajax({
+												url : "/evweb/chargingAmountRank",
+												type : "POST",
+												data : querydata,
+												dataType : "json",
+												success : function(data) { // 갔다온 다음 결과값
+													//	alert('seccuss');	// 나오면 파일을 찾았다는 것
+													//	alert(data);  // [object Object],[object Object],[object Object]
+
+													// 데이터를 확인하고 싶을 때.
+													//	let str = JSON.stringify(data); // <> parse()
+													//	alert(str); 
+
+													$("#one1").html(data[0].station_name);
+													$("#one2").html(data[0].charging_amount);
+													$("#two1").html(data[1].station_name);
+													$("#two2").html(data[1].charging_amount);
+													$("#three1").html(data[2].station_name);
+													$("#three2").html(data[2].charging_amount);
+													
+													/* $.each(data,function(index,item) { // 데이터 =item
+														//index가 끝날때까지 
+														$("#result").html(index+1 + "위. station_name : " 
+																					+ item.station_name
+																					+ ", charging_amount : "
+																					+ item.charging_amount
+																					+ "<br>");
+													});  //end for문 */
+													
+												},  //end success
+
+												error : error_run
+											}) //end ajax
+								}) //end click
+					}) //end ready
+
+	function error_run(obj, msg, statusMsg) {
+		alert("오류발생" + obj + "," + msg + "," + statusMsg);
+	}
+</script>
+
+
+<style type="text/css">
+
+
+</style>
+
 </head>
 <body class="hero-anime">
 	<div class="main">
 		<section class="section d-flex">
 			<div class="bgOver"></div>
 			<div class="mainText">
-				<div>
+				<div style="max-width: 25%">
 					<h2>
 						<span>C</span><span>h</span><span>a</span><span>r</span><span>g</span><span>i</span><span>n</span><span>g</span>
 						<span> </span><span>Je</span><span>Ju</span>
@@ -24,7 +113,7 @@
 					<h1>
 						<span>차</span><span>지</span><span>모</span><span>양</span>
 					</h1>
-					<p class="mb-0">
+					<p class="mb-0" style="width: 600px;">
 						차지모양이란? <br> 차지는 충전과 공간을 뜻하는 중의적인 표현이며, <br> 모양은 '모으다'의
 						제주 방언입니다.
 					</p>
@@ -38,69 +127,110 @@
 		</section>
 
 		<section class="section">
-			<br> <br> <br> <br> <br> 
+			<br> <br> <br> <br> <br>
 			<div class="main-wrap-indicate flex-center">
-				<i class="bi bi-chevron-down"></i></i><!-- <img src="/evweb/images/main_indicate.png"> -->
+				<i class="bi bi-chevron-down"></i>
+				<!-- <img src="/evweb/images/main_indicate.png"> -->
 			</div>
 			<div class="main-wrap2">
 				<br> <br> <br> <br> <br> <br>
 				<div class="main-wrap2">
 					<div class="wrap">
-						<div class="service-flex" style="text-align: center;">
-							<div class="service-box shadow " id="chargerCnt">
-								<div class="service-text1 blue">전체 맵</div>
-								<div class="service-text2">
+						<div class="service-flex ib-container" id="ib-container"
+							style="text-align: center;">
+							<div class="service-box shadow"
+								onclick="location.href='/evweb/map'">
+								<p class="service-text1 blue">전체 맵</p>
+								<p class="service-text2">
 									전체 맵 한눈에 보기<br>
-								</div>
-								<div class="service-img">
-									<img src="/resources/img/index/main_box1.png">
-								</div>
+								</p>
+								<p class="service-img">
+									<img src="/evweb/images/main/map2.png" style="width: 118px;">
+								</p>
 							</div>
-							<div class="service-box shadow" id="bidList">
-								<div class="service-text1 blue">충전소 조회</div>
-								<div class="service-text2">
-									이용가능한 충전소 정보<br> 확인하기
-								</div>
-								<div class="service-img">
-									<img src="/resources/img/index/main_box2.png">
-								</div>
+							<div class="service-box shadow"
+								onclick="location.href='/evweb/fee.do'">
+								<p class="service-text1 blue">충전소 조회</p>
+								<p class="service-text2">
+									이용가능한 충전소 정보보기<br>
+								</p>
+								<p class="service-img">
+									<img src="/evweb/images/main/충전소.png" style="width: 115px;">
+								</p>
 							</div>
-							<div class="service-box shadow" id="csFee">
-								<div class="service-text1 blue">충전 요금 정보</div>
-								<div class="service-text2">
-									충전사 별 충전요금<br> 확인하기
-								</div>
-								<div class="service-img">
-									<img src="/resources/img/index/main_box3.png">
-								</div>
-								<div>
-									<img src=""><a href="/evweb/fee.do"></a>
-								</div>
+							<div class="service-box shadow"
+								onclick="location.href='/evweb/fee.do'">
+								<p class="service-text1 blue">충전 요금 정보</p>
+								<p class="service-text2">
+									충전사 별 충전요금보기<br>
+								</p>
+								<p class="service-img">
+									<img src="/evweb/images/main/859976dbb1564980.png"
+										style="width: 150px;">
+								</p>
 							</div>
-							<div class="service-box shadow" id="statistics">
-								<div class="service-text1 blue">충전소 랭킹???</div>
-								<div class="service-text2">
-									!~!3~한 랭킹정보<br> 확인하기
-								</div>
-								<div class="service-img">
-									<img src="/resources/img/index/main_box4.png">
-								</div>
+							<div class="service-box shadow btn trigger" id="rankButton">
+								<p class="service-text1 blue">충전소 랭킹</p>
+								<p class="service-text2">
+									충전소 랭킹정보 확인하기<br>
+								</p>
+								<p class="service-img" id="button">
+									<img src="/evweb/images/main/c791069357b39fde.png" style="width: 125px;">
+								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<br> <br> <br> <br> <br> <br>
+				<br> <br> <br> <br> <br> <br> <br>
+				<br>
 			</div>
 		</section>
 		<section>
-			<br> <br> <br> <br> <br>
-			 <br> <br> 내용ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ <br><br> <br> <br> <br> 
-			 <br> <br> <br> <br> <br> 
-		
+			<br> <br> <br> <br> <br> <br> <br>
+			<br> <br>
 		</section>
+
+		<!-- Modal -->
+		<!-- 2021년부터 누적된 충전소별 충전량 총 합계 3위랭킹 -->
+		<div class="modal-wrapper">
+			<div class="modal">
+				<div class="head">
+					<a class="btn-close trigger" href="#"> <i class="fa fa-times"
+						aria-hidden="true"><i class="bi bi-arrow-left"></i></i>
+					</a>
+				</div>
+				<div class="content" style="text-align: center;">
+					<h3>RANKING</h3>
+					<img src="/evweb/images/main/first-place.png"style="width: 80px;">
+					<br>
+					<br>
+					<h5>
+						<span id="one1"></span>,  충전량 : <span id="one2"></span>
+						<img src="/evweb/images/main/medal3.png"style="width: 60px;"><hr/>
+						
+						<span id="two1"></span>,  충전량 : <span id="two2"></span>
+						<img src="/evweb/images/main/medal.png"style="width: 60px;"><hr/>
+
+						<span id="three1"></span>,  충전량 : <span id="three2"></span>
+						<img src="/evweb/images/main/medal2.png"style="width: 60px;">
+					</h5>
+				</div>
+			</div>
+		</div>
 	</div>
 </body>
+
 <script>
+	/* 랭킹 모달 */
+	$(document).ready(function() {
+		$('.trigger').on('click', function() {
+			$('.modal-wrapper').toggleClass('open');
+			return false;
+		});
+	});
+
+
+	/* 메인 글자 효과*/
 	(function($) {
 		"use strict";
 
@@ -124,21 +254,33 @@
 		});
 	})(jQuery);
 
-	/* 	var jeju = new naver.maps.LatLngBounds(new naver.maps.LatLng(33.5864,
-	 126.0526), new naver.maps.LatLng(33.1508, 127.0391));
+	/* 하단 박스 효과 */
+	var $container = $('#ib-container'), $articles = $container.children('div'), timeout;
 
-	 var map = new naver.maps.Map("map", {
-	 minZoom : 11, // 읍면동 레벨
-	 maxBounds : jeju,
-	 });
+	$articles.on('mouseenter', function(event) {
 
-	 var rect = new naver.maps.Rectangle({
-	 strokeOpacity : 0,
-	 strokeWeight : 0,
-	 fillOpacity : 0.2,
-	 bounds : jeju,
-	 map : map
-	 }); */
+		var $article = $(this);
+		clearTimeout(timeout);
+		timeout = setTimeout(function() {
+
+			if ($article.hasClass('active'))
+				return false;
+
+			$articles.not($article).removeClass('active').addClass('blur');
+
+			$article.removeClass('blur').addClass('active');
+
+		}, 10);
+
+	});
+
+	$container.on('mouseleave', function(event) {
+
+		clearTimeout(timeout);
+		$articles.removeClass('active blur');
+
+	});
+
 </script>
 </html>
 

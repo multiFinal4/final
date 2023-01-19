@@ -7,7 +7,9 @@ public class CustomerDTO {
 	private String pass;
 	private String phone_no;
 	private String name;
+	private String zipcode;
 	private String customer_addr;
+	private String address;
 	private String email;
 	private Date insertdate;
 	private Date birth;
@@ -19,14 +21,17 @@ public class CustomerDTO {
 
 	}
 
-	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String customer_addr,
-			String email, Date insertdate, Date birth, String ps_question, String ps_answer, String state) {
+	public CustomerDTO(String customer_id, String pass, String phone_no, String name, String zipcode,
+			String customer_addr, String address, String email, Date insertdate, Date birth, String ps_question,
+			String ps_answer, String state) {
 		super();
 		this.customer_id = customer_id;
 		this.pass = pass;
 		this.phone_no = phone_no;
 		this.name = name;
+		this.zipcode = zipcode;
 		this.customer_addr = customer_addr;
+		this.address = address;
 		this.email = email;
 		this.insertdate = insertdate;
 		this.birth = birth;
@@ -38,9 +43,9 @@ public class CustomerDTO {
 	@Override
 	public String toString() {
 		return "CustomerDTO [customer_id=" + customer_id + ", pass=" + pass + ", phone_no=" + phone_no + ", name="
-				+ name + ", customer_addr=" + customer_addr + ", email=" + email + ", insertdate=" + insertdate
-				+ ", birth=" + birth + ", ps_question=" + ps_question + ", ps_answer=" + ps_answer + ", state=" + state
-				+ "]";
+				+ name + ", zipcode=" + zipcode + ", customer_addr=" + customer_addr + ", address=" + address
+				+ ", email=" + email + ", insertdate=" + insertdate + ", birth=" + birth + ", ps_question="
+				+ ps_question + ", ps_answer=" + ps_answer + ", state=" + state + "]";
 	}
 
 	public String getCustomer_id() {
@@ -75,12 +80,28 @@ public class CustomerDTO {
 		this.name = name;
 	}
 
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
 	public String getCustomer_addr() {
 		return customer_addr;
 	}
 
 	public void setCustomer_addr(String customer_addr) {
 		this.customer_addr = customer_addr;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getEmail() {
@@ -130,7 +151,7 @@ public class CustomerDTO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
 	
 
 	
