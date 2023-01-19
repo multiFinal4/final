@@ -104,11 +104,7 @@
 			<mapping path="/monitoring/**"/>                       
 			<mapping path="/mypage/**"/>                            
 			<mapping path="/manager/**"/>                            
-<<<<<<< HEAD
-			<mapping path="/weather/**"/>                            
-=======
 			<mapping path="/weather/**"/>                              
->>>>>>> refs/remotes/origin/main
 			<mapping path="/charge/**"/>                            
 			<exclude-mapping path="/login"/>                         
 			<exclude-mapping path="/login.do"/>                      
