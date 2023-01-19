@@ -650,13 +650,26 @@ a:hover{text-decoration:none;color:#F37321;}
 	padding:0 !important;
 }
 .mapControl button{
-	width:40px;
-	display:block;
-	background-color:#fff;
-	height:40px;
-	border-radius:5px;
-    border: 1px solid #d5d5d5;
-	
+	font-size: 20px;
+    font-weight: 600;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+    color: #fff;
+    display: block;
+    background-color: #f37321;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 40%);
+}
+.mapControl button .bi{
+	margin: 0;
+}
+.mapControl button:hover{
+	background-color: #fff;
+	position: relative;
+    top: 2px;
+    right: -2px;
 }
 /* content */
 #container{
