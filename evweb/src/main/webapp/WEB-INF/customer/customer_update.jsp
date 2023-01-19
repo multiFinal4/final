@@ -57,7 +57,7 @@ label{
 		<div>
 			<div>
 				<div class="card-body">
-					<h1 class="pagetitle">[ 일반회원 수정 ]</h1><br/>
+					<h1 class="pagetitle" > <img src='/evweb/images/favicon/favicon.ico' style='width:50px;'>[ 일반회원 수정 ]</h1><br/>
 
 					<!-- General Form Elements -->
 					<form action="/evweb/customer/update.do" method="post">
