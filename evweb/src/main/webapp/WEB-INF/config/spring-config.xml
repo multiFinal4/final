@@ -103,8 +103,8 @@
 			<mapping path="/service/**"/>                            
 			<mapping path="/monitoring/**"/>                       
 			<mapping path="/mypage/**"/>                            
-			<mapping path="/manager/**"/>             
-			<mapping path="/weather/**"/>           
+			<mapping path="/manager/**"/>                            
+			<mapping path="/weather/**"/>                              
 			<mapping path="/charge/**"/>                            
 			<exclude-mapping path="/login"/>                         
 			<exclude-mapping path="/login.do"/>                      
