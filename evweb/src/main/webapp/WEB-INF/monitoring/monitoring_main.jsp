@@ -345,10 +345,6 @@
 											<strong	class="air-level val"><span	class="air-lvv-wrap air-lvv-2"><span class="air-lvv">68</span>
 											<small class="unit">㎍/m³</small></span>
 											<span class="air-lvt" style="color: #000;">보통<a href="#legend" data-air-type="pm10">범례보기</a></span></strong></li>
-										<li><span class="lbl">오존<small>(O<small>3</small>)</small></span>
-											<strong class="air-level val"><span	class="air-lvv-wrap air-lvv-1"><span class="air-lvv">0.016</span>
-											<small class="unit">ppm</small></span>
-											<span class="air-lvt" style="color: #000;">좋음<a href="#legend"	data-air-type="o3">범례보기</a></span></strong></li>
 									</ul>
 									<div class="cmp-air-legend">
 										<div class="shadow-box" data-air-type="pm25">
@@ -381,22 +377,6 @@
 													<li class="air-legend-3"><span>나쁨<br>(81~150)
 													</span></li>
 													<li class="air-legend-4"><span>매우나쁨<br>(151~)
-													</span></li>
-												</ul>
-											</div>
-										</div>
-										<div class="shadow-box" data-air-type="o3">
-											<div class="inner">
-												<a href="#close" class="close-box">닫기</a>
-												<h5>오존(ppm)</h5>
-												<ul class="air-legend">
-													<li class="air-legend-1"><span>좋음<br>(0~0.03)
-													</span></li>
-													<li class="air-legend-2"><span>보통<br>(0.031~0.09)
-													</span></li>
-													<li class="air-legend-3"><span>나쁨<br>(0.091~0.15)
-													</span></li>
-													<li class="air-legend-4"><span>매우나쁨<br>(0.151~)
 													</span></li>
 												</ul>
 											</div>
