@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.station.StationDTO;
+
 @Service
 public class AirqualityServiceImpl implements AirqualityService {
 	AirqualityDAO dao;
@@ -17,29 +19,8 @@ public class AirqualityServiceImpl implements AirqualityService {
 
 	@Override
 	public int insert(AirqualityDTO dto) {
-		String time = dto.getdatatime();
-		
-		int pm10 = Integer.parseInt(dto.getPm10());
-			if(pm10 > 75) 		{ 	dto.setPm10("매우나쁨");	}
-			else if(pm10>35) 	{	dto.setPm10("나쁨");	}
-			else if(pm10>15)	{	dto.setPm10("보통");		}
-			else   {		 		dto.setPm10("좋음");	}
-			
-			int pm25 = Integer.parseInt(dto.getPm25());
-			if(pm25 > 150) 		{ 	dto.setPm25("매우나쁨");	}
-			else if(pm25>80) 	{	dto.setPm25("나쁨");	}
-			else if(pm25>30)	{	dto.setPm25("보통");		}
-			else   {		 		dto.setPm25("좋음");	}
-			
-//			String ftmp = Double.toString(Math.round(13.12 + 0.6215*Double.parseDouble(tmp) 
-//			-11.37*Math.pow(Double.parseDouble(wsd)*3600/1000,0.16)
-//			+0.3965*Math.pow(Double.parseDouble(wsd)*3600/1000,0.16)*Double.parseDouble(tmp)));
-			
-			dto.setdatatime(time);
-//			dto.setFtmp(ftmp.substring(0,ftmp.indexOf(".")));
 		return dao.insert(dto);
-		
-			}
+	}
 
 	@Override
 	public List<AirqualityDTO> airqualityList(String stationname) {
@@ -47,14 +28,79 @@ public class AirqualityServiceImpl implements AirqualityService {
 	}
 
 	@Override
-	public int delete(String stationname) {
-		return dao.delete(stationname);
+	public int delete() {
+		return dao.delete();
 	}
 
 	@Override
-	public AirqualityDTO read(String stationname, String datatime) {
-		datatime = datatime.substring(0, 2);
-		return dao.read(stationname, datatime);
+	public AirqualityDTO read(StationDTO station) {
+		String stationname = "";
+		double lon = Double.parseDouble(station.getMap_longtude());
+		double lat = Double.parseDouble(station.getMap_latitude());
+		String mapaddr = station.getAddr_detail().substring(0,3);
+		if(mapaddr.equals("한림읍")) { //주소에서 한번 거름
+			stationname = "한림읍";
+		}else if(mapaddr.equals("성산읍")){
+			stationname = "성산읍";
+		}else if(mapaddr.equals("대정읍")){
+			stationname = "대정읍";
+		}else if(mapaddr.equals("애월읍")){
+			stationname = "애월읍";
+		}else if(mapaddr.equals("남원읍")){
+			stationname = "남원읍";
+		}else if(mapaddr.equals("조천읍")){
+			stationname = "조천읍";
+		}else { //나머지는 좌표로 대략적으로
+			if(lon<=126.22) {
+				if(lat<33.28) {
+					stationname = "대정읍";
+				}else {
+					stationname = "고산리";
+				}
+			}else if(lon<=126.27) {
+				if(lat<=33.28) {
+					stationname = "대정읍";
+				}else if(lat<=33.38) {
+					stationname = "고산리";
+				}else {
+					stationname = "한림읍";
+				}
+			}else if(lat<=33.33) {
+				if(lon<=126.37) {
+					stationname = "대정읍";
+				}else if(lon<=126.54) {
+					stationname = "강정동";
+				}else if(lon<=126.67) {
+					stationname = "동홍동";
+				}else {
+					stationname = "남원읍";
+				}
+			}else if(lat>33.33) {
+				if(lon<=126.30) {
+					stationname = "한림읍";
+				}else if(lat<=33.38 && lon<126.37) {
+					stationname = "한림읍";
+				}else if(lat>33.38 && lon<126.37) {
+					stationname = "애월읍";
+				}else if(lon<126.42) {
+					stationname = "애월읍";
+				}else if(lon<126.49) {
+					stationname = "노형로";
+				}else if(lon<126.53) {
+					stationname = "연동";
+				}else if(lon<126.55) {
+					stationname = "이도동";
+				}else if(lon<126.62) {
+					stationname = "화북동";
+				}else if(lon<126.82) {
+					stationname = "조천읍";
+				}else {
+					stationname = "성산읍";
+				}
+			}
+		}
+		return dao.read(stationname);
 	}
+	
 
 }

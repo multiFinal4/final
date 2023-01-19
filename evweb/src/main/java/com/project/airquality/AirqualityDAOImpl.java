@@ -28,16 +28,13 @@ public class AirqualityDAOImpl implements AirqualityDAO{
 	}
 
 	@Override
-	public int delete(String stationname) {
-		return sqlSession.delete("com.project.airquality.delete",stationname);
+	public int delete() {
+		return sqlSession.delete("com.project.airquality.delete");
 	}
 
 	@Override
-	public AirqualityDTO read(String stationname, String datatime) {
-		HashMap<String, String> map = new HashMap<String, String>();
-		map.put("stationname", stationname);
-		map.put("datatime", datatime);
-		return sqlSession.selectOne("com.project.airquality.read",map);
+	public AirqualityDTO read(String stationname) {
+		return sqlSession.selectOne("com.project.airquality.read", stationname);
 	}
 
 }

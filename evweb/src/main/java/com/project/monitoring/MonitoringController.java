@@ -15,11 +15,14 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriUtils;
 import org.springframework.web.util.WebUtils;
 
+import com.project.airquality.AirqualityDTO;
+import com.project.airquality.AirqualityService;
 import com.project.charge.ChargeDTO;
 import com.project.charge.ChargeService;
 import com.project.charger.ChargerAPIPull;
@@ -41,16 +44,18 @@ public class MonitoringController {
 	ManagerService managerService;
 	WeatherService weatherService;
 	ChargeService chargeService;
+	AirqualityService airqualityService;
 	StationAPIPull stationAPIPull;
 	ChargerAPIPull chargerAPIPull;
 	ChargerController chargerCtrl;
 	CreateExcel createExcel;
 	
+	
 	public MonitoringController() {}
 	@Autowired
 	public MonitoringController(StationService service, ChargerService chargerService, ManagerService managerService,
 			StationAPIPull stationAPIPull, ChargerAPIPull chargerAPIPull, ChargerController chargerCtrl, WeatherService weatherService, 
-			ChargeService chargeService,CreateExcel createExcel) {
+			ChargeService chargeService,CreateExcel createExcel,AirqualityService airqualityService) {
 		super();
 		this.service = service;
 		this.chargerService = chargerService;
@@ -61,6 +66,7 @@ public class MonitoringController {
 		this.weatherService = weatherService;
 		this.chargeService = chargeService;
 		this.createExcel = createExcel;
+		this.airqualityService = airqualityService;
 	}
 
 	@RequestMapping("/monitoring/main")
@@ -121,6 +127,10 @@ public class MonitoringController {
 		mv.addObject("yesandtoamount", yesandtoamount);
 		mv.addObject("datelist",datelist);
 		mv.addObject("amountlist",amountlist);
+
+		
+		AirqualityDTO airqualityInfo  = airqualityService.read(stationInfo);
+		mv.addObject("airqualityInfo",airqualityInfo);
 		
 		return mv;
 	}
@@ -166,5 +176,16 @@ public class MonitoringController {
 //			chargerService.insert(chargerDTO);
 //		}
 //
+//	}
+//	미세먼지 지역 확인용
+//	@RequestMapping("/getlistdata")
+//	public String getlistdata(Model model) {
+//		List<StationDTO> stationlist = service.stationList();
+//		for(int i=0; i<stationlist.size();i++) {
+//			StationDTO stationInfo = stationlist.get(i); 
+//			AirqualityDTO airqualityInfo  = airqualityService.read(stationInfo);
+//			System.out.println(i+","+stationInfo.getStation_id()+","+stationInfo.getAddr_sigun()+" "+stationInfo.getAddr_do()+" "+stationInfo.getAddr_detail()+","+airqualityInfo.getStationname()+","+stationInfo.getMap_latitude()+","+stationInfo.getMap_longtude());
+//		}
+//		return "test";
 //	}
 }

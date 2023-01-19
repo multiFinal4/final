@@ -32,7 +32,9 @@ public class NoticeDAOImpl implements NoticeDAO {
 	
 	@Override
 	public NoticeDTO read(String notice_no) {
-		return sqlSession.selectOne("com.project.notice.read",notice_no);
+		NoticeDTO dto = sqlSession.selectOne("com.project.notice.read",notice_no);
+			dto.setNotice_writedate(dto.getNotice_writedate().substring(0,19));
+		return dto;
 	}
 
 	@Override
