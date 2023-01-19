@@ -72,6 +72,7 @@
 						data.sort(function(a, b) { // 오름차순 (이름)
 						    return a.station_name < b.station_name ? -1 : a.station_name > b.station_name ? 1 : 0;
 						});
+						
 					}else if (stFilter == "lowFee") {// 요금순 (완속기준)
 						data.sort(function(a, b) {
 							return a.standard - b.standard
@@ -80,9 +81,8 @@
 						data.sort(function(a, b) {
 							return b.charging_amount - a.charging_amount
 						});
-						
 					}
-					
+
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";
@@ -134,7 +134,8 @@
 	       		position: naver.maps.Position.TOP_RIGHT
 	        }
 	    });
-			
+
+		alert(JSON.stringify(filterArr));	
 
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         
@@ -142,10 +143,13 @@
 		var infowindowList = []; // 정보창을 담는 배열
 		var areaArr = [];  // 충전소 정보 담는 배열
 		
-		// 주차 체크여부
+		// 필터체크
 		if ($("input:checkbox").is(":checked")) {
 			setFilterList(filterArr);
-		}else{
+		}else if ($("select#stFilter").val() != "default") {
+			setFilterList(filterArr);
+		}
+		else{
 			setDeaultList();
 		}
 		
