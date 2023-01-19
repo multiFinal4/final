@@ -48,5 +48,9 @@ public class ChargerServiceImpl implements ChargerService {
 	public int deleteAll() {
 		return dao.deleteAll();
 	}
+	@Override
+	public int deleteId(String stationId) {
+		return dao.deleteId(stationId);
+	}
 
 }

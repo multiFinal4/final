@@ -6,5 +6,6 @@ import com.project.station.StationDTO;
 
 public interface MapDAO {
 	MapStationDTO mapStationList(String stationId);
-	List<StationDTO> search(String category, String keyword);
+	List<MapStationDTO> mapStationList();
+	List<MapStationDTO> search(String category, String keyword);
 }

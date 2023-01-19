@@ -48,5 +48,9 @@ public class ChargerDAOImpl implements ChargerDAO {
 	public int deleteAll() {
 		return sqlSession.delete("com.project.charger.delAll");
 	}
+	@Override
+	public int deleteId(String stationId) {
+		return sqlSession.delete("com.project.charger.delId", stationId);
+	}
 
 }

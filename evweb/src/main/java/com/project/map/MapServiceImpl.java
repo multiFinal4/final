@@ -22,13 +22,18 @@ public class MapServiceImpl implements MapService {
 	}
 
 	@Override
-	public List<StationDTO> search(String category, String keyword) {
+	public List<MapStationDTO> search(String category, String keyword) {
 		return dao.search(category, keyword);
 	}
 
 	@Override
 	public MapStationDTO mapStationList(String stationId) {
 		return dao.mapStationList(stationId);
+	}
+
+	@Override
+	public List<MapStationDTO> mapStationList() {
+		return dao.mapStationList();
 	}
 
 
