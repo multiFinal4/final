@@ -34,5 +34,7 @@ public interface Service_TBService {
 	
 	// 답변달리면 state '대기'에서 '완료'로 변경하기
 	int updateState(String board_no);
-	
+	//내문의내역
+	List<Service_TBDTO> selectbyId(SearchCriteria scri,String id, String type);
+	int listCountId(SearchCriteria scri,String id, String type);
 }

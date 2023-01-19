@@ -90,4 +90,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete customer_tb
 		where customer_id = #{customer_id}
 	</delete>
+	
+	
+	<!-- ==========================카카오로그인========================= -->
+	<insert id="kakaoInsert" parameterType="customer"> 
+		insert into customer_tb values(
+		#{customer_id}, '정보없음',
+		'정보없음', '정보없음', '정보없음', #{email}, sysdate,
+		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
+	</insert>
+	
+	<insert id="kakaoInsertNull" parameterType="customer"> 
+		insert into customer_tb values(
+		#{customer_id}, '정보없음',
+		'정보없음', '정보없음', '정보없음', '정보없음', sysdate,
+		TO_DATE('1111-11-11', 'YYYY-MM-DD'), '정보없음', '정보없음', '카카오')
+	</insert>
+	
+	<select id="findkakao" parameterType="customer" resultType="customer">
+		select * from customer_tb where customer_id = #{customer_id}
+	</select>
 </mapper>
+
+
+
+

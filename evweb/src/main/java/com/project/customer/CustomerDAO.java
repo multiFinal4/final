@@ -1,5 +1,6 @@
 package com.project.customer;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface CustomerDAO {
@@ -24,5 +25,12 @@ public interface CustomerDAO {
 	//관리자전환
 	int change(String customer_id);
 	int realdelete(String customer_id);
+	
+	//카카오 회원정보 저장
+	int kakaoInsert(HashMap<String, Object> userInfo);
+	//카카오 회원정보 저장(선택정보없이)
+	int kakaoInsertNull(HashMap<String, Object> userInfo);
+	//카카오 회원정보 확인
+    public CustomerDTO findkakao(HashMap<String, Object> userInfo);
 }
 

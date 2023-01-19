@@ -5,26 +5,40 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.customer.CustomerDTO;
 import com.project.customer.customerService;
-import com.project.station.StationDTO;
+import com.project.file.BoardFileDTO;
+import com.project.file.BoardFileService;
+import com.project.service.PageDTO;
+import com.project.service.SearchCriteria;
+import com.project.service.ServiceReply_TBDTO;
+import com.project.service.ServiceReply_TBService;
+import com.project.service.Service_TBDTO;
+import com.project.service.Service_TBService;
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
 	ManagerService service;
 	customerService customerservice;
-	
+	Service_TBService questionservice;
+	BoardFileService boardservice;
+	ServiceReply_TBService servicereply;
 	@Autowired
-	public ManagerController(ManagerService service, customerService customerservice) {
+	public ManagerController(ManagerService service, customerService customerservice, Service_TBService questionservice,BoardFileService boardservice,ServiceReply_TBService servicereply) {
 		super();
 		this.service = service;
 		this.customerservice = customerservice;
+		this.questionservice = questionservice;
+		this.boardservice = boardservice;
+		this.servicereply = servicereply;
 	}
 	
 	
@@ -153,4 +167,45 @@ public class ManagerController {
 		service.realdelete(manager_id);
 		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
+	
+	@RequestMapping("/boardListPaging.do")
+	public String boardListPaging(Model model, @ModelAttribute("scri") SearchCriteria scri,String manager_id) {
+		String type = "관리자";
+		model.addAttribute("list", questionservice.selectbyId(scri,manager_id,type));
+		
+		PageDTO pageMaker = new PageDTO();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(questionservice.listCountId(scri,manager_id,type));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		return "manager_service";
+	}
+	@RequestMapping("/serviceread.do")
+	public String read(String board_no, Model model, @ModelAttribute("scri") SearchCriteria scri) {
+		Service_TBDTO board = questionservice.getBoardInfo(board_no);
+		List<BoardFileDTO> boardfiledtolist = boardservice.getFileList(board_no);
+		model.addAttribute("list", board);
+		model.addAttribute("boardfiledtolist", boardfiledtolist);
+		model.addAttribute("scri", scri);
+		
+		//댓글
+		List<ServiceReply_TBDTO> replylist = servicereply.replyList(board_no);
+		model.addAttribute("replylist", replylist);
+		
+		return "manager_service_read";
+	}
+	
+	@RequestMapping("/servicedelete.do")
+	public String delete(String board_no, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr,String manager_id) {
+		questionservice.delete(board_no);
+		
+		rttr.addAttribute("page", scri.getPage());
+		rttr.addAttribute("perPageNum", scri.getPerPageNum());
+		rttr.addAttribute("searchType", scri.getSearchType());
+		rttr.addAttribute("keyword", scri.getKeyword());
+		
+		return "redirect:/manager/boardListPaging.do?manager_id="+manager_id;
+	}
+	
 }
+

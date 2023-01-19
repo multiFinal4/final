@@ -93,4 +93,5 @@ public class customerServiceImpl implements customerService {
 		
 		return dao.realdelete(customer_id);
 	}
+	
 }

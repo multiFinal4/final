@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.project.map.MapAPIPull;
 
+import oracle.net.aso.n;
+
 @Service
 public class ChargerAPIPull {
 	private MapAPIPull mapAPIPull;
@@ -23,8 +25,6 @@ public class ChargerAPIPull {
 		
 		List<Map<String, Object>> itemList = mapAPIPull.stationAPI();
 		List<ChargerDTO> chargerList = new ArrayList<ChargerDTO>();
-		String chgerType;
-		String chgerStat;
 		
 		for (Map<String, Object> charger : itemList) {
 			
@@ -38,7 +38,37 @@ public class ChargerAPIPull {
 			list.setLast_Tsdt(charger.get("lastTsdt").toString());
 			list.setLast_Tedt(charger.get("lastTedt").toString());
 			list.setNow_Tsdt(charger.get("nowTsdt").toString());
-			list.setOutput(charger.get("output").toString());
+			
+			String output = charger.get("output").toString();
+			String type = charger.get("chgerType").toString();
+			
+			if (output.isBlank()) { //출력값 없을 경우
+				switch (type) {
+				case "01":
+					output = "100";
+					break;
+				case "02":
+					output = "7";
+					break;
+				case "03":
+					output = "50";
+					break;
+				case "04":
+					output = "100";
+					break;
+				case "05":
+					output = "50";
+					break;
+				case "06":
+					output = "50";
+					break;
+				default:
+					output = "40";
+					break;
+				}
+			}
+			
+			list.setOutput(output);
 			list.setMethod(charger.get("method").toString());
 			list.setDelYn(charger.get("delYn").toString());
 			list.setDel_detail(charger.get("delDetail").toString());

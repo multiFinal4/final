@@ -23,4 +23,5 @@ public interface customerService {
 	//관리자전환
 	int change(String customer_id);
 	int realdelete(String customer_id);
+	
 }

@@ -398,7 +398,6 @@ a:hover{text-decoration:none;color:#F37321;}
 	padding:0;
 	background-color:#fff;
 	position:relative;
-	z-index:3;
 }
 .sidebar {
 	width:100%;
@@ -561,14 +560,56 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 .mapSidebar .mapSearchResult{
 	padding:10px;
+    height: calc(100% - 50px);
 	background-color:#f6f6f6;
 	border-radius:10px;
 }
+.mapSidebar .mapSearchResult .searchSelect .card-title{
+	font-size:16px;
+	font-weight: bold;
+	float: left;
+	text-align: left;
+	
+}
 .mapSearchResult .searchSelect .form-check{
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5px
+}
+.mapSearchResult .searchSelect .txt-hide {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.mapSearchResult .searchSelect .form-check-label{
+	width: calc(33.33% - 3.5px);
+    text-align: center;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #d2d2d2;
+    cursor: pointer;
+}
+.mapSearchResult .searchSelect .form-check-label.on{
+	color : #fff;
+    background-color: #F37321;
+}  
+.mapSearchResult .searchSelect .dropdown .btn{
+	padding: 4px 5px;
+	width:100%;
+	font-weight:500;
+	font-size: 14px;
+}
+.mapSearchResult .searchSelect .dropdown .btn.dropdown-toggle::after{
+	margin-left: 10px;
 }
 .mapSearchResult .mapSearchList{
-    height: 560px;
+    height: calc(100% - 95px);
     overflow-x: auto;
 }
 
@@ -634,7 +675,8 @@ a:hover{text-decoration:none;color:#F37321;}
 .btn-primary:hover, 
 .btn-primary:not(:disabled):not(.disabled).active, 
 .btn-primary:not(:disabled):not(.disabled):active, 
-.show>.btn-primary.dropdown-toggle{
+.show>.btn-primary.dropdown-toggle, 
+.btn-primary.focus, .btn-primary:focus{
     color: #fff;
     background-color: #444;
     border-color: #444;
@@ -648,17 +690,18 @@ a:hover{text-decoration:none;color:#F37321;}
 /* Map */
 #container>div.mapMarkerWrap {
     position: absolute;
-    left: -50%;
     top: 15px;
+    left: 15px;
     background-color: #fff;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
     transition:0.8s all;
+    opacity:0;
     z-index:1;
 }
-#container>div.mapMarkerWrap.on {
-    left: 15px;
+#container>div.mapMarkerWrap.on{
+    opacity:1;
 }
 .mapClose{
 	position:absolute;

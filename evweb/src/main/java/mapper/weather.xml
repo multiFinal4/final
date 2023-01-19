@@ -5,19 +5,17 @@
 <mapper namespace="com.project.weather">
 	<insert id="insert" parameterType="weather"> 
 		insert into weather_tb values(
-		#{weatherrow}, #{station_id},#{location_name},
+		#{weatherrow}, #{nx},#{ny},
 		#{sky},#{tmp},#{tmn},#{tmx},#{pop},#{day},
 		#{time},#{pty},#{pcp},#{reh},#{sno},#{vec},#{wsd},#{ftmp})
 	</insert>
-	<delete id="delete">
-		delete from weather_tb where station_id = #{station_id}
+	<delete id="delete" parameterType="Map">
+		delete from weather_tb where nx = #{nx} and ny = #{ny}
 	</delete>
-	<select id="select" parameterType="String" resultType="weather">
-		select * from weather_tb where station_id = #{station_id} order by weatherrow asc
+	<select id="select" parameterType="Map" resultType="weather">
+		select * from weather_tb where nx = #{nx} and ny = #{ny} order by weatherrow asc
 	</select>
 	<select id="read" parameterType="Map" resultType="weather">
-		select * from weather_tb where station_id = #{station_id} and day = #{day} and time = #{time}
+		select * from weather_tb where nx = #{nx} and ny = #{ny} and day = #{day} and time = #{time}
 	</select>
-	
-	
 </mapper>
