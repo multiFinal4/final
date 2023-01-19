@@ -25,9 +25,9 @@ public class KakaoController {
     public ModelAndView getCI(@RequestParam String code, HttpServletRequest request) throws IOException, ParseException {
 		ModelAndView mav = new ModelAndView();
 		
-		System.out.println("########code######### = " + code);
+//		System.out.println("########code######### = " + code);
         String access_token = ks.getToken(code); 
-        System.out.println("####access_Token##### : " + access_token);
+//        System.out.println("####access_Token##### : " + access_token);
         
         CustomerDTO userInfo = ks.getUserInfo(access_token);
         

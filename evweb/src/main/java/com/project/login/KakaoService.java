@@ -52,7 +52,7 @@ public class KakaoService {
             bw.flush();
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode 확인 = " + responseCode);
+//            System.out.println("responseCode 확인 = " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line = "";
@@ -60,7 +60,7 @@ public class KakaoService {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("result = " + result);
+//            System.out.println("result = " + result);
 
             // json parsing
             JSONParser parser = new JSONParser();
@@ -68,8 +68,8 @@ public class KakaoService {
 
             String access_token = elem.get("access_token").toString();
             String refresh_token = elem.get("refresh_token").toString();
-            System.out.println("refresh_token = " + refresh_token);
-            System.out.println("access_token = " + access_token);
+//            System.out.println("refresh_token = " + refresh_token);
+//            System.out.println("access_token = " + access_token);
 
             token = access_token;
 
@@ -98,7 +98,7 @@ public class KakaoService {
             
             //키값, 속성 적용
             int responseCode = urlConnection.getResponseCode();     // 서버에서 보낸 http 상태코드 반환
-            System.out.println("responseCode = " + responseCode);
+//            System.out.println("responseCode = " + responseCode);
             // responsecode가 200이 아닌 경우 if문을 통해서 예외처리 가능
             
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
@@ -110,7 +110,7 @@ public class KakaoService {
                 res+=line;
             }
 
-            System.out.println("res = " + res);
+//            System.out.println("res = " + res);
 
             // json으로 파싱하기
             JSONParser parser = new JSONParser();
@@ -139,7 +139,7 @@ public class KakaoService {
         
        
         CustomerDTO dtoresult = dao.findkakao(result);
-        System.out.println("dtoresult================> "+dtoresult);
+//        System.out.println("dtoresult================> "+dtoresult);
         
         // dtoresult null => 디비에 저장된 정보가 없음. 디비에 저장하기
         if(dtoresult == null) {
@@ -178,7 +178,7 @@ public class KakaoService {
             }
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = " + responseCode);
+//            System.out.println("responseCode = " + responseCode);
 
             // result is json format
             br.close();

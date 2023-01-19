@@ -29,7 +29,7 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 #header .mainNav{padding:0 15px;}
 #header.index .mainNav{width:70%;margin:0 auto;}
-#header.sub .mainNav{width:100%;}
+#header.sub .mainNav{width:100%; background-color: #fff;}
 #header.index .logo a{color:#fff;font-size:30px;}
 #header .logo a,#header.sub .logo a, #header.on .logo a{color:#333;font-weight:600;font-size:30px;}
 
