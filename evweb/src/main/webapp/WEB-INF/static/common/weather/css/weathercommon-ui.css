@@ -7,6 +7,7 @@
 .cmp-cur-weather .updated-at { background:url(/evweb/weather/images/ic_sym_99.png) no-repeat left center; background-size: auto 14px; padding-left: 15px; position: absolute; top:10px; right:10px;color:#000; font-size: 14px; line-height:14px;}
 .cmp-cur-weather ul li { float:left;}
 .cmp-cur-weather .wrap-1 { margin-top: 34px; overflow:hidden;}
+.cmp-cur-weather #wrap-3 { margin-top: 41px; overflow:hidden;}
 .cmp-cur-weather .w-temp { width:100%; display:block; text-align:center ;font-size: 50px;}
 .cmp-cur-weather .w-temp .tmp { font-weight: 500; line-height: 68px; position:relative; padding-bottom:8px; vertical-align:super;}
 .cmp-cur-weather .w-temp .tmp small {font-size:0.5em; vertical-align:super;}
@@ -24,6 +25,7 @@
 .cmp-cur-weather .wrap-2.no-underline{border-bottom:0;}
 .cmp-cur-weather .wrap-2.top-line{border-top:1px solid #D4D4D4;}
 .cmp-cur-weather .wrap-2 li { width:calc(99.9% / 3); position: relative; padding-top:4px; padding-bottom:4px;}
+.cmp-cur-weather #wrap-3 li { width:calc(99.9% / 2); position: relative; padding-top:4px; padding-bottom:4px;}
 .cmp-cur-weather .wrap-2 li:before { content:''; position:absolute; width:1px; height:44px; left:0; top:6px; background-color:#D4D4D4;}
 .cmp-cur-weather .wrap-2 li:first-child:before {display:none;} 
 .cmp-cur-weather .wrap-2 .lbl { display:block; font-size: 16px; line-height:26px; font-weight: 500; text-align:center;}
@@ -135,7 +137,7 @@ wbg { background-size:auto 150%; background-position:left top; background-color:
 .sym-btn-right { float:right;}
 
 .current-weather .cmp-cur-weather-air { display:block; }
-.cmp-cur-weather-air { z-index:1;}
+.cmp-cur-weather-air { z-index:0;}
 .cmp-cur-weather-air .air-lvt a[data-air-type] {vertical-align: middle;text-indent:-99999px; width:18px; height:18px; display:inline-block; background:url(/evweb/weather/images/icon_help_2.png) no-repeat center center; background-size:14px; }
 /* 오른쪽 정렬 문단 */
 .cmp-cmn-para p{ font-size:14px; padding:5px; }

@@ -88,7 +88,6 @@ public class WeatherController {
 		for (int i = 0; i < weatherList.size(); i++) {
 			weatherList.get(i).setWeatherrow(i+1);
 			weatherService.insert(weatherList.get(i));
-			System.out.println(weatherList.get(i));
 		}
 		return view;
 	}

@@ -54,7 +54,6 @@ public class AirqualityAPIPull {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-		System.out.println("Response code: " + conn.getResponseCode());
 		BufferedReader rd;
 		if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 			rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -68,7 +67,6 @@ public class AirqualityAPIPull {
 		}
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb.toString());
 		return sb.toString();
 	}
 
@@ -107,7 +105,6 @@ public class AirqualityAPIPull {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		System.out.println("먼지리수투~"+dustList);
 		return dustList;
 		
 	}
