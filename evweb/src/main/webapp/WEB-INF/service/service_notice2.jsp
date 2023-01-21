@@ -47,7 +47,8 @@
 		</table>
 	</div>
 	<div class="nav navbar-nav">
-		<a href="/evweb/service/noticeinsert" style="text-align: right;">글쓰기</a>
+		<button type="button" onclick="location.href='/evweb/service/noticeinsert'" style="margin-left: auto;" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
+		<!-- <a href="/evweb/service/noticeinsert" style="text-align: right;">글쓰기</a> -->
 	</div>
 </body>
 </html>

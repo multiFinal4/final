@@ -50,7 +50,7 @@
 					</tr>
 				</table>
 		<div class="nav navbar-nav">
-			<a href="/evweb/service/faqinsert" style="text-align: right;">글쓰기</a>
+			<button type="button" onclick="location.href='/evweb/service/faqinsert'" style="margin-left: auto;" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
 		</div>
 	</div>
 </body>

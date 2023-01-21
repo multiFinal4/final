@@ -176,32 +176,6 @@
 											<c:if test="${charger.stat eq '9' }">
 												<span class="chrgrStat noSign">상태미확인</span>
 											</c:if>
-											
-											
-											<%-- <c:choose>
-												  <!-- 충전기타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상+DC콤보,	07: AC3상) -->
-											      <c:when test="${charger.charger_type == '01'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '02'}">
-													<span class="text-muted small pt-2 ps-1">AC완속,</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '03'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '04'}">
-													<span class="text-muted small pt-2 ps-1">DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '05'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '06'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상+DC콤보</span>
-											      </c:when> 
-											      <c:otherwise>
-													<span class="text-muted small pt-2 ps-1">${charger.charger_type}</span>
-											      </c:otherwise> 
-											</c:choose>  --%>
 										</div>
 									</div>
 								</c:forEach>
@@ -414,7 +388,7 @@
 		        <div class="col-md-8 pr-0">
 						<div class="card info-card sales-card " style="z-index : 1;">
 							<div class="card-header">
-								<h5 class="card-title">일간 충전량 <span style="float: right";>${chargeAmount}kWh</span></h5>
+								<h5 class="card-title">일간 충전량 <span style="float: right">${chargeAmount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 							<figure class="highcharts-figure">
@@ -424,7 +398,7 @@
 						</div>
 						<div class="card info-card sales-card" style="z-index : 0;">
 							<div class="card-header">
-								<h5 class="card-title">주간 충전량 <span style="float: right";>${weekamount}kWh</span></h5>
+								<h5 class="card-title">주간 충전량 <span style="float: right">${weekamount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 								<figure class="highcharts-figure">
@@ -435,6 +409,6 @@
 					</div>
 		        </div>
 			</div>
-	
+		</div>
 	</body>
 </html>

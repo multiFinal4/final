@@ -3,41 +3,40 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>회원가입</title>
- <link href="https://fonts.gstatic.com" rel="preconnect">
- <link href="/evweb/css/style.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script type="text/javascript">
-	 $(document).ready(function() {
-			$("#customer_id").on("keyup", function() {
-				var inputid = { "customer_id": $("#customer_id").val() }
-				if($("#customer_id").val().length < 4){
-					$("#checkVal").text("4글자 이상 입력해주세요")
-				}else{
-					$.ajax({
-					url:"/evweb/customer/idcheak",
-					type: "post",
-					data: inputid,
-					success: function(data){
-						if(data == false){	
-							$("#checkVal").text("중복된 아이디로 사용불가")
+	<head>
+		<meta charset="UTF-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>회원가입</title>
+		<link href="https://fonts.gstatic.com" rel="preconnect">
+		<link href="/evweb/css/style.css" rel="stylesheet">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$("#customer_id").on("keyup", function() {
+						var inputid = { "customer_id": $("#customer_id").val() }
+						if($("#customer_id").val().length < 4){
+							$("#checkVal").text("4글자 이상 입력해주세요")
 						}else{
-							$("#checkVal").text("사용가능아이디")
+							$.ajax({
+							url:"/evweb/customer/idcheak",
+							type: "post",
+							data: inputid,
+							success: function(data){
+								if(data == false){	
+									$("#checkVal").text("중복된 아이디로 사용불가")
+								}else{
+									$("#checkVal").text("사용가능아이디")
+								}
+							}
+						})
 						}
-					}
-				})
-				}
-			})
-		}) 
-	</script>
-</head>
-<body>
+					})
+				}) 
+		</script>
+	</head>
+	<body>
 			<div class="card-body">
 				<h2 class="card-title">회원 가입</h2>
-
 				<!-- 회원등록 후 전송할 페이지 다시 로그인 화면으로 돌아가기!-->
 				<form action="/evweb/login.do" method="post">
 					<div class="row mb-3">

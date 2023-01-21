@@ -4,130 +4,110 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-<title>마이페이지</title>
-	<link href="https://fonts.gstatic.com" rel="preconnect">
-	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-
-	<style type="text/css">
-label{
-	
-	text-align:center;
-}
- 
- #input{
-    background : #FBF5EF;
-    
- }
- 
-</style>
-
-
-
-</head>
-
-<body>
-	<main id="main" class="main">
-		<div class="pagetitle">
-			<h1></h1>
-		</div>
-		
-		<div >
-			<div class="card-body">
-				<h1 class="pagetitle"><img src='/evweb/images/favicon/favicon.ico' style='width:50px;'> [ 마이페이지 ]</h1>
-				<hr/>
-
-				<!-- General Form Elements -->
-				<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
-					<div class="row mb-3">
-						<input type="hidden" name="customerinfo_id" value="${customerinfo.customer_id}">
-						<label for="inputText" class="col-sm-2 col-form-label"  id="input">아이디</label>
-						<div class="col-sm-3">
-							${customerinfo.customer_id}
-						</div>
-						
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>마이페이지</title>
+		<link href="https://fonts.gstatic.com" rel="preconnect">
+		<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<style type="text/css">
+			label{
+				text-align:center;
+			}
+			 #input{
+			    background : #FBF5EF;
+			 }
+		</style>
+	</head>
+	<body>
+		<div class="card-body">
+			<h1 class="pagetitle"><img src='/evweb/images/favicon/favicon.ico' style='width:50px;'> [ 마이페이지 ]</h1>
+			<hr/>
+			<!-- General Form Elements -->
+			<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
+				<div class="row mb-3">
+					<input type="hidden" name="customerinfo_id" value="${customerinfo.customer_id}">
+					<label for="inputText" class="col-sm-2 col-form-label"  id="input">아이디</label>
+					<div class="col-sm-3">
+						${customerinfo.customer_id}
 					</div>
 					
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">비밀번호</label>
-						<div class="col-sm-3">
-							${customerinfo.pass}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">이름</label>
-						<div class="col-sm-3">
-							${customerinfo.name}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">핸드폰번호</label>
-						<div class="col-sm-3">
-							${customerinfo.phone_no}
-						</div>
-
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">우편번호</label>
-						<div class="col-sm-3">
-							${customerinfo.zipcode}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">주소</label>
-						<div class="col-sm-3">
-							${customerinfo.customer_addr}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label" id="input">나머지 상세주소</label>
-						<div class="col-sm-3">
-							${customerinfo.address}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="inputEmail" class="col-sm-2 col-form-label" id="input">Email</label>
-						<div class="col-sm-3">
-							${customerinfo.email}
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label" id="input">생년월일</label>
-						<div class="col-sm-3">
-							${customerinfo.birth}
-						</div>
-						
-					</div>
-						<div class="row mb-3">
-						<label class="col-sm-2 col-form-label" id="input">비밀번호찾기 질문</label>
-						<div class="col-sm-3">
-							${customerinfo.ps_question}
-						</div>
-					</div>
-						<div class="row mb-3">
-						<label class="col-sm-2 col-form-label" id="input">비밀번호찾기 대답</label>
-						<div class="col-sm-3">
-							${customerinfo.ps_answer}
-						</div>
-					
-				
-
-					</div>
-					
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
-					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
-					<!-- 탈퇴 버튼 누르면 "/customer/delete.do?customer_id=${customerinfo.customer_id}" 로 이어지게 -->
 				</div>
-				</form>
+				
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">비밀번호</label>
+					<div class="col-sm-3">
+						${customerinfo.pass}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">이름</label>
+					<div class="col-sm-3">
+						${customerinfo.name}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">핸드폰번호</label>
+					<div class="col-sm-3">
+						${customerinfo.phone_no}
+					</div>
+	
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">우편번호</label>
+					<div class="col-sm-3">
+						${customerinfo.zipcode}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">주소</label>
+					<div class="col-sm-3">
+						${customerinfo.customer_addr}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">나머지 상세주소</label>
+					<div class="col-sm-3">
+						${customerinfo.address}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputEmail" class="col-sm-2 col-form-label" id="input">Email</label>
+					<div class="col-sm-3">
+						${customerinfo.email}
+					</div>
+				</div>
+				<div class="row mb-3">
+					<label class="col-sm-2 col-form-label" id="input">생년월일</label>
+					<div class="col-sm-3">
+						${customerinfo.birth}
+					</div>
+					
+				</div>
+					<div class="row mb-3">
+					<label class="col-sm-2 col-form-label" id="input">비밀번호찾기 질문</label>
+					<div class="col-sm-3">
+						${customerinfo.ps_question}
+					</div>
+				</div>
+					<div class="row mb-3">
+					<label class="col-sm-2 col-form-label" id="input">비밀번호찾기 대답</label>
+					<div class="col-sm-3">
+						${customerinfo.ps_answer}
+					</div>
+				
+			
+	
+				</div>
+				
+			<div class="text-center">
+				<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
+				<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
+				<!-- 탈퇴 버튼 누르면 "/customer/delete.do?customer_id=${customerinfo.customer_id}" 로 이어지게 -->
 			</div>
-	 </main>
+			</form>
+		</div>
 		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
@@ -149,8 +129,6 @@ label{
 					</div>
 				</div>
           </div>
-          </div>
-        
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function () {
