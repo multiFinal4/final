@@ -1,7 +1,23 @@
 @import
 	url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext')
 	;
-
+.top {
+	text-align: center;
+}
+.top button:hover {
+    transform: translate(0,-10px);
+    background-image: url(/evweb/images/top-arr-wh.png);
+}
+.top button{
+	border: none;
+	width: 32px;
+	height: 32px;
+	margin-bottom: 10px;
+	background: url(/evweb/images/top-arr.png) no-repeat;background-size: contain;transition: 0.5s;}
+.fp-auto-height{
+	padding-top: 30px;
+    height: auto !important;
+}
 .absolute-center {
 	position: absolute;
 	top: 50%;
@@ -415,4 +431,205 @@ a.btn {
 
 .content {
 	padding: 5%;
+}
+#section2 {
+	font-weight: 400;
+	line-height: 1.5;
+	color: #212529;
+	text-align: left;
+}
+.sectionfooter {
+  font-size: 14px;
+  background: #292929;
+  
+}
+.sectionfooter.sub{
+	width:100%;
+	bottom:0;
+	left:0;
+	z-index:3;
+	margin-left:0;
+}
+.sectionfooter.sub .footer-top{
+	display:none;
+}
+.sectionfooter .footer-newsletter {
+  padding: 50px 0;
+  background: #f3f5fa;
+  text-align: center;
+  font-size: 15px;
+  color: #444444;
+}
+
+.sectionfooter .footer-newsletter h4 {
+  font-size: 24px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 600;
+  color: #37517e;
+}
+
+.sectionfooter .footer-newsletter form {
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.06);
+  text-align: left;
+}
+
+.sectionfooter .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+
+.sectionfooter .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: #47b2e4;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.sectionfooter .footer-newsletter form input[type=submit]:hover {
+  background: #209dd8;
+}
+
+.sectionfooter .footer-top {
+  padding: 60px 0 30px 0;
+  background: #fff;
+}
+
+.sectionfooter .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+
+.sectionfooter .footer-top .footer-contact h3 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #F37321;
+}
+
+.sectionfooter .footer-top .footer-contact p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Jost", sans-serif;
+  color: #5e5e5e;
+}
+
+.sectionfooter .footer-top h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #F37321;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.sectionfooter .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+
+.sectionfooter .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sectionfooter .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #47b2e4;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.sectionfooter .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.sectionfooter .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.sectionfooter .footer-top .footer-links ul a {
+  color: #777777;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+
+.sectionfooter .footer-top .footer-links ul a:hover {
+  text-decoration: none;
+  color: #47b2e4;
+}
+
+.sectionfooter .footer-top .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #47b2e4;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+
+.sectionfooter .footer-top .social-links a:hover {
+  background: #209dd8;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sectionfooter .footer-bottom {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #fff;
+  text-align:center;
+}
+
+.sectionfooter .credits {
+  float: right;
+  font-size: 13px;
+}
+
+.sectionfooter .credits a {
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .sectionfooter .footer-bottom {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .sectionfooter .copyright,
+  .sectionfooter .credits {
+    text-align: center;
+    float: none;
+  }
+
+  .sectionfooter .credits {
+    padding-top: 4px;
+  }
 }
