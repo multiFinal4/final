@@ -218,12 +218,12 @@ header {
 pm10box {
 	color: black;
 	text-decoration: none;
-	padding: 15px; /* 패딩: 안쪽여백, 마진: 밖여백 */
+	padding: 20px; /* 패딩: 안쪽여백, 마진: 밖여백 */
 	display: inline-block; /* 인라인모드/블럭모드 이해 필요  */
-	width: 26px;
+	width: 70px;
 	text-align: center;
 	margin: 5px;
-	font-size: 9px;
+	font-size:;
 }
 </style>
 </head>
@@ -1385,25 +1385,7 @@ pm10box {
 				</div>
 			</div>
 			<!-- 미세먼지 시작 -->
-			<%
-			//		if (!dto.getPm10value().equals("-")) {
-			//			
-			//		int Pm10value = Integer.parseInt(dto.getPm10value());
-			//			if(Pm10value > 75) 		{ 	dto.setPm10value("매우나쁨");	}
-			//			else if(Pm10value>35) 	{	dto.setPm10value("나쁨");	}
-			//			else if(Pm10value>15)	{	dto.setPm10value("보통");		}
-			//			else   {		 		dto.setPm10value("좋음");	}
-			//		}
-			//		
-			//		if(!dto.getPm25value().equals("-")) {
-			//			int Pm25value = Integer.parseInt(dto.getPm25value());
-			//			if(Pm25value > 150) 		{ 	dto.setPm25value("매우나쁨");	}
-			//			else if(Pm25value>80) 	{	dto.setPm25value("나쁨");	}
-			//			else if(Pm25value>30)	{	dto.setPm25value("보통");		}
-			//			else   {		 		dto.setPm25value("좋음");	}
-			//		}
-			%>
-
+${airqualityInfo.pm25value}
 			<div style="display: flex; justify-content: center;">
 
 				<div class="forecast-body" style="font-family: &amp; amp;">
@@ -1412,64 +1394,60 @@ pm10box {
 						<tr class="wf-row-pm25">
 							<td>PM<sub>2.5</sub></td>
 							<td style="padding: px 1px 0px 0px;">
-							<c:forEach
-									var="airDust" items="뀨">
-									<div style="display: inline-block; width: 80px;">
-										<svg width="80px" height="80px" version="1.1"
-											viewBox="0 0 64 52"
-											style="filter: transform-origin: 50% 50% 0px;">
+								<div style="display: inline-block; width: 80px;">
+									<svg width="80px" height="80px" version="1.1"
+										viewBox="0 0 64 52"
+										style="filter: transform-origin: 50% 50% 0px;">
 
           <g>
             <path fill="#bacb41"
-												d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
-								<text text-anchor="middle" font-family="serif" font-size="12"
-												y="42" x="32" fill="#ffffff">제주도</hr5>
+											d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
+										<text text-anchor="middle" font-family="serif" font-size="12"
+											y="42" x="32" fill="#ffffff">제주도</hr5>
 
           </g>
         </svg>
-
-										<div id="centertxt";>${airq }</div>
-									</div>
-									<div style="display: inline-block; width: 80px;">
-										<svg width="80px" height="80px" version="1.1"
-											viewBox="0 0 64 52"
-											style="filter: transform-origin: 50% 50% 0px;">
+									<div id="centertxt";>뽀잉</div>
+								</div>
+								<div style="display: inline-block; width: 80px;">
+									<svg width="80px" height="80px" version="1.1"
+										viewBox="0 0 64 52"
+										style="filter: transform-origin: 50% 50% 0px;">
           <g>
             <path fill="#a9c744"
-												d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
-								<text text-anchor="middle" font-family="serif" font-size="12"
-												y="42" x="32" fill="#ffffff">서귀포</text>
+											d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
+										<text text-anchor="middle" font-family="serif" font-size="12"
+											y="42" x="32" fill="#ffffff">서귀포</text>
           </g>
         </svg>
-										<div id="centertxt";>뽀잉</div>
-									</div>
-									<div style="display: inline-block; width: 80px;">
-										<svg width="80px" height="80px" version="1.1"
-											viewBox="0 0 64 52"
-											style="filter: transform-origin: 50% 50% 0px;">
+									<div id="centertxt";>뽀잉</div>
+								</div>
+								<div style="display: inline-block; width: 80px;">
+									<svg width="80px" height="80px" version="1.1"
+										viewBox="0 0 64 52"
+										style="filter: transform-origin: 50% 50% 0px;">
           <g>
             <path fill="#64b452"
-												d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
-								<text text-anchor="middle" font-family="serif" font-size="12"
-												y="42" x="32" fill="#ffffff">고산리</text>
+											d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
+										<text text-anchor="middle" font-family="serif" font-size="12"
+											y="42" x="32" fill="#ffffff">고산리</text>
           </g>
         </svg>
-										<div id="centertxt";>뽀잉</div>
-									</div>
-									<div style="display: inline-block; width: 80px;">
-										<svg width="80px" height="80px" version="1.1"
-											viewBox="0 0 64 52"
-											style="filter: transform-origin: 50% 50% 0px;">
+									<div id="centertxt";>뽀잉</div>
+								</div>
+								<div style="display: inline-block; width: 80px;">
+									<svg width="80px" height="80px" version="1.1"
+										viewBox="0 0 64 52"
+										style="filter: transform-origin: 50% 50% 0px;">
           <g>
             <path fill="#7ebb4d"
-												d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
-								<text text-anchor="middle" font-family="serif" font-size="12"
-												y="42" x="32" fill="#ffffff">성산읍</text>
+											d="M47.165,51.322H16.834c-7.142,0-12.952-5.81-12.952-12.952c0-6.042,4.264-11.29,10.076-12.615 c-0.025-0.298-0.036-0.584-0.036-0.861c0-6.736,5.479-12.216,12.215-12.216c4.756,0,8.986,2.697,11.01,6.941 c5.152-0.822,9.957,1.677,12.398,6.033c6.063,1.131,10.571,6.503,10.571,12.718C60.117,45.513,54.308,51.322,47.165,51.322z"></path>
+										<text text-anchor="middle" font-family="serif" font-size="12"
+											y="42" x="32" fill="#ffffff">성산읍</text>
           </g>
         </svg>
-										<div id="centertxt";>뽀잉</div>
-									</div>
-								</c:forEach>
+									<div id="centertxt";>뽀잉</div>
+								</div>
 
 								<div style="display: inline-block; width: 80px;"></div>
 								<div class="forecast-body-table">
@@ -1508,20 +1486,19 @@ pm10box {
 											<td style="padding: 0px 1px 0px 0px;">
 												<div>
 													<pm10box style="background-color:red;";>뿌잉</pm10box>
-													</svg>
 												</div>
 											</td>
 										</tr>
 									</table>
-								</div></td>
+								</div>
+							</td>
 						</tr>
 					</div>
 				</div>
 			</div>
-
-			<!-- 미세먼지 끝 -->
 		</div>
 	</div>
+	<!-- 미세먼지 끝 -->
 
 </body>
 </html>
