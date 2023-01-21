@@ -19,6 +19,7 @@
 		var filterData = {};
 		var company = "all";
 		var stFilter = "default";
+		
 		// 지도 실행
 		initMap(filterData,filterArr);
 
@@ -28,13 +29,12 @@
 		});
 		$("select#company").change(function() {
 			company = $(this).val();
-			console.log(company, stFilter);
 		});
 
 		$("select#stFilter").change(function() {
 			stFilter = $(this).val();
-			console.log(company, stFilter);
 		});
+
 		// 검색필터 체크 이벤트
 		$("input:checkbox, select#company, select#stFilter").change(function() {
         	var chckNum = $(this).parent("label").index();
@@ -105,6 +105,11 @@
 					}
 					$(".mapSearchList").html(strHTML);
 					
+					if (stFilter == "pop") { // 인기순
+						$(".mapSearchList > .card").eq(0).addClass("first");
+						$(".mapSearchList > .card").eq(1).addClass("scnd");
+						$(".mapSearchList > .card").eq(2).addClass("thrd");
+					}
 					// 변경된 값으로 지도 불러오기
 					initMap(filterData, filterArr);
 				},
@@ -112,6 +117,8 @@
 				  console.error("Map Error");
 				}
 			});
+	        
+
 		});
 		
 
@@ -349,6 +356,7 @@
 				    $(".stationInfoTitle").html("<i class='bi bi-pin-fill'></i>"+data.station_name);
 				    $(".stationInfoAddr .addr").text(data.addr_do+data.addr_sigun+data.addr_detail);
 				    $(".stationInfoCom .com").text(data.station_company);
+				    $(".stationInfoCom .tel").text(data.busi_call);
 				    $(".chargeFee .standard").text(data.standard);
 				    $(".chargeFee .quick").text(data.quick);
 				    $(".chargeFee .super").text(data.superQuick);
@@ -507,7 +515,9 @@
 	        </div>
 	        <div class="stationInfoCom d-flex align-items-center mb-2">
 	            <h5 class="mb-0">운영기관</h5>
-	            <span class="com"></span>
+	            <span class="com mr-3"></span>
+	            <i class="bi bi-telephone-fill"></i>
+	            <span class="tel ml-1"></span>
 	        </div>
 	        <div class="stationInfoTime d-flex align-items-center mb-2">
 	            <h5 class="mb-0">운영시간</h5>
