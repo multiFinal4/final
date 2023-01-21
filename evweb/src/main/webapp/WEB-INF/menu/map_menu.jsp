@@ -80,10 +80,10 @@
 							</label>
 				        </div>
 			         	<div class="dropdown col-sm-4 pl-0 pr-0">
-							<select name="stFilter"  id="stFilter" class="selectpicker form-control" title="선택해주세요" data-live-search="true" data-actions-box="true">
+							<select name="stFilter"  id="stFilter" class="selectpicker form-control" data-live-search="true" data-actions-box="true">
 									<option value="default">기본순</option>
-									<option value="lowFee">낮은 금액순</option>
-									<option value="highFee">높은 금액순</option>
+									<option value="name">이름순</option>
+									<option value="lowFee">낮은금액순</option>
 									<option value="pop">인기순</option>
 							</select>
 						</div>

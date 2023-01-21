@@ -210,106 +210,7 @@
 									}
 			</script>
 <!-- / Google Analytics by MonsterInsights -->
-<script type="text/javascript">
-window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/elecvery.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
-/*! This file is auto-generated */
-!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(p&&p.fillText)switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
-</script>
-<style type="text/css">
-@font-face {
-	src: url(//fonts.googleapis.com/earlyaccess/jejugothic.css);
-	font-family: 'Jeju Gothic';
-	font-weight: normal;
-	font-style: normal;
-}
-
-/* div p {
-	font-family: 'Jeju Gothic';
-} */
-img.wp-smiley, img.emoji {
-	display: inline !important;
-	border: none !important;
-	box-shadow: none !important;
-	height: 1em !important;
-	width: 1em !important;
-	margin: 0 0.07em !important;
-	vertical-align: -0.1em !important;
-	background: none !important;
-	padding: 0 !important;
-}
-</style>
-<link rel='stylesheet' id='wp-block-library-css'
-	href='https://elecvery.com/wp-includes/css/dist/block-library/style.min.css'
-	type='text/css' media='all' />
-<link rel='stylesheet' id='classic-theme-styles-css'
-	href='https://elecvery.com/wp-includes/css/classic-themes.min.css'
-	type='text/css' media='all' />
 <style id='global-styles-inline-css' type='text/css'>
-body { -
-	-wp--preset--color--black: #000000; -
-	-wp--preset--color--cyan-bluish-gray: #abb8c3; -
-	-wp--preset--color--pale-pink: #f78da7; -
-	-wp--preset--color--vivid-red: #cf2e2e; -
-	-wp--preset--color--luminous-vivid-orange: #ff6900; -
-	-wp--preset--color--luminous-vivid-amber: #fcb900; -
-	-wp--preset--color--light-green-cyan: #7bdcb5; -
-	-wp--preset--color--vivid-green-cyan: #00d084; -
-	-wp--preset--color--pale-cyan-blue: #8ed1fc; -
-	-wp--preset--color--vivid-cyan-blue: #0693e3; -
-	-wp--preset--color--vivid-purple: #9b51e0; -
-	-wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg, rgba(6, 147, 227, 1)
-		0%, rgb(155, 81, 224) 100%); -
-	-wp--preset--gradient--light-green-cyan-to-vivid-green-cyan:
-		linear-gradient(135deg, rgb(122, 220, 180) 0%, rgb(0, 208, 130) 100%);
-	-
-	-wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange:
-		linear-gradient(135deg, rgba(252, 185, 0, 1) 0%, rgba(255, 105, 0, 1)
-		100%); -
-	-wp--preset--gradient--luminous-vivid-orange-to-vivid-red:
-		linear-gradient(135deg, rgba(255, 105, 0, 1) 0%, rgb(207, 46, 46) 100%);
-	-
-	-wp--preset--gradient--very-light-gray-to-cyan-bluish-gray:
-		linear-gradient(135deg, rgb(238, 238, 238) 0%, rgb(169, 184, 195) 100%);
-	-
-	-wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg, rgb(74, 234, 220)
-		0%, rgb(151, 120, 209) 20%, rgb(207, 42, 186) 40%, rgb(238, 44, 130)
-		60%, rgb(251, 105, 98) 80%, rgb(254, 248, 76) 100%); -
-	-wp--preset--gradient--blush-light-purple: linear-gradient(135deg, rgb(255, 206, 236)
-		0%, rgb(152, 150, 240) 100%); -
-	-wp--preset--gradient--blush-bordeaux: linear-gradient(135deg, rgb(254, 205, 165)
-		0%, rgb(254, 45, 45) 50%, rgb(107, 0, 62) 100%); -
-	-wp--preset--gradient--luminous-dusk: linear-gradient(135deg, rgb(255, 203, 112)
-		0%, rgb(199, 81, 192) 50%, rgb(65, 88, 208) 100%); -
-	-wp--preset--gradient--pale-ocean: linear-gradient(135deg, rgb(255, 245, 203)
-		0%, rgb(182, 227, 212) 50%, rgb(51, 167, 181) 100%); -
-	-wp--preset--gradient--electric-grass: linear-gradient(135deg, rgb(202, 248, 128)
-		0%, rgb(113, 206, 126) 100%); -
-	-wp--preset--gradient--midnight: linear-gradient(135deg, rgb(2, 3, 129)
-		0%, rgb(40, 116, 252) 100%); -
-	-wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');
-	-
-	-wp--preset--duotone--grayscale: url('#wp-duotone-grayscale'); -
-	-wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');
-	-
-	-wp--preset--duotone--blue-red: url('#wp-duotone-blue-red'); -
-	-wp--preset--duotone--midnight: url('#wp-duotone-midnight'); -
-	-wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');
-	-
-	-wp--preset--duotone--purple-green: url('#wp-duotone-purple-green'); -
-	-wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange'); -
-	-wp--preset--font-size--small: 13px; -
-	-wp--preset--font-size--medium: 20px; -
-	-wp--preset--font-size--large: 36px; -
-	-wp--preset--font-size--x-large: 42px; -
-	-wp--preset--spacing--20: 0.44rem; -
-	-wp--preset--spacing--30: 0.67rem; -
-	-wp--preset--spacing--40: 1rem; -
-	-wp--preset--spacing--50: 1.5rem; -
-	-wp--preset--spacing--60: 2.25rem; -
-	-wp--preset--spacing--70: 3.38rem; -
-	-wp--preset--spacing--80: 5.06rem;
-	background-color: transparent;
-}
 
 :where(.is-layout-flex) {
 	gap: 0.5em;
@@ -1169,89 +1070,7 @@ body div[data-style*=minimal] .toggle h3 a, body div[data-style*=minimal] .toggl
 	background-image: url('/wp-content/uploads/2022/07/icon2.png')
 }
 
-/*푸터*/
-#footer-outer {
-	background-color: #132b4a
-}
 
-.logo_wrap {
-	width: 20%;
-	float: left;
-	text-align: left
-}
-
-.footer_menu {
-	width: 14%;
-	margin: 0 1%;
-	float: left;
-	text-align: left
-}
-
-.footer_menu h4 {
-	color: #fff !important;
-	font-size: 17px !important;
-	font-weight: 500 !important;
-	border-bottom: 1px solid #ffffff1c;
-	padding-bottom: 10px;
-	margin-bottom: 10px !important
-}
-
-.footer_menu h4.none {
-	border: none
-}
-
-.footer_menu ul li {
-	padding: 2px
-}
-
-.footer_menu ul li a {
-	font-size: 15px;
-	color: #999 !important
-}
-
-#footer-outer a:hover {
-	color: #f9f9f9 !important
-}
-
-#footer-outer .logo_wrap img {
-	width: 130px
-}
-
-#footer-outer[data-cols="1"][data-disable-copyright="false"] #copyright
-	{
-	padding: 40px 0 !important
-}
-
-.footer_mobile {
-	display: none;
-}
-
-.app_deli_tx {
-	font-size: 34px;
-	font-weight: 700;
-	color: #1f2b49;
-	line-height: 1.5em
-}
-
-.nectar-button.jumbo {
-	font-size: 17px;
-	padding: 20px 50px 20px 48px !important
-}
-
-.deli_no {
-	display: inline-block;
-	background: #444444;
-	font-size: 18px;
-	font-family: 'Poppins';
-	color: #fff;
-	font-weight: 700;
-	text-align: center;
-	padding: 10px;
-	border-radius: 100px;
-	width: 40px;
-	height: 40px;
-	line-height: 20px
-}
 
 /*브랜드*/
 .brand_reveal_wrap .row-bg {
@@ -1803,16 +1622,6 @@ wcs_do(_nasa);
 					<div>
 						<div>
 							<div>
-								<div class="row-bg-wrap" data-bg-animation="zoom-out"
-									data-bg-animation-delay="" data-bg-overlay="true">
-									<div class="inner-wrap row-bg-layer using-image">
-										<div class="row-bg viewport-desktop using-image"
-											data-parallax-speed="slow"
-											style="background-image: url(https://elecvery.com/wp-content/uploads/2022/09/sub_visual11.jpg); background-position: center center; background-repeat: no-repeat;"></div>
-									</div>
-									<div class="row-bg-overlay row-bg-layer"
-										style="background-color: #0a0a0a; opacity: 0.5;"></div>
-								</div>
 							</div>
 							<div>
 								<div class="row_col_wrap_12 col span_12 dark left">
@@ -1826,12 +1635,13 @@ wcs_do(_nasa);
 
 												<div class="wpb_text_column wpb_content_element  sub_stit">
 													<div class="wpb_wrapper">
-														<p id="peeInfo" style="font-size: 30px;">
+														<div id="peeInfo" style="font-size: 30px;">
 															<strong>충전 요금 정보</strong>
-														</p>
+														</div>
+														<hr>
 													</div>
 												</div>
-												<br> <br>
+												<br>
 												<div>
 													<div class="row-bg-wrap">
 														<div class="row-bg"></div>
@@ -1866,7 +1676,7 @@ wcs_do(_nasa);
 								</div>
 								<div class="row_col_wrap_12 col span_12 dark left">
 									<div
-										class="vc_col-sm-3 vc_hidden-sm vc_hidden-xs wpb_column column_container vc_column_container nectar-sticky-column no-extra-padding inherit_tablet inherit_phone "
+										class="vc_col-sm-4 vc_hidden-sm vc_hidden-xs wpb_column column_container vc_column_container nectar-sticky-column no-extra-padding inherit_tablet inherit_phone "
 										data-padding-pos="all" data-has-bg-color="false"
 										data-bg-color="" data-bg-opacity="1" data-animation=""
 										data-delay="0">
@@ -2392,7 +2202,7 @@ wcs_do(_nasa);
 																		<p style="color: #444444;">
 																			<span class="text"> </span><span class=""><a
 																				target="_blank" class="link_text"
-																				href="https://www.happecharger.com/board01Detail.do">관련
+																				href="https://www.happecharger.com/board01.do">관련
 																					정보 > </a></span>
 																		</p>
 																	</div>
@@ -2990,7 +2800,7 @@ wcs_do(_nasa);
 																	<div
 																		class="wpb_text_column wpb_content_element  vc_custom_1663659195138 fs_15">
 																		<div class="wpb_wrapper">
-																			<p>※ 조이이브이 멤버십 결제 시 280원</p>
+																			
 																		</div>
 																	</div>
 
@@ -4143,10 +3953,18 @@ var vcData = {"currentTheme":{"slug":"salient"}};
 	<script type='text/javascript'
 		src='https://elecvery.com/wp-content/plugins/js_composer_salient/assets/js/dist/js_composer_front.min.js'
 		id='wpb_composer_front_js-js'></script>
-	<script>
-   jQuery(document).ready(function() {
-     
-   });
-</script>
+<script>
+    $(document).ready(function() {
+        $(function () {
+            $(".menu-item").on("click", function(){
+                var headerHeight = $("header").outerHeight();
+                var href = $(this).attr("href");
+                var target = $(href == "#" || href == "" ? "body" : href);
+                var position = target.offset().top - headerHeight;
+                $("html, body").animate({ scrollTop: position }, 600, "swing");
+            });
+        });
+    });
+    </script>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class WeatherUtil {
         if(Integer.parseInt(formatedNow)>=2310) {
         	baseTime = "2000";
         }else if(Integer.parseInt(formatedNow)>=2010) {
-        	baseTime = "2000";
+        	baseTime = "1700";
         }else if(Integer.parseInt(formatedNow)>=1810) {
         	baseTime = "1700";
         }else if(Integer.parseInt(formatedNow)>=1410) {
@@ -135,8 +135,6 @@ public class WeatherUtil {
 			double NX = 149f; /* X축 격자점 수 */
 			double NY = 253f; /* Y축 격자점 수 */
 			if (argv.length != 4) {
-				System.out.println("[Usage] "+argv[0]+"1 <X-grid><Y-grid>");
-				System.out.println(" "+argv[0]+" 0 <longitude><latitude>");
 				System.exit(0);
 			}
 			if ((argv[1]).equals("0")) {
@@ -144,7 +142,6 @@ public class WeatherUtil {
 				y = Double.parseDouble(argv[3]);
 
 				if (x < 1 || x > NX || y < 1 || y > NY) {
-					System.out.println("X-grid range [1,"+NX+"] / Y-grid range [1,"+NY+"]");
 					System.exit(0);
 				}
 			} else if ((argv[1]).equals("1")) {
@@ -173,9 +170,7 @@ public class WeatherUtil {
 			// Character.getNumericValue(argv[1]) = 0 (격자->위경도), 1 (위경도->격자)
 			resultarr = map_conv(lon, lat, x, y, Integer.parseInt(argv[1]), standard);
 			if ((argv[1]).equals("0")) {
-				System.out.println("X = "+(int)x+", Y = "+(int)y+" --->lon.= "+lon+", lat.= "+lat);
 			}else {
-				System.out.println("lon.= "+lon+", lat.= "+lat+" ---> X = "+resultarr[0]+", Y = "+resultarr[1]);
 			}
 
 			nxny[0] = (int)resultarr[0]+"";
@@ -283,7 +278,6 @@ public class WeatherUtil {
 					theta += 2.0*PI;
 				}
 				theta *= sn;
-				System.out.println(theta);
 				x = (double)(ra*Math.sin(theta)) + map.getXo();
 				y = (double)(ro - ra*Math.cos(theta)) + map.getYo();
 				floatarr[0] = x;

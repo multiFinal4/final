@@ -29,6 +29,7 @@
 		<link href="/evweb/css/common.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link href="/evweb/vendor/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script src="/evweb/js/common.js" type="text/javascript"></script>
 		<script src="/evweb/js/main.js" type="text/javascript"></script>
 		<script type="text/javascript">

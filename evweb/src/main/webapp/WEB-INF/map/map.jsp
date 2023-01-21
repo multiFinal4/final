@@ -9,6 +9,7 @@
 <title>간단한 지도 표시하기</title>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=tfw1jev60y"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="/evweb/js/MarkerClustering.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -18,7 +19,6 @@
 		var filterData = {};
 		var company = "all";
 		var stFilter = "default";
-
 		// 지도 실행
 		initMap(filterData,filterArr);
 
@@ -67,21 +67,21 @@
 					strHTML = "";
 					filterArr = []; // 필터체크시 배열 초기화(누적방지)
 					
-					 if(stFilter == "lowFee"){
+					if(stFilter == "name"){
 						data.sort(function(a, b) { // 오름차순 (이름)
 						    return a.station_name < b.station_name ? -1 : a.station_name > b.station_name ? 1 : 0;
 						});
-						alert(JSON.stringify(data));
-					}
-					/* if(stFilter == "lowFee"){
-						var sortingField = "Quick"
-						student.sort(function(a, b) { // 오름차순
-						    return a[sortingField] - b[sortingField];
-						    // 13, 21, 25, 44
+						
+					}else if (stFilter == "lowFee") {// 요금순 (완속기준)
+						data.sort(function(a, b) {
+							return a.standard - b.standard
 						});
-						alert(JSON.stringify(data));
-					} */
-					
+					}else if (stFilter == "pop") { // 인기순
+						data.sort(function(a, b) {
+							return b.charging_amount - a.charging_amount
+						});
+					}
+
 					for (var i = 0; i < data.length; i++) {
 						strHTML += "<div class='card mb-1 mr-1'>";
 						strHTML += "    <div class='card-body'>";
@@ -91,10 +91,10 @@
 						strHTML += "		<h6 class='card-subtitle mb-2 text-muted'>";
 						strHTML	+=				data[i].addr_do+" "+data[i].addr_sigun+"<br>"+data[i].addr_detail;
 						strHTML += "		</h6>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-building'></i>&nbsp;";
 						strHTML +=  			data[i].station_company;
 						strHTML += "		</p>";
-						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>";
+						strHTML += "		<p class='card-text mb-0'><i class='bi bi-clock'></i>&nbsp;";
 						strHTML +=				data[i].use_time;
 						strHTML += "		</p>";
 						strHTML += "    	<span class='clickInfo'><i class='bi bi-send-fill'></i></span>";
@@ -114,6 +114,8 @@
 			});
 		});
 		
+
+		initMap(filterData,filterArr);
 		
 	});
 	
@@ -127,13 +129,12 @@
 		var map = new naver.maps.Map('map', {
 	        center: new naver.maps.LatLng(lat, longt), //지도 시작 지점
 	        zoom: 13, //지도의 초기 줌 레벨
-	        minZoom: 11, //지도의 최소 줌 레벨
+	        minZoom: 6, //지도의 최소 줌 레벨
 	        zoomControl: true, //줌 컨트롤의 표시 여부
 	        zoomControlOptions: { //줌 컨트롤의 옵션
 	       		position: naver.maps.Position.TOP_RIGHT
 	        }
 	    });
-			
 
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         
@@ -141,10 +142,13 @@
 		var infowindowList = []; // 정보창을 담는 배열
 		var areaArr = [];  // 충전소 정보 담는 배열
 		
-		// 주차 체크여부
+		// 필터체크
 		if ($("input:checkbox").is(":checked")) {
 			setFilterList(filterArr);
-		}else{
+		}else if ($("select#stFilter").val() != "default") {
+			setFilterList(filterArr);
+		}
+		else{
 			setDeaultList();
 		}
 		
@@ -181,19 +185,26 @@
 	    $(".mapControl .current").click(function(){
 			$(".mapMarkerWrap").removeClass("on");
 	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
-	    	map.setZoom(16);
-	    	navigator.geolocation.getCurrentPosition(function(pos){
-	    		var currPosi = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-	    		map.setCenter(currPosi);
-		    	var circle = new naver.maps.Circle({
-		    	    map: map,
-		    	    center: currPosi,
-		    	    radius: 200,
-		    	    fillColor: '#076ff9',
-		    	    fillOpacity: 0.2
-		    	});
-			});
-            map.panTo(currPosi);
+	    	if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(onSuccessGeolocation);
+            }             
+            function onSuccessGeolocation(position) {
+                var location = new naver.maps.LatLng(position.coords.latitude,
+                                                     position.coords.longitude);
+                map.panTo(location);
+                map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정
+                map.setZoom(16); // 지도의 줌 레벨을 변경
+                
+                var circle = new naver.maps.Circle({
+    	    	    map: map,
+    	    	    center: location,
+    	    	    radius: 200,
+    	    	    fillColor: '#076ff9',
+    	    	    fillOpacity: 0.2
+    	    	});
+            }
+            
+	    	
 	    });
 		
 		
@@ -249,13 +260,55 @@
 			    	    backgroundColor: 'transparent',
 			    	    pixelOffset: new naver.maps.Point(0, -28),
 			    	}); // 클릭했을 때 띄워줄 정보 HTML 작성
-														    
+								
+		    	
 				markers.push(marker); // 생성한 마커를 배열에 담는다.
 				infowindowList.push(infoWindow); // 생성한 정보창을 배열에 담는다.
 				//list.push("1");
 				
 			}
 		}
+	    
+	    // 마커 클러스터링
+	    var mkCluster1 = {
+	            content: '<div class="markClst mc1"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster2 = {
+	            content: '<div class="markClst mc2"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster3 = {
+	            content: '<div class="markClst mc3"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster4 = {
+	            content: '<div class="markClst mc4" "></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        },
+	        mkCluster5 = {
+	            content: '<div class="markClst mc5"></div>',
+	            size: N.Size(40, 40),
+	            anchor: N.Point(20, 20)
+	        };
+	    
+	    var markerClustering = new MarkerClustering({
+	        minClusterSize: 4,
+	        maxZoom: 15,
+	        map: map,
+	        markers: markers,
+	        disableClickZoom: false,
+	        gridSize: 250,
+	        icons: [mkCluster1, mkCluster2, mkCluster3, mkCluster4, mkCluster5],
+	        indexGenerator: [10, 40, 60, 100, 300],
+	        stylingFunction: function(clusterMarker, count) {
+	            $(clusterMarker.getElement()).find('div:first-child').text(count);
+	        }
+	    });
 	    
 	    // 지도클릭 시 안내창 닫기
 		function ClickMap(i) {

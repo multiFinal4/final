@@ -14,7 +14,6 @@ import com.project.station.StationDTO;
 import com.project.station.StationService;
 import com.project.weather.WeatherUtil;
 
-
 @Controller
 public class AirqualityController {
 	AirqualityAPIPull pull;
@@ -32,17 +31,13 @@ public class AirqualityController {
 	
 	@RequestMapping("/airquality/getDataDust.do")
 	public String WeathergetData(String stationId, String path,Model model) throws IOException{
-        
 		String result = pull.GetAPIDataDust();
 		airqualityService.delete();
-       
-		System.out.println("result >> "+result);
 		List<AirqualityDTO> dustList = pull.DataSaveDust(result);
 		for (int i = 0; i < dustList.size(); i++) {
-			System.out.println("dustListGeti >> "+(dustList.get(i)));
 			airqualityService.insert(dustList.get(i));
 		}
-		return "test";
+		return "redirect:/monitoring/main?stationId="+stationId;
 	}
 	
 }

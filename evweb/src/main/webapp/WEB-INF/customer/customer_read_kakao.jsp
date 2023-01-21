@@ -4,74 +4,67 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-
-<title>마이페이지</title>
-	<link href="https://fonts.gstatic.com" rel="preconnect">
-	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-		rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-</head>
-
-<body>
-	<main id="main" class="main">
-		<div class="pagetitle">
-		</div>
-		
-		<div>
-			<div class="card-body">
-				<h1 class="pagetitle">마이페이지</h1>
-				<hr/>
-				<br>
-				<!-- General Form Elements -->
-				<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
-					<div class="row mb-3">
-						<h5><label for="inputPassword" class="col-sm-12 col-form-label">카카오회원</label></h5>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>마이페이지</title>
+		<link href="https://fonts.gstatic.com" rel="preconnect">
+		<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<style type="text/css">
+			label{
+				text-align:center;
+			}
+			 #input{
+			    background : #FBF5EF;
+			 }
+		</style>
+	</head>
+	<body>
+		<div class="card-body">
+			<h1 class="pagetitle"><img src='/evweb/images/favicon/favicon.ico' style='width:50px;'> [ 카카오회원 마이페이지 ]</h1>
+			<hr/>
+			<!-- General Form Elements -->
+			<form action="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label"  id="input">이름</label>
+					<div class="col-sm-3">
+						${customerinfo.name}
 					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
-						<div class="col-sm-3">
-							${customerinfo.name}
-						</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">핸드폰
+						번호</label>
+					<div class="col-sm-3">
+						${customerinfo.phone_no}
 					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
-							번호</label>
-						<div class="col-sm-3">
-							${customerinfo.phone_no}
-						</div>
-						<label for="inputText" class="col-sm-2 col-form-label"></label>
+					<label for="inputText" class="col-sm-2 col-form-label"></label>
+				</div>
+				<div class="row mb-3">
+					<label for="inputText" class="col-sm-2 col-form-label" id="input">주소</label>
+					<div class="col-sm-3">
+						${customerinfo.customer_addr}
 					</div>
-					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
-						<div class="col-sm-3">
-							${customerinfo.customer_addr}
-						</div>
+				</div>
+				<div class="row mb-3">
+					<label for="inputEmail" class="col-sm-2 col-form-label" id="input">Email</label>
+					<div class="col-sm-3">
+						${customerinfo.email}
 					</div>
-					<div class="row mb-3">
-						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-						<div class="col-sm-3">
-							${customerinfo.email}
-						</div>
+				</div>
+				<div class="row mb-3">
+					<label class="col-sm-2 col-form-label" id="input">생년월일</label>
+					<div class="col-sm-3">
+						정보없음
 					</div>
-					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">생년월일</label>
-						<div class="col-sm-3">
-							정보없음
-						</div>
-					</div>
-					
+				</div>
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
 					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
 					<!-- 탈퇴 버튼 누르면 "/customer/delete.do?customer_id=${customerinfo.customer_id}" 로 이어지게 -->
 				</div>
-				</form>
-			</div>
-	 </main>
+			</form>
+		</div>
 		<div class="alertPop">
 			<div class="alertBox">
 				<div class="modal fade">
@@ -93,8 +86,6 @@
 					</div>
 				</div>
           </div>
-          </div>
-        
 	</body>
 	<script type="text/javascript">
 		$(document).ready(function () {

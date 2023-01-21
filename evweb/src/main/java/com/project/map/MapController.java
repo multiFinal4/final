@@ -70,15 +70,15 @@ public class MapController {
 	@RequestMapping("/map/search.do")
 	public ModelAndView search(String category,String keyword, String park, String type) {
 		ModelAndView mv = new ModelAndView("map/main");
-		List<StationDTO> stationList = service.search(category, keyword);
+		List<MapStationDTO> stationList = service.search(category, keyword);
 		List<String> companyList = new ArrayList<String>();
 		
 		if (stationList.size() == 0) {
-			stationList = stationService.stationList();
+			stationList = service.mapStationList();
 			mv.addObject("noResult", "0");
 		} 		
 		// 검색한 리스트에서 충전소운영기관 목록 받기
-		for(StationDTO item :stationList){
+		for(MapStationDTO item :stationList){
 	        String comName = item.getStation_company();
 	        if(!companyList.contains(comName)) {
 	        	companyList.add(comName);
@@ -91,6 +91,7 @@ public class MapController {
 		mv.addObject("keyword",keyword);
 		mv.addObject("lat",stationList.get(0).getMap_latitude());
 		mv.addObject("longt",stationList.get(0).getMap_longtude());
+		System.out.println(mv);
 		return mv;
 	}
 	
@@ -98,21 +99,18 @@ public class MapController {
 	// ajax로 충전소 정보 검색하기(체크박스)
 	@RequestMapping(value = "/ajax/map/search.do", produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public List<StationDTO> chckList(String category,String keyword, String park, String quick, String standard, String company, String stFilter) {
-		List<StationDTO> stationList;
+	public List<MapStationDTO> chckList(String category,String keyword, String park, String quick, String standard, String company, String stFilter) {
+		List<MapStationDTO> stationList;
 		List<ChargerDTO> chargerList;
 		if (category == null || keyword == null) {
-			stationList = stationService.stationList();
+			stationList = service.mapStationList();
 		}
 		else {
 			stationList = service.search(category, keyword);
 		}
-		// 회사명 필터 적용
-		System.out.println(stFilter);
-
-		List<StationDTO> comSelectStation = new ArrayList<StationDTO>();
+		List<MapStationDTO> comSelectStation = new ArrayList<MapStationDTO>();
 		if (!company.equals("all")) {
-			for (StationDTO item : stationList) {
+			for (MapStationDTO item : stationList) {
 				String comName = item.getStation_company();
 				if(comName.equals(company)) {
 					comSelectStation.add(item);  
@@ -120,17 +118,17 @@ public class MapController {
 			}
 			stationList = comSelectStation;
 		}
-		List<StationDTO> resultListParkY = new ArrayList<>(); // 주차여부 검색
+		List<MapStationDTO> resultListParkY = new ArrayList<>(); // 주차여부 검색
 		List<String> distinctIdQuick = new ArrayList<String>(); // 급속충전소 아이디만 중복제거 담기
 		List<String> distinctIdStd = new ArrayList<String>(); // 급속충전소 아이디만 중복제거 담기
 		List<ChargerDTO> chrgrTypeQuick = new ArrayList<>();  // 급속충전기 여부
 		List<ChargerDTO> chrgrTypeStD = new ArrayList<>();  // 완속충전기 여부
-		List<StationDTO> resultTypeQuick = new ArrayList<>(); // 급속충전기 보유 충전소 리스트
-		List<StationDTO> resultTypeStd = new ArrayList<>(); // 완속충전기 보유 충전소 리스트
+		List<MapStationDTO> resultTypeQuick = new ArrayList<>(); // 급속충전기 보유 충전소 리스트
+		List<MapStationDTO> resultTypeStd = new ArrayList<>(); // 완속충전기 보유 충전소 리스트
 		
 		
 
-		List<StationDTO> resultList = new ArrayList<>(); // 급속+주차 or 완속 + 주자 보유 충전소 리스트
+		List<MapStationDTO> resultList = new ArrayList<>(); // 급속+주차 or 완속 + 주자 보유 충전소 리스트
 		
 		// 충전타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상+DC콤보,	07: AC3상)
 		// 01, 04 : 급속
@@ -164,7 +162,7 @@ public class MapController {
 		}
 		
 		// 급속충전기 있는 충전소
-		for(StationDTO item :stationList) {
+		for(MapStationDTO item :stationList) {
 			String statId = item.getStation_id();
 			if(distinctIdQuick.contains(statId)) {
 	        	resultTypeQuick.add(item);
@@ -172,7 +170,7 @@ public class MapController {
 		}
 
 		// 완속충전기 있는 충전소
-		for(StationDTO item :stationList) {
+		for(MapStationDTO item :stationList) {
 			String statId = item.getStation_id();
 			if(distinctIdStd.contains(statId)) {
 				resultTypeStd.add(item);
@@ -180,7 +178,7 @@ public class MapController {
 		}
 		
 		// 주차무료 충전소
-		for(StationDTO item :stationList) {
+		for(MapStationDTO item :stationList) {
 			String parkType = item.getParking_free();
 			if (parkType.equals("Y")) {
 				resultListParkY.add(item);
@@ -191,7 +189,7 @@ public class MapController {
 		
 		// 주차 + 급속
 		if (park.equals("Y") && quick.equals("Y")) {
-			for(StationDTO item :resultTypeQuick) {
+			for(MapStationDTO item :resultTypeQuick) {
 				String parkType = item.getParking_free();
 				if (parkType.equals("Y")) {
 					resultList.add(item);
@@ -201,7 +199,7 @@ public class MapController {
 		}
 		// 주차 + 완속
 		else if (park.equals("Y") && standard.equals("Y")) {
-			for(StationDTO item :resultTypeStd) {
+			for(MapStationDTO item :resultTypeStd) {
 				String parkType = item.getParking_free();
 				if (parkType.equals("Y")) {
 					resultList.add(item);

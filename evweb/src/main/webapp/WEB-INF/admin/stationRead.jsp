@@ -13,52 +13,136 @@
 			<div class="card-body stationWrap col-lg-12">
 				<form action="/evweb/admin/station/read.do?stationId=${read.station_id}&state=UPDATE" method="post">
 					<div class="row mb-3">
-						<label for="station_name" class="col-sm-2 col-form-label">충전소 ID</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="station_name" id="station_name" value="${read.station_id}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="station_id" class="col-sm-4 col-form-label">충전소 ID</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="station_id" id="station_id" value="${read.station_id}" readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="station_name" class="col-sm-4 col-form-label">충전소 이름</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="station_name" id="station_name" value="${read.station_name}" readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="kind" class="col-sm-4 col-form-label">충전소 구분</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="kind" id="kind" value="${read.kind}" readonly="readonly">
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="station_name" class="col-sm-2 col-form-label">충전소 이름</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="station_name" id="station_name" value="${read.station_name}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="charger_no" class="col-sm-4 col-form-label">충전기 대수</label>
+							<div class="col-sm-8 row">
+							  	<input type="text" class="form-control col-sm-6" name="charger_no" id="charger_no" value="${read.charger_no}" readonly="readonly">
+								<button type="button" id="chrgrInfo" class="btn btn-primary col-sm-6"><i class="bi bi-search"></i>충전기 정보</button>
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="station_company" class="col-sm-4 col-form-label">운영기관</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="station_company" id="station_company" value="${read.station_company}" readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="busi_call" class="col-sm-4 col-form-label">연락처</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="busi_call" id="busi_call" value="${read.busi_call}" readonly="readonly">
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="station_company" class="col-sm-2 col-form-label">충전소 회사</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="station_company" id="station_company" value="${read.station_company}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="addr_do" class="col-sm-4 col-form-label">주소(도)</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="addr_do" id="addr_do" value="제주특별자치도"  readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="addr_sigun" class="col-sm-4 col-form-label">주소(시/군/구)</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="addr_sigun" id="addr_sigun" value="${read.addr_sigun}"  readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="addr_detail" class="col-sm-4 col-form-label">상세주소</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="addr_detail" id="addr_detail" value="${read.addr_detail}" readonly="readonly">
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="charger_no" class="col-sm-2 col-form-label">충전기 대수</label>
-						<div class="col-sm-2">
-						  <input type="text" class="form-control" name="charger_no" id="charger_no" value="${read.charger_no}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="map_latitude" class="col-sm-4 col-form-label">위도</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="map_latitude" id="map_latitude" value="${read.map_latitude}" readonly="readonly">
+							</div>
 						</div>
-						<div class="mb-2">
-						  <button type="button" id="chrgrInfo" class="btn btn-primary"><i class="bi bi-search"></i>충전기 정보</button>
-						</div>
-					</div>
-					<div class="row mb-3"> 
-						<label for="addr_do" class="col-sm-2 col-form-label">주소</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="addr_do" id="addr_do" value="${read.addr_do} ${read.addr_sigun} ${read.addr_detail}" readonly="readonly">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label for="manager_id" class="col-sm-2 col-form-label">담당자</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="manager_id" id="manager_id" value="${read.manager_id}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="map_longtude" class="col-sm-4 col-form-label">경도</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="map_longtude" id="map_longtude" value="${read.map_longtude}" readonly="readonly">
+							</div>
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="service_date" class="col-sm-2 col-form-label">서비스기간</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" name="service_date" id="service_date" value="${read.service_date}" readonly="readonly">
+						<div class="row col-sm-4">
+							<label for="use_time" class="col-sm-4 col-form-label">운영시간</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="use_time" id="use_time" value="${read.use_time}" readonly="readonly">
+							</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="use_time" class="col-sm-4 col-form-label">무료주차</label>
+							<div class="col-sm-8">
+							  	<input type="text" class="form-control" name="parking_free" id="parking_free" value="${read.parking_free}" readonly="readonly">
+							</div>
+						</div>
+							<div class="row col-sm-4">
+							<label for="trafficYn" class="col-sm-4 col-form-label">편의시설</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="trafficYn" id="parking_free" value="${read.trafficYn}" readonly="readonly">
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="row col-sm-4">
+							<label for="manager_id" class="col-sm-4 col-form-label">담당자</label>
+							<div class="col-sm-8" id="mgrName">
+								<input type='text' class='form-control' value="${read.manager_id}" name='manager_id' id='manager_id'  readonly="readonly">
+						  	</div>
+						</div>
+						<div class="row col-sm-4">
+							<label for="note" class="col-sm-4 col-form-label">특이사항</label>
+							<div class="col-sm-8">
+							  	<input type="text" class="form-control" name="note" id="note" value="${read.note}" readonly="readonly">
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<div class="row col-sm-4">
+							<label for="limitYn" class="col-sm-4 col-form-label">이용제한</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" name="limitYn" id="limitYn" value="${read.limitYn}" readonly="readonly">
+							</div>
+						</div>
+							<div class="row col-sm-4">
+							<label for="limit_detail" class="col-sm-4 col-form-label">상세설명</label>
+							<div class="col-sm-8">
+							  	<input type="text" class="form-control" name="limit_detail" id="limit_detail" value="${read.limit_detail}" readonly="readonly">
+							</div>
+						</div>
+							<div class="row col-sm-4">
+							<label for="service_date" class="col-sm-4 col-form-label">서비스기간</label>
+							<div class="col-sm-8">
+							  <input type="text" class="form-control" name="service_date" id="service_date" value="${read.service_date}" readonly="readonly">
+							</div>
 						</div>
 					</div>
 					<div class="text-center">
-						<button type="button" class="btn btn-secondary" onclick="history.go(-2)" ><i class="bi bi-list-ul"></i>목록</button>
+						<button type="button" class="btn btn-secondary" onclick="history.go(-1)" ><i class="bi bi-list-ul"></i>목록</button>
 						<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>수정</button>
 						<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>삭제</button>
 					</div>

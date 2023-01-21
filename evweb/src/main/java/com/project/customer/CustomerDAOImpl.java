@@ -143,7 +143,7 @@ public class CustomerDAOImpl implements CustomerDAO {
 
 	@Override
 	public int kakaoInsertNull(HashMap<String, Object> userInfo) {
-		System.out.println("이메일없는userInfo????????????????? "+userInfo);
+//		System.out.println("이메일없는userInfo????????????????? "+userInfo);
 		String customer_id = (String) userInfo.get("id");
 		CustomerDTO dto = new CustomerDTO();
 		dto.setCustomer_id(customer_id);

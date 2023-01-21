@@ -4,14 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.airquality">
 	<insert id="insert" parameterType="airquality">
-		insert into airquality_tb values(
+		insert into AIRQUALITY_TB values(
 		#{stationname}, #{datatime}, #{pm10value}, #{pm25value})
 	</insert>
 	<delete id="delete">
-		delete from airquality_tb 
+		delete from AIRQUALITY_TB 
 	</delete>
 	<select id="read" parameterType="String" resultType="airquality">
-		select * from airquality_tb where stationname = #{stationname}
+		select * from AIRQUALITY_TB where stationname = #{stationname}
 	</select>
 	
 </mapper>

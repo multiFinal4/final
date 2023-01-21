@@ -1,3 +1,6 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.time.LocalDateTime"%>
+<%@page import="com.project.airquality.AirqualityDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDate"%>
@@ -173,32 +176,6 @@
 											<c:if test="${charger.stat eq '9' }">
 												<span class="chrgrStat noSign">상태미확인</span>
 											</c:if>
-											
-											
-											<%-- <c:choose>
-												  <!-- 충전기타입(01:DC차데모,	02: AC완속,	03: DC차데모+AC3상,04: DC콤보,05: DC차데모+DC콤보,06: DC차데모+AC3상+DC콤보,	07: AC3상) -->
-											      <c:when test="${charger.charger_type == '01'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '02'}">
-													<span class="text-muted small pt-2 ps-1">AC완속,</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '03'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '04'}">
-													<span class="text-muted small pt-2 ps-1">DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '05'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+DC콤보</span>
-											      </c:when> 
-											      <c:when test="${charger.charger_type == '06'}">
-													<span class="text-muted small pt-2 ps-1">DC차데모+AC3상+DC콤보</span>
-											      </c:when> 
-											      <c:otherwise>
-													<span class="text-muted small pt-2 ps-1">${charger.charger_type}</span>
-											      </c:otherwise> 
-											</c:choose>  --%>
 										</div>
 									</div>
 								</c:forEach>
@@ -273,36 +250,70 @@
 										<small class="unit">mm</small></span></li>
 									</ul>
 								</div>
-								<div class="cmp-cur-weather cmp-cur-weather-lifestyle">
-									<ul class="wrap-3">
-										<li><a href="/evweb/weather/getlist.do?stationId=${stationId}" class="sym-btn txt-only sym-btn-sm sym-btn-color-blue"	target="_blank" title="새창열림">날씨 예보 바로가기</a></li>
-									</ul>
-								</div>
-								<div class="cmp-cmn-para cmp-cur-weather-air">
-									<p class="right spon"> 정보출처: <a href="https://www.weather.go.kr/w/index.do" target="_blank" title="새창열림">기상청 날씨누리</a></p>
-								</div>
-								<div class="cmp-impact-fct">
-									<p>해당지역에 발효중인 특보가 없습니다.</p>
-								</div>
-						<script type="text/javascript">/* 범례보기 스크립트 */
-						$(document).ready(function() {
-							$(".cmp-cur-weather-air a").on('click', function(e) {
-					            e.preventDefault();
-					            var airType = $(this).attr('data-air-type');
-					            $('.cmp-air-legend .shadow-box').each(function(idx,ele) {
-					                var $box = $(ele);
-					                if(airType == $box.attr('data-air-type')) {
-					                    if(!$box.hasClass('on')) {
-					                        $box.addClass('on');
-					                        $box.find('.close-box').first().trigger('focus')
-					                    }
-					                } else {
-					                    $box.removeClass('on');
-					                }
-					            });
-					        });
-						})
-						</script>		
+									<div class="cmp-cmn-para cmp-cur-weather-air">
+										<p class="right spon"> 정보출처: <a href="https://www.weather.go.kr/w/index.do" target="_blank" title="새창열림">기상청 날씨누리</a></p>
+									</div>
+							</div>
+						</div>
+					</div>
+				<script type="text/javascript">/* 범례보기 스크립트 */
+				$(document).ready(function() {
+					$(".cmp-cur-weather-air a").on('click', function(e) {
+			            e.preventDefault();
+			            var airType = $(this).attr('data-air-type');
+			            $('.cmp-air-legend .shadow-box').each(function(idx,ele) {
+			                var $box = $(ele);
+			                if(airType == $box.attr('data-air-type')) {
+			                    if(!$box.hasClass('on')) {
+			                        $box.addClass('on');
+			                        $box.find('.close-box').first().trigger('focus')
+			                    }
+			                } else {
+			                    $box.removeClass('on');
+			                }
+			            });
+			        });
+				})
+				</script>	
+				
+					<div class="card info-card sales-card">
+						<div class="card-header">
+							<h5 class="card-title">미세먼지 정보</h5>
+						</div>
+						<div class="card-body">
+							<div class="cmp-cmn-para odam-updated" style="padding: 10px; ">
+								<a href="/evweb/airquality/getDataDust.do?stationId=${stationId}" class="updated-at">
+								<%AirqualityDTO airqualityInfo =(AirqualityDTO)request.getAttribute("airqualityInfo"); 
+								  LocalDate airdate = LocalDate.parse(airqualityInfo.getDatatime().substring(0,10), DateTimeFormatter.ISO_DATE);
+								  String airtime = airqualityInfo.getDatatime().substring(5,7)+"."+airqualityInfo.getDatatime().substring(8,10)
+										  		 +".("+util.getDayOfWeek(airdate)+")"+airqualityInfo.getDatatime().substring(11);
+								%>
+								<span><%=airtime%></span></a>
+							</div>	
+							<div class="cmp-cur-weather cmp-cur-weather-air">
+							<h3 class="hid">대기질정보</h3>
+							<ul id = "wrap-3" class="wrap-2 air-wrap no-underline">
+								<li><span class="lbl">초미세먼지<small>(PM2.5)</small></span>
+									<strong class="air-level val">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=15}"><span class="air-lvv-wrap air-lvv-1"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=35}"><span class="air-lvv-wrap air-lvv-2"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=75}"><span class="air-lvv-wrap air-lvv-3"></c:when>
+											<c:when test="${airqualityInfo.pm25value>=76}"><span class="air-lvv-wrap air-lvv-4"></c:when>
+											<c:otherwise><span class="air-lvv-wrap air-lvv-0"></c:otherwise>
+										</c:choose>
+										<span class="air-lvv">${airqualityInfo.pm25value}</span><small class="unit">㎍/m³</small></span>
+										<span class="air-lvt" style="color: #000;">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=15}">좋음</c:when>
+											<c:when test="${airqualityInfo.pm25value<=35}">보통</c:when>
+											<c:when test="${airqualityInfo.pm25value<=75}">나쁨</c:when>
+											<c:when test="${airqualityInfo.pm25value>=76}">매우나쁨</c:when>
+											<c:otherwise>통신장애</c:otherwise>
+										</c:choose>
+										<a  href="#legend" data-air-type="pm25">범례보기</a></span>
+									</strong>
+								</li>
 								
 								<div class="cmp-cur-weather cmp-cur-weather-air">
 									<h3 class="hid">대기질정보</h3>
@@ -352,21 +363,109 @@
 												</ul>
 											</div>
 										</div>
+								<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
+									<strong class="air-level val">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}"><span class="air-lvv-wrap air-lvv-1"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}"><span class="air-lvv-wrap air-lvv-2"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}"><span class="air-lvv-wrap air-lvv-3"></c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}"><span class="air-lvv-wrap air-lvv-4"></c:when>
+											<c:otherwise><span class="air-lvv-wrap air-lvv-0"></c:otherwise>
+										</c:choose>
+										<span class="air-lvv">${airqualityInfo.pm25value}</span><small class="unit">㎍/m³</small></span>
+										<span class="air-lvt" style="color: #000;">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}">좋음</c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}">보통</c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}">나쁨</c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}">매우나쁨</c:when>
+											<c:otherwise>통신장애</c:otherwise>
+										</c:choose>
+										<a  href="#legend" data-air-type="pm10">범례보기</a></span>
+									</strong>
+								</li>
+							</ul>
+							<div class="cmp-air-legend">
+								<div class="shadow-box" data-air-type="pm25">
+									<div class="inner">
+										<a href="#close" class="close-box">닫기</a>
+										<h5>초미세먼지(㎛)</h5>
+										<p>입자의 크기가 2.5㎛ 이하인 먼지</p>
+										<ul class="air-legend">
+											<li class="air-legend-1"><span>좋음<br>(0~15)
+											</span></li>
+											<li class="air-legend-2"><span>보통<br>(16~35)
+											</span></li>
+											<li class="air-legend-3"><span>나쁨<br>(36~75)
+											</span></li>
+											<li class="air-legend-4"><span>매우나쁨<br>(76~)
+											</span></li>
+										</ul>
+								<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
+									<strong class="air-level val">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}"><span class="air-lvv-wrap air-lvv-1"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}"><span class="air-lvv-wrap air-lvv-2"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}"><span class="air-lvv-wrap air-lvv-3"></c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}"><span class="air-lvv-wrap air-lvv-4"></c:when>
+											<c:otherwise><span class="air-lvv-wrap air-lvv-0"></c:otherwise>
+										</c:choose>
+										<span class="air-lvv">${airqualityInfo.pm25value}</span><small class="unit">㎍/m³</small></span>
+										<span class="air-lvt" style="color: #000;">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}">좋음</c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}">보통</c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}">나쁨</c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}">매우나쁨</c:when>
+											<c:otherwise>통신장애</c:otherwise>
+										</c:choose>
+										<a  href="#legend" data-air-type="pm10">범례보기</a></span>
+									</strong>
+								</li>
+							</ul>
+							<div class="cmp-air-legend">
+								<div class="shadow-box" data-air-type="pm25">
+									<div class="inner">
+										<a href="#close" class="close-box">닫기</a>
+										<h5>초미세먼지(㎛)</h5>
+										<p>입자의 크기가 2.5㎛ 이하인 먼지</p>
+										<ul class="air-legend">
+											<li class="air-legend-1"><span>좋음<br>(0~15)
+											</span></li>
+											<li class="air-legend-2"><span>보통<br>(16~35)
+											</span></li>
+											<li class="air-legend-3"><span>나쁨<br>(36~75)
+											</span></li>
+											<li class="air-legend-4"><span>매우나쁨<br>(76~)
+											</span></li>
+										</ul>
 									</div>
 								</div>
-
-								<div class="cmp-cmn-para cmp-cur-weather-air">
-									<p class="right">계산측정소(도시대기) 01.10.(화) 14:00 기준</p>
-								</div>
-
-								<div class="cmp-cmn-para cmp-cur-weather-air">
-									<p class="right spon">
-										정보출처: <a href="http://m.airkorea.or.kr" target="_blank"
-											title="새창열림">대기질정보(한국환경공단)</a>, <a
-											href="https://www.kasi.re.kr" target="_blank" title="새창열림">일출일몰정보(한국천문연구원)</a>
-									</p>
+								<div class="shadow-box" data-air-type="pm10">
+									<div class="inner">
+										<a href="#close" class="close-box">닫기</a>
+										<h5>미세먼지(㎛)</h5>
+										<p>입자의 크기가 10㎛ 이하인 먼지</p>
+										<ul class="air-legend">
+											<li class="air-legend-1"><span>좋음<br>(0~30)
+											</span></li>
+											<li class="air-legend-2"><span>보통<br>(31~80)
+											</span></li>
+											<li class="air-legend-3"><span>나쁨<br>(81~150)
+											</span></li>
+											<li class="air-legend-4"><span>매우나쁨<br>(151~)
+											</span></li>
+										</ul>
+									</div>
 								</div>
 							</div>
+						</div>
+						<div class="cmp-cmn-para cmp-cur-weather-air">
+							<p class="right spon">
+								정보출처: <a href="http://m.airkorea.or.kr" target="_blank"
+									title="새창열림">대기질정보(한국환경공단)</a>
+							</p>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -375,7 +474,7 @@
 		        <div class="col-md-8 pr-0">
 						<div class="card info-card sales-card " style="z-index : 1;">
 							<div class="card-header">
-								<h5 class="card-title">일간 충전량 <span style="float: right";>${chargeAmount}kWh</span></h5>
+								<h5 class="card-title">일간 충전량 <span style="float: right">${chargeAmount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 							<figure class="highcharts-figure">
@@ -385,7 +484,7 @@
 						</div>
 						<div class="card info-card sales-card" style="z-index : 0;">
 							<div class="card-header">
-								<h5 class="card-title">주간 충전량 <span style="float: right";>${weekamount}kWh</span></h5>
+								<h5 class="card-title">주간 충전량 <span style="float: right">${weekamount}kWh</span></h5>
 							</div>
 							<div class="card-body">
 								<figure class="highcharts-figure">

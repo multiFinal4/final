@@ -32,8 +32,17 @@
 	transform: scale(1.05);
 	box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 1), 1px 11px 15px 10px
 		rgba(0, 0, 0, 0.4);
-	z-index: 100;
+	z-index: 50;
 	opacity: 1;
+}
+
+@font-face {
+	font-family: 'LeferiPoint-BlackA';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-BlackA.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 </style>
 
@@ -127,17 +136,14 @@
 		</section>
 
 		<section class="section">
-			<br> <br> <br> <br> <br>
-			<div class="main-wrap-indicate flex-center">
-				<i class="bi bi-chevron-down"></i>
-				<!-- <img src="/evweb/images/main_indicate.png"> -->
-			</div>
 			<div class="main-wrap2">
-				<br> <br> <br> <br> <br> <br>
+				<br> <br> <br> <br> <br> <br> 
+				<div style="text-align: center;"><img src="/evweb/images/main/title.png" style="width: 300px;"></div>
 				<div class="main-wrap2">
 					<div class="wrap">
 						<div class="service-flex ib-container" id="ib-container"
 							style="text-align: center;">
+							<!-- z-index : 50 -->
 							<div class="service-box shadow"
 								onclick="location.href='/evweb/map'">
 								<p class="service-text1 blue">전체 맵</p>
@@ -181,22 +187,21 @@
 						</div>
 					</div>
 				</div>
-				<br> <br> <br> <br> <br> <br> <br>
+				<br> <br> <br> <br> <br> <br> <br> 
 				<br>
 			</div>
 		</section>
 		<section>
-			<br> <br> <br> <br> <br> <br> <br>
 			<br> <br>
 		</section>
 
 		<!-- Modal -->
 		<!-- 2021년부터 누적된 충전소별 충전량 총 합계 3위랭킹 -->
-		<div class="modal-wrapper">
-			<div class="modal">
+		<div class="modal-wrapper" style="backdrop-filter: blur(5px);">
+			<div class="modal" style="z-index: 100;">
 				<div class="head">
 					<a class="btn-close trigger" href="#"> <i class="fa fa-times"
-						aria-hidden="true"><i class="bi bi-arrow-left"></i></i>
+						aria-hidden="true"><i class="bi bi-x-lg"></i></i>
 					</a>
 				</div>
 				<div class="content" style="text-align: center;">

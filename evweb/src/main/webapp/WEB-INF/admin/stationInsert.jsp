@@ -200,43 +200,8 @@
 			$("#mgrBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
 				$(".alertPop .modal-content").addClass("show");
-				
-				$.ajax({
-					url: "/evweb/ajax/managerList",
-					type: "get",
-					data: {
-						"category" : "충전소 관리자"
-					},
-					success:function(data){
-						strHTML = "";
-						for (var i = 0; i < data.length; i++) {
-							strHTML += "<tr>";
-							strHTML += "<td class='mrgId tb-center'>"+ data[i].manager_id + "</td>";
-							strHTML += "<td class='mrgName'>"+ data[i].manager_name + "</td>";
-							strHTML += "<td class='mrgCom'>"+ data[i].company + "</td>";
-							strHTML += "<td class='mrgPosi'>"+ data[i].position + "</td>";
-							strHTML += "<td class='tb-center'><buttton type='button' name='"+i+"' class='btn btn-primary rounded-pill selectMgr'>선택</button></td>";
-							strHTML += "</tr>";
-						}
-						$("#mgrList").html(strHTML);
-						$(".selectMgr").click(function () {
-							mgrInfo = "";
-							mrgId = $(this).attr('name');
-							mgrInfo += "<input type='text' class='form-control' value='"+data[mrgId].manager_id+"' name='manager_id' id='manager_id'>";
-							$("#mgrName").html(mgrInfo);
-							$(".alertPop .modal").removeClass("show");
-						});
-						
-					},
-					error: function error_run(obj, msg, statusMsg) {
-						alert("오류발생 ->"+obj+","+msg+","+statusMsg);
-					}
-				});
-
+				stationManager();
 			});
-
-			
-			
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
 			});

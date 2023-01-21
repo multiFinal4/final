@@ -12,6 +12,9 @@
 	<delete id="delAll">
 		delete from CHARGER_TB
 	</delete>
+	<delete id="delId">
+		delete from CHARGER_TB where station_id=#{stationId}
+	</delete>
 	<select id="chargerlist" resultType="charger">
 		select c.* from STATION_TB s, CHARGER_TB c where s.station_id=c.station_id
 	</select>
