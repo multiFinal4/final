@@ -86,7 +86,7 @@ public class MonitoringController {
 		String[] nxny = weatherutil.changenxny(new String[]{"", code, stationInfo.getMap_longtude(),stationInfo.getMap_latitude()});
 	    String nx = nxny[0];	/*예보지점의 X 좌표값*/
 	    String ny = nxny[1]; 	/*예보지점의 Y 좌표값*/
-		List<WeatherDTO> weatherlist = weatherService.readList(nx,ny);
+		List<WeatherDTO> weatherlist = weatherService.readList(nx,ny); 
 		
 		WeatherDTO weather = weatherService.read(nx,ny, LocalDate.now().toString(), LocalTime.now().toString());
 		String tmx = weatherutil.getTmx(weatherlist, weatherutil.getDate(LocalDate.now() ,"yyyy-MM-dd"));
