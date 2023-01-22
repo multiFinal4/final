@@ -91,7 +91,6 @@ public class MapController {
 		mv.addObject("keyword",keyword);
 		mv.addObject("lat",stationList.get(0).getMap_latitude());
 		mv.addObject("longt",stationList.get(0).getMap_longtude());
-		System.out.println(mv);
 		return mv;
 	}
 	

@@ -48,6 +48,7 @@ public class BoardFileController {
 		// WebUtil => 실제 서버가 인식하는 우리 프로젝트의 경로를 추출하기 위해 사용하는 클래스
 		// getRealPath => 실제 서버에 배포된 프로젝트의 위치를 구하는 메소드
 		// /WEB-INF/upload 이 위치에 지정
+		// UrlResource resource = new UrlResource("file:///opt/tomcat/webapps/upload/" + selectFileInfo.getStoreFilename());
 		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(),
 				"/WEB-INF/upload/" + selectFileInfo.getStoreFilename()));
 
@@ -76,6 +77,9 @@ public class BoardFileController {
 				.getFileNo(new BoardFileDTO("", file_no, "", "", notice_no));
 
 		// 2. 파일명을 이용해서 다운로드할 파일을 객체로 생성하기
+
+		// UrlResource resource = new UrlResource("file:///opt/tomcat/webapps/upload/" + selectFileInfo.getStoreFilename());
+		System.out.println(session.getServletContext());
 		UrlResource resource = new UrlResource("file:" + WebUtils.getRealPath(session.getServletContext(),
 				"/WEB-INF/upload/" + selectFileInfo.getStoreFilename()));
 

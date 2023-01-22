@@ -739,6 +739,38 @@ a:hover{text-decoration:none;color:#F37321;}
     left: 40px;
     width: max-content;
 }
+.card.1st,  
+.card.2nd, 
+.card.3rd{
+	position: relative;
+}
+.mapSearchList .card.first:before,
+.mapSearchList .card.scnd:before,
+.mapSearchList .card.thrd:before{
+	position: absolute;
+	content:"";
+	top: 5px;
+    right: 0px;
+    display: block;
+    width: 35px;
+    height: 35px;
+	background-position: center;
+	background-size: contain;
+	animation: motion2 0.5s linear 0s infinite alternate;
+}
+@keyframes motion2 {
+	0% {top: 5px;}
+	100% {top: 10px;}
+}
+.mapSearchList .card.first:before{
+	background-image: url("/evweb/images/main/medal3.png");
+}
+.mapSearchList .card.scnd:before{
+	background-image: url("/evweb/images/main/medal.png");
+}
+.mapSearchList .card.thrd:before{
+	background-image: url("/evweb/images/main/medal2.png");
+}
 /* Marker Cluster */
 .markClst{
 	cursor:pointer;

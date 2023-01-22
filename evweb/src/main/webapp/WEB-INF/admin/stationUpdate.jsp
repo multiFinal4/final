@@ -120,9 +120,11 @@
 					<div class="row mb-3">
 						<div class="row col-sm-4">
 							<label for="manager_id" class="col-sm-4 col-form-label">담당자</label>
-							<div class="col-sm-8" id="mgrName">
-								<input type='text' class='form-control' value="${read.manager_id}" name='manager_id' id='manager_id' style="width: calc(100% - 100px);float: left;">
-							  	<button type="button" id="mgrBtn" class="btn btn-primary" style="float: right;"><i class="bi bi-search"></i>관리자</button>
+							<div class="row col-sm-8">
+								<div class="col-sm-8 pl-0" id="mgrName">
+									<input type='text' class='form-control' value='${read.manager_id}' name='manager_id' id='manager_id'>
+								</div>
+								<button type="button" id="mgrBtn" class="btn btn-primary col-sm-4 ml-0" style="float: right;"><i class="bi bi-search"></i>관리자</button>
 							</div>
 						</div>
 						<div class="row col-sm-4">
@@ -202,6 +204,7 @@
 			
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
 			});
 		});
 	</script>
