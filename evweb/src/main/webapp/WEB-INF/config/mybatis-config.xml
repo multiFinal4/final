@@ -16,6 +16,8 @@
 		<typeAlias type="com.project.map.MapStationDTO" alias="mapStation"/>
 		<typeAlias type="com.project.ranking.RankingDTO" alias="ranking"/> 
 		<typeAlias type="com.project.airquality.AirqualityDTO" alias="airquality"/> 
+		<typeAlias type="com.project.map.MapStationDTO" alias="mapStation"/>
+		<typeAlias type="com.project.ranking.RankingDTO" alias="ranking"/> 
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/manager.xml"/>
@@ -29,8 +31,8 @@
 		<mapper resource="mapper/noticeboard.xml"/>
 		<mapper resource="mapper/weather.xml"/>
 		<mapper resource="mapper/charge.xml"/>
+		<mapper resource="mapper/airquality.xml"/>
 		<mapper resource="mapper/map.xml"/>
 		<mapper resource="mapper/ranking.xml"/>
-		<mapper resource="mapper/airquality.xml"/>
 	</mappers>
 </configuration>

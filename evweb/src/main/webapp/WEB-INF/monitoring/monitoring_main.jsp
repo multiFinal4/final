@@ -315,6 +315,92 @@
 									</strong>
 								</li>
 								
+								<div class="cmp-cur-weather cmp-cur-weather-air">
+									<h3 class="hid">대기질정보</h3>
+									<ul class="wrap-2 air-wrap no-underline">
+										<li><span class="lbl">초미세먼지<small>(PM2.5)</small></span>
+											<strong class="air-level val"><span	class="air-lvv-wrap air-lvv-2"><span class="air-lvv">27</span>
+											<small class="unit">㎍/m³</small></span>
+											<span class="air-lvt" style="color: #000;">보통<a  href="#legend" data-air-type="pm25">범례보기</a></span></strong></li>
+											
+										<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
+											<strong	class="air-level val"><span	class="air-lvv-wrap air-lvv-2"><span class="air-lvv">68</span>
+											<small class="unit">㎍/m³</small></span>
+											<span class="air-lvt" style="color: #000;">보통<a href="#legend" data-air-type="pm10">범례보기</a></span></strong></li>
+									</ul>
+									<div class="cmp-air-legend">
+										<div class="shadow-box" data-air-type="pm25">
+											<div class="inner">
+												<a href="#close" class="close-box">닫기</a>
+												<h5>초미세먼지(㎛)</h5>
+												<p>입자의 크기가 2.5㎛ 이하인 먼지</p>
+												<ul class="air-legend">
+													<li class="air-legend-1"><span>좋음<br>(0~15)
+													</span></li>
+													<li class="air-legend-2"><span>보통<br>(16~35)
+													</span></li>
+													<li class="air-legend-3"><span>나쁨<br>(36~75)
+													</span></li>
+													<li class="air-legend-4"><span>매우나쁨<br>(76~)
+													</span></li>
+												</ul>
+											</div>
+										</div>
+										<div class="shadow-box" data-air-type="pm10">
+											<div class="inner">
+												<a href="#close" class="close-box">닫기</a>
+												<h5>미세먼지(㎛)</h5>
+												<p>입자의 크기가 10㎛ 이하인 먼지</p>
+												<ul class="air-legend">
+													<li class="air-legend-1"><span>좋음<br>(0~30)
+													</span></li>
+													<li class="air-legend-2"><span>보통<br>(31~80)
+													</span></li>
+													<li class="air-legend-3"><span>나쁨<br>(81~150)
+													</span></li>
+													<li class="air-legend-4"><span>매우나쁨<br>(151~)
+													</span></li>
+												</ul>
+											</div>
+										</div>
+								<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
+									<strong class="air-level val">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}"><span class="air-lvv-wrap air-lvv-1"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}"><span class="air-lvv-wrap air-lvv-2"></c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}"><span class="air-lvv-wrap air-lvv-3"></c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}"><span class="air-lvv-wrap air-lvv-4"></c:when>
+											<c:otherwise><span class="air-lvv-wrap air-lvv-0"></c:otherwise>
+										</c:choose>
+										<span class="air-lvv">${airqualityInfo.pm25value}</span><small class="unit">㎍/m³</small></span>
+										<span class="air-lvt" style="color: #000;">
+										<c:choose>
+											<c:when test="${airqualityInfo.pm25value<=30}">좋음</c:when>
+											<c:when test="${airqualityInfo.pm25value<=80}">보통</c:when>
+											<c:when test="${airqualityInfo.pm25value<=150}">나쁨</c:when>
+											<c:when test="${airqualityInfo.pm25value>=151}">매우나쁨</c:when>
+											<c:otherwise>통신장애</c:otherwise>
+										</c:choose>
+										<a  href="#legend" data-air-type="pm10">범례보기</a></span>
+									</strong>
+								</li>
+							</ul>
+							<div class="cmp-air-legend">
+								<div class="shadow-box" data-air-type="pm25">
+									<div class="inner">
+										<a href="#close" class="close-box">닫기</a>
+										<h5>초미세먼지(㎛)</h5>
+										<p>입자의 크기가 2.5㎛ 이하인 먼지</p>
+										<ul class="air-legend">
+											<li class="air-legend-1"><span>좋음<br>(0~15)
+											</span></li>
+											<li class="air-legend-2"><span>보통<br>(16~35)
+											</span></li>
+											<li class="air-legend-3"><span>나쁨<br>(36~75)
+											</span></li>
+											<li class="air-legend-4"><span>매우나쁨<br>(76~)
+											</span></li>
+										</ul>
 								<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
 									<strong class="air-level val">
 										<c:choose>

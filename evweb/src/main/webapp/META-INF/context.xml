@@ -27,7 +27,7 @@
     <Manager pathname="" />
     -->
     <!-- Oracle DB -->
-   <!--  <Resource name="jdbc/myspring" auth="Container"
+   <!-- <Resource name="jdbc/myspring" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@localhost:1521:xe"
               username="multi" password="1234" maxTotal="20" maxIdle="10"
