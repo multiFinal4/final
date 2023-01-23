@@ -317,19 +317,19 @@
 									<li><span class="lbl">미세먼지<small>(PM10)</small></span> 
 										<strong class="air-level val">
 											<c:choose>
-												<c:when test="${airqualityInfo.pm25value<=30}"><span class="air-lvv-wrap air-lvv-1"></c:when>
-												<c:when test="${airqualityInfo.pm25value<=80}"><span class="air-lvv-wrap air-lvv-2"></c:when>
-												<c:when test="${airqualityInfo.pm25value<=150}"><span class="air-lvv-wrap air-lvv-3"></c:when>
-												<c:when test="${airqualityInfo.pm25value>=151}"><span class="air-lvv-wrap air-lvv-4"></c:when>
+												<c:when test="${airqualityInfo.pm10value<=30}"><span class="air-lvv-wrap air-lvv-1"></c:when>
+												<c:when test="${airqualityInfo.pm10value<=80}"><span class="air-lvv-wrap air-lvv-2"></c:when>
+												<c:when test="${airqualityInfo.pm10value<=150}"><span class="air-lvv-wrap air-lvv-3"></c:when>
+												<c:when test="${airqualityInfo.pm10value>=151}"><span class="air-lvv-wrap air-lvv-4"></c:when>
 												<c:otherwise><span class="air-lvv-wrap air-lvv-0"></c:otherwise>
 											</c:choose>
-											<span class="air-lvv">${airqualityInfo.pm25value}</span><small class="unit">㎍/m³</small></span>
+											<span class="air-lvv">${airqualityInfo.pm10value}</span><small class="unit">㎍/m³</small></span>
 											<span class="air-lvt" style="color: #000;">
 											<c:choose>
-												<c:when test="${airqualityInfo.pm25value<=30}">좋음</c:when>
-												<c:when test="${airqualityInfo.pm25value<=80}">보통</c:when>
-												<c:when test="${airqualityInfo.pm25value<=150}">나쁨</c:when>
-												<c:when test="${airqualityInfo.pm25value>=151}">매우나쁨</c:when>
+												<c:when test="${airqualityInfo.pm10value<=30}">좋음</c:when>
+												<c:when test="${airqualityInfo.pm10value<=80}">보통</c:when>
+												<c:when test="${airqualityInfo.pm10value<=150}">나쁨</c:when>
+												<c:when test="${airqualityInfo.pm10value>=151}">매우나쁨</c:when>
 												<c:otherwise>통신장애</c:otherwise>
 											</c:choose>
 											<a  href="#legend" data-air-type="pm10">범례보기</a></span>
