@@ -58,7 +58,7 @@ public class AutoUpdate {
 	}
 
 
-	@Scheduled(cron= "0 0/30 * * * ?") 
+	@Scheduled(cron= "0 35 * * * ?") 
 	public void stationUpdateAuto() throws Exception{
 		chargerService.deleteAll();
 		service.deleteAll();
@@ -77,7 +77,7 @@ public class AutoUpdate {
 		System.out.println("충전소 update완료");
 	}
 	
-	@Scheduled(cron= "0 15 2-23/3 * * ?") 
+	@Scheduled(cron= "0 40 2-23/3 * * ?") 
 	public void WeatherAllDataAuto() throws IOException{
     	WeatherUtil util = new WeatherUtil();    
         String base_time = util.getTime(); // 발표 시간
@@ -111,7 +111,7 @@ public class AutoUpdate {
         System.out.println("날씨 update완료");
 	}
 	
-	@Scheduled(cron= "0 5 */1 * * ?") 
+	@Scheduled(cron= "0 33 */1 * * ?") 
 	public void AirqualityDataAuto() throws IOException{
 		String result = airqualityAPIPull.GetAPIDataDust();
 		airqualityService.delete();
