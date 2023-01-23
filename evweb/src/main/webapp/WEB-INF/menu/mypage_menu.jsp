@@ -18,9 +18,9 @@
             <ul class="sidebar-nav" id="sidebar-nav">
               
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/customer/read.do?state=UPDATE&customer_id=${user.customer_id}" method="post">
+                    <a class="nav-link collapsed" href="/evweb/customer/read.do?state=READ&customer_id=${user.customer_id}">
                         <i class="bi bi-grid"></i>
-                        <span>회원정보수정</span>
+                        <span>나의 정보관리</span>
                     </a>
                 </li>
                 <li class="nav-item">
