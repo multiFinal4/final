@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.airquality.AirqualityDTO;
+import com.project.airquality.AirqualityService;
 import com.project.station.StationDTO;
 import com.project.station.StationService;
 @Controller
@@ -18,14 +20,19 @@ public class WeatherController {
 	WeatherAPIPull pull;
 	StationService stationservice;
 	WeatherService weatherService;	
+	AirqualityService airqualityService;
+	
+	
 	@Autowired
-	public WeatherController(WeatherAPIPull pull, StationService stationservice,
-			WeatherService weatherService) {
+	public WeatherController(WeatherAPIPull pull, StationService stationservice, WeatherService weatherService,
+			AirqualityService airqualityService) {
 		super();
 		this.pull = pull;
 		this.stationservice = stationservice;
 		this.weatherService = weatherService;
+		this.airqualityService = airqualityService;
 	}
+	
 	@RequestMapping("/weather/getlist.do")
 	public String getWeatherList(String stationId, Model model) {
 		if(stationId.equals("all")){
@@ -52,9 +59,14 @@ public class WeatherController {
 		model.addAttribute("weatherList", weatherList);
 		model.addAttribute("tmx",tmx);
 		model.addAttribute("stationId",stationId);
+		
+		List<AirqualityDTO> airqualityInfo  = airqualityService.allReadList();
+		model.addAttribute("airqualityInfo",airqualityInfo);
+		System.out.println("미세먼지정보리스트"+airqualityInfo);
+		
 		return "monitoring/weather";
 	}
-	
+
 	@RequestMapping("/weather/getData.do")
 	public String WeathergetData(String stationId, String path,Model model) throws IOException{
 		String view = "";

@@ -101,6 +101,12 @@ public class AirqualityServiceImpl implements AirqualityService {
 		}
 		return dao.read(stationname);
 	}
+
+	@Override
+	public List<AirqualityDTO> allReadList() {
+		System.out.println("에어퀄리티서비스임플 실행되나?????????????????????????");
+		return dao.allReadList();
+	}
 	
 
 }
