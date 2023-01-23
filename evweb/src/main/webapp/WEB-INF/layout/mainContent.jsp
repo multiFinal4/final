@@ -201,7 +201,7 @@
 							<div class="service-box shadow btn trigger" id="rankButton">
 								<p class="service-text1 blue">충전소 랭킹</p>
 								<p class="service-text2">
-									충전소 랭킹정보 확인하기<br>
+									충전량 top3 랭킹보기<br>
 								</p>
 								<p class="service-img" id="button">
 									<img src="/evweb/images/main/c791069357b39fde.png" style="width: 125px;">

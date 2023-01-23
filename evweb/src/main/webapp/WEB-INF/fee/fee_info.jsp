@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/evweb/css/fee.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,16 +13,17 @@
 <script type="text/javascript">
 $(function(){
 
-    var link = $('#navbar a.dot');
-    link.on('click',function(e){
+    var link = $('#navbarbar a.dot');
+    link.on('click',function(e){                                 
         
         //href 속성을 통해, section id 타겟을 잡음
-        var target = $($(this).attr('href')); 
+        var target = $($(this).attr('href'));                     
         
         //target section의 좌표를 통해 꼭대기로 이동
         $('html, body').animate({
-            scrollTop: target.offset().top -250  //가고싶은 위치
+            scrollTop: target.offset().top -200  //가고싶은 위치
         },600);      //걸리는 시간
+
         
         //active 클래스 부여
         $(this).addClass('active');
@@ -37,7 +40,7 @@ $(function(){
         $('section').each(function(){
             if( ($(this).offset().top - $(window).scrollTop() ) < 20){
                 link.removeClass('active');
-                $('#navbar').find('[data-scroll="'+ $(this).attr('id') +'"]').addClass('active');
+                $('#navbarbar').find('[data-scroll="'+ $(this).attr('id') +'"]').addClass('active');
             }
         });
     }
@@ -48,7 +51,7 @@ $(function(){
 </head>
 <body>
 	<!-- Start Nav Section -->
-	<nav id="navbar" class="navbarbar">
+	<nav id="navbarbar" class="navbarbar">
 		<ul class="nav-menu">
 			<li><a data-scroll="home" href="#home" class="dot active"> <span>환경부</span>
 			</a></li>
@@ -64,6 +67,8 @@ $(function(){
 			</a></li>
 		</ul>
 	</nav>
+	<br>
+	<br>
 	<!-- End Nav Section -->
 	<section id="home">
 		<div class="title">충전 요금 정보</div>
@@ -102,6 +107,7 @@ $(function(){
 		</div>
 	</section>
 	<br>
+	<br>
 	<section id="one">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 한국EV충전서비스센터</h4>
@@ -135,6 +141,7 @@ $(function(){
 		</div>
 	</section>
 	<br>
+	<br>
 	<section id="two">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 보타리에너지</h4>
@@ -154,7 +161,7 @@ $(function(){
 				</table>
 			</div>
 			<div class="feeBottom">
-				<p>※ 조이이브이 멤버십 결제 시 280원</p>
+				<p>※ 조이이브이 멤버십 결제 시 240원</p>
 				<br>
 				<span class="linkWrap"> <a target="_blank" class="linkText"
 					href="https://botari.imweb.me/Notice/?q=YToxOntzOjEyOiJrZXl3b3JkX3R5cGUiO3M6MzoiYWxsIjt9&bmode=view&idx=6023059&t=board"> 관련 정보 <span
@@ -164,6 +171,7 @@ $(function(){
 			</div>
 		</div>
 	</section>
+	<br>
 	<br>
 	<section id="three">
 		<div class="feeInner">
@@ -196,6 +204,7 @@ $(function(){
 		</div>
 	</section>
 	<br>
+	<br>
 	<section id="four">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 씨어스</h4>
@@ -225,6 +234,7 @@ $(function(){
 			</div>
 		</div>
 	</section>
+	<br>
 	<br>
 	<section id="five">
 		<div class="feeInner">
@@ -258,7 +268,10 @@ $(function(){
 			</div>
 		</div>
 	</section>
-	<br>
+	<footer>
+    <br>
+    <br>
+	</footer>
 </body>
 </html>
 
