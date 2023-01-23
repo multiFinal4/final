@@ -105,9 +105,11 @@
 			
 			$(".delBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
+				$(".alertPop .modal-content").addClass("show");
 			});
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
 			});
 
 			$("#delBtn").click(function () {
