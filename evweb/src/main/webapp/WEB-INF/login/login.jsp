@@ -97,7 +97,7 @@
 											<br> <br>
 
 											<!-- 카카오 로그인 자바스크립트 키 : bb8e4e9dda670b70895b6b70b420787b -->
-											<a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=ce8affbe0709e40494b6d8ad31a694eb&redirect_uri=http://localhost:8088/evweb/kakao&response_type=code">
+											<a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=ce8affbe0709e40494b6d8ad31a694eb&redirect_uri=http://49.50.163.162:8080/evweb/kakao&response_type=code">
 												<img alt="카카오 로그인 버튼"
 												src="/evweb/images/kakao_login_medium_wide.png">
 											</a>
