@@ -1,13 +1,10 @@
 package com.project.station;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.ss.formula.functions.Count;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +26,7 @@ public class StationAPIPull{
 		List<Map<String, Object>> itemList = mapAPIPull.stationAPI();
 		List<Map<String,Object>> distinctList = new ArrayList<Map<String,Object>>(); // 중복제거된 리스트
 	    List<String> distinctId = new ArrayList<String>(); // 충전소 ID 리스트
+	    List<String> distinctCom = new ArrayList<String>(); // 충전소 회사 리스트
 	    List<StationDTO> stationList = new ArrayList<StationDTO>(); // 최종 넘겨질 충전소리스트 JSON  
 	    List<String> chargerCount = new ArrayList<String>(); // 충전소별 충전기 갯수 구하는 배열
 	    
@@ -38,13 +36,17 @@ public class StationAPIPull{
 	    for(Map<String, Object> item :itemList)
 	    {
 	        String statId = (String)item.get("statId");
+	        String bnm = (String)item.get("bnm");
 	    	chargerCount.add(statId); // 충전소 아이디만 중복허용 담기
 	        if(!distinctId.contains(statId)) {
 	        	distinctId.add(statId);  // 충전소 아이디만 중복제거 담기
 	        	distinctList.add(item);// 중복 데이터 제거된 리스트 다시 담기
 	        }
+	        // 회사리스트 받아오기
+	        if (!distinctCom.contains(bnm)) {
+	        	distinctCom.add(bnm);
+			}
 	    }
-	    
 	    
 	    // 충전소 리스트 추가 (충전소ID 중복제거된 데이터)
 	    String addr = "";
@@ -66,24 +68,13 @@ public class StationAPIPull{
 			}
 	      	list.setStation_company(item.get("bnm").toString());
 	      	list.setBusi_call(item.get("busiCall").toString());
-	      	String mrgId;
-	      	if (count<=50) {
-	      		mrgId = "EV001";
-			}
-	      	else if (count>50 && count <= 100) {
-	      		mrgId = "EV002";
-			}
-	      	else if (count>100 && count <= 150) {
-	      		mrgId = "EV003";
-			}
-	      	else if (count>150 && count <= 200) {
-	      		mrgId = "EV004";
-			}
-	      	else if (count>200 && count <= 250) {
-	      		mrgId = "EV005";
-			}
-	      	else{
-	      		mrgId = "EV006";
+	      	String bnm = item.get("bnm").toString();
+	      	String mrgId = null;
+	      	// 회사별 담당자 설정
+	      	for (int i = 0; i < distinctCom.size(); i++) {
+	      		if (bnm.equals(distinctCom.get(i))) {
+		      		mrgId = "EV00"+ (i+1);
+				}
 			}
 	      	list.setManager_id(mrgId);
 	      	list.setService_date("2022/12/31");
@@ -138,8 +129,6 @@ public class StationAPIPull{
 	      	stationList.add(list);
 	      	
 		}
-
-      	System.out.println(stationList);
 		return stationList;
 	}
 

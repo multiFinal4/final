@@ -41,25 +41,21 @@ public class MapController {
 		List<String> companyList = new ArrayList<>();
 		List<StationDTO> myLocList = new ArrayList<>();
 
-		System.out.println(myLat+","+myLong);
+		// 메인에서 클릭한 위치 주변 보여주기
 		if (myLat != null) {
 			for (StationDTO item : stationList) {
 
 				double cx = Double.parseDouble(myLat);
 				double cy = Double.parseDouble(myLong);
-				double r = 500;
+				double r = 0.019;
 				double x = Double.parseDouble(item.getMap_latitude());
-				double y = Double.parseDouble(item.getMap_latitude());
+				double y = Double.parseDouble(item.getMap_longtude());
 				
-				if((x-cx)*(x-cx) + (y-cy)*(y-cy) <= r*r) {
-					System.out.println("점 (" + x + " " + y + ")는 원 안에 있다.");
-				}else {
-					System.out.println("점 (" + x + " " + y + ")는 원 밖에 있다.");
+				if((cx-x)*(cx-x) + (cy-y)*(cy-y) <= r*r) {
+					myLocList.add(item);
 				}
-				
-
 			}
-			System.out.println(myLocList.size());
+			stationList = myLocList;
 		}
 		
 		// 검색한 리스트에서 충전소운영기관 목록 받기

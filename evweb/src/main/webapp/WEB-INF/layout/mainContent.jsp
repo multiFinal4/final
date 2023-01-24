@@ -96,8 +96,8 @@
 			    var lng = posi.coords.longitude; */
 
 			    // 임시 위치
-			    var lat = 33.505176;
-			    var lng = 126.535477;
+			    var lat = 33.5064296;
+			    var lng = 126.5351424;
 			    location.href = '/evweb/map?myLat='+lat+'&myLong='+lng;
 			    
 			}

@@ -155,15 +155,25 @@
 		var circle = new naver.maps.Circle(null);
 		// 메인에서 받은 좌표 주변 반경 설정
 		if (myLoaction[0] != "") {
-			map.setZoom(16);
+			map.setZoom(15);
 			circle = new naver.maps.Circle({
 	    	    map: map,
 	    	    center: new naver.maps.LatLng(lat, longt),
-	    	    radius: 400,
+	    	    radius: 1200,
 	    	    strokeColor:'#ff8d00',
 	    	    fillColor: '#ff8d00',
-	    	    fillOpacity: 0.2
+	    	    fillOpacity: 0.1
 	    	});
+
+			 var nowLocation = new naver.maps.Marker({
+			    position: new naver.maps.LatLng(lat, longt),
+			    map: map,
+			    icon: {
+			      content: '<img src="/evweb/images/map/nowloca.gif" alt="now" style="width:20px;height:20px;">',
+			      size: new naver.maps.Size(38, 58),
+			      anchor: new naver.maps.Point(0,0),
+			    },
+			  });
 		}
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         

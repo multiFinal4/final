@@ -98,14 +98,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into CUSTOMER_TB values(
 		#{customer_id}, '정보없음',
 		'정보없음', '정보없음', '정보없음', '정보없음', '정보없음', #{email}, now(),
-		str_to_date('20101020','%Y%m%d'), '정보없음', '정보없음', '카카오')
+		str_to_date('11111111','%Y%m%d'), '정보없음', '정보없음', '카카오')
 	</insert>
 	
 	<insert id="kakaoInsertNull" parameterType="customer"> 
 		insert into CUSTOMER_TB values(
 		#{customer_id}, '정보없음',
 		'정보없음', '정보없음', '정보없음', '정보없음', '정보없음', '정보없음', now(),
-		str_to_date('20101020','%Y%m%d'), '정보없음', '정보없음', '카카오')
+		str_to_date('11111111','%Y%m%d'), '정보없음', '정보없음', '카카오')
 	</insert>
 	
 	<select id="findkakao" parameterType="customer" resultType="customer">
