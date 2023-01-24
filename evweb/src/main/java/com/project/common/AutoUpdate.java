@@ -111,7 +111,7 @@ public class AutoUpdate {
         System.out.println("날씨 update완료");
 	}
 	
-	@Scheduled(cron= "0 33 */1 * * ?") 
+	@Scheduled(cron= "0 33 * * * ?") 
 	public void AirqualityDataAuto() throws IOException{
 		String result = airqualityAPIPull.GetAPIDataDust();
 		airqualityService.delete();
