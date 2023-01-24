@@ -124,6 +124,7 @@
 						href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}&${pageMaker.makeSearch(pageMaker.endPage + 1)}">></a></li>
 				</c:if>
 			</ul>
+			<button type="submit" onclick="location.href='/evweb/service/write.do'" class="btn btn-primary stRgiBtn"><i class="bi bi-pencil-square"></i> 글쓰기</button>
 		</div>
 	</div>
 </body>
