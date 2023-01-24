@@ -105,4 +105,21 @@
 			trafficYn=#{trafficYn}
 		where station_id=#{station_id}
 	</update>
+	
+	<select id="selectmanager" resultType="station" parameterType="Map">
+		select station.*
+				from (select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB where manager_id = #{manager_id} order by station_id ) st) as station
+		<where>
+			<if test='_parameter == "10"'>
+				rn BETWEEN 1 AND #{endNo} 
+			</if>
+			<if test='_parameter != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	<select id="listMgr" resultType="station" parameterType="String">
+		select * from STATION_TB where manager_id=#{manager_id} order by station_id ASC 
+	</select>
  </mapper>

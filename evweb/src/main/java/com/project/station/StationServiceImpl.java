@@ -88,6 +88,16 @@ public class StationServiceImpl implements StationService {
 		return dao.deleteAll();
 	}
 
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id, String endNo) {
+		return dao.stationListMgr(manager_id, endNo);
+	}
+
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id) {
+		return dao.stationListMgr(manager_id);
+	}
+
 
 
 

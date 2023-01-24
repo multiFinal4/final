@@ -26,5 +26,16 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/manager/manager_service_read.jsp"></put-attribute>
 	</definition>
-	
+	<definition name="manager_station_list" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/manager/manager_stationList.jsp"></put-attribute>
+	</definition>
+	<definition name="manager_station_read" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/manager/manager_stationRead.jsp"></put-attribute>
+	</definition>
+	<definition name="manager_station_update" extends="subTemplate">
+		<put-attribute name="menu" value="/WEB-INF/menu/manager_mypage_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/manager/manager_stationUpdate.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

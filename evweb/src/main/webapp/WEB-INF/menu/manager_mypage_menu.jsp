@@ -28,6 +28,12 @@
                         <span>문의내역</span>
                     </a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/manager/stationlist.do?manager_id=${user.manager_id}&pageNo=1">
+                        <i class="bi bi-grid"></i>
+                        <span>충전소 리스트</span>
+                    </a>
+                </li>
                
             </ul>
         </aside>
