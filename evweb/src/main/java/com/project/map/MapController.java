@@ -66,7 +66,6 @@ public class MapController {
 	        }
 	    }
 
-		System.out.println(myLat+","+myLong);
 		mv.addObject("myLat",myLat);
 		mv.addObject("myLong",myLong);
 		
