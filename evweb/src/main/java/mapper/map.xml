@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.project.map">
+	<!-- 충전소테이블 요금 테이블 조인 -->
+	<select id="mapFee" resultType="mapStation" parameterType="String">
+		select st.*, ft.standard, ft.quick, ft.super, ft.nonmem, rt.charging_amount
+		from STATION_TB st inner join FEE_TB ft
+                    			   on st.station_company  = ft.station_company
+                  		   inner join (select s.station_id, s.station_name, sum(c.charging_amount) as charging_amount
+										   from STATION_TB s
+										   left join CHARGE_TB c
+										 		  on s.station_id = c.station_id
+										   group by s.station_name, s.station_id) rt
+                    			   on st.station_id = rt.station_id
+							    where st.station_id = #{stationId}
+	</select>
+	<select id="mapStationList" resultType="mapStation">
+		select st.*, ft.standard, ft.quick, ft.super, ft.nonmem, rt.charging_amount
+		from STATION_TB st inner join FEE_TB ft
+                    			   on st.station_company  = ft.station_company
+                  		   inner join (select s.station_id, s.station_name, sum(c.charging_amount) as charging_amount
+										   from STATION_TB s
+										   left join CHARGE_TB c
+										 		  on s.station_id = c.station_id
+										   group by s.station_name, s.station_id) rt
+                    			   on st.station_id = rt.station_id
+	</select>
+ 	<select id="mapSearch" resultType="mapStation" parameterType="Map">
+		select mt.* from (select st.*, ft.standard, ft.quick, ft.super, ft.nonmem, rt.charging_amount
+							from STATION_TB st inner join FEE_TB ft
+					                    			   on st.station_company  = ft.station_company
+					                  		   inner join (select s.station_id, s.station_name, sum(c.charging_amount) as charging_amount
+															   from STATION_TB s
+															   left join CHARGE_TB c
+															 		  on s.station_id = c.station_id
+															   group by s.station_name, s.station_id) rt
+					                    			   on st.station_id = rt.station_id) mt
+		<where>
+			<if test="category == 'all' and keyword!=''">
+			    mt.station_name like concat('%',#{keyword},'%') or mt.addr_do like concat('%',#{keyword},'%') or mt.addr_sigun like concat('%',#{keyword},'%') or mt.addr_detail like concat('%',#{keyword},'%') 
+			</if> 
+			<if test="category == 'name' and keyword!=''" >
+			    mt.station_name like concat('%',#{keyword},'%')
+			  </if>
+			<if test="category == 'addr' and keyword!=''">
+			    mt.addr_do like concat('%',#{keyword},'%') or mt.addr_sigun like concat('%',#{keyword},'%') or mt.addr_detail like concat('%',#{keyword},'%') 
+			</if>  
+      	</where> 
+	</select>
+ </mapper>

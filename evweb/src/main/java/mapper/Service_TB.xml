@@ -5,18 +5,18 @@
 <mapper namespace="com.project.service">
 	<!-- <typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/> -->
 	<insert id="insert" parameterType="servicetb">      <!-- 매니저 -->
-		insert into service_tb
-		values(service_tb_seq.nextval, #{manager_id}, #{board_category}, #{board_title},
-		#{board_content}, sysdate, '대기', '없음')
+		insert into SERVICE_TB
+		values(null,#{manager_id}, #{board_category}, #{board_title},
+		#{board_content}, now(), '대기', '없음')
 	</insert>
 	<insert id="insertCus" parameterType="servicetb">   <!-- 일반유저 -->
-		insert into service_tb
-		values(service_tb_seq.nextval, '없음', #{board_category}, #{board_title},
-		#{board_content}, sysdate, '대기', #{customer_id})
+		insert into SERVICE_TB
+		values(null,'없음', #{board_category}, #{board_title},
+		#{board_content}, now(), '대기', #{customer_id})
 	</insert>
 
 	<select id="selectall" resultType="servicetb">
-		select * from service_tb order
+		select * from SERVICE_TB order
 		by board_no desc
 	</select>
 
@@ -26,16 +26,16 @@
 	</select>
 
 	<delete id="delete" parameterType="String">
-		delete from service_tb where
+		delete from SERVICE_TB where
 		board_no = #{board_no}
 	</delete>
 	<delete id="delete_file" parameterType="String">
-		delete from file_tb where
+		delete from FILE_TB where
 		board_no = #{board_no}
 	</delete>
 	<delete id="delete_reply" parameterType="String">
 		delete from
-		service_reply_tb where board_no = #{board_no}
+		SERVICE_REPLY_TB where board_no = #{board_no}
 	</delete>
 
 <!-- 	<select id="dynamicSearch" resultType="servicetb"
@@ -64,37 +64,32 @@
 
 	<select id="categorySelect" resultType="servicetb"
 		parameterType="String">
-		select * from service_tb where
+		select * from SERVICE_TB where
 		board_category=#{board_category} order by board_no desc
 	</select>
 
 	<update id="updateState">
-		update service_tb set board_state = '완료' where
+		update SERVICE_TB set board_state = '완료' where
 		board_no = #{board_no}
 	</update>
 
 	<!-- =========== 1:1문의하기에서 파일첨부하기 ========== -->
 	<!-- 공지사항 파일첨부기능 => notice_no은 공지사항 게시글번호이므로 0번으로 넘겨버림 -->
 	<insert id="fileinsert" parameterType="java.util.List">
-		insert all
-		<foreach collection="list" item="file" separator=" ">
-			into file_tb
-			values
-			(#{file.file_no}, service_tb_seq.currval,
+		insert into FILE_TB values
+		<foreach collection="list" item="file" separator=",">
+			(#{file.file_no},last_insert_id(),
 			#{file.storeFilename}, #{file.originalFilename}, '1:1문의', 0)
 		</foreach>
-		select * from dual
 	</insert>
 	
 	
 	
 	<!-- ==================페이징================ -->
 	<select id="listPage" resultType="servicetb" parameterType="SearchCriteria">
-		select * from
-		(
-		select ROW_NUMBER() OVER(ORDER BY board_no DESC) as rn, board_no, manager_id, board_category, board_title, board_content, board_date, board_state, customer_id
-		from service_tb
-		where 1=1
+		select MP.* 
+		from(select @ROWNUM:=@ROWNUM+1 rn, svt.*
+				from (select @rownum :=0) as r, (select * from SERVICE_TB order by board_no desc) as svt where 1=1
 		<include refid="search"></include>
 		) MP
 		where rn BETWEEN #{rowStart} AND #{rowEnd}
@@ -105,7 +100,7 @@
 	
 	<select id="listCount" parameterType="SearchCriteria" resultType="int">
 		select count(board_no) 
-		from service_tb
+		from SERVICE_TB
 		WHERE 1=1
 		<include refid="search"></include>	
 		AND board_no > 0
@@ -114,14 +109,47 @@
 	
 	<sql id="search">
 		<if test="searchType != null">
-			<if test="searchType == 't'.toString()">AND board_TITLE LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'c'.toString()">AND board_CONTENT LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'w'.toString()">AND manager_id LIKE '%' || #{keyword} || '%'</if>
-			<if test="searchType == 'tc'.toString()">AND (board_TITLE LIKE '%' || #{keyword} || '%') or (board_CONTENT LIKE '%' || #{keyword} || '%')</if>
-			<if test="searchType == 'ctgr'.toString()">AND board_category LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 't'.toString()">AND board_title LIKE concat('%',#{keyword},'%')</if>
+			<if test="searchType == 'c'.toString()">AND board_content LIKE concat('%',#{keyword},'%')</if>
+			<if test="searchType == 'w'.toString()">AND manager_id LIKE concat('%',#{keyword},'%')</if>
+			<if test="searchType == 'tc'.toString()">AND (board_title LIKE concat('%',#{keyword},'%') or (board_content LIKE concat('%',#{keyword},'%')</if>
+			<if test="searchType == 'ctgr'.toString()">AND board_category LIKE concat('%',#{keyword},'%')</if>
 		</if>
 	</sql>
+	<!-- ==================내 문의내역 확인================ -->
+	<select id="selectbyId" resultType="servicetb" parameterType="Map">
+		select MP.* from
+				(select @ROWNUM:=@ROWNUM+1 rn, svt.*
+					from (select @rownum :=0) as r, (select * from SERVICE_TB order by board_no desc) as svt
+		<where>
+			<if test="type == '관리자'">
+				manager_id = #{id}
+			</if>
+			<if test="type == '회원'">
+				customer_id = #{id}
+			</if>
+		</where>
+		<include refid="search"></include>
+		) MP
+		where rn BETWEEN #{rowStart} AND #{rowEnd}
+		order by board_no desc
+	</select>
 	
+	<select id="listCountId" parameterType="Map" resultType="int">
+		select count(board_no) 
+		from SERVICE_TB
+		<where>
+			<if test="type == '관리자'">
+				manager_id = #{id}
+			</if>
+			<if test="type == '회원'">
+				customer_id = #{id}
+			</if>
+		</where>
+		<include refid="search"></include>	
+		AND board_no > 0
+		
+	</select>
 </mapper>
 
 

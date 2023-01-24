@@ -38,7 +38,7 @@ $(function(){
 
     function findPosition(){
         $('section').each(function(){
-            if( ($(this).offset().top - $(window).scrollTop() ) < 20){
+            if( ($(this).offset().top - $(window).scrollTop() ) < 400){
                 link.removeClass('active');
                 $('#navbarbar').find('[data-scroll="'+ $(this).attr('id') +'"]').addClass('active');
             }
@@ -268,8 +268,7 @@ $(function(){
 			</div>
 		</div>
 	</section>
-	<footer>
-    <br>
+	<footer id="footerfee">
     <br>
 	</footer>
 </body>

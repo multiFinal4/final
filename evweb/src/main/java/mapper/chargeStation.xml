@@ -37,9 +37,9 @@
 		select * from STATION_TB where station_company=#{category} order by station_id ASC 
 	</select>
 	<select id="selectall" resultType="station" parameterType="String">
-		select *
-				from(select ROWNUM rn, st.*
-				        FROM (select * from STATION_TB order by station_id) st)
+		select station.*
+				from (select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB order by station_id) st) as station
 		<where>
 			<if test='_parameter == "10"'>
 				rn BETWEEN 1 AND #{endNo} 
@@ -50,9 +50,9 @@
 		</where>
 	</select>
 	<select id="categorySelect" resultType="station" parameterType="Map">
-		select *
-				from(select ROWNUM rn, st.*
-				        FROM (select * from STATION_TB where station_company=#{category} order by station_id) st)
+		select station.*
+				from(select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB where station_company=#{category} order by station_id) st) as station
 		<where>
 			<if test='endNo == "10"'>
 				rn BETWEEN 1 AND #{endNo} 
@@ -63,15 +63,15 @@
 		</where>
 	</select>
 	<select id="findbynameAll" resultType="station" parameterType="String">
-		select *		
-				from(select ROWNUM rn, st.*
-				        FROM (select * from STATION_TB order by station_id) st)
-		where station_name like '%' || #{stationName} || '%' 
+		select station.*		
+				from(select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB order by station_id) st) as station
+		where station_name like concat('%',#{stationName},'%')
 	</select>
 	<select id="findbyname" resultType="station" parameterType="Map">
-		select ROWNUM rn, st.*
-				        FROM (select * from STATION_TB where station_company=#{category}) st
-		where station_company = #{category} and station_name like '%' || #{stationName} || '%' 
+		select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB where station_company=#{category}) st
+		where station_company = #{category} and station_name like concat('%',#{stationName},'%')
 	</select>
 	<select id="read" resultType="station" parameterType="String">
 		select * from STATION_TB where station_id=#{stationId}
@@ -91,24 +91,18 @@
 			station_company=#{station_company},
 			manager_id=#{manager_id},
 			service_date=#{service_date}, 
-			CHARGER_NO=#{charger_no} where station_id=#{station_id}
+			service_date=#{service_date}, 
+			service_date=#{service_date}, 
+			service_date=#{service_date}, 
+			kind=#{kind}, 
+			map_latitude=#{map_latitude}, 
+			map_longtude=#{map_longtude}, 
+			use_time=#{use_time}, 
+			parking_free=#{parking_free}, 
+			note=#{note}, 
+			limitYn=#{limitYn}, 
+			limit_detail=#{limit_detail}, 
+			trafficYn=#{trafficYn}
+		where station_id=#{station_id}
 	</update>
-	
-	
-	<!-- Map에 사용하는 부분 -->
- 	<select id="mapSearch" resultType="station" parameterType="Map">
-		select * from STATION_TB 
-		<where>
-			<if test="category == 'all' and keyword!=''">
-			    station_name like '%'||#{keyword}||'%' or addr_do like '%'||#{keyword}||'%' or addr_sigun like '%'||#{keyword}||'%' or addr_detail like '%'||#{keyword}||'%' 
-			</if> 
-			<if test="category == 'name' and keyword!=''" >
-			    station_name like '%'||#{keyword}||'%'
-			  </if>
-			<if test="category == 'addr' and keyword!=''">
-			    addr_do like '%'||#{keyword}||'%' or addr_sigun like '%'||#{keyword}||'%' or addr_detail like '%'||#{keyword}||'%' 
-			</if>  
-      	</where> 
-	</select>
-	
  </mapper>

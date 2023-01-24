@@ -12,7 +12,7 @@
 		<!-- 가로범위 -->
 		<div>
 			<h5 class="card-title">
-				<strong>공지사항 작성하기</strong>
+				<strong>FAQ 작성하기</strong>
 			</h5>
 			<hr>
 			<form role="form" class="form-horizontal"
@@ -29,7 +29,7 @@
 						<label for="content" class="col-sm-2 col-form-label">내용</label>
 						<div class="col-sm-10">
 							<textarea class="form-control" style="height: 300px"
-								id="content" name="content"></textarea>
+								name="content"></textarea>
 						</div>
 					</div>
 
