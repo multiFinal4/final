@@ -60,7 +60,14 @@
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label">생년월일</label>
 						<div class="col-sm-3">
-							정보없음
+							<c:choose>
+								<c:when test="${customerinfo.birth == null}">
+									정보없음
+								</c:when>
+								<c:otherwise>
+									${customerinfo.birth}
+								</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 					
