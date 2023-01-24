@@ -37,4 +37,9 @@ public class AirqualityDAOImpl implements AirqualityDAO{
 		return sqlSession.selectOne("com.project.airquality.read", stationname);
 	}
 
+	@Override
+	public List<AirqualityDTO> allReadList() {
+		return sqlSession.selectList("com.project.airquality.allreadlist");
+	}
+
 }

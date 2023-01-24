@@ -9,4 +9,5 @@ public interface AirqualityService {
 	int insert(AirqualityDTO dto);
 	int delete();
 	AirqualityDTO read(StationDTO station);
+	List<AirqualityDTO> allReadList();
 }

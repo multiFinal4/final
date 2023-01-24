@@ -40,4 +40,15 @@ public class AirqualityController {
 		return "redirect:/monitoring/main?stationId="+stationId;
 	}
 	
+	@RequestMapping("/airquality/getDataDustWeather.do")
+	public String WeathergetData2(String stationId, String path,Model model) throws IOException{
+		String result = pull.GetAPIDataDust();
+		airqualityService.delete();
+		List<AirqualityDTO> dustList = pull.DataSaveDust(result);
+		for (int i = 0; i < dustList.size(); i++) {
+			airqualityService.insert(dustList.get(i));
+		}
+		return "redirect:/weather/getlistDust.do?stationId="+stationId;
+	}
+	
 }

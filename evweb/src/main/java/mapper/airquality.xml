@@ -13,5 +13,7 @@
 	<select id="read" parameterType="String" resultType="airquality">
 		select * from AIRQUALITY_TB where stationname = #{stationname}
 	</select>
-	
+	<select id="allreadlist" resultType="airquality">
+		select * from AIRQUALITY_TB
+	</select>
 </mapper>
