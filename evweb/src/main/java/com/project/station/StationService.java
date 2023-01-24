@@ -15,5 +15,7 @@ public interface StationService {
 	int update(StationDTO station);
 	int delete(String stationId);
 	int deleteAll();
+	List<StationDTO> stationListMgr(String manager_id, String endNo);
+	List<StationDTO> stationListMgr(String manager_id);
 }
  

@@ -22,6 +22,19 @@ public class StationDAOImpl implements StationDAO {
 
 	@Override
 	public int insert(StationDTO station) {
+		if(station.getStation_company().equals("환경부")) {
+			station.setManager_id("EV002");
+		}else if (station.getStation_company().equals("한국EV충전서비스센터")) {
+			station.setManager_id("EV003");
+		}else if (station.getStation_company().equals("보타리에너지")) {
+			station.setManager_id("EV004");
+		}else if (station.getStation_company().equals("블루네트웍스")) {
+			station.setManager_id("EV005");
+		}else if (station.getStation_company().equals("씨어스")) {
+			station.setManager_id("EV006");
+		}else {
+			station.setManager_id("EV001");
+		}
 		return sqlSession.insert("com.project.station.insert", station);
 	}
 
@@ -78,6 +91,19 @@ public class StationDAOImpl implements StationDAO {
 	@Override
 	public int deleteAll() {
 		return sqlSession.delete("com.project.station.delAll");
+	}
+
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id, String endNo) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("manager_id", manager_id);
+		map.put("endNo", endNo);	
+		return sqlSession.selectList("com.project.station.selectmanager",map);
+	}
+
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id) {
+		return sqlSession.selectList("com.project.station.listMgr",manager_id);
 	}
 
 

@@ -2,6 +2,9 @@ package com.project.manager;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +25,8 @@ import com.project.service.ServiceReply_TBDTO;
 import com.project.service.ServiceReply_TBService;
 import com.project.service.Service_TBDTO;
 import com.project.service.Service_TBService;
+import com.project.station.StationDTO;
+import com.project.station.StationService;
 
 @Controller
 @RequestMapping("/manager")
@@ -31,14 +36,17 @@ public class ManagerController {
 	Service_TBService questionservice;
 	BoardFileService boardservice;
 	ServiceReply_TBService servicereply;
+	StationService stationService;
 	@Autowired
-	public ManagerController(ManagerService service, customerService customerservice, Service_TBService questionservice,BoardFileService boardservice,ServiceReply_TBService servicereply) {
+	public ManagerController(ManagerService service, customerService customerservice, Service_TBService questionservice,
+			BoardFileService boardservice,ServiceReply_TBService servicereply,StationService stationService) {
 		super();
 		this.service = service;
 		this.customerservice = customerservice;
 		this.questionservice = questionservice;
 		this.boardservice = boardservice;
 		this.servicereply = servicereply;
+		this.stationService = stationService;
 	}
 	
 	
@@ -207,5 +215,68 @@ public class ManagerController {
 		return "redirect:/manager/boardListPaging.do?manager_id="+manager_id;
 	}
 	
+	@RequestMapping("/stationlist.do")
+	public ModelAndView list(String manager_id, String endNo, String pageNo){
+		ModelAndView mv = new ModelAndView("manager_station_list");
+		List<StationDTO> stationlist = stationService.stationList();
+		List<StationDTO> stationlistMgr = stationService.stationListMgr(manager_id);
+		
+		int showList = 10; // 리스트 보여줄 갯수
+		endNo = Integer.toString((Integer.parseInt(pageNo)*showList));
+		List<StationDTO> stationlistPage = stationService.stationListMgr(manager_id, endNo);
+		int endPage = 0; // 페이징 넘버 유동적으로 
+		
+		
+		if (stationlistMgr.size() <= showList) {
+			endPage = 1;
+		}else {
+			endPage = (stationlistMgr.size()/showList)+1;
+		}
+	
+		List<StationDTO> companyList = stationService.companyList();
+		
+		mv.addObject("stationlistPage", stationlistPage);
+		mv.addObject("stationlist", stationlist);
+		mv.addObject("companyList", companyList);
+		
+		mv.addObject("manager_id", manager_id);
+		mv.addObject("endPage", endPage);
+		mv.addObject("pageNo", pageNo);
+		return mv;
+	}
+	
+	@RequestMapping("/station/read.do")
+	public String readStation(String stationId, String state, Model model) {
+		StationDTO read = stationService.read(stationId);
+		String path = "";
+		
+		if (state.equals("READ")) {
+			path = "manager_station_read";
+		} else {
+			path = "manager_station_update";
+		}
+		model.addAttribute("read", read);
+		return path;
+	}
+	
+	@RequestMapping("/station/delete.do")
+	public String delete(String stationId,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		ManagerDTO dto = (ManagerDTO) session.getAttribute("user");
+		String manager_id = dto.getManager_id();
+		
+		stationService.delete(stationId);
+		return "redirect:/manager/stationlist.do?manager_id="+manager_id+"all&pageNo=1";
+	}
+	
+	@RequestMapping("/station/update.do")
+	public String update(StationDTO station,HttpServletRequest request ) {
+		HttpSession session = request.getSession();
+		ManagerDTO dto = (ManagerDTO) session.getAttribute("user");
+		String manager_id = dto.getManager_id();
+		
+		stationService.update(station);
+		return "redirect:/manager/stationlist.do?manager_id="+manager_id+"&pageNo=1";
+	}
 }
 
