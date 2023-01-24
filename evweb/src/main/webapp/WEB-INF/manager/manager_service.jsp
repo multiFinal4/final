@@ -100,7 +100,7 @@
 		</form>
 
 
-
+				
 
 		<!-- 페이징 -->
 		<div class="boardBottom text-right col-sm-12"
@@ -124,6 +124,7 @@
 						href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}&${pageMaker.makeSearch(pageMaker.endPage + 1)}">></a></li>
 				</c:if>
 			</ul>
+			<button type="submit" onclick="location.href='/evweb/service/write.do'" class="btn btn-primary stRgiBtn"><i class="bi bi-pencil-square"></i> 글쓰기</button>
 		</div>
 	</div>
 </body>
