@@ -88,7 +88,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update CUSTOMER_TB set state = '관리자' where customer_id = #{customer_id} 
 	</update>
 	<delete id="realdelete">
-		delete CUSTOMER_TB
+		delete from CUSTOMER_TB
 		where customer_id = #{customer_id}
 	</delete>
 	

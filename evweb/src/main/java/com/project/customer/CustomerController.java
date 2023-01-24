@@ -115,7 +115,7 @@ public class CustomerController {
 	@RequestMapping("/customer/realdelete.do")
 	public String realdelete(String customer_id) {
 		service.realdelete(customer_id);
-		return "redirect:/customer/list.do?type=all&pageNo=1&name="; 	
+		return "redirect:/manager/list.do?type=all&pageNo=1&name="; 	
 	}
 	
 	
