@@ -19,9 +19,10 @@
 		var filterData = {};
 		var company = "all";
 		var stFilter = "default";
+		var myLoaction = ["${myLat}","${myLong}"];
 		
 		// 지도 실행
-		initMap(filterData,filterArr);
+		initMap(filterData,filterArr, myLoaction);
 
 		// 충전소 정보창 닫기
 		$(".mapClose").click(function() {
@@ -111,7 +112,7 @@
 						$(".mapSearchList > .card").eq(2).addClass("thrd");
 					}
 					// 변경된 값으로 지도 불러오기
-					initMap(filterData, filterArr);
+					initMap(filterData, filterArr, myLoaction);
 				},
 				error: function(){
 				  console.error("Map Error");
@@ -126,11 +127,20 @@
 		
 	});
 	
-	function initMap(filterData, filterArr) { 
+	function initMap(filterData, filterArr, myLoaction) { 
 		// 위도경도 받아오기
-		var lat = "${lat}";
-		var longt = "${longt}";
 		
+		var lat = "";
+		var longt = "";
+		
+		if (myLoaction[0] != "") {
+			lat = myLoaction[0];
+			longt = myLoaction[1];
+			
+		}else {
+			lat = "${lat}";
+			longt = "${longt}";
+		}
 		
 		// 검색시 가장 첫번째 충전소 위치로 이동
 		var map = new naver.maps.Map('map', {
@@ -142,7 +152,19 @@
 	       		position: naver.maps.Position.TOP_RIGHT
 	        }
 	    });
-
+		var circle = new naver.maps.Circle(null);
+		// 메인에서 받은 좌표 주변 반경 설정
+		if (myLoaction[0] != "") {
+			map.setZoom(16);
+			circle = new naver.maps.Circle({
+	    	    map: map,
+	    	    center: new naver.maps.LatLng(lat, longt),
+	    	    radius: 400,
+	    	    strokeColor:'#ff8d00',
+	    	    fillColor: '#ff8d00',
+	    	    fillOpacity: 0.2
+	    	});
+		}
         map.setOptions("tileTransition", true); //타일 fadeIn 효과 켜기
         
 		var markers = []; // 마커 정보를 담는 배열
@@ -186,35 +208,37 @@
 	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
 	    	map.setCenter(new naver.maps.LatLng(33.3885379, 126.5626925));
 	    	map.setZoom(11);
+	    	circle.setMap(null);
 
 	    });
 	    // 현재 내 위치로 이동
 	    $(".mapControl .current").click(function(){
 			$(".mapMarkerWrap").removeClass("on");
+	    	circle.setMap(null);
 	    	naver.maps.Event.trigger(map, "click", ClickMap(i));
-	    	if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(onSuccessGeolocation);
-            }             
-            function onSuccessGeolocation(position) {
-                var location = new naver.maps.LatLng(position.coords.latitude,
-                                                     position.coords.longitude);
-                map.panTo(location);
+	    	navigator.geolocation.getCurrentPosition(nowGeo,nowGeoErr);   
+			function nowGeo(posi){
+			    var lat = posi.coords.latitude;
+			    var lng = posi.coords.longitude;
+			    var location = new naver.maps.LatLng(lat,lng);
+			    map.panTo(location);
                 map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정
                 map.setZoom(16); // 지도의 줌 레벨을 변경
                 
-                var circle = new naver.maps.Circle({
+                circle = new naver.maps.Circle({
     	    	    map: map,
     	    	    center: location,
     	    	    radius: 200,
-    	    	    fillColor: '#076ff9',
+    	    	    strokeColor:'#ff8d00',
+    	    	    fillColor: '#ff8d00',
     	    	    fillOpacity: 0.2
     	    	});
-            }
-            
-	    	
+			    
+			}
+			function nowGeoErr(){
+			    alert("현재 위치 정보 조회에 실패했습니다. 잠시 후 다시 시도해주세요.");
+			}    
 	    });
-		
-		
 	    
 	    // 충전소 리스트 생성 (전체)
 	    function setDeaultList() {
@@ -329,6 +353,7 @@
 	    // 마커클릭 이벤트
 	    function getClickHandler(i) {
             return function(e) {  // 마커를 클릭하는 부분
+    	    	circle.setMap(null);
             	$(".mapMarkerWrap").fadeIn("slow");
                 var marker = markers[i], // 클릭한 마커의 index 찾기
                     infoWindow = infowindowList[i]; // 클릭한 마커와 동일한 index 안내창

@@ -8,6 +8,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
 <title>Login</title>
+<link rel="icon" href="/evweb/images/favicon/favicon.ico" type="image/x-icon" sizes="16x16">
 <!-- Google Fonts -->
 <link href="https://fonts.gstatic.com" rel="preconnect">
 <!-- Vendor CSS Files -->

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.ss.formula.functions.Count;
 import org.aspectj.weaver.ast.Var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,7 +48,9 @@ public class StationAPIPull{
 	    
 	    // 충전소 리스트 추가 (충전소ID 중복제거된 데이터)
 	    String addr = "";
+	    int count = 0;
 	    for (Map<String, Object> item : distinctList) {
+	    	count ++;
 	    	addr = item.get("addr").toString();
 			String[] addrArr = addr.split(" ",3);
 	        StationDTO list = new StationDTO();
@@ -63,7 +66,26 @@ public class StationAPIPull{
 			}
 	      	list.setStation_company(item.get("bnm").toString());
 	      	list.setBusi_call(item.get("busiCall").toString());
-	      	list.setManager_id("EV001");
+	      	String mrgId;
+	      	if (count<=50) {
+	      		mrgId = "EV001";
+			}
+	      	else if (count>50 && count <= 100) {
+	      		mrgId = "EV002";
+			}
+	      	else if (count>100 && count <= 150) {
+	      		mrgId = "EV003";
+			}
+	      	else if (count>150 && count <= 200) {
+	      		mrgId = "EV004";
+			}
+	      	else if (count>200 && count <= 250) {
+	      		mrgId = "EV005";
+			}
+	      	else{
+	      		mrgId = "EV006";
+			}
+	      	list.setManager_id(mrgId);
 	      	list.setService_date("2022/12/31");
 
 		    int aFrequency = Collections.frequency(chargerCount, item.get("statId").toString()); // 충전소 ID중복 횟수로 충전기 갯수 입력
@@ -117,6 +139,7 @@ public class StationAPIPull{
 	      	
 		}
 
+      	System.out.println(stationList);
 		return stationList;
 	}
 

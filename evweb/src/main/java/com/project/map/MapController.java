@@ -35,10 +35,32 @@ public class MapController {
 	
 
 	@RequestMapping("/map")
-	public ModelAndView list() {
+	public ModelAndView list(String myLat, String myLong) {
 		ModelAndView mv = new ModelAndView("map/main");
 		List<StationDTO> stationList = stationService.stationList();
 		List<String> companyList = new ArrayList<>();
+		List<StationDTO> myLocList = new ArrayList<>();
+
+		System.out.println(myLat+","+myLong);
+		if (myLat != null) {
+			for (StationDTO item : stationList) {
+
+				double cx = Double.parseDouble(myLat);
+				double cy = Double.parseDouble(myLong);
+				double r = 500;
+				double x = Double.parseDouble(item.getMap_latitude());
+				double y = Double.parseDouble(item.getMap_latitude());
+				
+				if((x-cx)*(x-cx) + (y-cy)*(y-cy) <= r*r) {
+					System.out.println("점 (" + x + " " + y + ")는 원 안에 있다.");
+				}else {
+					System.out.println("점 (" + x + " " + y + ")는 원 밖에 있다.");
+				}
+				
+
+			}
+			System.out.println(myLocList.size());
+		}
 		
 		// 검색한 리스트에서 충전소운영기관 목록 받기
 		for(StationDTO item :stationList){
@@ -47,6 +69,10 @@ public class MapController {
 	        	companyList.add(comName);
 	        }
 	    }
+
+		System.out.println(myLat+","+myLong);
+		mv.addObject("myLat",myLat);
+		mv.addObject("myLong",myLong);
 		
 		mv.addObject("stationList", stationList);
 		mv.addObject("listCount", stationList.size());
@@ -54,6 +80,8 @@ public class MapController {
 		mv.addObject("category","all");
 		mv.addObject("lat",stationList.get(0).getMap_latitude());
 		mv.addObject("longt",stationList.get(0).getMap_longtude());
+
+		
 		return mv;
 	}
 

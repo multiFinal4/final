@@ -86,11 +86,34 @@
 				error : error_run
 			}) //end ajax
 		}) //end click
+		
+		
+		// 현재 내 위치 받아와서 지도로 넘기기
+		$(".nowStation").click(function() {
+			navigator.geolocation.getCurrentPosition(nowGeo,nowGeoErr);
+			function nowGeo(posi){
+			    /* var lat = posi.coords.latitude;
+			    var lng = posi.coords.longitude; */
+
+			    // 임시 위치
+			    var lat = 33.505176;
+			    var lng = 126.535477;
+			    location.href = '/evweb/map?myLat='+lat+'&myLong='+lng;
+			    
+			}
+			function nowGeoErr(){
+			    alert("현재 위치 정보 조회에 실패했습니다. 잠시 후 다시 시도해주세요.");
+			}
+			// map으로 내 위치 넘겨주기(제주도가 아니라서 임의의 좌표로 다시 설정)
+		});
 	}) //end ready
 
 	function error_run(obj, msg, statusMsg) {
 		alert("오류발생" + obj + "," + msg + "," + statusMsg);
 	}
+	
+	
+	
 	
 	$(document).ready(function() {
 		$('#fullpage').fullpage({
@@ -177,8 +200,7 @@
 									<img src="/evweb/images/main/map2.png" style="width: 118px;">
 								</p>
 							</div>
-							<div class="service-box shadow"
-								onclick="location.href='/evweb/fee.do'">
+							<div class="service-box shadow nowStation">
 								<p class="service-text1 blue">충전소 조회</p>
 								<p class="service-text2">
 									이용가능한 충전소 정보보기<br>
