@@ -108,7 +108,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="one">
+	<section id="one" style="padding-top: 12%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 한국EV충전서비스센터</h4>
 			<br>
@@ -142,7 +142,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="two">
+	<section id="two" style="padding-top: 12%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 보타리에너지</h4>
 			<br>
@@ -173,7 +173,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="three">
+	<section id="three" style="padding-top: 12%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 블루네트웍스</h4>
 			<br>
@@ -205,7 +205,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="four">
+	<section id="four" style="padding-top: 10%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 씨어스</h4>
 			<br>
@@ -236,7 +236,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="five">
+	<section id="five"style="padding-top: 10%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 대영채비 채비인프라 멤버십</h4>
 			<br>
