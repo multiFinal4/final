@@ -31,7 +31,7 @@
 			<h1 class="pagetitle" > <img src='/evweb/images/favicon/favicon.ico' style='width:50px;'>[ 내 정보 수정 ]</h1><br/>
 	
 				<!-- General Form Elements -->
-				<form action="/evweb/manager/update.do" method="post">
+				<form action="/evweb/manager/myupdate.do" method="post">
 					<div class="row mb-3">
 						<label for="inputText" class="col-sm-2 col-form-label" id="input">아이디</label>
 						<div class="col-sm-3">

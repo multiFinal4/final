@@ -121,11 +121,15 @@ public class ManagerController {
 	}
 	@RequestMapping("/update.do")
 	public String update(ManagerDTO manager) {
-		System.out.println(manager);
 		service.update(manager);
 		return "redirect:/manager/list.do?type=all&pageNo=1&name=";
 	}
 	
+	@RequestMapping("/myupdate.do")
+	public String myupdate(ManagerDTO manager) {
+		service.update(manager);
+		return "redirect:/manager/read.do?read=MYPAGE&manager_id="+manager.getManager_id();
+	}
 	@RequestMapping(value = "/register.do", method = RequestMethod.GET)
 	public String registerpage() {
 		return "adminRegister";
