@@ -237,7 +237,7 @@ public class ManagerController {
 			endPage = (stationlistMgr.size()/showList)+1;
 		}
 	
-		List<StationDTO> companyList = stationService.companyList();
+		List<StationDTO> companyList = stationService.companyList(manager_id);
 		
 		mv.addObject("stationlistPage", stationlistPage);
 		mv.addObject("stationlist", stationlist);
@@ -281,6 +281,28 @@ public class ManagerController {
 		
 		stationService.update(station);
 		return "redirect:/manager/stationlist.do?manager_id="+manager_id+"&pageNo=1";
+	}
+	
+	@RequestMapping("/station/search.do")
+	public ModelAndView search(String category,String stationName, String pageNo,String manager_id) {
+		ModelAndView mv = new ModelAndView("manager_station_list");
+		List<StationDTO> stationlistPage = stationService.findByNameMgr(category,stationName,manager_id);
+		List<StationDTO> companyList = stationService.companyList(manager_id);
+		int endPage = 0;
+		int showList = 10;
+		if (stationlistPage.size() <= showList) {
+			endPage = 1;
+		}else {
+			endPage = (stationlistPage.size()/showList)+1;
+		}
+		mv.addObject("manager_id", manager_id);
+		mv.addObject("stationlistPage", stationlistPage);
+		mv.addObject("companyList", companyList);
+		mv.addObject("category",category);
+		mv.addObject("stationName",stationName);
+		mv.addObject("endPage", endPage);
+		mv.addObject("pageNo", 1);
+		return mv;
 	}
 }
 

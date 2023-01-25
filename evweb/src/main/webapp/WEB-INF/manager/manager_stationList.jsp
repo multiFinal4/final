@@ -45,6 +45,17 @@
 			<h1 class="pagetitle">충전소 리스트</h1>
 	        <div class="col-lg-12 stationWrap">
 	            <div class="search-bar d-flex" style="justify-content: space-between">
+	            	<form id="searchForm" class="search-form d-flex align-items-center" method="get" action="/evweb/manager/station/search.do">
+						<select name="category"  id="category" class="form-control">
+							<option value="all">회사명</option>
+			                <c:forEach var="company" items="${companyList}">
+								<option value="${company.station_company}">${company.station_company}</option>
+							</c:forEach>
+						</select>
+						<input type="text" name="stationName" placeholder="${stationName}" title="Enter search keyword">
+						<input type="hidden" name="manager_id" value="${manager_id}">
+						<button type="submit" title="Search"><i class="bi bi-search"></i></button>
+					</form>
 			    </div>
 	              <table class="table table-hover table-striped">
 	                <thead>
