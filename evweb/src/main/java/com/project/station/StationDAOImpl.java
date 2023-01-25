@@ -62,6 +62,10 @@ public class StationDAOImpl implements StationDAO {
 		return sqlSession.selectList("com.project.station.selectCom");
 	}
 	@Override
+	public List<StationDTO> companyList(String manager_id) {
+		return sqlSession.selectList("com.project.station.selectComMgr",manager_id);
+	}
+	@Override
 	public List<StationDTO> findbynameAll(String stationName) {
 		return sqlSession.selectList("com.project.station.findbynameAll", stationName);
 	}
@@ -105,9 +109,22 @@ public class StationDAOImpl implements StationDAO {
 	public List<StationDTO> stationListMgr(String manager_id) {
 		return sqlSession.selectList("com.project.station.listMgr",manager_id);
 	}
-
-
-
+	@Override
+	public List<StationDTO> findByNameMgr(String category, String stationName,String manager_id) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("manager_id", manager_id);
+		map.put("category", category);
+		map.put("stationName", stationName);	
+		return sqlSession.selectList("com.project.station.findbynameMgr",map);
+	}
+	@Override
+	public List<StationDTO> findbynameAllMgr(String stationName, String manager_id) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("manager_id", manager_id);
+		map.put("stationName", stationName);	
+		return sqlSession.selectList("com.project.station.findbynameAllMgr", map);
+	}
+	
 
 
 }

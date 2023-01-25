@@ -30,6 +30,9 @@
 	<select id="selectCom" resultType="station">
 		select DISTINCT station_company from STATION_TB
 	</select>
+	<select id="selectComMgr" resultType="station" parameterType="String">
+		select DISTINCT station_company from STATION_TB where manager_id = #{manager_id}
+	</select>
 	<select id="list" resultType="station" >
 		select * from STATION_TB order by station_id ASC 
 	</select>
@@ -132,5 +135,16 @@
 	</select>
 	<select id="listMgr" resultType="station" parameterType="String">
 		select * from STATION_TB where manager_id=#{manager_id} order by station_id ASC 
+	</select>
+	<select id="findbynameMgr" resultType="station" parameterType="Map">
+		select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB where station_company=#{category} and manager_id = #{manager_id}) st
+		where station_company = #{category} and station_name like concat('%',#{stationName},'%')
+	</select>
+	<select id="findbynameAllMgr" resultType="station" parameterType="Map">
+		select station.*		
+				from(select @ROWNUM:=@ROWNUM+1 rn, st.*
+				        FROM (select @rownum :=0) as r, (select * from STATION_TB where manager_id = #{manager_id} order by station_id) st) as station
+		where station_name like concat('%',#{stationName},'%')
 	</select>
  </mapper>
