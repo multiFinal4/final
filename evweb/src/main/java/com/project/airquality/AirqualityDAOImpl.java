@@ -24,6 +24,12 @@ public class AirqualityDAOImpl implements AirqualityDAO{
 
 	@Override
 	public int insert(AirqualityDTO dto) {
+		if(dto.getPm10value().equals("-")){
+			dto.setPm10value("-1");
+		}
+		if(dto.getPm25value().equals("-")){
+			dto.setPm25value("-1");
+		}
 		return sqlSession.insert("com.project.airquality.insert", dto);
 	}
 
