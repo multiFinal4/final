@@ -53,11 +53,19 @@
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label class="col-sm-2 col-form-label" id="input">생년월일</label>
+					<label class="col-sm-2 col-form-label">생년월일</label>
 					<div class="col-sm-3">
-						정보없음
+						<c:choose>
+							<c:when test="${customerinfo.birth == null}">
+								정보없음
+							</c:when>
+							<c:otherwise>
+								${customerinfo.birth}
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
+					
 				<div class="text-center">
 					<button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i>회원정보수정</button>
 					<button type="button" class="btn btn-secondary delBtn"><i class="bi bi-trash"></i>회원탈퇴</button>
