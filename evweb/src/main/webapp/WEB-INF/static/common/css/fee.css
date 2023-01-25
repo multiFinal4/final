@@ -1,8 +1,18 @@
 
 /* Start Section Styles */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 section {
     width: 80%;
-    padding: 5% 9% 4% 9%;
+    padding: 7% 9% 7% 9%;
 }
 
 #home {
@@ -29,6 +39,12 @@ section {
     background-color: #f9f9fd;
 }
 
+#footerfee {
+    width:80%;
+    height: 150px;
+    background-color: #fff;
+    color: white;
+}
 
 /* End Section Styles */
 
