@@ -27,7 +27,7 @@
 					<label for="inputText" class="col-sm-2 col-form-label" id="input">이름</label>
 					<div class="col-sm-3">
 						${customerinfo.name} <input name="name" class="form-control"
-							type="hidden" value="${customerinfo.name}">
+							type="text" value="${customerinfo.name}">
 					</div>
 				</div>
 				<div class="row mb-3">
@@ -72,7 +72,7 @@
 					</div>
 					<c:choose>
 						<c:when test="${customerinfo.birth == '1111-11-11'}">
-							<label for="inputText" class="col-sm-4 col-form-label" style="color: gray;">임시 생년월일입니다. 변경해주세요.</label>
+							<label for="inputText" class="col-sm-3 col-form-label" style="color: gray;">임시 생년월일입니다. 변경해주세요.</label>
 						</c:when>
 					</c:choose>
 				</div>
