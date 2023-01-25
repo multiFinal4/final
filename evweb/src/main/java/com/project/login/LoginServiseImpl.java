@@ -31,13 +31,13 @@ public class LoginServiseImpl implements LoginServise {
 	@Override
 	public CustomerDTO findId(CustomerDTO dto) {
 		Random random = new Random();
-		System.out.println(random.nextInt(8999)+1000);
+		// System.out.println(random.nextInt(8999)+1000);
 		return dao.findId(dto);
 	}
 
 	@Override
 	public String findPassword(CustomerDTO dto) {
-		System.out.println(dto);
+		// System.out.println(dto);
 		CustomerDTO user = dao.findPassword(dto);
 		if(user==null) {
 			return "";
@@ -45,7 +45,7 @@ public class LoginServiseImpl implements LoginServise {
 			Random random = new Random();
 			String newPass = Integer.toString(random.nextInt(8999)+1000);
 			user.setPass(newPass);
-			System.out.println(user);
+			// System.out.println(user);
 			dao.setPassword(user);
 			return newPass;
 		}

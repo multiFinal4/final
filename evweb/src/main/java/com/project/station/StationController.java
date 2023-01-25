@@ -141,7 +141,7 @@ public class StationController {
 //			int result = service.delete(stationId);
 //			view = "redirect:/admin/station/list?category=all";
 //		}
-		System.out.println(stationId);
+		// System.out.println(stationId);
 		service.delete(stationId);
 		return "redirect:/admin/station/list?category=all&pageNo=1";
 	}

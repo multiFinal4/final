@@ -46,7 +46,7 @@ public class WeatherController {
 	    String nx = nxny[0];	/*예보지점의 X 좌표값*/
 	    String ny = nxny[1]; 	/*예보지점의 Y 좌표값*/
 	    List<WeatherDTO> weatherList = weatherService.readList(nx,ny);
-	    System.out.println(weatherList);
+	    // System.out.println(weatherList);
 		String tmx  =  util.getTmx(weatherList, util.getDate(LocalDate.now() ,"yyyy-MM-dd"));
 		if(tmx.equals("-")) {
 			tmx = util.getTmx(weatherList, util.getDate(LocalDate.now().plusDays(1) ,"yyyy-MM-dd"));
@@ -62,7 +62,7 @@ public class WeatherController {
 		
 		List<AirqualityDTO> airqualityInfo  = airqualityService.allReadList();
 		model.addAttribute("airqualityInfo",airqualityInfo);
-		System.out.println("미세먼지정보리스트"+airqualityInfo);
+		// System.out.println("미세먼지정보리스트"+airqualityInfo);
 		
 		return "monitoring/weather";
 	}

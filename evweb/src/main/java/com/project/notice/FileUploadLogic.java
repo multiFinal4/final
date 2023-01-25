@@ -18,7 +18,7 @@ public class FileUploadLogic {
 				String originalFilename = MultipartFile.getOriginalFilename();
 				//서버에서 식별할 수 있도록 파일명을 변경
 				String  storeFilename = createStoreFilename(originalFilename);
-				System.out.println(originalFilename);
+				// System.out.println(originalFilename);
 				//File객체를 실제 경로에 저장
 				MultipartFile.transferTo(new File(path+File.separator+storeFilename));
 				filedtolist.add(new NoticeFileDTO(originalFilename, storeFilename));

@@ -169,7 +169,7 @@ public class ManagerController {
 	}
 	@RequestMapping("/change.do")
 	public String cusToMgr(ManagerDTO manager, Model model) {
-		System.out.println(manager);
+		// System.out.println(manager);
 		service.register(manager);
 		customerservice.change(manager.getManager_id());
 		return "redirect:/manager/list.do?type=all&pageNo=1&name=";

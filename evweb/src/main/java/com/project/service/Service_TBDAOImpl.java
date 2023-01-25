@@ -21,7 +21,7 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	@Override
 	public int insert(Service_TBDTO board) {
 		String view = "";
-		System.out.println(board.getManager_id());
+		// System.out.println(board.getManager_id());
 		if(board.getManager_id()==null) { //일반유저가 글등록
 			view = "com.project.service.insertCus";
 		}else {  //매니저가 글등록

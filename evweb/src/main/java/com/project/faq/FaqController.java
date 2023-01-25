@@ -37,7 +37,7 @@ public class FaqController {
 	public String insert(FaqDTO document) {
 		// System.out.println("컨트롤러:"+document);
 		service.insertDocument(document);
-		System.out.println("FAQ컨트롤러 ~~" + document);
+		// System.out.println("FAQ컨트롤러 ~~" + document);
 		return "redirect:/admin_faq.do?pageNo=0";
 	}
 
@@ -51,9 +51,9 @@ public class FaqController {
 	// 읽기
 	@RequestMapping("/faq/detail")
 	public ModelAndView findById(String key, String value, String action) {
-		System.out.println("findById _id 1234 : " + value);
+		// System.out.println("findById _id 1234 : " + value);
 		FaqDTO list = service.findById(key, value);
-		System.out.println("list 1234 : " + list);
+		// System.out.println("list 1234 : " + list);
 		String view = "";
 		if (action.equals("read")) {
 			view = "service_faqread";
@@ -128,8 +128,8 @@ public class FaqController {
 
 	@RequestMapping(value = "/faq/update", method = RequestMethod.POST)
 	public String update(FaqDTO document, @RequestParam String _id) {
-		System.out.println("update test1234 : " + document);
-		System.out.println("_id test1234 : " + _id);
+		// System.out.println("update test1234 : " + document);
+		// System.out.println("_id test1234 : " + _id);
 		document.set_id(_id);
 		service.update(document);
 
@@ -139,9 +139,9 @@ public class FaqController {
 	// admin delete
 	@RequestMapping(value = "/faq/delete.do", method = RequestMethod.GET)
 	public String delete(String _id) {
-		System.out.println("FAQ 컨트롤러 ~~삭제하기 눌려짐");
+		// System.out.println("FAQ 컨트롤러 ~~삭제하기 눌려짐");
 		service.delete(_id);
-		System.out.println("컨트롤러 document > " + _id);
+		// System.out.println("컨트롤러 document > " + _id);
 		return "redirect:/admin_faq.do?pageNo=0";
 	}
 }

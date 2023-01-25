@@ -130,7 +130,7 @@ public class MonitoringController {
 		
 		AirqualityDTO airqualityInfo  = airqualityService.read(stationInfo);
 		mv.addObject("airqualityInfo",airqualityInfo);
-		System.out.println(airqualityInfo);
+		// System.out.println(airqualityInfo);
 		return mv;
 	}
 	
@@ -197,7 +197,7 @@ public class MonitoringController {
 		
 		List<AirqualityDTO> airqualityInfo  = airqualityService.allReadList();
 		mv.addObject("airqualityInfo",airqualityInfo);
-		System.out.println("모니터링 컨트롤러 먼지 > "+airqualityInfo);
+		// System.out.println("모니터링 컨트롤러 먼지 > "+airqualityInfo);
 		return mv;
 	}
 	

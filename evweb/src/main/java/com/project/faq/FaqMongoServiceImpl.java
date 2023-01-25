@@ -50,13 +50,13 @@ public class FaqMongoServiceImpl implements FaqMongoService {
 
 	@Override
 	public void update(FaqDTO document) {
-		System.out.println("서비스입플 도큐먼트입니다 ~~~ "+document);
+		// System.out.println("서비스입플 도큐먼트입니다 ~~~ "+document);
 		dao.update(document);
 	}
 	
 	@Override
 	public void delete(String _id) {
-		System.out.println("서비스임플입니다 _id >> "+_id);
+		// System.out.println("서비스임플입니다 _id >> "+_id);
 		dao.delete(_id);
 	}
 

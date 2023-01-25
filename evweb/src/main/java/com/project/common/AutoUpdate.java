@@ -74,7 +74,7 @@ public class AutoUpdate {
 		for (ChargeDTO chargeDTO : chargeDataPull.chargelist()) {
 			chargeService.insert(chargeDTO);
 		}
-		System.out.println("충전소 update완료");
+		// System.out.println("충전소 update완료");
 	}
 	
 	@Scheduled(cron= "0 40 2-23/3 * * ?") 
@@ -108,7 +108,7 @@ public class AutoUpdate {
          		weatherService.insert(weatherList.get(i));
          	}
         }
-        System.out.println("날씨 update완료");
+        // System.out.println("날씨 update완료");
 	}
 	
 	@Scheduled(cron= "0 33 * * * ?") 

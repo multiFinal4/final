@@ -44,8 +44,8 @@ public class Service_TBController {
 	@RequestMapping(value = "/service/write.do", method = RequestMethod.POST)
 	public String insert(Service_TBDTO board, HttpSession session) throws IllegalStateException, IOException {
 		List<MultipartFile> files = board.getFiles();
-		// String path = "/opt/tomcat/webapps/upload";
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		String path = "/opt/tomcat/webapps/upload";
+		// String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(files, path);
 		if(boardfiledtolist.isEmpty()) {
 			service.insert(board);
