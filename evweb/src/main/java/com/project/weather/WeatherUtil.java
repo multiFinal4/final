@@ -38,15 +38,15 @@ public class WeatherUtil {
         }else if(Integer.parseInt(formatedNow)>=2010) {
         	baseTime = "1700";
         }else if(Integer.parseInt(formatedNow)>=1810) {
-        	baseTime = "1700";
-        }else if(Integer.parseInt(formatedNow)>=1410) {
         	baseTime = "1400";
-        }else if(Integer.parseInt(formatedNow)>=1110) {
+        }else if(Integer.parseInt(formatedNow)>=1410) {
         	baseTime = "1100";
-        }else if(Integer.parseInt(formatedNow)>=810) {
+        }else if(Integer.parseInt(formatedNow)>=1110) {
         	baseTime = "0800";
-        }else if(Integer.parseInt(formatedNow)>=510) {
+        }else if(Integer.parseInt(formatedNow)>=810) {
         	baseTime = "0500";
+        }else if(Integer.parseInt(formatedNow)>=510) {
+        	baseTime = "0200";
         }else if(Integer.parseInt(formatedNow)>=210) {
         	baseTime = "0200";
         }else {
