@@ -96,7 +96,7 @@
 						<div class="row col-sm-4">
 							<label for="use_time" class="col-sm-4 col-form-label">운영시간</label>
 							<div class="col-sm-8">
-							  <input type="text" class="form-control" name="use_time" id="use_time">
+							  <input type="time" class="form-control" name="use_time" id="use_time">
 							</div>
 						</div>
 						<div class="row col-sm-4">
@@ -154,7 +154,7 @@
 							<div class="row col-sm-4">
 							<label for="service_date" class="col-sm-4 col-form-label">서비스기간</label>
 							<div class="col-sm-8">
-							  <input type="text" class="form-control" name="service_date" id="service_date">
+							  <input type="date" class="form-control" name="service_date" id="service_date">
 							</div>
 						</div>
 					</div>

@@ -90,8 +90,8 @@
 		
 		// 현재 내 위치 받아와서 지도로 넘기기
 		$(".nowStation").click(function() {
-			navigator.geolocation.getCurrentPosition(nowGeo,nowGeoErr);
-			function nowGeo(posi){
+			//navigator.geolocation.getCurrentPosition(nowGeo,nowGeoErr);
+			//function nowGeo(posi){
 			    /* var lat = posi.coords.latitude;
 			    var lng = posi.coords.longitude; */
 
@@ -100,10 +100,10 @@
 			    var lng = 126.5351424;
 			    location.href = '/evweb/map?myLat='+lat+'&myLong='+lng;
 			    
-			}
-			function nowGeoErr(){
-			    alert("현재 위치 정보 조회에 실패했습니다. 잠시 후 다시 시도해주세요.");
-			}
+			//}
+			//function nowGeoErr(){
+			//    alert("현재 위치 정보 조회에 실패했습니다. 잠시 후 다시 시도해주세요.");
+			//}
 			// map으로 내 위치 넘겨주기(제주도가 아니라서 임의의 좌표로 다시 설정)
 		});
 	}) //end ready
