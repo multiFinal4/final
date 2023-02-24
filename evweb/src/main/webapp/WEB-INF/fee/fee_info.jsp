@@ -16,19 +16,19 @@ $(function(){
     var link = $('#navbarbar a.dot');
     link.on('click',function(e){                                 
         
-        //href 속성을 통해, section id 타겟을 잡음
+        // href 속성을 통해, section id 타겟을 잡음
         var target = $($(this).attr('href'));                     
         
-        //target section의 좌표를 통해 꼭대기로 이동
+        // target section의 좌표를 통해 꼭대기로 이동
         $('html, body').animate({
             scrollTop: target.offset().top -200  //가고싶은 위치
         },600);      //걸리는 시간
 
         
-        //active 클래스 부여
+        // active 클래스 부여
         $(this).addClass('active');
 
-        //앵커를 통해 이동할때, URL에 #id가 붙지 않도록 함.
+        // 앵커를 통해 이동할 때 URL에 #id가 붙지 않도록 함.
         e.preventDefault();
     });
     
@@ -142,7 +142,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="two" style="padding-top: 12%;">
+	<section id="two" style="padding-top: 11%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 보타리에너지</h4>
 			<br>
@@ -205,7 +205,7 @@ $(function(){
 	</section>
 	<br>
 	<br>
-	<section id="four" style="padding-top: 10%;">
+	<section id="four" style="padding-top: 9%;">
 		<div class="feeInner">
 			<h4 class="feeTitle">• 씨어스</h4>
 			<br>

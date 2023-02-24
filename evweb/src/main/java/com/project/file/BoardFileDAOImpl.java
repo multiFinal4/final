@@ -1,10 +1,10 @@
 package com.project.file;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 @Repository
 public class BoardFileDAOImpl implements BoardFileDAO {
 	SqlSession sqlSession;
@@ -33,6 +33,5 @@ public class BoardFileDAOImpl implements BoardFileDAO {
 	public BoardFileDTO getFileNo(BoardFileDTO inputdata) {
 		return sqlSession.selectOne("com.project.file.getfileinfoNo", inputdata);
 	}
-
-
+	
 }

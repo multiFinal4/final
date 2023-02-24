@@ -25,7 +25,7 @@ public class KakaoController {
     public ModelAndView getCI(@RequestParam String code, HttpServletRequest request) throws IOException, ParseException {
 		ModelAndView mav = new ModelAndView();
 		
-//		System.out.println("########code######### = " + code);
+//		System.out.println("########code######### : " + code);
         String access_token = ks.getToken(code); 
 //        System.out.println("####access_Token##### : " + access_token);
         
@@ -41,7 +41,6 @@ public class KakaoController {
 			viewName = "login";
 		}
         
-        //ci는 비즈니스 전환후 검수신청 -> 허락받아야 수집 가능
         mav.setViewName(viewName);
         return mav;  //디비에 유저정보 입력 후 메인화면 리턴
     }
