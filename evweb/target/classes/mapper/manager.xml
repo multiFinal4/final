@@ -4,62 +4,89 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.manager">
 	<insert id="register" parameterType="manager">
-		insert into manager_tb values(
+		insert into MANAGER_TB values(
 			#{manager_id},#{manager_pass},#{manager_name},#{phone_no},
 			#{addr},#{email},#{type},#{company},#{position},#{hire_date,jdbcType=DATE},#{state}
 		)	
 	</insert>
 	<update id="update" parameterType="manager">
-		update manager_tb
+		update MANAGER_TB
 		set manager_pass = #{manager_pass}, manager_name = #{manager_name}, phone_no = #{phone_no}, 
 		addr = #{addr}, email = #{email}, type = #{type}, company = #{company}, position = #{position}, 
 		hire_date = #{hire_date,jdbcType=DATE}, state = #{state} 
 		where manager_id = #{manager_id}
 	</update>
 	<select id="read" resultType="manager" parameterType="String">
-		select * from manager_tb where manager_id = #{manager_id}
+		select * from MANAGER_TB where manager_id = #{manager_id}
 	</select>
 	<select id="idcheak" resultType="int" parameterType="String">
-		select count(manager_id) from manager_tb where manager_id = #{manager_id}
+		select count(manager_id) from MANAGER_TB where manager_id = #{manager_id}
 	</select>
 	<select id="list" resultType="manager">
-		select * from manager_tb 
+		select * from MANAGER_TB 
 	</select>
 	<update id="delete" parameterType="String">
-		update manager_tb
+		update MANAGER_TB
 		set state = '퇴사'
 		where manager_id = #{manager_id}
 	</update>
-	
+	<delete id="realdelete">
+		delete MANAGER_TB
+		where manager_id = #{manager_id}
+	</delete>
 	
 	<select id="findbytype" parameterType="String" resultType="manager">
-		select * from manager_tb
+		select * from MANAGER_TB
 		where type = #{type}
 	</select>
-	<select id="findbyname" parameterType="String" resultType="manager">
-		select * from manager_tb
-		where manager_name = #{manager_name}
-	</select>
-	<select id="managefind" resultType="manager" parameterType="Map">
-		select * from manager_tb
-		where manager_name = #{manager_name}
-		
+	
+	<select id="findbyname" parameterType="Map" resultType="manager">
+		select * from MANAGER_TB 
 		<where>
-			<if test="type=='title' and data != ''">
-				title like '%' || #{data} || '%' order by board_no desc
+			<if test="type=='all'">
+				manager_name like concat('%',#{manager_name},'%')
+				and state != '관리자'
 			</if>
-			<if test="tag=='id' and data != ''">
-				id like '%' || #{data} || '%'  order by board_no desc
+			<if test="type=='일반 사용자'">
+				type = '일반 사용자' and manager_name like concat('%',#{manager_name},'%') 
 			</if>
-			<if test="tag=='content' and data != ''">
-				content like '%' || #{data} || '%' order by board_no desc
+			<if test="type=='사이트 관리자'">
+				type = '사이트 관리자' and manager_name like concat('%',#{manager_name},'%') 
+				and state != '관리자'
 			</if>
-			<if test="tag=='write_date' and data != ''">
-				<![CDATA[
-				write_date <= #{data} order by board_no desc
-				]]>		
+			<if test="type=='충전소 관리자'">
+				type = '충전소 관리자' and manager_name like concat('%',#{manager_name},'%')
+				and state != '관리자' 
 			</if>
 		</where>
-	</select>	
+	</select>
+	<select id="selectallName" resultType="manager" parameterType="Map">
+		select m.*
+				from(select @ROWNUM:=@ROWNUM+1 rn, mg.*
+				        FROM (select @rownum :=0) as r, (select * from MANAGER_TB) mg where manager_name like concat('%',#{name},'%')) as m
+		<where>
+			<if test='endNo == "10"'>
+				rn BETWEEN 1 AND #{endNo}
+			</if>
+			<if test='endNo != "10"' >
+				rn BETWEEN #{endNo}-9 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	<select id="typeSelectName" resultType="manager" parameterType="Map">
+		select m.*
+				from(select @ROWNUM:=@ROWNUM+1 rn, mg.*
+				        FROM (select @rownum :=0) as r, (select * from MANAGER_TB where type= #{type}) mg where manager_name like concat('%',#{name},'%')) as m
+		<where>
+			<if test='endNo == "10"'>
+				rn BETWEEN 1 AND #{endNo}  
+			</if>
+			<if test='endNo != "10"'>
+				rn BETWEEN #{endNo}-9 AND #{endNo}
+			</if>
+		</where>
+	</select>
+	
+	
 	
 </mapper>
