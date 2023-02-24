@@ -13,25 +13,25 @@
     <body>
         <aside id="sidebar" class="sidebar">
             <h2>
-            	<span></span>
+            	<span>마이페이지</span>
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="/evweb/manager/read.do?read=MYPAGE&manager_id=${user.manager_id}">
                         <i class="bi bi-grid"></i>
-                        <span>마이페이지</span>
+                        <span>나의 정보관리</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="/evweb/manager/read.do?read=MPUPDATE&manager_id=${user.manager_id}">
-                        <i class="bi bi-grid"></i>
-                        <span>회원정보수정</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/manager/boardListPaging.do?manager_id=${user.manager_id}">
                         <i class="bi bi-grid"></i>
                         <span>문의내역</span>
+                    </a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link collapsed" href="/evweb/manager/stationlist.do?manager_id=${user.manager_id}&pageNo=1">
+                        <i class="bi bi-grid"></i>
+                        <span>충전소 리스트</span>
                     </a>
                 </li>
                

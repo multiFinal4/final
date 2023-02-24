@@ -349,7 +349,7 @@ a:hover{text-decoration:none;color:#F37321;}
     top: 10px;
     left: 0;
     width: 6px;
-    height: 237px;
+    height: 236px;
     background-color: #fff;
 }
 .main .section .mainText h1{
@@ -399,7 +399,6 @@ a:hover{text-decoration:none;color:#F37321;}
 	padding:0;
 	background-color:#fff;
 	position:relative;
-	z-index:3;
 }
 .sidebar {
 	width:100%;
@@ -562,14 +561,56 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 .mapSidebar .mapSearchResult{
 	padding:10px;
+    height: calc(100% - 50px);
 	background-color:#f6f6f6;
 	border-radius:10px;
 }
+.mapSidebar .mapSearchResult .searchSelect .card-title{
+	font-size:16px;
+	font-weight: bold;
+	float: left;
+	text-align: left;
+	
+}
 .mapSearchResult .searchSelect .form-check{
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 5px
+}
+.mapSearchResult .searchSelect .txt-hide {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.mapSearchResult .searchSelect .form-check-label{
+	width: calc(33.33% - 3.5px);
+    text-align: center;
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: #d2d2d2;
+    cursor: pointer;
+}
+.mapSearchResult .searchSelect .form-check-label.on{
+	color : #fff;
+    background-color: #F37321;
+}  
+.mapSearchResult .searchSelect .dropdown .btn{
+	padding: 4px 5px;
+	width:100%;
+	font-weight:500;
+	font-size: 14px;
+}
+.mapSearchResult .searchSelect .dropdown .btn.dropdown-toggle::after{
+	margin-left: 10px;
 }
 .mapSearchResult .mapSearchList{
-    height: 560px;
+    height: calc(100% - 95px);
     overflow-x: auto;
 }
 
@@ -609,20 +650,34 @@ a:hover{text-decoration:none;color:#F37321;}
 	padding:0 !important;
 }
 .mapControl button{
-	width:40px;
-	display:block;
-	background-color:#fff;
-	height:40px;
-	border-radius:5px;
-    border: 1px solid #d5d5d5;
-	
+	font-size: 20px;
+    font-weight: 600;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+    color: #fff;
+    display: block;
+    background-color: #f37321;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 40%);
+}
+.mapControl button .bi{
+	margin: 0;
+}
+.mapControl button:hover{
+	background-color: #fff;
+	position: relative;
+    top: 2px;
+    right: -2px;
 }
 /* content */
 #container{
+	min-height:calc(100vh - 130px);
 	padding:0;
 }
 #container>div{
-	padding:50px 50px 50px 30px;
+	padding:50px;
 }
 #container .row{
 	margin:0;
@@ -635,7 +690,8 @@ a:hover{text-decoration:none;color:#F37321;}
 .btn-primary:hover, 
 .btn-primary:not(:disabled):not(.disabled).active, 
 .btn-primary:not(:disabled):not(.disabled):active, 
-.show>.btn-primary.dropdown-toggle{
+.show>.btn-primary.dropdown-toggle, 
+.btn-primary.focus, .btn-primary:focus{
     color: #fff;
     background-color: #444;
     border-color: #444;
@@ -649,17 +705,14 @@ a:hover{text-decoration:none;color:#F37321;}
 /* Map */
 #container>div.mapMarkerWrap {
     position: absolute;
-    left: -50%;
     top: 15px;
+    left: 15px;
     background-color: #fff;
     padding: 30px;
     border-radius: 20px;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
-    transition:0.8s all;
     z-index:1;
-}
-#container>div.mapMarkerWrap.on {
-    left: 15px;
+    display: none;
 }
 .mapClose{
 	position:absolute;
@@ -686,6 +739,70 @@ a:hover{text-decoration:none;color:#F37321;}
     left: 40px;
     width: max-content;
 }
+.card.1st,  
+.card.2nd, 
+.card.3rd{
+	position: relative;
+}
+.mapSearchList .card.first:before,
+.mapSearchList .card.scnd:before,
+.mapSearchList .card.thrd:before{
+	position: absolute;
+	content:"";
+	top: 5px;
+    right: 0px;
+    display: block;
+    width: 35px;
+    height: 35px;
+	background-position: center;
+	background-size: contain;
+	animation: motion2 0.5s linear 0s infinite alternate;
+}
+@keyframes motion2 {
+	0% {top: 5px;}
+	100% {top: 10px;}
+}
+.mapSearchList .card.first:before{
+	background-image: url("/evweb/images/main/medal3.png");
+}
+.mapSearchList .card.scnd:before{
+	background-image: url("/evweb/images/main/medal.png");
+}
+.mapSearchList .card.thrd:before{
+	background-image: url("/evweb/images/main/medal2.png");
+}
+/* Marker Cluster */
+.markClst{
+	cursor:pointer;
+	width: 55px;
+    height: 55px;
+    line-height: 45px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    background-size: contain;
+}
+.markClst.mc1{
+	background-image:url(/evweb/images/map/cluster-marker-1.png);
+	color: #ffb400;
+}
+.markClst.mc2{
+	background-image:url(/evweb/images/map/cluster-marker-2.png);
+	color: #ff971c;
+}
+.markClst.mc3{
+	background-image:url(/evweb/images/map/cluster-marker-3.png);
+	color: #ff6400;
+}
+.markClst.mc4{
+	background-image:url(/evweb/images/map/cluster-marker-4.png);
+	color: #e64100;
+}
+.markClst.mc5{
+	background-image:url(/evweb/images/map/cluster-marker-5.png);
+	color: #7f0101;
+}
 .stationInfoTitle{
 	font-size:22px;
 	font-weight:bold;
@@ -696,29 +813,61 @@ a:hover{text-decoration:none;color:#F37321;}
 	margin-right:10px;
 }
 .stationInfoTop .d-flex h5 {    
-	width: 80px;
+    width: 80px;
     font-size: 15px;
-    font-weight: bold;
-    background-color: #e2e2e2;
+    font-weight: 600;
+    background-color: #f7f7f7;
     padding: 5px;
+    color: #444444;
     height: 30px;
     text-align: center;
-    border-radius: 40px;
+    border-radius: 5px;
     margin-right: 15px;
 }
 .stationInfoTop .d-flex span{
 	font-size:14px;
-    height: 30px;
-    padding: 5px;
-    line-height:1.5;
+    font-weight: 500;
 }
 .stationInfoTop .d-flex span .bi{
 	font-size:20px;
 	font-weight:bold;
 	color:#e2e2e2;
 }
+.stationInfoTop .chargeFee .type li h6{
+	font-size: 13px;
+    padding: 5px 8px;
+    background-color: #07ad51;
+    margin-right: 5px;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+}
+.stationInfoTop .chargeFee .type li:nth-child(2) h6{
+    background-color: #4bbcff;
+}
+.stationInfoTop .chargeFee .type li:nth-child(3) h6{
+    background-color: #2b70c7;
+}
+.stationInfoTop .chargeFee .type li:nth-child(4) h6{
+    background-color: #767676;
+}
+.stationInfoTop .chargeFee .type li .fee{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: #07ad51;
+}
+.stationInfoTop .chargeFee .type li .fee.quick{
+    color: #4bbcff;
+}
+.stationInfoTop .chargeFee .type li .fee.super{
+    color: #2b70c7;
+}
+.stationInfoTop .chargeFee .type li .fee.nonmem{
+    color: #767676;
+}
 .stationFac .type li.on span .bi{
-	color:#34c976;
+	color:#07ad51;
 }
 .mapMarkerWrap .typeImg img{
 	width:25px;
@@ -757,9 +906,10 @@ a:hover{text-decoration:none;color:#F37321;}
 }
 .chargerNo .chargerType span, .chrgrStat {
 	border-radius:50px;
-	background-color:#76ccff;
+	background-color:#4bbcff;
 	padding:0 10px;
 	font-size:13px;
+	font-weight:500;
 	color:#fff;
 }
 .chrgrStat{
@@ -768,18 +918,23 @@ a:hover{text-decoration:none;color:#F37321;}
 .alertPop .chrgrStat{
 	padding: 5px 10px;
 }
+.chargerNo .chargerType span.err,
 span.err{
 	background-color:#ff8000;
 }
+.chargerNo .chargerType span.charging,
 span.charging{
 	background-color:#00ae00;
 }
+.chargerNo .chargerType span.stop,
 span.stop{
 	background-color:#cc0000;
 }
+.chargerNo .chargerType span.fix,
 span.fix{
 	background-color:#8080c0;
 }
+.chargerNo .chargerType span.noSign,
 span.noSign{
 	background-color:#797979;
 }
@@ -882,6 +1037,7 @@ span.noSign{
 .stationWrap .table tbody th
 {
 	padding:10px 10px;
+	vertical-align: middle;
 }
 /* index */
 .mg-right0{
@@ -889,6 +1045,12 @@ span.noSign{
 }
 .pd-left0{
 	padding-left:0;
+}
+.stRgiBtn{
+	position: absolute;
+	top:0;
+	right: 0;
+	
 }
 /* table */
 .tb-center{
@@ -898,7 +1060,7 @@ span.noSign{
 .boardBottom{
 	padding:0;    
 	display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 .boardBottom .pagination{
 	margin-bottom:0;
@@ -992,6 +1154,8 @@ span.noSign{
     text-decoration: none;
     background-color: #F37321;
 }
+/* File */
+
 /* check/ Radio */
 .form-check{
     box-sizing: border-box;
@@ -1028,6 +1192,7 @@ span.noSign{
 	transition:0.3s all;
 	display:block !important;
 	background-color:rgba(0,0,0,0.5);
+	z-index: 99999;
 }
 .alertPop .modal-dialog{
 	max-width:inherit;   

@@ -38,20 +38,19 @@
 				<td><%=faq.getcontent()%></td>
 			</tr>
 			<%
-			}
-			%>
-			<tr></tr>
-			<tr align="center">
-				<td colspan="10"><a href="/evweb/admin_faq.do?pageNo=0">1</a>
-					<a href="/evweb/admin_faq.do?pageNo=1">2</a> <a
-					href="/evweb/admin_faq.do?pageNo=2">3</a> <a
-					href="/evweb/admin_faq.do?pageNo=3">4</a></td>
-			</tr>
-		</table>
-		<br>
+				} int faqcount = (int)request.getAttribute("faqcount");
+				%>
+				<table align="center">
+					<tr>
+						<td colspan="10">
+							<div></div> <%for(int i=0; i<(Math.ceil(faqcount/10.0)); i++){ %>
+							<a href="/evweb/admin_faq.do?pageNo=<%=i%>"><%=i+1 %></a>
+							<%} %>
+						</td>
+					</tr>
+				</table>
 		<div class="nav navbar-nav">
 			<button type="button" onclick="location.href='/evweb/service/faqinsert'" style="margin-left: auto;" class="btn btn-primary"><i class="bi bi-pencil-square"></i> 등록</button>
-			<!-- <a href="/evweb/service/faqinsert" style="text-align: right;">글쓰기</a> -->
 		</div>
 	</div>
 </body>

@@ -14,6 +14,19 @@
 	<link	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 		rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<style type="text/css">
+	label{
+	
+	text-align:center;
+	}
+
+ 	#input{
+    background : #FBF5EF;
+    
+ 	}
+ 
+	</style>
+		
 </head>
 
 <body>
@@ -24,80 +37,80 @@
 		<div>
 		<div >
 			<div class="card-body">
-				<h1 class="pagetitle">마이페이지</h1>
+				<h1 class="pagetitle">[ 마이페이지 ]</h1><br/>
 
 				<!-- General Form Elements -->
 				<form action="" method="post">
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">아이디</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">아이디</label>
 						<div class="col-sm-3">
 							${managerinfo.manager_id}
 						</div>
 						<span id="checkVal" style="color: red;"></span>
 					</div>
 					<div class="row mb-3">
-						<label for="inputPassword" class="col-sm-2 col-form-label">비밀번호</label>
+						<label for="inputPassword" class="col-sm-2 col-form-label" id="input">비밀번호</label>
 						<div class="col-sm-3">
 							${managerinfo.manager_pass}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">이름</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">이름</label>
 						<div class="col-sm-3">
 							${managerinfo.manager_name}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">핸드폰
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">핸드폰
 							번호</label>
 						<div class="col-sm-3">
 							${managerinfo.phone_no}
 						</div>
-						<label for="inputText" class="col-sm-2 col-form-label"></label>
+						
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">주소</label>
+						<label for="inputText" class="col-sm-2 col-form-label"id="input">주소</label>
 						<div class="col-sm-3">
 							${managerinfo.addr}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+						<label for="inputEmail" class="col-sm-2 col-form-label" id="input">Email</label>
 						<div class="col-sm-3">
 							${managerinfo.email}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label class="col-sm-2 col-form-label">권한</label>
+						<label class="col-sm-2 col-form-label" id="input">권한</label>
 						<div class="col-sm-10">
 							${managerinfo.type}
 						</div>
 						
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">회사</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">회사</label>
 						<div class="col-sm-3">
 							${managerinfo.company}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">직급</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">직급</label>
 						<div class="col-sm-3">
 							${managerinfo.position}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">입사일</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">입사일</label>
 						<div class="col-sm-3">
 							${managerinfo.hire_date}
 						</div>
 					</div>
 					<div class="row mb-3">
-						<label for="inputText" class="col-sm-2 col-form-label">상태</label>
+						<label for="inputText" class="col-sm-2 col-form-label" id="input">상태</label>
 						<div class="col-sm-3">
 							${managerinfo.state}
 						</div>
-					</div>
+					</div><br/>
 					<div class="row mb-3">
 						<label class="col-sm-2 col-form-label"></label>
 						<div class="">

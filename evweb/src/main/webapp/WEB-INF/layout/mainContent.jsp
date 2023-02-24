@@ -12,6 +12,7 @@
 	src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=odl70mizmg"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src = "/evweb/js/jquery.fullpage.js" type="text/javascript"></script>
 <style type="text/css">
 .ib-container div {
 	background: #fff;
@@ -47,59 +48,107 @@
 </style>
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$("#rankButton")
-								.on(
-										"click",
-										function() {
-											var querydata = {
-												"station_name" : $("#station_name")
-														.val(),
-												"charging_amount" : $(
-														"#charging_amount")
-														.val()
-											}
-											$.ajax({
-												url : "/evweb/chargingAmountRank",
-												type : "POST",
-												data : querydata,
-												dataType : "json",
-												success : function(data) { // 갔다온 다음 결과값
-													//	alert('seccuss');	// 나오면 파일을 찾았다는 것
-													//	alert(data);  // [object Object],[object Object],[object Object]
+	// 랭킹 모달 데이터가져오기
+	$(document).ready(function() {
+		$("#rankButton").on("click", function() {
+			var querydata = {
+				"station_name" : $("#station_name").val(),
+				"charging_amount" : $("#charging_amount").val()
+			}
+			$.ajax({
+				url : "/evweb/chargingAmountRank",
+				type : "POST",
+				data : querydata,
+				dataType : "json",
+				success : function(data) { // 갔다온 다음 결과값
+					//	alert('seccuss');	// 나오면 파일을 찾았다는 것
+					//	alert(data);  // [object Object],[object Object],[object Object]
+	
+					// 데이터를 확인하고 싶을 때.
+					//	let str = JSON.stringify(data); // <> parse()
+					//	alert(str); 
+	
+					$("#one1").html(data[0].station_name);
+					$("#one2").html(data[0].charging_amount);
+					$("#two1").html(data[1].station_name);
+					$("#two2").html(data[1].charging_amount);
+					$("#three1").html(data[2].station_name);
+					$("#three2").html(data[2].charging_amount);
+					
+					/* $.each(data,function(index,item) { // 데이터 =item
+						//index가 끝날때까지 
+						$("#result").html(index+1 + "위. station_name : " 
+													+ item.station_name
+													+ ", charging_amount : "
+													+ item.charging_amount
+													+ "<br>");
+					});  //end for문 */
+				},  //end success
+				error : error_run
+			}) //end ajax
+		}) //end click
+		
+		
+		// 현재 내 위치 받아와서 지도로 넘기기
+		$(".nowStation").click(function() {
+			//navigator.geolocation.getCurrentPosition(nowGeo,nowGeoErr);
+			//function nowGeo(posi){
+			    /* var lat = posi.coords.latitude;
+			    var lng = posi.coords.longitude; */
 
-													// 데이터를 확인하고 싶을 때.
-													//	let str = JSON.stringify(data); // <> parse()
-													//	alert(str); 
-
-													$("#one1").html(data[0].station_name);
-													$("#one2").html(data[0].charging_amount);
-													$("#two1").html(data[1].station_name);
-													$("#two2").html(data[1].charging_amount);
-													$("#three1").html(data[2].station_name);
-													$("#three2").html(data[2].charging_amount);
-													
-													/* $.each(data,function(index,item) { // 데이터 =item
-														//index가 끝날때까지 
-														$("#result").html(index+1 + "위. station_name : " 
-																					+ item.station_name
-																					+ ", charging_amount : "
-																					+ item.charging_amount
-																					+ "<br>");
-													});  //end for문 */
-													
-												},  //end success
-
-												error : error_run
-											}) //end ajax
-								}) //end click
-					}) //end ready
+			    // 임시 위치
+			    var lat = 33.5064296;
+			    var lng = 126.5351424;
+			    location.href = '/evweb/map?myLat='+lat+'&myLong='+lng;
+			    
+			//}
+			//function nowGeoErr(){
+			//    alert("현재 위치 정보 조회에 실패했습니다. 잠시 후 다시 시도해주세요.");
+			//}
+			// map으로 내 위치 넘겨주기(제주도가 아니라서 임의의 좌표로 다시 설정)
+		});
+	}) //end ready
 
 	function error_run(obj, msg, statusMsg) {
 		alert("오류발생" + obj + "," + msg + "," + statusMsg);
 	}
+	
+	
+	
+	$(document).ready(function() {
+		// 메인 스크롤
+		$('#fullpage').fullpage({
+		    anchors: ['pg1', 'pg2','pg3'],      //anchors 객체는 문서에 존재하는 <a name=""> 형식의 모든 앵커를 배열에 담습니다.
+		    verticalCentered: false,
+		    normalScrollElements: '.scrollable-element',
+		    afterLoad : function(anchorLink, index){
+		        if(index!=1){
+		            $.fn.fullpage.setAllowScrolling(true);
+		            $.fn.fullpage.setKeyboardScrolling(true);
+		        }
+		        if(index!=1) {         // 배열의 순서(index), 배열의 요소(element)
+		            $('#header').addClass("on");
+		        }else {
+		            $('#header').removeClass("on");
+		     	}
+		    }
+		});
+		
+		// 맨 위로 올리기
+		$('.top button').on('click',function(){
+		        $.fn.fullpage.moveTo(1);
+		    });
+		    $('.fp-enabled h1 a').on('click',function(){
+		        $.fn.fullpage.moveTo(1);
+		    });
+		$(".top button").click(function() {
+	        $("html, body").animate({
+	            scrollTop : 0
+	        }, 300);
+	        return false;
+	    });
+		 
+	});
 </script>
 
 
@@ -110,8 +159,8 @@
 
 </head>
 <body class="hero-anime">
-	<div class="main">
-		<section class="section d-flex">
+	<div class="main" id="fullpage">
+		<section class="section d-flex" id="section0" data-anchor="pg1">
 			<div class="bgOver"></div>
 			<div class="mainText">
 				<div style="max-width: 25%">
@@ -135,7 +184,7 @@
 			</span>
 		</section>
 
-		<section class="section">
+		<section class="section" id="section1" data-anchor="pg2">
 			<div class="main-wrap2">
 				<br> <br> <br> <br> <br> <br> 
 				<div style="text-align: center;"><img src="/evweb/images/main/title.png" style="width: 300px;"></div>
@@ -154,8 +203,7 @@
 									<img src="/evweb/images/main/map2.png" style="width: 118px;">
 								</p>
 							</div>
-							<div class="service-box shadow"
-								onclick="location.href='/evweb/fee.do'">
+							<div class="service-box shadow nowStation">
 								<p class="service-text1 blue">충전소 조회</p>
 								<p class="service-text2">
 									이용가능한 충전소 정보보기<br>
@@ -191,8 +239,53 @@
 				<br>
 			</div>
 		</section>
-		<section>
-			<br> <br>
+		<section class="section sectionfooter fp-auto-height" id="section2" data-anchor="pg3">
+		<div class="footer-top">
+	      <div class="container">
+	      	 <!-- 맨위로 올리기 버튼-->
+	     	 <div class="top">
+               	<button></button>
+             </div>
+	        <div class="row">
+	          <div class="col-lg-4 col-md-6 footer-contact">
+	            <h3>차지모양</h3>
+	          </div>
+	
+	          <div class="col-lg-4 col-md-6 footer-links">
+	            <h4>사업자 정보</h4>
+	              <strong>주소:</strong><div>
+	              서울특별시 강남구 언주로<br>
+	              508 14층(역삼동, 서울상록빌딩)<br>
+	              <br>
+	              <strong>Phone:</strong> +82 10-5554-5555<br>
+	              <strong>Email:</strong> multi4@gmail.com<br>
+	              <strong>CEO:</strong> 차현수 <br>
+	              <strong>사업자등록번호:</strong> 111-11-12345<br>
+	            </div>
+	          </div>
+	
+	          <div class="col-lg-4 col-md-6 footer-links">
+	            <h4>Our Services</h4>
+	            <ul>
+	              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+	              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/map">Map</a></li>
+	              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/fee.do">요금정보</a></li>
+	              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/monitoring/main?stationId=BNJG3401">충전소현황</a></li>
+	              <li><i class="bx bx-chevron-right"></i> <a href="/evweb/Notice/list.do">고객센터</a></li>
+	            </ul>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="container footer-bottom clearfix">
+	      <div class="copyright">
+	        &copy; Copyright <strong><span>충전해조</span></strong>. All Rights Reserved
+	      </div>
+	    </div>
+	
+	  <div id="preloader"></div>
+	  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+	    
 		</section>
 
 		<!-- Modal -->

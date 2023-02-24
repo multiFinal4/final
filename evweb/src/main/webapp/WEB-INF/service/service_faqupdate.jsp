@@ -1,65 +1,48 @@
 <%@page import="com.project.faq.FaqDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>FAQ 게시글 수정하기</h1>
-	<%
-	FaqDTO dto = (FaqDTO) request.getAttribute("document");
-	%>
-	<div class="container-fluid">
-		<form role="form" class="form-horizontal"
-			action="/evweb/faq/update" method="POST">
-			<input type="hidden" name="_id" value="<%=dto.get_id() %>"/>
-			<fieldset>
-				<div id="legend">
-					<legend>아래 양식을 작성해주세요.</legend>
-				</div>
-				<div class="form-group">
-					<!-- 부서코드 -->
-					<label class="control-label col-sm-2" for="orgcode">아이디</label>
-					<%=dto.get_id()%>
-				</div>
+	<div>
+		<h1 class="pagetitle">FAQ 수정</h1>
+		<br />
+		<form class="form-horizontal"
+			action="/evweb/faq/update?_id=${list._id}" method="post">
+			<%-- 				<input type="hidden" name="_id" value="${list._id }"> --%>
+			
 
-				<div class="form-group">
-					<!-- FAQ 제목-->
-					<label class="control-label col-sm-2" for="orgloc">FAQ 제목</label>
-					<div class="col-sm-3">
-						<input type="text" id="title" name="title" placeholder="title"
-							class="form-control"   value="<%=dto.gettitle() %>">
-
+			<div class="row mb-3">
+				<div class="col-sm-10">
+					<label class="col-sm-12 col-form-label"><span
+						class="help-block" style="color: gray;"> 게시글 유형에 맞는 내용으로 작성
+							부탁드립니다. </span></label> <input type="text" class="form-control" name="title"
+						value="${list.title}">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-10">
+					<div class="card">
+						<textarea name="content"
+							style="border: 1px; border-color: gray; height: 200px;">  ${list.content }</textarea>
 					</div>
 				</div>
-				<div class="form-group">
-					<!-- FAQ 내용-->
-					<label class="control-label col-sm-2" for="orgloc">FAQ 내용</label>
-					<div class="col-sm-3">
-						<input type="text" id="content" name="content" placeholder=content
-							class="form-control"   value="<%=dto.getcontent() %>">
-
-					</div>
+			</div>
+			<br> <br>
+			<div class="row mb-3">
+				<div class="col-sm-10" style="text-align: right;">
+					<button type="submit" class="btn btn-primary">수정</button>
+					<button type="button" class="btn btn-primary"
+						onclick="location.href='/evweb/admin_faq.do?pageNo=0'">취소</button>
 				</div>
-	
-				<div class="form-group">
-					<!-- Button -->
-					<div class="col-sm-3 col-sm-offset-2">
-						<input type="submit" value="수정하기" class="btn btn-success" />
-
-					</div>
-				</div>
-			</fieldset>
+			</div>
 		</form>
 	</div>
+
 </body>
 </html>

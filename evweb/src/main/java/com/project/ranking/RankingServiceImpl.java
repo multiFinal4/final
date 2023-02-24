@@ -17,6 +17,5 @@ public class RankingServiceImpl implements RankingService {
 	@Override
 	public List<RankingDTO> chargingAmountRank() {
 		return dao.chargingAmountRank();
-	}
-	
+	}	
 }

@@ -21,7 +21,7 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	@Override
 	public int insert(Service_TBDTO board) {
 		String view = "";
-		System.out.println(board.getManager_id());
+		// System.out.println(board.getManager_id());
 		if(board.getManager_id()==null) { //일반유저가 글등록
 			view = "com.project.service.insertCus";
 		}else {  //매니저가 글등록
@@ -96,7 +96,28 @@ public class Service_TBDAOImpl implements Service_TBDAO {
 	public int listCount(SearchCriteria scri) {
 		return sqlSession.selectOne("com.project.service.listCount", scri);
 	}
-
-
+	@Override
+	public List<Service_TBDTO> selectbyId(SearchCriteria scri,String id, String type) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("keyword", scri.getKeyword());
+		map.put("searchType", scri.getSearchType());
+		map.put("rowEnd", scri.getRowEnd()+"");
+		map.put("rowStart", scri.getRowStart()+"");
+		map.put("id", id);
+		map.put("type", type);
+		return sqlSession.selectList("com.project.service.selectbyId",map); 
+		
+	}
+	@Override
+	public int listCountId(SearchCriteria scri,String id, String type) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("keyword", scri.getKeyword());
+		map.put("searchType", scri.getSearchType());
+		map.put("rowEnd", scri.getRowEnd()+"");
+		map.put("rowStart", scri.getRowStart()+"");
+		map.put("id", id);
+		map.put("type", type);
+		return sqlSession.selectOne("com.project.service.listCountId", map);
+	}
 
 }

@@ -40,15 +40,18 @@ public class Service_TBController {
 		return "service_insert";
 	}
 	
-	// 1:1문의글 작성하기(글+파일첨부 디비에 정보넘기기)
+	// 1:1문의글 작성하기(글+파일첨부 디비에 데이터 저장)
 	@RequestMapping(value = "/service/write.do", method = RequestMethod.POST)
 	public String insert(Service_TBDTO board, HttpSession session) throws IllegalStateException, IOException {
 		List<MultipartFile> files = board.getFiles();
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		String path = "/opt/tomcat/webapps/upload";
+		// String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(files, path);
+		// 첨부파일 여부 나누기
 		if(boardfiledtolist.isEmpty()) {
 			service.insert(board);
 		}else {
+			//글에 등록된 첨부파일에 번호부여하기
 			int count = 1;
 			for(BoardFileDTO boardfiledto:boardfiledtolist) {
 				boardfiledto.setFile_no(count+"");
@@ -59,7 +62,7 @@ public class Service_TBController {
 		return "redirect:/insertok.do";
 	}
 	
-	
+	// 1:1문의글 리스트
 	@RequestMapping("/service/list.do")
 	public ModelAndView list(String board_category) {
 		ModelAndView mav = new ModelAndView("admin_service");
@@ -69,6 +72,7 @@ public class Service_TBController {
 		return mav;
 	}
 	
+	// 1:1문의글 상세보기
 	@RequestMapping("/service/read.do")
 	public String read(String board_no, Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		Service_TBDTO board = service.getBoardInfo(board_no);
@@ -77,14 +81,14 @@ public class Service_TBController {
 		model.addAttribute("boardfiledtolist", boardfiledtolist);
 		model.addAttribute("scri", scri);
 		
-		//댓글
+		//댓글 상세보기
 		List<ServiceReply_TBDTO> replylist = servicereply.replyList(board_no);
 		model.addAttribute("replylist", replylist);
 		
 		return "admin_service_read";
 	}
 	
-	
+	// 1:1문의글 삭제하기
 	@RequestMapping("/service/delete.do")
 	public String delete(String board_no, @ModelAttribute("scri") SearchCriteria scri, RedirectAttributes rttr) {
 		service.delete_file(board_no);
@@ -99,7 +103,7 @@ public class Service_TBController {
 		return "redirect:/service/boardListPaging.do";
 	}
 	
-	
+	// 1:1문의글 리스트(페이징)
 	@RequestMapping("/service/boardListPaging.do")
 	public String boardListPaging(Model model, @ModelAttribute("scri") SearchCriteria scri) {
 		model.addAttribute("list", service.list(scri));

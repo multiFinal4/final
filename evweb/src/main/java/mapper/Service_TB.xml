@@ -4,6 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.service">
 	<!-- <typeAlias type="com.project.service.Service_TBDTO" alias="servicetb"/> -->
+	
 	<insert id="insert" parameterType="servicetb">      <!-- 매니저 -->
 		insert into SERVICE_TB
 		values(null,#{manager_id}, #{board_category}, #{board_title},
@@ -116,6 +117,7 @@
 			<if test="searchType == 'ctgr'.toString()">AND board_category LIKE concat('%',#{keyword},'%')</if>
 		</if>
 	</sql>
+	
 	<!-- ==================내 문의내역 확인================ -->
 	<select id="selectbyId" resultType="servicetb" parameterType="Map">
 		select MP.* from
@@ -148,7 +150,6 @@
 		</where>
 		<include refid="search"></include>	
 		AND board_no > 0
-		
 	</select>
 </mapper>
 

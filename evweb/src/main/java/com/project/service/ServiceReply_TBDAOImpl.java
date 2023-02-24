@@ -16,7 +16,7 @@ public class ServiceReply_TBDAOImpl implements ServiceReply_TBDAO {
 
 	@Override //1:1문의 답변등록하기
 	public int insert(ServiceReply_TBDTO reply) {
-		return sqlSession.delete("com.project.service.reply_insert", reply);
+		return sqlSession.insert("com.project.service.reply_insert", reply);
 	}
 
 	@Override //1:1문의 답변목록보기

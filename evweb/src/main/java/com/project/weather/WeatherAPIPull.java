@@ -36,7 +36,6 @@ public class WeatherAPIPull {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
         BufferedReader rd;
         if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
             rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -50,14 +49,13 @@ public class WeatherAPIPull {
         }
         rd.close();
         conn.disconnect();
-        System.out.println(sb.toString());
         return sb.toString();
 	}
 	
-	public List<WeatherDTO>  DataSave(String result, String station_id, String location_name)  {
+	public List<WeatherDTO>  DataSave(String result, String nx, String ny)  {
 		// Json parser를 만들어 만들어진 문자열 데이터를 객체화
 		List<WeatherDTO> weatherList = new ArrayList<WeatherDTO>();
-		WeatherDTO weather = new WeatherDTO(station_id,location_name);
+		WeatherDTO weather = new WeatherDTO(nx,ny);
 		JSONParser parser = new JSONParser();
 		JSONObject obj;
 		try {
@@ -96,7 +94,7 @@ public class WeatherAPIPull {
 						weather.setPop("없음");
 					}
 					weatherList.add(weather);
-					weather = new WeatherDTO(station_id,location_name);
+					weather = new WeatherDTO(nx,ny);
 					day = fcstDate.toString();
 					time = fcstTime.toString();
 				}
@@ -134,7 +132,6 @@ public class WeatherAPIPull {
 				}
 				if (!time.equals(fcstTime.toString())) {
 					time = fcstTime.toString();
-					System.out.println(day + "  " + time);
 				}
 			}
 		} catch (ParseException e) {

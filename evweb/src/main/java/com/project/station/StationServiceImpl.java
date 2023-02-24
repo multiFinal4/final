@@ -40,6 +40,10 @@ public class StationServiceImpl implements StationService {
 		return dao.companyList();
 	}
 	@Override
+	public List<StationDTO> companyList(String manager_id){
+		return dao.companyList(manager_id);
+	}
+	@Override
 	public List<StationDTO> findbynameAll(String stationName) {
 		return null;
 	}
@@ -88,7 +92,28 @@ public class StationServiceImpl implements StationService {
 		return dao.deleteAll();
 	}
 
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id, String endNo) {
+		return dao.stationListMgr(manager_id, endNo);
+	}
 
+	@Override
+	public List<StationDTO> stationListMgr(String manager_id) {
+		return dao.stationListMgr(manager_id);
+	}
+
+	@Override
+	public List<StationDTO> findByNameMgr(String category, String stationName, String manager_id) {
+		List<StationDTO> list = null;
+		if (category != null) {
+			if (category.equals("all")) {
+				list = dao.findbynameAllMgr(stationName,manager_id);
+			} else {
+				list = dao.findByNameMgr(category, stationName,manager_id);
+			}
+		}
+		return list;
+	}
 
 
 

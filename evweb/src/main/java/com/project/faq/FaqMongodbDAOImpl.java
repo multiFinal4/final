@@ -40,7 +40,7 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		criteria.regex(".*"+value+".*");//dept like '%사%'
 		Query query = new Query(criteria);
 		List<FaqDTO> docs = mongoTemplate.find(query, FaqDTO.class,"faq");
-		System.out.println("dao=>"+docs);
+		// System.out.println("dao=>"+docs);
 		return docs;
 	}
 	
@@ -57,10 +57,10 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		criteria.is(value);
 		
 		//2.Criteria객체를 이용해서 Query를 생성
-		System.out.println("findById->"+value);
+		// System.out.println("findById->"+value);
 		Query query = new Query(criteria);
 		FaqDTO doc = mongoTemplate.findOne(query, FaqDTO.class,"faq");
-		System.out.println("doc ~~~"+doc);
+		// System.out.println("doc ~~~"+doc);
 		return doc;
 	}
 
@@ -75,8 +75,8 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 		Update update = new Update();
 		update.set("title", document.gettitle());
 		update.set("content", document.getcontent());
-		System.out.println("query : "+query);
-		System.out.println("update : "+update);
+		// System.out.println("query : "+query);
+		// System.out.println("update : "+update);
 		mongoTemplate.updateFirst(query, update,"faq");
 	}
 	
@@ -86,9 +86,9 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
         Criteria criteria = new Criteria("_id");
 		criteria.is(_id);
         Query query = new Query(criteria);
-        System.out.println("DAOImpl _id : "+_id);
+        // System.out.println("DAOImpl _id : "+_id);
         mongoTemplate.remove(query,"faq");
-        System.out.println("DAOImpl"+query);
+        // System.out.println("DAOImpl"+query);
     }
 	
 	@Override
@@ -99,7 +99,7 @@ public class FaqMongodbDAOImpl implements FaqMongoDAO {
 	//리스트 페이징처리
 	@Override
 	public List<FaqDTO> findAll(int pageNo) {
-		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 5));
+		Page<FaqDTO> page = FaqRepository.findAll(new PageRequest(pageNo, 10));
 		return page.getContent();
 	}
 

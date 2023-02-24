@@ -6,54 +6,70 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
+		
+		<style type="text/css">
+	label{
+	
+	text-align:center;
+	}
+
+ 	#input{
+    background : #FBF5EF;
+    
+ 	}
+ 
+</style>
+		
+		
+		
 	</head>
 	<body>
 		
 		<div class="card-body">
-			<h1 class="pagetitle">회원 정보</h1>
+			<h1 class="pagetitle">[ 회원 정보 ]</h1><br/>
 			<form action="" method="post">
 				<div class="row mb-3">
-					<label for="customer_id" class="col-sm-2 col-form-label"> ID </label>
+					<label for="customer_id" class="col-sm-2 col-form-label" id="input"> ID </label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="customer_id" id="customer_id" value="${customerinfo.customer_id}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="customer_name" class="col-sm-2 col-form-label"> 이름 </label>
+					<label for="customer_name" class="col-sm-2 col-form-label" id="input"> 이름 </label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="name" id="customer_name" value="${customerinfo.name}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="customer_pass" class="col-sm-2 col-form-label">비밀번호</label>
+					<label for="customer_pass" class="col-sm-2 col-form-label" id="input">비밀번호</label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="pass" id="customer_pass" value="${customerinfo.pass}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="phone_no" class="col-sm-2 col-form-label">전화번호</label>
+					<label for="phone_no" class="col-sm-2 col-form-label" id="input">전화번호</label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="phone_no" id="phone_no" value="${customerinfo.phone_no}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3"> 
-					<label for="customer_addr" class="col-sm-2 col-form-label">주소</label>
+					<label for="customer_addr" class="col-sm-2 col-form-label" id="input">주소</label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="customer_addr" id="customer_addr" value="${customerinfo.customer_addr}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="email" class="col-sm-2 col-form-label">Email</label>
+					<label for="email" class="col-sm-2 col-form-label" id="input">Email</label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="email" id="email" value="${customerinfo.email}" readonly="readonly">
 					</div>
 				</div>
 				<div class="row mb-3">
-					<label for="customer_birth" class="col-sm-2 col-form-label">생년월일</label>
+					<label for="customer_birth" class="col-sm-2 col-form-label" id="input">생년월일</label>
 					<div class="col-sm-5">
 					  <input type="text" class="form-control" name="birth" id="customer_birth" value="${customerinfo.birth}" readonly="readonly">
 					</div>
-				</div>
+				</div><br/>
 				<div class="text-center">
 					<button type="button" onclick='location.href="/evweb/manager/customerRead.do?customer_id=${customerinfo.customer_id}&read=UPDATE"' class="btn btn-primary"><i class="bi bi-pencil-square"></i>관리자로 전환</button>
 					<button type="button" onclick="location.href='/evweb/manager/list.do?type=all&pageNo=1&name='" class="btn btn-secondary"><i class="bi bi-list-ul"></i>목록</button>
@@ -89,9 +105,11 @@
 			
 			$(".delBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
+				$(".alertPop .modal-content").addClass("show");
 			});
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
 			});
 
 			$("#delBtn").click(function () {

@@ -30,7 +30,8 @@ public class ServiceReply_TBController {
 	@RequestMapping(value = "/reply/write.do", method = RequestMethod.POST)
 	public ModelAndView write(ServiceReply_TBDTO user, String board_no) {
 //		System.out.println(user+", "+board_no);
-		servicetb.updateState(board_no); //답글이 달리면 그 게시글의 답변상태가 '대기'에서 '완료'로 바뀜
+		//답글이 달리면 게시글의 답변상태가 '대기'에서 '완료'로 변경됨
+		servicetb.updateState(board_no); 
 		ModelAndView mav = new ModelAndView("redirect:/service/boardListPaging.do");
 		service.insert(user);
 		mav.addObject("list", user);

@@ -29,6 +29,7 @@
 		<link href="/evweb/css/common.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<link href="/evweb/vendor/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 		<script src="/evweb/js/common.js" type="text/javascript"></script>
 		<script src="/evweb/js/main.js" type="text/javascript"></script>
 		<script type="text/javascript">
@@ -65,19 +66,20 @@
 					<li><a class="nav-link" href="/evweb/index">HOME</a></li>
 					<li><a class="nav-link" href="/evweb/map">Map</a></li>
 					<li><a class="nav-link" href="/evweb/fee.do">요금정보</a></li>
-					<li><a class="nav-link" href="/evweb/monitoring/main?stationId=BNJG3401">충전소현황</a></li>
+					<c:if test="${user.state=='재직'}">
+						<li><a class="nav-link" href="/evweb/monitoring/main?stationId=BT000054">충전소현황</a></li>
+					</c:if>
 					<li><a class="nav-link" href="/evweb/Notice/list.do">고객센터</a></li>
 					<c:choose>
 						<c:when test="${user.state=='재직'&&user.type=='사이트 관리자'}">
 										<li><a class="nav-link" href="/evweb/admin/station/list?category=all&pageNo=1">관리자</a></li>
-						
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
 						<c:when test="${user.state=='재직'&&user.type=='충전소 관리자'}">
 							          	<li><a class="nav-link" href="/evweb/manager/read.do?read=MYPAGE&manager_id=${user.manager_id}">MYPAGE</a></li>
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>
-						<c:when test="${user.state=='정상'||user.state=='카카오'}">
+						<c:when test="${user.state=='정상' || user.state=='카카오' }">
 							          	<li><a class="nav-link" href="/evweb/customer/read.do?state=READ&customer_id=${user.customer_id}">MYPAGE</a></li>
 										<li><a class="getstarted" href="/evweb/logout.do">LOGOUT</a></li>
 						</c:when>

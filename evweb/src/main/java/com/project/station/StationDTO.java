@@ -33,7 +33,7 @@ public class StationDTO {
 	//insert(API)
 	public StationDTO(String station_id, String station_name, String addr_do, String addr_sigun, String addr_detail,
 			String station_company, String busi_call, String manager_id, String service_date, int charger_no,
-			String kind, String map_code, String map_latitude, String map_longtude, String use_time,
+			String kind, String map_latitude, String map_longtude, String use_time,
 			String parking_free, String note, String limitYn, String limit_detail, String trafficYn) {
 		super();
 		this.station_id = station_id;
@@ -47,7 +47,6 @@ public class StationDTO {
 		this.service_date = service_date;
 		this.charger_no = charger_no;
 		this.kind = kind;
-		this.map_code = map_code;
 		this.map_latitude = map_latitude;
 		this.map_longtude = map_longtude;
 		this.use_time = use_time;
@@ -89,17 +88,30 @@ public class StationDTO {
 
 	// update
 	public StationDTO(String station_name, String addr_do, String addr_sigun, String addr_detail,
-			String station_company, String manager_id, String service_date, int charger_no) {
+			String station_company, String busi_call, String manager_id, String service_date, String kind,
+			String map_code, String map_latitude, String map_longtude, String use_time, String parking_free,
+			String note, String limitYn, String limit_detail, String trafficYn) {
 		super();
 		this.station_name = station_name;
 		this.addr_do = addr_do;
 		this.addr_sigun = addr_sigun;
 		this.addr_detail = addr_detail;
 		this.station_company = station_company;
+		this.busi_call = busi_call;
 		this.manager_id = manager_id;
 		this.service_date = service_date;
-		this.charger_no = charger_no;
+		this.kind = kind;
+		this.map_code = map_code;
+		this.map_latitude = map_latitude;
+		this.map_longtude = map_longtude;
+		this.use_time = use_time;
+		this.parking_free = parking_free;
+		this.note = note;
+		this.limitYn = limitYn;
+		this.limit_detail = limit_detail;
+		this.trafficYn = trafficYn;
 	}
+
 
 	@Override
 	public String toString() {
@@ -112,6 +124,7 @@ public class StationDTO {
 				+ limit_detail + ", trafficYn=" + trafficYn + "]";
 	}
 
+	
 	public int getRn() {
 		return rn;
 	}

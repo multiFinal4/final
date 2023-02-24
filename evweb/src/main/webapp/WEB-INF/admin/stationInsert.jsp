@@ -96,7 +96,7 @@
 						<div class="row col-sm-4">
 							<label for="use_time" class="col-sm-4 col-form-label">운영시간</label>
 							<div class="col-sm-8">
-							  <input type="text" class="form-control" name="use_time" id="use_time">
+							  <input type="time" class="form-control" name="use_time" id="use_time">
 							</div>
 						</div>
 						<div class="row col-sm-4">
@@ -121,9 +121,11 @@
 					<div class="row mb-3">
 						<div class="row col-sm-4">
 							<label for="manager_id" class="col-sm-4 col-form-label">담당자</label>
-							<div class="col-sm-8" id="mgrName">
-								<input type='text' class='form-control' value='' name='manager_id' id='manager_id' style="width: calc(100% - 100px);float: left;">
-							  	<button type="button" id="mgrBtn" class="btn btn-primary" style="float: right;"><i class="bi bi-search"></i>관리자</button>
+							<div class="row col-sm-8">
+								<div class="col-sm-8 pl-0" id="mgrName">
+									<input type='text' class='form-control' value='' name='manager_id' id='manager_id'>
+								</div>
+								<button type="button" id="mgrBtn" class="btn btn-primary col-sm-4 ml-0" style="float: right;"><i class="bi bi-search"></i>관리자</button>
 							</div>
 						</div>
 						<div class="row col-sm-4">
@@ -152,7 +154,7 @@
 							<div class="row col-sm-4">
 							<label for="service_date" class="col-sm-4 col-form-label">서비스기간</label>
 							<div class="col-sm-8">
-							  <input type="text" class="form-control" name="service_date" id="service_date">
+							  <input type="date" class="form-control" name="service_date" id="service_date">
 							</div>
 						</div>
 					</div>
@@ -200,45 +202,11 @@
 			$("#mgrBtn").click(function () {
 				$(".alertPop .modal").addClass("show");
 				$(".alertPop .modal-content").addClass("show");
-				
-				$.ajax({
-					url: "/evweb/ajax/managerList",
-					type: "get",
-					data: {
-						"category" : "충전소 관리자"
-					},
-					success:function(data){
-						strHTML = "";
-						for (var i = 0; i < data.length; i++) {
-							strHTML += "<tr>";
-							strHTML += "<td class='mrgId tb-center'>"+ data[i].manager_id + "</td>";
-							strHTML += "<td class='mrgName'>"+ data[i].manager_name + "</td>";
-							strHTML += "<td class='mrgCom'>"+ data[i].company + "</td>";
-							strHTML += "<td class='mrgPosi'>"+ data[i].position + "</td>";
-							strHTML += "<td class='tb-center'><buttton type='button' name='"+i+"' class='btn btn-primary rounded-pill selectMgr'>선택</button></td>";
-							strHTML += "</tr>";
-						}
-						$("#mgrList").html(strHTML);
-						$(".selectMgr").click(function () {
-							mgrInfo = "";
-							mrgId = $(this).attr('name');
-							mgrInfo += "<input type='text' class='form-control' value='"+data[mrgId].manager_id+"' name='manager_id' id='manager_id'>";
-							$("#mgrName").html(mgrInfo);
-							$(".alertPop .modal").removeClass("show");
-						});
-						
-					},
-					error: function error_run(obj, msg, statusMsg) {
-						alert("오류발생 ->"+obj+","+msg+","+statusMsg);
-					}
-				});
-
+				stationManager();
 			});
-
-			
-			
 			$("#cancel").click(function () {
 				$(".alertPop .modal").removeClass("show");
+				$(".alertPop .modal-content").removeClass("show");
 			});
 		})
 	

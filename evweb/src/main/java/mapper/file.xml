@@ -20,6 +20,4 @@
 	<select id="getfileinfoNo" parameterType="file" resultType="file">
 		select * from FILE_TB where notice_no  = #{notice_no}   and file_no = #{file_no}
 	</select>
-	
-	
 </mapper>

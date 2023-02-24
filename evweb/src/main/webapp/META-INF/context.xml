@@ -26,9 +26,25 @@
     <!--
     <Manager pathname="" />
     -->
-    <Resource name="jdbc/myspring" auth="Container"
+    <!-- Oracle DB -->
+   <!-- <Resource name="jdbc/myspring" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@localhost:1521:xe"
               username="multi" password="1234" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/> -->
+              
+              
+    <!-- Mysql DB(Test) -->
+    <!-- <Resource name="jdbc/myspring" auth="Container"
+              type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://49.50.164.76:3306/multi?characterEncoding=utf8&amp;useUnicode=true&amp;mysqlEncoding=utf8"
+              username="multi" password="1234" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/> -->
+              
+    <!-- Mysql DB(서버) -->
+    <Resource name="jdbc/myspring" auth="Container"
+              type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://118.67.133.75:3306/chargemoyang?characterEncoding=utf8&amp;useUnicode=true&amp;mysqlEncoding=utf8"
+              username="chargemoyang" password="Eogml320%endb" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
 </Context>

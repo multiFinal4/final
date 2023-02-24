@@ -43,29 +43,34 @@ public class NoticeController {
 
 	@RequestMapping(value = "/service/noticeinsert", method = RequestMethod.POST)
 	public String insert(NoticeDTO Notice, HttpSession session) throws IllegalStateException, IOException {
-		System.out.println("Notice=>" + Notice);
+		// System.out.println("Notice=>" + Notice);
 		// 1. MultipartFile 정보를 추출하기
 		List<MultipartFile> files = Notice.getFiles();
+		
 		// 2. 업로드될 서버의 경로 - 실제 서버의 경로를 추출하기 위해서 context의 정보를 담고 있는 ServletContext객체를 추출
-		// =>getServletContext는 우리가 생성한 프로젝트가 서버에 배포되는 실제 경로와 context에 대한 정보를 담고 있는 객체
-		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
-		//System.out.println(path);
+		// => getServletContext는 우리가 생성한 프로젝트가 서버에 배포되는 실제 경로와 context에 대한 정보를 담고 있는 객체
+		// String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/upload");
+		String path = "/opt/tomcat/webapps/upload";
+		// System.out.println(path);
+		
 		// 3. 파일업로드 서비스를 호출해서 실제 서버에 업로드되도록 작업하기
 		List<BoardFileDTO> boardfiledtolist = fileuploadService.uploadFiles(files, path);
-		// 업로드된 파일의 file_no의 값을 셋팅 - 1부터 1,2,3,4....첨부파일마지막번호
-		int count = 1;
-		for (BoardFileDTO boardfiledto : boardfiledtolist) {
-			boardfiledto.setFile_no(count + "");
-			count++;
-
-		}
-		//System.out.println("boardfiledtolist????????  " + boardfiledtolist);
-
+		// System.out.println("boardfiledtolist???????? " + boardfiledtolist);
+		
 		// 4. 게시글에 대한 일반적인 정보와 첨부되는 파일의 정보를 db에 저장하기
-		service.insert(Notice, boardfiledtolist);
+		if (boardfiledtolist.isEmpty()) {
+			service.insert(Notice);
+		} else {
+			// 업로드된 파일의 file_no의 값을 셋팅 - 1부터 1,2,3,4....첨부파일마지막번호
+			int count = 1;
+			for (BoardFileDTO boardfiledto : boardfiledtolist) {
+				boardfiledto.setFile_no(count + "");
+				count++;
+			}
+			service.insert(Notice, boardfiledtolist);
+		}
 		return "redirect:/admin_notice.do";
 	}
-
 
 	@RequestMapping("/Notice/list.do")
 	public ModelAndView list() {
@@ -74,6 +79,7 @@ public class NoticeController {
 		mav.addObject("noticelist", noticelist);
 		return mav;
 	}
+
 	@RequestMapping("/admin_notice.do")
 	public ModelAndView list2() {
 		ModelAndView mav = new ModelAndView("admin_noticelist");
@@ -87,7 +93,7 @@ public class NoticeController {
 	public String read(String notice_no, String state, Model model) {
 		NoticeDTO notice = service.getNoticeInfo(notice_no);
 		List<BoardFileDTO> boardfiledtolist = boardservice.getFileListNo(notice_no);
-		System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
+		// System.out.println("공지사항boardfiledtolist: " + boardfiledtolist);
 		String view = "";
 		if (state.equals("READ")) {
 			view = "service_noticeread";
@@ -98,13 +104,13 @@ public class NoticeController {
 		model.addAttribute("boardfiledtolist", boardfiledtolist);
 		return view;
 	}
-	
+
 	// admin notice read
 	@RequestMapping("/notice/readadmin.do")
 	public String read2(String notice_no, String state, Model model) {
 		NoticeDTO notice = service.getNoticeInfo(notice_no);
 		List<BoardFileDTO> boardfiledtolist = boardservice.getFileListNo(notice_no);
-		//System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
+		// System.out.println("공지사항boardfiledtolist: "+boardfiledtolist);
 		String view = "";
 		if (state.equals("READ")) {
 			view = "service_noticereadadmin";
@@ -135,7 +141,7 @@ public class NoticeController {
 	// 실제 업데이트기능을 처리
 	@RequestMapping("/notice/update.do")
 	public String update(NoticeDTO noticeboard) {
-		System.out.println(noticeboard + "-----------업데이트---------------------");
+		// System.out.println(noticeboard + "-----------업데이트---------------------");
 		service.update(noticeboard);
 		return "redirect:/admin_notice.do";
 	}
@@ -144,7 +150,7 @@ public class NoticeController {
 	public ModelAndView search(String tag, String data) {
 		ModelAndView mav = new ModelAndView("notice/list");
 		List<NoticeDTO> Noticelist = service.search(tag, data);
-		System.out.println(Noticelist);
+		// System.out.println(Noticelist);
 		mav.addObject("Noticelist", Noticelist);
 		return mav;
 	}

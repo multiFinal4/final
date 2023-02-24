@@ -27,7 +27,10 @@
 		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
 		<put-attribute name="content" value="/WEB-INF/service/service_faq.jsp"></put-attribute>
 	</definition>
-
+	<definition name="faq_search" extends="subTemplate"> 
+		<put-attribute name="menu" value="/WEB-INF/menu/cs_menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/service/service_faqlist.jsp"></put-attribute>
+	</definition>
 
 	<!-- 공지사항 글작성 -->
 

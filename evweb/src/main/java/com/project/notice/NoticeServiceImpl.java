@@ -57,6 +57,12 @@ public class NoticeServiceImpl implements NoticeService{
 		return 0;
 	}
 
+	@Override
+	public int insert(NoticeDTO Notice) {
+		dao.insert(Notice);
+		return 0;
+	}
+
 //	@Override
 //	public BoardFileDTO getFile(BoardFileDTO inputdata) {
 //		// TODO Auto-generated method stub

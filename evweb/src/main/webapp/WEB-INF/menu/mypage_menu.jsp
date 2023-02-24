@@ -13,17 +13,18 @@
     <body>
         <aside id="sidebar" class="sidebar">
             <h2>
-            	<span></span>
+            	<span>마이페이지</span>
             </h2>
             <ul class="sidebar-nav" id="sidebar-nav">
+              
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="/evweb/customer/read.do?state=READ&customer_id=${user.customer_id}">
                         <i class="bi bi-grid"></i>
-                        <span>마이페이지</span>
+                        <span>나의 정보관리</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="/evweb/customer/boardListPaging.do?customer_id=${user.customer_id}">
                         <i class="bi bi-grid"></i>
                         <span>문의내역</span>
                     </a>
